@@ -22,7 +22,7 @@ DOMENAS = "https://shop.dronumokykla.lt"   # PAKEISK, jei landingo domenas kitas
 
 # Nuotraukos atskirai versijai - vietiniai failai salia index.html
 VIETINES = {
-    "hero": PARDUOTUVE + "/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1200",
+    "hero": PARDUOTUVE + "/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1000",
     "medziaga": "img/medziaga.webp",
     "simuliatorius": "img/simuliatorius.webp",
     "videoPosteris": "img/video-plakatas.webp",
@@ -48,6 +48,17 @@ VIETINES = {
     "bendruomene1": "img/bendruomene1.webp",
     "bendruomene2": "img/bendruomene2.webp",
     "bendruomene3": "img/bendruomene3.webp",
+}
+
+# Placios turinio nuotraukos: (mazas failas, jo plotis, didelio plotis, sizes)
+# Telefonas gauna @sm, kompiuteris - pilna versija.
+VIETINES_PLACIOS = {
+    "kodelSvarbu": ("img/kodel-svarbu@sm.webp", 760, 1400,
+                    "(max-width:1080px) 92vw, 1040px"),
+    "visiGali": ("img/visi-gali@sm.webp", 760, 1320,
+                 "(max-width:800px) 92vw, 760px"),
+    "istorijaKariuomene": ("img/istorija-kariuomene@sm.webp", 760, 1200,
+                           "(max-width:700px) 92vw, 620px"),
 }
 
 # Didesni variantai. Naudojami tik ten, kur langelis platus (irodymu juosta).
@@ -153,6 +164,16 @@ def atskiras(css, body, js):
         eil = ", ".join('%s: "%s"' % (k, v) for k, v in sorted(turimi.items()))
         js = js.replace("var DM_NUOTRAUKOS_2X = {};",
                         "var DM_NUOTRAUKOS_2X = { " + eil + " };", 1)
+
+    placios = {}
+    for k, (sm, smw, lgw, sizes) in VIETINES_PLACIOS.items():
+        if os.path.exists(isvestis(sm)):
+            placios[k] = '%s: { sm: "%s", smW: %d, lgW: %d, sizes: "%s" }' % (
+                k, sm, smw, lgw, sizes)
+    if placios:
+        js = js.replace("var DM_PLACIOS = {};",
+                        "var DM_PLACIOS = { " + ", ".join(
+                            placios[k] for k in sorted(placios)) + " };", 1)
 
     body = body.replace('href="/products/', 'href="%s/products/' % PARDUOTUVE)
     body = body.replace('href="/policies/', 'href="%s/policies/' % PARDUOTUVE)
