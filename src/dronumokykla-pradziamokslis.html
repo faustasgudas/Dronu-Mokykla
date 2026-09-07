@@ -95,6 +95,12 @@
 
 /* ===== ATSILIEPIMAI: centruota antraštė + karuselė ===== */
 #dm .dm-revhead{text-align:center;}
+/* Dalinis uzpildymas: pilki fone, melyni virsuje, apkirpti pagal procenta.
+   4,83 is 5 turi atrodyti kaip 4,83, o ne kaip penkios pilnos. */
+#dm .dm-zv{position:relative;display:inline-block;line-height:1;white-space:nowrap;}
+#dm .dm-zv-tusti{color:#C9C9DB;}
+#dm .dm-zv-pilni{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;
+  color:var(--dm-blue);}
 #dm .dm-revstars{
   color:var(--dm-blue);font-size:1.75rem;letter-spacing:4px;line-height:1;
 }
@@ -324,19 +330,6 @@
   position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
 }
 
-/* Pultų persijungimas — trys statiniai kadrai vietoj GIF'o */
-#dm .dm-swap img{opacity:0;animation:dmSwap 6s infinite;}
-#dm .dm-swap img:nth-child(1){animation-delay:0s;}
-#dm .dm-swap img:nth-child(2){animation-delay:2s;}
-#dm .dm-swap img:nth-child(3){animation-delay:4s;}
-@keyframes dmSwap{
-  0%,3%{opacity:0;} 6%,30%{opacity:1;} 34%,100%{opacity:0;}
-}
-@media (prefers-reduced-motion:reduce){
-  #dm .dm-swap img{animation:none;opacity:0;}
-  #dm .dm-swap img:nth-child(2){opacity:1;}
-}
-
 @media (max-width:760px){
   #dm .dm-kit{grid-template-columns:1fr;}
   #dm .dm-kit2{grid-template-columns:1fr;}
@@ -455,8 +448,10 @@
 #dm .dm-cmp-zenklas--rek{background:var(--dm-ink);}
 #dm .dm-cmp-zenklas--tuscia{visibility:hidden;}
 #dm .dm-tag--rek{background:var(--dm-ink);}
-#dm .dm-cmp-foto{display:block;width:100%;max-width:132px;aspect-ratio:1/1;
-  margin:0 auto 10px;}
+/* Aiskus px matmenys, o ne aspect-ratio: lenteles langelyje aspect-ratio
+   kai kuriose narsyklese (Safari) sukelia netiketa isdestyma - nuotraukos
+   issikisdavo virs kitu eiluciu. */
+#dm .dm-cmp-foto{display:block;width:112px;height:112px;margin:0 auto 10px;}
 #dm .dm-cmp-foto img{width:100%;height:100%;object-fit:contain;display:block;}
 #dm .dm-cmp-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;}
 #dm .dm-cmp-chip{display:inline-block;margin-top:8px;font-size:0.6875rem;
@@ -521,7 +516,7 @@
     line-height:1.35;}
   #dm .dm-cmp tbody th{white-space:normal;width:68px;}
   #dm .dm-cmp thead th{padding:12px 6px 10px;}
-  #dm .dm-cmp-foto{max-width:100%;}
+  #dm .dm-cmp-foto{width:64px;height:64px;margin:0 auto 8px;}
   #dm .dm-cmp-pav{font-size:0.75rem;}
   #dm .dm-cmp-ikona{display:none;}
   /* Siaurame stulpelyje telpa tik viena žyma. Vaidmens skiltį slepiam
@@ -668,7 +663,7 @@
       <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
 
       <ul class="dm-trust">
-        <li><span class="dm-stars" aria-hidden="true">★★★★★</span> <b class="dm-num" id="dm-hero-rating">4,83 / 5</b> <span class="dm-muted">— <span class="dm-num" id="dm-hero-count">48</span> atsiliepimai</span></li>
+        <li><span class="dm-stars dm-zv" id="dm-hero-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></span> <b class="dm-num" id="dm-hero-rating">4,83 / 5</b> <span class="dm-muted">— <span class="dm-num" id="dm-hero-count">48</span> atsiliepimai</span></li>
         <li><b class="dm-num">1 000+</b> apmokytų mokinių</li>
         <li><b class="dm-num">14</b> dienų pinigų grąžinimo garantija</li>
       </ul>
@@ -891,9 +886,7 @@
         <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
         <h3>Išsirinktas drono valdymo pultas</h3>
         <p>Pristatysime per 1–3 darbo dienas.</p>
-        <div class="dm-kit-img dm-swap">
-          <img src="" data-dm-img-src="pultas1" alt="BETAFPV LiteRadio 2 SE ELRS valdymo pultas" loading="lazy">
-          <img src="" data-dm-img-src="pultas2" alt="RadioMaster Pocket ELRS valdymo pultas" loading="lazy">
+        <div class="dm-kit-img">
           <img src="" data-dm-img-src="pultas3" alt="RadioMaster TX15 ELRS valdymo pultas" loading="lazy">
         </div>
       </div>
@@ -1128,7 +1121,7 @@
 <section class="dm-sec dm-grey">
   <div class="dm-wrap">
     <div class="dm-revhead">
-      <div class="dm-revstars" aria-hidden="true">★★★★★</div>
+      <div class="dm-revstars dm-zv" id="dm-rev-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></div>
       <div class="dm-revscore"><span id="dm-rev-suma">4,83</span> iš 5 — <span id="dm-rev-kiekis">48</span> atsiliepimai</div>
       <h2 class="dm-h2">Ką sako mūsų mokiniai</h2>
     </div>
@@ -2050,6 +2043,8 @@
         img.src = src;
         img.alt = v.pavadinimas;
         img.loading = "lazy";
+        img.width = 112;
+        img.height = 112;
         box.appendChild(img);
         th.appendChild(box);
       }
@@ -2340,6 +2335,19 @@
 
       dez.appendChild(bq);
     });
+
+    /* Zvaigzduciu uzpildymas pagal tikra vidurki. */
+    if (vidurkis) {
+      var proc = Math.max(0, Math.min(100, (vidurkis / 5) * 100)).toFixed(1) + "%";
+      var etikete = vidurkis.toFixed(2).replace(".", ",") + " iš 5";
+      ["dm-hero-stars", "dm-rev-stars"].forEach(function (id) {
+        var zv = document.getElementById(id);
+        if (!zv) return;
+        var pilni = zv.querySelector(".dm-zv-pilni");
+        if (pilni) pilni.style.width = proc;
+        zv.setAttribute("aria-label", etikete);
+      });
+    }
 
     var elS = document.getElementById("dm-rev-suma");
     var elK = document.getElementById("dm-rev-kiekis");
