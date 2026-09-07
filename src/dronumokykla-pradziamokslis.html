@@ -1,0 +1,2482 @@
+<!-- =========================================================
+     DRONŲ MOKYKLA — FPV dronų valdymo pradžiamokslis
+     Landing page Shopify „Custom Liquid" sekcijai.
+     Viskas viename faile: HTML + <style>
++<script>. Nėra Liquid žymų,nėra naršyklės saugyklos,nėra išorinių bibliotekų. NUOTRAUKAS ĮRAŠYK VIENOJE VIETOJE — objekte DM_NUOTRAUKOS(JS pradžioje,ieškok „KONFIGŪRACIJA 1"). Tuščias laukas rodo brūkšniuotą placeholder'į su paaiškinimu,todėl puslapis veikia ir dar neužpildytas. ========================================================= --><div id="dm"><style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');#dm{--dm-blue:#1919FF;--dm-blue-hover:#1414CC;--dm-ink:#000000;--dm-muted:#5B5B66;--dm-bg:#FFFFFF;--dm-card:#F6F6F6;--dm-line:#E4E4EA;--dm-sale:#CB321E;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--dm-ink);background:var(--dm-bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}#dm *{box-sizing:border-box}#dm p,#dm h1,#dm h2,#dm h3,#dm h4,#dm ul,#dm ol,#dm li,#dm figure,#dm blockquote{margin:0;padding:0}#dm ul,#dm ol{list-style:none}#dm img{display:block;max-width:100%;height:auto}#dm a{color:inherit}#dm .dm-h1{font-size:clamp(2.1rem,5.6vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em}#dm .dm-h2{font-size:clamp(1.6rem,3.6vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}#dm .dm-h3{font-size:1.125rem;font-weight:700;line-height:1.35;letter-spacing:-0.01em}#dm .dm-lead{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--dm-muted);line-height:1.55}#dm .dm-muted{color:var(--dm-muted)}#dm .dm-small{font-size:0.9375rem;line-height:1.55}#dm .dm-num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}#dm .dm-sec{padding:clamp(56px,8vw,104px)20px}#dm .dm-sec--tight{padding-top:clamp(32px,4vw,48px)}#dm .dm-wrap{max-width:1040px;margin:0 auto}#dm .dm-narrow{max-width:760px}#dm .dm-grey{background:var(--dm-card)}#dm .dm-black{background:var(--dm-ink);color:#fff}#dm .dm-black .dm-muted{color:#B4B4BE}#dm .dm-blue{background:var(--dm-blue);color:#fff}#dm .dm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--dm-blue);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:17px 30px;border-radius:14px;border:0;cursor:pointer;font-family:inherit;line-height:1;transition:background-color .15s ease}#dm .dm-btn:hover{background:var(--dm-blue-hover)}#dm .dm-btn--wide{width:100%;justify-content:center;padding:20px 24px;font-size:1.125rem}#dm .dm-arrow{font-weight:700}#dm a:focus-visible,#dm button:focus-visible,#dm summary:focus-visible{outline:3px solid var(--dm-blue);outline-offset:3px;border-radius:6px}#dm .dm-opt input:focus-visible+.dm-opt-body,#dm .dm-own input:focus-visible+.dm-own-body{outline:3px solid var(--dm-blue);outline-offset:3px}#dm .dm-blue a:focus-visible,#dm .dm-black a:focus-visible,#dm .dm-black summary:focus-visible{outline-color:#fff}#dm .dm-price{font-size:clamp(2rem,4.4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1}#dm .dm-was{color:var(--dm-sale);text-decoration:line-through;font-weight:500;font-size:1.0625rem}#dm .dm-off{color:var(--dm-sale);font-weight:700;font-size:0.875rem;border:1px solid var(--dm-sale);border-radius:999px;padding:4px 10px;line-height:1}#dm .dm-figure{border-radius:18px;overflow:hidden;background:var(--dm-card)}#dm .dm-figure img{width:100%;height:100%;object-fit:cover}#dm .dm-ph{border:2px dashed #C9C9D4;border-radius:18px;background:var(--dm-card);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:0.8125rem;color:var(--dm-muted);font-weight:600;line-height:1.5}#dm .dm-black .dm-ph,#dm .dm-blue .dm-ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
+/* Mygtukas ir pilkas tekstas ant melyno fono - be sito butu melyna ant melynos
+   (ta pati klaida kaip anksciau su garantijos mygtuku), o pilkas dm-muted
+   tekstas beveik nesimatytu. */
+#dm .dm-blue .dm-btn{background:#fff;color:var(--dm-blue);}
+#dm .dm-blue .dm-btn:hover{background:#E8E8FF;}
+#dm .dm-blue .dm-lead{color:#E8E8FF;}
+#dm .dm-blue .dm-muted{color:#C7C7FF;}#dm .dm-shot{position:relative;border-radius:18px;overflow:hidden;background:var(--dm-ink)}#dm .dm-shot img{width:100%;aspect-ratio:16/9;object-fit:cover}#dm .dm-shot .dm-ph{aspect-ratio:16/9;min-height:0;border-radius:0;border:0}#dm .dm-shot-cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,4vw,40px);font-size:clamp(1.25rem,2.6vw,2rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.35)55%,rgba(0,0,0,0))}#dm .dm-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}#dm .dm-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}#dm .dm-chip{border:1px solid var(--dm-line);border-radius:999px;padding:7px 14px;font-size:0.875rem;font-weight:600;line-height:1}#dm .dm-hero-buy{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:28px 0 22px}#dm .dm-hero-from{font-size:0.9375rem;color:var(--dm-muted);font-weight:500}#dm .dm-trust{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;padding-top:24px;border-top:1px solid var(--dm-line)}#dm .dm-trust li{font-size:0.9375rem;font-weight:500}#dm .dm-trust b{font-weight:800}#dm .dm-stars{letter-spacing:1px}#dm .dm-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+/* Juosta placiau uz likusi turini (1040 -> 1320). Kvadratai buvo 251 px ir
+   salia 1040 px pločio bannerio atrodė kaip smulkmena — nesimatė, kas juose. */
+#dm .dm-wrap--wide{max-width:1800px}
+#dm .dm-sec--strip{padding-bottom:clamp(32px,4vw,52px)}#dm .dm-strip .dm-figure,#dm .dm-strip .dm-ph{aspect-ratio:1/1}#dm .dm-strip-cap{margin-top:20px;font-size:1rem;color:var(--dm-muted)}#dm .dm-boxes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}#dm .dm-box{background:#fff;border-radius:18px;overflow:hidden}#dm .dm-box .dm-figure,#dm .dm-box .dm-ph{aspect-ratio:16/10;border-radius:0;border-width:0 0 2px 0}#dm .dm-box .dm-figure{display:flex;align-items:center;justify-content:center;padding:14px}#dm .dm-box .dm-figure img{width:auto;max-width:100%;max-height:100%;object-fit:contain}#dm .dm-box-txt{padding:22px 24px 26px}#dm .dm-picker{margin-top:28px}#dm .dm-picker-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}#dm .dm-cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}#dm .dm-opt{position:relative}#dm .dm-opt input,#dm .dm-own input{position:absolute;opacity:0;width:1px;height:1px}#dm .dm-opt-body{display:flex;flex-direction:column;height:100%;cursor:pointer;border:1.5px solid var(--dm-line);border-radius:18px;background:#fff;padding:14px 14px 18px;position:relative;transition:border-color .15s ease}#dm .dm-opt-body:hover{border-color:#C9C9D4}#dm .dm-opt input:checked+.dm-opt-body{border-color:var(--dm-blue);box-shadow:inset 0 0 0 1px var(--dm-blue)}#dm .dm-opt-img{aspect-ratio:1/1;background:var(--dm-card);border-radius:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;overflow:hidden}#dm .dm-opt-img img{width:100%;height:100%;object-fit:contain}#dm .dm-opt-role{font-weight:800;font-size:1rem;line-height:1.25}#dm .dm-opt-name{display:block;font-size:0.875rem;color:var(--dm-muted);margin-top:4px;line-height:1.4}#dm .dm-opt-price{margin-top:12px;font-weight:800;font-size:1.0625rem;line-height:1.25}#dm .dm-opt-was{font-size:0.8125rem;font-weight:500;margin-left:7px}#dm .dm-tag{position:absolute;top:22px;right:22px;z-index:2;background:var(--dm-blue);color:#fff;font-size:0.75rem;font-weight:700;padding:5px 11px;border-radius:999px;line-height:1}#dm .dm-own{margin-top:14px}#dm .dm-own-body{display:flex;align-items:center;gap:14px;cursor:pointer;border:1.5px solid var(--dm-line);border-radius:14px;background:#fff;padding:15px 18px;transition:border-color .15s ease}#dm .dm-own-body:hover{border-color:#C9C9D4}#dm .dm-own input:checked+.dm-own-body{border-color:var(--dm-blue);box-shadow:inset 0 0 0 1px var(--dm-blue)}#dm .dm-dot{flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:1.5px solid #C9C9D4;background:#fff;position:relative}#dm .dm-own input:checked+.dm-own-body .dm-dot{border-color:var(--dm-blue)}#dm .dm-own input:checked+.dm-own-body .dm-dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--dm-blue)}#dm .dm-own-txt{flex:1 1 auto;font-weight:700;font-size:1rem}#dm .dm-own-note{display:block;font-weight:500;font-size:0.875rem;color:var(--dm-muted);margin-top:2px}#dm .dm-own-price{font-weight:800;font-size:1.0625rem;white-space:nowrap}#dm .dm-help-link{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;font-weight:700;font-size:0.9375rem;color:var(--dm-blue);text-decoration:none}#dm .dm-help-label{text-decoration:underline;text-underline-offset:3px}#dm .dm-help-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--dm-blue);color:#fff;font-size:0.625rem;text-decoration:none;flex:0 0 auto}#dm .dm-buybar{margin-top:28px;padding-top:26px;border-top:1px solid var(--dm-line);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}#dm .dm-buybar-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}#dm .dm-buybar .dm-btn{flex:1 1 260px;justify-content:center}#dm .dm-ship{margin-top:16px;font-size:0.9375rem;color:var(--dm-muted)}#dm .dm-bignum{font-size:clamp(4.5rem,17vw,11rem);font-weight:800;letter-spacing:-0.055em;line-height:0.86;display:block}#dm .dm-gap{display:grid;gap:clamp(28px,5vw,48px)}#dm .dm-gap p{font-size:clamp(1.05rem,2vw,1.375rem);font-weight:500;max-width:22ch}#dm .dm-facts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:clamp(48px,7vw,80px);padding-top:clamp(32px,4vw,48px);border-top:1px solid rgba(255,255,255,.3)}#dm .dm-facts p{font-size:1.0625rem;line-height:1.5;font-weight:500;max-width:36ch}#dm .dm-video{border-radius:18px;overflow:hidden;background:var(--dm-ink)}#dm .dm-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--dm-ink)}#dm .dm-inside{display:grid;gap:20px;margin-top:20px}#dm .dm-in{background:#fff;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;align-items:center}#dm .dm-in:nth-child(even).dm-figure,#dm .dm-in:nth-child(even).dm-ph{order:2}#dm .dm-in .dm-figure,#dm .dm-in .dm-ph{height:100%;border-radius:0;border-width:0}#dm .dm-in-txt{padding:clamp(24px,3vw,40px)}#dm .dm-in-eyebrow{font-size:0.8125rem;font-weight:800;color:var(--dm-blue);margin-bottom:8px}#dm .dm-in--result{background:var(--dm-ink);color:#fff}#dm .dm-in--result .dm-in-eyebrow{color:#fff;opacity:.75}#dm .dm-ticks{margin-top:14px;display:grid;gap:10px}#dm .dm-ticks li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;font-size:1rem;line-height:1.45}#dm .dm-ticks li::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid var(--dm-blue);transform:translateY(2px)}#dm .dm-in--result .dm-ticks li::before{border-color:#fff}#dm .dm-who{display:grid;grid-template-columns:0.85fr 1fr;gap:clamp(28px,5vw,56px);align-items:start}#dm .dm-who .dm-ph{aspect-ratio:4/5}#dm .dm-who .dm-figure{aspect-ratio:auto}#dm .dm-who .dm-figure img{height:auto;object-fit:contain}#dm .dm-proof{margin-top:26px;display:grid;gap:14px}#dm .dm-proof li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}#dm .dm-proof b{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}#dm .dm-bar{width:26px;height:2px;background:var(--dm-blue);transform:translateY(-5px)}#dm .dm-revs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}#dm .dm-rev{background:var(--dm-card);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:14px}#dm .dm-rev p{font-size:1rem;line-height:1.55}#dm .dm-rev cite{font-style:normal;font-weight:700;font-size:0.9375rem;margin-top:auto}#dm .dm-rev--photo{padding:0;overflow:hidden}#dm .dm-rev--photo p,#dm .dm-rev--photo cite{padding:0 24px}#dm .dm-rev--photo cite{padding-bottom:26px}#dm .dm-rev-img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:-4px}#dm .dm-rev--photo p{margin-top:22px}#dm .dm-revphotos{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}#dm .dm-revphotos img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px}#dm .dm-guar{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,48px);align-items:center}#dm .dm-guar-days{font-size:clamp(3.5rem,9vw,6rem);font-weight:800;letter-spacing:-0.05em;line-height:0.9}#dm .dm-guar a{color:#fff;text-decoration:underline;text-underline-offset:3px}#dm .dm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}#dm .dm-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--dm-line);border-radius:18px;padding:20px;transition:border-color .15s ease}#dm .dm-card:hover{border-color:var(--dm-ink)}#dm .dm-card-img{aspect-ratio:1/1;background:var(--dm-card);border-radius:12px;margin-bottom:18px;display:flex;align-items:center;justify-content:center;overflow:hidden}#dm .dm-card-img img{width:100%;height:100%;object-fit:contain}#dm .dm-card-name{font-weight:700;font-size:1rem;line-height:1.35}#dm .dm-card-price{margin-top:10px;font-weight:800;font-size:1.0625rem}#dm .dm-card-go{margin-top:14px;font-size:0.9375rem;font-weight:700;color:var(--dm-blue)}#dm .dm-faq{margin-top:40px;border-top:1px solid rgba(255,255,255,.24)}#dm .dm-faq details{border-bottom:1px solid rgba(255,255,255,.24)}#dm .dm-faq summary{cursor:pointer;list-style:none;padding:24px 44px 24px 0;position:relative;font-weight:700;font-size:1.0625rem;line-height:1.4}#dm .dm-faq summary::-webkit-details-marker{display:none}#dm .dm-faq summary::after{content:"+";position:absolute;right:6px;top:22px;font-size:1.5rem;font-weight:400;line-height:1}#dm .dm-faq details[open] summary::after{content:"–"}#dm .dm-faq-a{padding:0 0 26px;max-width:68ch}#dm .dm-sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--dm-line);padding:12px 16px calc(12px+env(safe-area-inset-bottom));display:none;align-items:center;gap:14px;transform:translateY(110%);transition:transform .22s ease}#dm .dm-sticky.dm-on{transform:translateY(0)}#dm .dm-sticky-price{font-weight:800;font-size:1.125rem;line-height:1.15;flex:0 0 auto}#dm .dm-sticky-was{display:block;font-size:0.75rem;font-weight:500}#dm .dm-sticky .dm-btn{flex:1 1 auto;justify-content:center;padding:15px 18px;font-size:1rem}@media (max-width:900px){#dm .dm-hero{grid-template-columns:1fr}#dm .dm-hero-media{order:-1}#dm .dm-who{grid-template-columns:1fr}#dm .dm-revs{grid-template-columns:1fr}#dm .dm-cards{grid-template-columns:1fr}#dm .dm-facts{grid-template-columns:1fr}#dm .dm-boxes{grid-template-columns:1fr}#dm .dm-strip{grid-template-columns:1fr 1fr}#dm .dm-in{grid-template-columns:1fr}#dm .dm-in:nth-child(even).dm-figure,#dm .dm-in:nth-child(even).dm-ph{order:0}#dm .dm-revphotos{grid-template-columns:1fr 1fr}}@media (max-width:620px){#dm{font-size:16px;padding-bottom:84px}#dm .dm-sticky{display:flex}#dm .dm-guar{grid-template-columns:1fr}#dm .dm-cards3{grid-template-columns:1fr}#dm .dm-opt-body{display:grid;height:auto;grid-template-columns:64px minmax(0,1fr);grid-template-areas:"img tag" "img role" "img name" "img price";column-gap:14px;align-content:center;padding:12px}#dm .dm-opt-img{grid-area:img;width:76px;height:76px;margin-bottom:0;align-self:center}#dm .dm-opt-role{grid-area:role}#dm .dm-opt-name{grid-area:name}#dm .dm-opt-price{grid-area:price;margin-top:5px}#dm .dm-tag{position:static;grid-area:tag;justify-self:start;margin:0 0 6px}#dm .dm-buybar .dm-btn{flex:1 1 100%}#dm .dm-trust{gap:8px 20px}}@media (prefers-reduced-motion:reduce){#dm *{transition:none !important;animation:none !important}}
+
+
+/* ===== PAPILDOMI BLOKAI ===== */
+
+/* Kodėl verta — kortelės su antrašte po nuotrauka */
+#dm .dm-why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+#dm .dm-why figure{background:var(--dm-card);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;}
+#dm .dm-why img{width:100%;aspect-ratio:16/10;object-fit:cover;}
+#dm .dm-why figcaption{padding:20px 22px 24px;font-weight:700;font-size:1rem;line-height:1.35;}
+
+/* Pastaba su mėlyna juostele */
+#dm .dm-note{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:stretch;
+  margin-top:36px;padding:26px 28px;background:var(--dm-card);border-radius:18px;}
+#dm .dm-note-bar{width:4px;background:var(--dm-blue);border-radius:2px;}
+#dm .dm-note p+p{margin-top:12px;}
+
+/* Plati dviejų stulpelių eilutė: nuotrauka + tekstas */
+#dm .dm-wide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,44px);align-items:center;margin-top:36px;}
+#dm .dm-wide img{width:100%;border-radius:18px;}
+
+/* Poriniai teiginiai */
+#dm .dm-pairs{display:grid;gap:14px;margin-top:36px;}
+#dm .dm-pair{background:var(--dm-card);border-radius:18px;padding:22px 26px;}
+#dm .dm-pair span{display:block;color:var(--dm-muted);font-size:0.9375rem;}
+#dm .dm-pair b{display:block;font-weight:800;font-size:1.0625rem;margin-top:4px;line-height:1.35;}
+
+/* Įkūrėjų istorija */
+#dm .dm-story{max-width:68ch;margin-top:36px;}
+#dm .dm-story p{margin-top:16px;}
+#dm .dm-story img{width:100%;border-radius:18px;margin-top:28px;}
+#dm .dm-sign{margin-top:22px;font-weight:800;}
+
+/* Pasitikėjimo juosta */
+#dm .dm-trustbar--3{grid-template-columns:repeat(3,1fr);}
+#dm .dm-trustbar{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+#dm .dm-trustbar h3{font-weight:800;font-size:1rem;margin-bottom:6px;}
+#dm .dm-trustbar p{font-size:0.9375rem;line-height:1.5;color:var(--dm-muted);}
+
+/* Pastaba po komplekto dėžutėmis */
+#dm .dm-hand{margin-top:10px;font-size:0.8125rem;font-weight:800;letter-spacing:0.04em;
+  color:var(--dm-blue);text-transform:uppercase;}
+
+/* Pamokų žymos */
+#dm .dm-lessons{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+#dm .dm-lesson{border:1px solid var(--dm-line);border-radius:999px;padding:5px 12px;
+  font-size:0.8125rem;font-weight:700;color:var(--dm-muted);}
+
+@media (max-width:900px){
+  #dm .dm-trustbar--3{grid-template-columns:1fr;}
+  #dm .dm-why{grid-template-columns:1fr;}
+  #dm .dm-wide{grid-template-columns:1fr;}
+  #dm .dm-trustbar{grid-template-columns:1fr 1fr;gap:24px;}
+}
+@media (max-width:620px){
+  #dm .dm-trustbar{grid-template-columns:1fr;}
+  #dm .dm-note{grid-template-columns:1fr;gap:14px;padding:22px;}
+  #dm .dm-note-bar{width:auto;height:4px;}
+}
+
+/* ===== KAS ĮEINA: vienodo aukščio dėžutės ===== */
+#dm .dm-boxes{align-items:stretch;}
+#dm .dm-box{
+  background:var(--dm-card);border-radius:18px;overflow:hidden;
+  display:flex;flex-direction:column;height:100%;
+}
+#dm .dm-box .dm-figure{flex:0 0 auto;background:#fff;}
+#dm .dm-box-txt{flex:1 1 auto;}
+#dm .dm-box-note{
+  margin-top:auto;padding:14px 24px 16px;border-top:1px solid var(--dm-line);
+  font-size:0.75rem;font-weight:800;letter-spacing:0.05em;
+  text-transform:uppercase;color:var(--dm-blue);
+}
+
+/* ===== Plati eilutė: nuotrauka užpildo savo stulpelį ===== */
+#dm .dm-wide img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:18px;}
+#dm .dm-wide{background:var(--dm-card);border-radius:18px;padding:clamp(18px,2.5vw,26px);}
+#dm .dm-wide>*:last-child{padding-right:clamp(0px,2vw,20px);}
+
+
+/* ===== ATSILIEPIMAI: centruota antraštė + karuselė ===== */
+#dm .dm-revhead{text-align:center;}
+#dm .dm-revstars{
+  color:var(--dm-blue);font-size:1.75rem;letter-spacing:4px;line-height:1;
+}
+#dm .dm-revscore{
+  color:var(--dm-blue);font-weight:800;font-size:1.125rem;margin-top:10px;
+  font-variant-numeric:tabular-nums;
+}
+#dm .dm-revhead .dm-h2{margin-top:16px;}
+#dm .dm-revhead .dm-lead{margin:14px auto 0;max-width:52ch;}
+
+/* Sienelė iš baltų kortelių. Kortelės BALTOS todėl, kad sekcijos fonas yra
+   --dm-card — tokios pat spalvos kortelės ant jo nesimatė, ir atsiliepimai
+   atrodė kaip pabiręs tekstas su tuščiais tarpais. */
+#dm .dm-revwrap{position:relative;margin-top:44px;max-height:780px;overflow:hidden;}
+#dm .dm-revwrap.dm-atverta{max-height:none;overflow:visible;}
+#dm .dm-revwrap::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:200px;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(246,246,246,0) 0%,var(--dm-card) 88%);
+}
+#dm .dm-revwrap.dm-atverta::after{content:none;}
+#dm .dm-revwall{columns:3;column-gap:20px;}
+#dm .dm-revwall .dm-rev{
+  break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  display:block;background:#fff;border:1px solid var(--dm-line);border-radius:18px;
+  padding:0;overflow:hidden;margin:0 0 20px;
+}
+#dm .dm-rev-top{padding:22px 22px 0;}
+#dm .dm-rev-stars{color:var(--dm-blue);font-size:1.125rem;letter-spacing:3px;line-height:1;}
+#dm .dm-revwall .dm-rev p{padding:14px 22px 0;font-size:0.9375rem;line-height:1.6;}
+#dm .dm-revwall .dm-rev-img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;margin:18px 0 0;border-radius:0;
+}
+#dm .dm-rev-foot{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0;padding:16px 22px 20px;
+}
+#dm .dm-revwall .dm-rev cite{font-style:normal;font-weight:800;font-size:0.9375rem;margin:0;}
+#dm .dm-rev-ok{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.8125rem;font-weight:700;color:var(--dm-muted);
+}
+#dm .dm-rev-ok svg{width:15px;height:15px;flex:0 0 auto;color:var(--dm-blue);}
+#dm .dm-revmore{display:flex;justify-content:center;margin-top:28px;}
+#dm .dm-revmore button{
+  min-height:52px;padding:0 30px;border-radius:999px;border:0;cursor:pointer;
+  background:var(--dm-ink);color:#fff;font-family:inherit;font-weight:700;font-size:0.9375rem;
+  transition:background-color .15s ease;
+}
+#dm .dm-revmore button:hover{background:#222;}
+
+@media (max-width:900px){
+  #dm .dm-revwall{columns:2;}
+}
+@media (max-width:620px){
+  #dm .dm-revwall{columns:1;}
+  #dm .dm-revwrap{max-height:820px;}
+}
+
+
+/* ===== Dienų juostelė virš modulio ===== */
+#dm .dm-day{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:#EAF6EC;padding:12px 18px;
+}
+#dm .dm-day b{
+  background:var(--dm-ink);color:#fff;border-radius:999px;
+  padding:7px 16px;font-size:0.8125rem;font-weight:800;line-height:1;
+}
+#dm .dm-day span{font-size:0.8125rem;font-weight:700;color:#2E6B3A;}
+#dm .dm-in--result .dm-day{background:rgba(255,255,255,.14);}
+#dm .dm-in--result .dm-day b{background:#fff;color:var(--dm-ink);}
+#dm .dm-in--result .dm-day span{color:#fff;opacity:.85;}
+#dm .dm-in{position:relative;}
+#dm .dm-in>.dm-day{grid-column:1/-1;}
+
+/* ===== DUK kortelės ===== */
+#dm .dm-faqgrid{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px;
+  align-items:stretch;
+}
+#dm .dm-faqcard{
+  display:flex;flex-direction:column;height:100%;
+  border-radius:18px;overflow:hidden;border:1px solid var(--dm-line);
+}
+#dm .dm-faqcard--platus{grid-column:1/-1;}
+#dm .dm-faqcard-q{
+  background:var(--dm-blue);color:#fff;
+  padding:20px 24px;flex:0 0 auto;
+  font-weight:800;font-size:1.0625rem;line-height:1.35;
+}
+#dm .dm-faqcard-a{
+  background:#fff;padding:20px 24px 24px;flex:1 1 auto;
+  font-size:0.9375rem;line-height:1.6;color:var(--dm-muted);
+}
+
+
+/* ===== Garantijos kortelė su skydu ===== */
+#dm .dm-guard{
+  background:#fff;border-radius:18px;padding:clamp(32px,5vw,56px) clamp(24px,4vw,48px);
+  text-align:center;position:relative;margin-top:56px;
+}
+#dm .dm-guard-badge{
+  position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+  width:86px;height:86px;border-radius:50%;background:var(--dm-blue);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-weight:800;line-height:1;
+}
+#dm .dm-guard-badge b{font-size:1.75rem;}
+#dm .dm-guard-badge span{font-size:0.6875rem;margin-top:3px;}
+#dm .dm-guard h2{margin-top:24px;}
+#dm .dm-guard p{margin:16px auto 0;max-width:60ch;}
+#dm .dm-guard p a{color:var(--dm-blue);text-decoration:underline;text-underline-offset:3px;}
+#dm .dm-guard .dm-btn{margin-top:26px;}
+
+
+@media (max-width:620px){
+  #dm .dm-faqgrid{grid-template-columns:1fr;}
+  #dm .dm-day{padding:10px 14px;}
+}
+
+
+/* ===== Lipni CTA juosta — ir kompiuteryje, ne tik telefone ===== */
+#dm .dm-sticky{
+  display:flex;left:50%;right:auto;bottom:22px;
+  transform:translate(-50%,140%);
+  width:min(560px,calc(100% - 32px));
+  border:1px solid var(--dm-line);border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.13);
+  padding:12px 12px 12px 20px;
+}
+#dm .dm-sticky.dm-on{transform:translate(-50%,0);}
+#dm{padding-bottom:96px;}
+@media (max-width:620px){
+  #dm .dm-sticky{
+    left:0;right:0;bottom:0;width:auto;
+    border-radius:0;border-left:0;border-right:0;border-bottom:0;
+    box-shadow:none;transform:translateY(140%);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  }
+  #dm .dm-sticky.dm-on{transform:translateY(0);}
+}
+
+
+/* ===== Iškeltas atsiliepimas iš karto po hero ===== */
+#dm .dm-hero-rev{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,32px);
+  align-items:center;background:var(--dm-card);border-radius:18px;
+  padding:clamp(18px,2.5vw,26px);
+}
+#dm .dm-hero-rev img{
+  width:clamp(96px,14vw,168px);aspect-ratio:1/1;object-fit:cover;border-radius:14px;
+}
+#dm .dm-hero-rev-stars{color:var(--dm-blue);font-size:1.0625rem;letter-spacing:3px;line-height:1;}
+#dm .dm-hero-rev p{
+  font-size:clamp(1.0625rem,1.9vw,1.375rem);font-weight:700;line-height:1.4;
+  letter-spacing:-0.01em;margin-top:12px;
+}
+#dm .dm-hero-rev-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;}
+#dm .dm-hero-rev cite{font-style:normal;font-weight:800;font-size:0.9375rem;}
+@media (max-width:620px){
+  #dm .dm-hero-rev{grid-template-columns:1fr;}
+  #dm .dm-hero-rev img{width:100%;aspect-ratio:16/10;}
+}
+
+
+/* ===== ANTRAŠTĖ ===== */
+#dm .dm-top{background:var(--dm-blue);}
+#dm .dm-top-in{
+  max-width:1040px;margin:0 auto;padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+#dm .dm-top img{width:132px;height:auto;}
+#dm .dm-top .dm-btn{
+  background:#fff;color:var(--dm-blue);padding:12px 22px;font-size:0.9375rem;
+}
+#dm .dm-top .dm-btn:hover{background:#E8E8FF;}
+#dm .dm-top a:focus-visible{outline-color:#fff;}
+
+/* ===== PORAŠTĖ ===== */
+#dm .dm-foot{background:var(--dm-ink);color:#fff;}
+#dm .dm-foot-in{max-width:1040px;margin:0 auto;padding:clamp(44px,6vw,64px) 20px;}
+#dm .dm-foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:clamp(28px,4vw,48px);}
+#dm .dm-foot img{width:132px;height:auto;margin-bottom:18px;}
+#dm .dm-foot p{color:#B4B4BE;font-size:0.9375rem;line-height:1.6;max-width:38ch;}
+#dm .dm-foot h3{font-size:0.875rem;font-weight:800;margin-bottom:14px;letter-spacing:0.02em;}
+#dm .dm-foot li{margin-bottom:9px;}
+#dm .dm-foot a{color:#B4B4BE;font-size:0.9375rem;text-decoration:none;}
+#dm .dm-foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+#dm .dm-foot a:focus-visible{outline-color:#fff;}
+#dm .dm-foot-bottom{
+  margin-top:clamp(32px,4vw,44px);padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.18);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  color:#B4B4BE;font-size:0.875rem;
+}
+@media (max-width:760px){
+  #dm .dm-foot-grid{grid-template-columns:1fr;}
+  #dm .dm-top-in{padding:14px 16px;}
+  #dm .dm-top img{width:112px;}
+  #dm .dm-top .dm-btn{padding:11px 16px;font-size:0.875rem;}
+}
+
+
+/* ===== KOMPLEKTO KORTELĖS (3 + 2) ===== */
+#dm .dm-kit{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+#dm .dm-kit2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+#dm .dm-kitcard{
+  background:var(--dm-card);border-radius:18px;padding:24px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;height:100%;
+}
+#dm .dm-kit2 .dm-kitcard{
+  flex-direction:row;align-items:flex-start;text-align:left;gap:14px;padding:22px 24px;
+}
+#dm .dm-tick{
+  flex:0 0 auto;width:26px;height:26px;border-radius:50%;
+  background:var(--dm-blue);color:#fff;
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+#dm .dm-kit2 .dm-tick{margin-bottom:0;}
+#dm .dm-tick svg{width:15px;height:15px;}
+#dm .dm-kitcard h3{font-weight:800;font-size:1rem;line-height:1.35;}
+#dm .dm-kitcard p{font-size:0.875rem;line-height:1.5;color:var(--dm-muted);margin-top:5px;}
+#dm .dm-kit-img{
+  position:relative;width:100%;aspect-ratio:646/538;margin-top:16px;
+  border-radius:12px;overflow:hidden;background:#fff;
+}
+#dm .dm-kit-img img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+}
+
+/* Pultų persijungimas — trys statiniai kadrai vietoj GIF'o */
+#dm .dm-swap img{opacity:0;animation:dmSwap 6s infinite;}
+#dm .dm-swap img:nth-child(1){animation-delay:0s;}
+#dm .dm-swap img:nth-child(2){animation-delay:2s;}
+#dm .dm-swap img:nth-child(3){animation-delay:4s;}
+@keyframes dmSwap{
+  0%,3%{opacity:0;} 6%,30%{opacity:1;} 34%,100%{opacity:0;}
+}
+@media (prefers-reduced-motion:reduce){
+  #dm .dm-swap img{animation:none;opacity:0;}
+  #dm .dm-swap img:nth-child(2){opacity:1;}
+}
+
+@media (max-width:760px){
+  #dm .dm-kit{grid-template-columns:1fr;}
+  #dm .dm-kit2{grid-template-columns:1fr;}
+}
+
+
+/* ===== VIZIJA — centruotas palyginimas ===== */
+#dm .dm-viz{text-align:center;}
+#dm .dm-viz-eyebrow{
+  font-size:0.8125rem;font-weight:800;letter-spacing:0.12em;
+  text-transform:uppercase;opacity:.75;
+}
+#dm .dm-viz-h{
+  font-size:clamp(1.7rem,4vw,2.9rem);font-weight:800;line-height:1.1;
+  letter-spacing:-0.03em;margin:14px auto 0;max-width:20ch;
+}
+#dm .dm-viz-nums{
+  display:grid;grid-template-columns:auto auto auto;gap:clamp(16px,4vw,44px);
+  align-items:center;justify-content:center;margin-top:clamp(36px,5vw,56px);
+}
+#dm .dm-viz-lbl{
+  display:block;font-size:0.875rem;font-weight:700;opacity:.75;margin-bottom:6px;
+}
+#dm .dm-viz-nr{
+  display:block;font-weight:800;letter-spacing:-0.05em;line-height:0.9;
+  font-variant-numeric:tabular-nums;
+}
+#dm .dm-viz-dabar .dm-viz-nr{font-size:clamp(2.4rem,7vw,4.4rem);opacity:.55;}
+#dm .dm-viz-tikslas .dm-viz-nr{font-size:clamp(3.6rem,13vw,9rem);}
+#dm .dm-viz-sub{display:block;font-size:0.875rem;opacity:.75;margin-top:8px;}
+#dm .dm-viz-rodykle{font-size:clamp(1.6rem,4vw,2.6rem);opacity:.5;line-height:1;}
+
+#dm .dm-viz-bar{
+  margin:clamp(32px,4vw,44px) auto 0;max-width:640px;
+  height:12px;border-radius:999px;background:rgba(255,255,255,.22);overflow:hidden;
+}
+#dm .dm-viz-bar i{display:block;height:100%;width:3%;background:#fff;border-radius:999px;}
+#dm .dm-viz-note{margin-top:12px;font-size:0.9375rem;font-weight:700;opacity:.85;}
+#dm .dm-viz .dm-facts{text-align:left;}
+#dm .dm-viz .dm-facts p{margin:0 auto;}
+
+@media (max-width:620px){
+  #dm .dm-viz-nums{grid-template-columns:1fr;gap:22px;}
+  #dm .dm-viz-rodykle{transform:rotate(90deg);}
+}
+
+
+/* ===== PULTŲ PALYGINIMO LENTELĖ =====
+   Vizualas pagal Fausto maketą, spalvos — tik firminės. Telefone lentelė
+   slenka į šoną, nes trijų stulpelių suspausti iki 375 px neįmanoma
+   neprarandant įskaitomumo. */
+#dm .dm-help-link--cmp{margin-left:26px;}
+@media (max-width:620px){
+  #dm .dm-help-link--cmp{margin-left:0;margin-top:12px;}
+  #dm .dm-help-link{display:flex;}
+}
+#dm .dm-cmp-blokas{margin-top:clamp(36px,5vw,52px);border:1px solid var(--dm-line);
+  border-radius:20px;overflow:hidden;background:#fff;
+  /* Isitempiam placiau uz siaura teksto stulpeli — lentelei reikia vietos. */
+  width:min(1240px, calc(100vw - 40px));
+  margin-left:50%;transform:translateX(-50%);}
+#dm .dm-cmp-intro{padding:clamp(22px,3vw,34px);}
+@media (min-width:900px){
+  /* Plaèiame ekrane iztraukiam tekstą į kairę, kaip makete. */
+  #dm .dm-cmp-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:28px;align-items:start;}
+  #dm .dm-cmp-intro .dm-cmp-callout{margin-top:0;}
+}
+#dm .dm-cmp-h{font-size:clamp(1.4rem,2.6vw,1.875rem);}
+#dm .dm-cmp-lead{margin-top:10px;color:var(--dm-muted);font-size:1rem;line-height:1.55;
+  max-width:46ch;}
+#dm .dm-cmp-callout{display:flex;gap:12px;align-items:flex-start;margin-top:18px;
+  background:#E6F6EC;border-radius:14px;padding:14px 16px;max-width:520px;}
+#dm .dm-cmp-callout-ico{flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+  background:#16A34A;color:#fff;display:flex;align-items:center;
+  justify-content:center;}
+#dm .dm-cmp-callout-ico svg{width:14px;height:14px;}
+#dm .dm-cmp-callout b{display:block;font-size:0.9375rem;font-weight:800;}
+#dm .dm-cmp-callout > div span{display:block;font-size:0.875rem;
+  color:var(--dm-muted);line-height:1.5;margin-top:2px;}
+/* Ikonos varnelė turi likti balta — bendra span taisyklė ją nudažydavo pilkai. */
+#dm .dm-cmp-callout .dm-cmp-callout-ico{color:#fff;}
+#dm .dm-cmp-callout .dm-cmp-callout-ico svg{fill:#fff;}
+
+#dm .dm-cmp{overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border-top:1px solid var(--dm-line);}
+#dm .dm-cmp table{width:100%;border-collapse:collapse;min-width:640px;}
+#dm .dm-cmp th,#dm .dm-cmp td{padding:14px 16px;text-align:left;
+  border-bottom:1px solid var(--dm-line);font-size:0.9375rem;line-height:1.45;
+  vertical-align:middle;}
+/* Reikšmės centruojamos, eilučių pavadinimai lieka kairėje. */
+#dm .dm-cmp td{text-align:center;}
+#dm .dm-cmp td .dm-cmp-su-zenklu{justify-content:center;}
+#dm .dm-cmp td.dm-cmp-c .dm-cmp-z{margin:0 auto;}
+#dm .dm-cmp thead th{background:#fff;border-bottom:2px solid var(--dm-ink);
+  text-align:center;vertical-align:top;padding:20px 16px 18px;}
+/* Pavadinimui rezervuojam dvi eilutes — kitaip vienos eilutės pavadinimas
+   („Pocket") pakiltų aukščiau nei dviejų eilučių („LiteRadio 2 SE"). */
+#dm .dm-cmp-pav{min-height:2.6em;}
+#dm .dm-cmp thead th:first-child{border-bottom-color:var(--dm-line);}
+#dm .dm-cmp tbody th{font-weight:600;color:var(--dm-ink);white-space:nowrap;
+  background:var(--dm-card);}
+#dm .dm-cmp tbody tr:last-child td,#dm .dm-cmp tbody tr:last-child th{border-bottom:0;}
+
+#dm .dm-cmp-ikona{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-right:10px;color:var(--dm-blue);
+  vertical-align:-5px;}
+#dm .dm-cmp-ikona svg{width:19px;height:19px;}
+
+#dm .dm-cmp-role{display:inline-block;font-size:0.75rem;font-weight:700;
+  padding:4px 11px;border-radius:999px;background:var(--dm-card);
+  color:var(--dm-muted);margin-bottom:12px;}
+#dm .dm-cmp-zenklas{display:inline-block;margin:0 0 12px 6px;font-size:0.6875rem;
+  font-weight:800;padding:4px 11px;border-radius:999px;
+  background:var(--dm-blue);color:#fff;}
+#dm .dm-cmp-zenklas--rek{background:var(--dm-ink);}
+#dm .dm-cmp-zenklas--tuscia{visibility:hidden;}
+#dm .dm-tag--rek{background:var(--dm-ink);}
+#dm .dm-cmp-foto{display:block;width:100%;max-width:132px;aspect-ratio:1/1;
+  margin:0 auto 10px;}
+#dm .dm-cmp-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+#dm .dm-cmp-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;}
+#dm .dm-cmp-chip{display:inline-block;margin-top:8px;font-size:0.6875rem;
+  font-weight:800;letter-spacing:0.04em;padding:3px 10px;border-radius:999px;
+  background:#E9E9FF;color:var(--dm-blue);}
+
+#dm .dm-cmp-c{text-align:center;}
+/* Būsenų spalvos — semantinės: žalia „yra", gintaro „iš dalies",
+   raudona (jau firminė #CB321E) „nėra". */
+#dm .dm-cmp-z{display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;flex:0 0 auto;}
+#dm .dm-cmp-z svg{width:20px;height:20px;}
+#dm .dm-cmp-z--gerai{background:#E6F6EC;color:#16A34A;}
+#dm .dm-cmp-z--vidut{background:#FDF1DD;color:#C77700;}
+#dm .dm-cmp-z--nera{background:#FBE9E6;color:var(--dm-sale);}
+#dm .dm-cmp-su-zenklu{display:inline-flex;align-items:center;gap:10px;
+  text-align:center;vertical-align:middle;}
+#dm .dm-cmp-su-zenklu--dd{justify-content:flex-end;}
+#dm .dm-cmp-pastaba{display:block;font-size:0.8125rem;color:var(--dm-muted);
+  margin-top:5px;}
+#dm .dm-cmp-kaina{font-weight:800;}
+
+#dm .dm-cmp-juosta{display:flex;flex-wrap:wrap;gap:18px 28px;
+  align-items:center;justify-content:space-between;
+  background:var(--dm-card);padding:18px clamp(20px,3vw,32px);}
+#dm .dm-cmp-juosta-txt b{display:block;font-weight:800;font-size:0.9375rem;}
+#dm .dm-cmp-juosta-txt span{display:block;font-size:0.875rem;
+  color:var(--dm-muted);margin-top:3px;}
+#dm .dm-cmp-juosta-zymos{display:flex;flex-wrap:wrap;gap:8px;}
+#dm .dm-cmp-juosta-zymos li{font-size:0.8125rem;font-weight:700;
+  background:#fff;border:1px solid var(--dm-line);border-radius:999px;
+  padding:6px 13px;}
+
+/* --- Ilgas / trumpas tekstas --- */
+#dm .dm-cmp-trumpas{display:none;}
+#dm .dm-cmpk{border-top:1px solid var(--dm-line);padding:20px clamp(18px,4vw,24px);}
+#dm .dm-cmpk-virsus{display:flex;align-items:center;gap:14px;}
+#dm .dm-cmpk-foto{flex:0 0 84px;width:84px;height:84px;}
+#dm .dm-cmpk-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+#dm .dm-cmpk-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;
+  margin-top:2px;}
+#dm .dm-cmpk .dm-cmp-role{margin-bottom:6px;}
+#dm .dm-cmpk .dm-cmp-zenklas{margin:0 0 6px 6px;}
+#dm .dm-cmpk-sarasas{display:grid;grid-template-columns:1fr auto;gap:0;
+  margin-top:16px;}
+#dm .dm-cmpk-sarasas dt{display:flex;align-items:center;padding:10px 0;
+  font-size:0.875rem;color:var(--dm-muted);border-top:1px solid var(--dm-line);}
+#dm .dm-cmpk-sarasas dd{margin:0;padding:10px 0;text-align:right;
+  font-size:0.875rem;font-weight:600;border-top:1px solid var(--dm-line);
+  padding-left:14px;}
+#dm .dm-cmpk-sarasas dt:first-of-type,
+#dm .dm-cmpk-sarasas dd:first-of-type{border-top:0;}
+#dm .dm-cmp-pastaba--eil{display:inline;margin:0 0 0 8px;}
+
+@media (max-width:760px){
+  /* Telefone rodom trumpas reikšmes — taip visi trys stulpeliai telpa
+     be slinkimo į šoną, o vietoj 30 kortelių eilučių lieka 10. */
+  #dm .dm-cmp-ilgas{display:none;}
+  #dm .dm-cmp-trumpas{display:inline;}
+  #dm .dm-cmp table{min-width:0;width:100%;table-layout:fixed;}
+  #dm .dm-cmp th,#dm .dm-cmp td{padding:9px 6px;font-size:0.75rem;
+    line-height:1.35;}
+  #dm .dm-cmp tbody th{white-space:normal;width:68px;}
+  #dm .dm-cmp thead th{padding:12px 6px 10px;}
+  #dm .dm-cmp-foto{max-width:100%;}
+  #dm .dm-cmp-pav{font-size:0.75rem;}
+  #dm .dm-cmp-ikona{display:none;}
+  /* Siaurame stulpelyje telpa tik viena žyma. Vaidmens skiltį slepiam
+     (ji matoma kortelėse viršuje), o „Populiariausias"/„Rekomenduojame"
+     rodom vienoje eilutėje — žodžių per vidurį nelaužom, nes tai atrodo
+     blogai. */
+  #dm .dm-cmp thead .dm-cmp-role{display:none;}
+  /* Žyma per visą stulpelio plotį — taip ji fiziškai negali kyšoti,
+     nesvarbu, koks ilgas žodis. */
+  #dm .dm-cmp-zenklas{display:block;width:100%;box-sizing:border-box;
+    font-size:0.5rem;padding:3px 1px;margin:0 0 6px;text-align:center;
+    white-space:nowrap;overflow-wrap:normal;word-break:normal;
+    letter-spacing:0;}
+  #dm .dm-cmp-chip{display:none;}
+  #dm .dm-cmp-z{width:20px;height:20px;}
+  #dm .dm-cmp-z svg{width:16px;height:16px;}
+  /* Siaurame stulpelyje ženklas ir tekstas gali persikelti į kitą eilutę —
+     kitaip „Spalvotas" su ženklu (82 px) kyšotų iš 71 px langelio. */
+  #dm .dm-cmp-su-zenklu{gap:4px;max-width:100%;flex-wrap:wrap;}
+  #dm .dm-cmp-su-zenklu > span{min-width:0;}
+  /* Sena kaina lentelėje telefone neberodoma — ji matoma kortelėse viršuje. */
+  #dm .dm-cmp .dm-was{display:none;}
+  #dm .dm-cmp-juosta{flex-direction:column;align-items:flex-start;}
+}
+
+/* ===== FAKTŲ KORTELĖS (be svetimų nuotraukų) ===== */
+#dm .dm-why-img{margin-top:32px;border-radius:18px;overflow:hidden;background:var(--dm-card);aspect-ratio:16/9;}
+#dm .dm-why-img img{width:100%;height:100%;object-fit:cover;}
+#dm .dm-why-img--pair{aspect-ratio:3/2;margin-top:36px;}
+#dm .dm-facts3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px;}
+#dm .dm-fact{
+  background:var(--dm-card);border-radius:18px;padding:clamp(24px,3vw,32px);
+  display:flex;flex-direction:column;height:100%;
+}
+#dm .dm-fact-nr{
+  font-weight:800;letter-spacing:-0.04em;line-height:0.95;color:var(--dm-blue);
+  font-size:clamp(2.2rem,5vw,3.4rem);font-variant-numeric:tabular-nums;
+}
+#dm .dm-fact-nr small{font-size:0.45em;letter-spacing:0;display:block;margin-top:8px;
+  color:var(--dm-ink);font-weight:800;}
+#dm .dm-fact p{margin-top:14px;font-size:0.9375rem;line-height:1.55;color:var(--dm-muted);}
+#dm .dm-fact-big{
+  margin-top:20px;background:var(--dm-ink);color:#fff;border-radius:18px;
+  padding:clamp(28px,4vw,44px);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,3vw,40px);align-items:center;
+}
+#dm .dm-fact-big b{
+  font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-0.04em;line-height:1;
+}
+#dm .dm-fact-big p{font-size:clamp(1.05rem,2vw,1.375rem);font-weight:700;line-height:1.35;}
+@media (max-width:760px){
+  #dm .dm-facts3{grid-template-columns:1fr;}
+  #dm .dm-fact-big{grid-template-columns:1fr;gap:14px;}
+}
+
+
+/* ===== MOBILŪS PASPAUDIMO TAIKINIAI (min. 44 px) =====
+   77 % srauto — telefonai, todėl visi paspaudžiami elementai turi
+   būti pakankamo dydžio pirštui. */
+#dm .dm-btn{min-height:48px;}
+#dm .dm-top .dm-btn{min-height:44px;padding:12px 22px;}
+#dm .dm-top-logo{display:inline-flex;align-items:center;min-height:44px;}
+#dm .dm-foot li{margin-bottom:2px;}
+#dm .dm-foot a{display:inline-flex;align-items:center;min-height:44px;}
+#dm .dm-foot-bottom a{min-height:44px;}
+#dm .dm-help-link{min-height:44px;}
+#dm .dm-revmore button{min-width:52px;min-height:52px;}
+
+
+/* ===== HERO TELEFONE: nuotrauka viršuje, bet suvaldyto aukščio =====
+   Nuotrauka lieka pirma (taip prašė), tačiau ribojame jos aukštį, kad
+   kaina ir mygtukas vis tiek tilptų į pirmą ekraną. */
+@media (max-width:900px){
+  #dm .dm-hero-media{order:-1;}
+  #dm .dm-hero{gap:18px;}
+  #dm .dm-hero-media img{max-height:34vh;width:auto;margin:0 auto;}
+  #dm .dm-chips{margin-bottom:14px;}
+  #dm .dm-h1{font-size:clamp(1.85rem,7vw,2.4rem);}
+  #dm .dm-hero .dm-lead{font-size:1rem;}
+  #dm .dm-hero-buy{margin:16px 0 14px;}
+  #dm .dm-trust{margin-top:18px;padding-top:16px;}
+}
+/* Žemi telefonai (pvz. iPhone SE, 667 px): nuotrauką dar sumažinam,
+   kad kaina ir mygtukas neiškristų iš pirmo ekrano. */
+@media (max-width:900px) and (max-height:740px){
+  #dm .dm-hero-media img{max-height:20vh;}
+  #dm .dm-hero{gap:12px;}
+  #dm .dm-sec{padding-top:clamp(28px,5vw,44px);}
+  #dm .dm-chips{margin-bottom:10px;}
+  #dm .dm-hero-buy{margin:12px 0 10px;}
+}
+
+
+/* ===== PULTŲ KORTELĖS TELEFONE =====
+   „Populiariausias" žyma telefone tampa įprastu elementu virš kortelės,
+   todėl kortelei nebegalima palikti height:100% — kitaip ji išsikiša
+   žemiau savo langelio ir užlipa ant kitos. */
+@media (max-width:620px){
+  #dm .dm-opt{display:flex;flex-direction:column;}
+  #dm .dm-cards3{gap:12px;}
+  #dm .dm-opt-img{width:64px;height:64px;}
+}
+
+</style>
+
+
+<!-- ============ ANTRAŠTĖ ============ -->
+<header class="dm-top">
+  <div class="dm-top-in">
+    <a class="dm-top-logo" href="https://dronumokykla.lt" aria-label="Dronų Mokykla">
+      <img src="" data-dm-img-src="logo" alt="Dronų Mokykla" width="132" height="38">
+    </a>
+    <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus</a>
+  </div>
+</header>
+
+
+<!-- ============ 1. HERO ============ -->
+<section class="dm-sec" id="dm-hero">
+  <div class="dm-wrap dm-hero">
+    <div>
+      <ul class="dm-chips">
+        <li class="dm-chip">Pradedantiesiems</li>
+        <li class="dm-chip">Mokykis iš namų</li>
+        <li class="dm-chip">Lietuviškai</li>
+      </ul>
+
+      <h1 class="dm-h1">Per dvi savaites išmoksi pilotuoti FPV droną</h1>
+      <p class="dm-lead" style="margin-top:20px;">
+        Namuose, per simuliatorių. Drono pirkti nereikia — komplekte valdymo pultas,
+        simuliatorius ir 14 valandų filmuotos mokymų medžiagos.
+      </p>
+
+      <div class="dm-hero-buy">
+        <span class="dm-hero-from">nuo</span>
+        <span class="dm-price dm-num" id="dm-hero-price">€69,00</span>
+        <span class="dm-was dm-num" id="dm-hero-was">€79,00</span>
+        <span class="dm-off dm-num" id="dm-hero-off">−13%</span>
+      </div>
+
+      <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
+
+      <ul class="dm-trust">
+        <li><span class="dm-stars" aria-hidden="true">★★★★★</span> <b class="dm-num" id="dm-hero-rating">4,83 / 5</b> <span class="dm-muted">— <span class="dm-num" id="dm-hero-count">48</span> atsiliepimai</span></li>
+        <li><b class="dm-num">1 000+</b> apmokytų mokinių</li>
+        <li><b class="dm-num">14</b> dienų pinigų grąžinimo garantija</li>
+      </ul>
+    </div>
+
+    <div class="dm-hero-media">
+      <div class="dm-figure" data-dm-img="hero" data-dm-ratio="1/1"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ IŠKELTAS ATSILIEPIMAS ============ -->
+<section class="dm-sec dm-sec--tight" style="padding-top:0;">
+  <div class="dm-wrap">
+    <figure class="dm-hero-rev" id="dm-hero-rev">
+      <img src="https://review-images.judgeme.com/dronu-mokykla/1779765123__1779765110289-_comapplepasteboardyoahqk__original.jpeg?quality=80&width=700"
+           alt="Povilo nuotrauka: valdymo pultas prie kompiuterio" loading="lazy">
+      <figcaption>
+        <div class="dm-hero-rev-stars" aria-hidden="true">★★★★★</div>
+        <p>„Medžiaga išsami, viskas paaiškinta nuosekliai ir suprantamai — jau pavyksta suvaldyti droną."</p>
+        <div class="dm-hero-rev-foot">
+          <cite>Povilas M.</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+
+<!-- ============ 2. ĮRODYMŲ JUOSTA ============ -->
+<section class="dm-sec dm-sec--tight dm-sec--strip">
+  <div class="dm-wrap dm-wrap--wide">
+    <div class="dm-strip">
+      <div class="dm-figure" data-dm-img="irodymai1"></div>
+      <div class="dm-figure" data-dm-img="irodymai2"></div>
+      <div class="dm-figure" data-dm-img="irodymai3"></div>
+      <div class="dm-figure" data-dm-img="irodymai4"></div>
+    </div>
+    <p class="dm-strip-cap">
+      Gyvi mokymai, Lietuvos kariuomenės pajėgos, FPV lenktynės ir servisas Vilniuje.
+      Šį kursą sudėjome iš to, ką darome kasdien.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============ KODĖL VERTA MOKYTIS ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap">
+    <h2 class="dm-h2">Kodėl šis įgūdis tapo svarbus</h2>
+
+    <figure class="dm-why-img" data-dm-img="kodelSvarbu"></figure>
+
+    <div class="dm-facts3">
+      <div class="dm-fact">
+        <span class="dm-fact-nr">⅓–½</span>
+        <p>Tiek fronto linijos technikos šiandien sunaikina FPV dronai — tankų,
+           IFV, artilerijos ir transporto. Tai didžiausią įtaką daranti ginklo
+           sistema kare.</p>
+      </div>
+      <div class="dm-fact">
+        <span class="dm-fact-nr">40 000</span>
+        <p>Tiek FPV dronų pilotų turi Ukraina. Lietuvoje jų — mažiau nei 3 000.</p>
+      </div>
+      <div class="dm-fact">
+        <span class="dm-fact-nr">2 sav.<small>tiek užtrunka pradėti</small></span>
+        <p>Nereikia nei drono, nei išvykų. Užtenka pultelio, kompiuterio ir
+           30 minučių per dieną.</p>
+      </div>
+    </div>
+
+    <div class="dm-fact-big">
+      <b>€300</b>
+      <p>Tiek kainuojantis dronas gali neutralizuoti milijonus kainuojantį tanką.
+         Būtent todėl jis tapo viena svarbiausių šiandienos gynybos priemonių.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 5. MŪSŲ VIZIJA ============ -->
+<section class="dm-sec dm-blue">
+  <div class="dm-wrap dm-viz">
+    <p class="dm-viz-eyebrow">Mūsų vizija</p>
+    <h2 class="dm-viz-h">100 000 lietuvių, gebančių pilotuoti ir rinkti FPV dronus</h2>
+
+    <div class="dm-viz-nums">
+      <div class="dm-viz-dabar">
+        <span class="dm-viz-lbl">Šiandien Lietuvoje</span>
+        <span class="dm-viz-nr dm-num">3 000</span>
+        <span class="dm-viz-sub">FPV dronų pilotų</span>
+      </div>
+      <div class="dm-viz-rodykle" aria-hidden="true">→</div>
+      <div class="dm-viz-tikslas">
+        <span class="dm-viz-lbl">Reikia</span>
+        <span class="dm-viz-nr dm-num">100 000</span>
+      </div>
+    </div>
+
+    <div class="dm-viz-bar" role="img" aria-label="Nueita 3 procentai kelio iki 100 000">
+      <i></i>
+    </div>
+    <p class="dm-viz-note">Nueita 3 % kelio</p>
+
+    <div class="dm-facts">
+      <p>Norime, kad tai taptų privalomas įgūdis kiekvienam lietuviui.</p>
+      <p>Jeigu visi turėsime įgūdžius gintis FPV dronais, būsime saugesni ir geriau pasiruošę. Tai yra didžiausias mūsų bendras darbas, kuriam turime ruoštis visi kartu.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 3. PIRKIMO BLOKAS ============ -->
+<section class="dm-sec dm-grey" id="dm-pirkti">
+  <div class="dm-wrap dm-narrow">
+    <h2 class="dm-h2">Pasirink valdymo pultą</h2>
+    <p class="dm-lead" style="margin-top:16px;">
+      Norint išmokti skristi simuliatoriumi, reikės turėti valdymo pultelį. Visi pulteliai
+      žemiau vėliau gali būti pritaikomi skraidymui su tikru dronu.
+    </p>
+
+    <div class="dm-picker">
+      <div class="dm-cards3" id="dm-opts" role="radiogroup" aria-label="Valdymo pulto pasirinkimas">
+        <!-- Kortelės sugeneruojamos iš DM_VARIANTAI -->
+      </div>
+
+      <div class="dm-own" id="dm-own">
+        <!-- „Turiu savo pultelį" sugeneruojamas iš DM_VARIANTAI -->
+      </div>
+    </div>
+
+    <!-- Nuoroda į vaizdo įrašą. Jei įkelsi naują video, pakeisk adresą čia. -->
+    <p style="margin-top:22px;">
+      <a class="dm-help-link" href="https://youtu.be/ImaGXtGmk5s" target="_blank" rel="noopener">
+        <span class="dm-help-icon" aria-hidden="true">▶</span>
+        <span class="dm-help-label">Kaip išsirinkti pultelį?</span>
+      </a>
+      <a class="dm-help-link dm-help-link--cmp" href="#dm-palyginimas">
+        <span class="dm-help-icon" aria-hidden="true">↓</span>
+        <span class="dm-help-label">Palyginti visus tris</span>
+      </a>
+    </p>
+
+    <div class="dm-buybar">
+      <div class="dm-buybar-price">
+        <span class="dm-price dm-num" id="dm-price">€69,00</span>
+        <span class="dm-was dm-num" id="dm-was">€79,00</span>
+        <span class="dm-off dm-num" id="dm-off">−13%</span>
+      </div>
+      <a class="dm-btn dm-btn--wide" id="dm-cta" href="/cart/56748685164889:1">Pereiti prie apmokėjimo</a>
+    </div>
+
+    <p class="dm-ship">
+      Nemokamas pristatymas užsakymams virš €99. 14 dienų pinigų grąžinimo garantija.
+      Prekėms — 24 mėnesių garantija.
+    </p>
+
+    <div class="dm-cmp-blokas" id="dm-palyginimas">
+      <div class="dm-cmp-intro">
+        <h3 class="dm-h2 dm-cmp-h">FPV valdymo pultų palyginimas</h3>
+        <p class="dm-cmp-lead">
+          Visi trys tinka pradedantiesiems ir veikia tiek simuliatoriuje,
+          tiek valdant tikrą FPV droną.
+        </p>
+        <div class="dm-cmp-callout">
+          <span class="dm-cmp-callout-ico" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg>
+          </span>
+          <div>
+            <b>Blogo pasirinkimo nėra</b>
+            <span>Skiriasi tik patogumas ir galimybės ateičiai — ne tai, ar išmoksi.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dm-cmp" id="dm-cmp">
+        <!-- Lentelė (kompiuteryje) sugeneruojama iš DM_VARIANTAI -->
+      </div>
+
+      <div class="dm-cmp-juosta">
+        <div class="dm-cmp-juosta-txt">
+          <b>Visi trys — geras pasirinkimas pradedantiesiems</b>
+          <span>Rinkis pagal tai, ko nori: paprastumo, kompaktiškumo ar galimybių ateičiai.</span>
+        </div>
+        <ul class="dm-cmp-juosta-zymos">
+          <li>Tinka simuliatoriui</li>
+          <li>Tinka tikriems dronams</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============ 4. KAS ĮEINA ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap dm-narrow">
+    <h2 class="dm-h2">Kas įeina į komplektą</h2>
+
+<div class="dm-kit">
+      <div class="dm-kitcard">
+        <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
+        <h3>Profesionaliai įrašytos video pamokos</h3>
+        <p>14 valandų nuo A iki Z. Galėsi pradėti jau šiandien.</p>
+        <div class="dm-kit-img" data-dm-img="medziaga"></div>
+      </div>
+
+      <div class="dm-kitcard">
+        <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
+        <h3>FPV pilotavimo simuliatorius</h3>
+        <p>Prie mokymų pridedame „Liftoff" licenciją.</p>
+        <div class="dm-kit-img" data-dm-img="simuliatorius"></div>
+      </div>
+
+      <div class="dm-kitcard">
+        <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
+        <h3>Išsirinktas drono valdymo pultas</h3>
+        <p>Pristatysime per 1–3 darbo dienas.</p>
+        <div class="dm-kit-img dm-swap">
+          <img src="" data-dm-img-src="pultas1" alt="BETAFPV LiteRadio 2 SE ELRS valdymo pultas" loading="lazy">
+          <img src="" data-dm-img-src="pultas2" alt="RadioMaster Pocket ELRS valdymo pultas" loading="lazy">
+          <img src="" data-dm-img-src="pultas3" alt="RadioMaster TX15 ELRS valdymo pultas" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="dm-kit2">
+      <div class="dm-kitcard">
+        <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
+        <div>
+          <h3>Discord bendruomenė</h3>
+          <p>Susipažink su kitais bendraminčiais. Savaitiniai skambučiai.</p>
+        </div>
+      </div>
+      <div class="dm-kitcard">
+        <span class="dm-tick" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg></span>
+        <div>
+          <h3>Nemokama konsultacija</h3>
+          <p>Asmeninė konsultacija su instruktoriumi po mokymų.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ KODĖL TAI SVARBU LIETUVAI ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap dm-narrow">
+    <h2 class="dm-h2">Išmokti pilotuoti FPV dronus galime visi</h2>
+
+    <div class="dm-pairs">
+      <div class="dm-pair">
+        <span>Nesvarbu tavo amžius ar įgūdžiai.</span>
+        <b>Svarbiausia — noras prisidėti prie mūsų visų gynybos.</b>
+      </div>
+      <div class="dm-pair">
+        <span>Nereikės skirti tam itin daug laiko.</span>
+        <b>Užtenka 30 minučių pasipraktikuoti kasdien.</b>
+      </div>
+      <div class="dm-pair">
+        <span>Nereikės niekur važiuoti ar net pirkti drono.</span>
+        <b>Treniruotis galima namuose, per simuliatorių.</b>
+      </div>
+    </div>
+
+    <figure class="dm-why-img dm-why-img--pair" data-dm-img="visiGali"></figure>
+
+    <div class="dm-note" style="margin-top:36px;">
+      <span class="dm-note-bar" aria-hidden="true"></span>
+      <div>
+        <p><b>Tam nereikia net drono — viską gali išmokti su kompiuteriu ir valdymo pultu.</b></p>
+        <p class="dm-muted">Ar žinojai, kad profesionalai treniruojasi ne tik lauke? Netgi FPV dronų
+           lenktynininkai didžiąją dalį treniruočių atlieka namų sąlygomis, per simuliatorių.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 7. KĄ RASI VIDUJE ============ -->
+<section class="dm-sec dm-grey">
+  <div class="dm-wrap">
+    <h2 class="dm-h2">Ką rasi viduje</h2>
+
+    <!-- Video jau yra Shopify CDN, todėl nuorodos keisti nereikia.
+         preload="none" — kol nepaspaudžiama, nesiunčiama nė baito. -->
+    <div class="dm-video" style="margin-top:32px;">
+      <video controls preload="none" playsinline
+             src="https://cdn.shopify.com/videos/c/o/v/8f38980434b14aae95fad746a25588bb.mp4"
+             data-dm-poster="videoPosteris">
+        Tavo naršyklė nerodo šio vaizdo įrašo.
+      </video>
+    </div>
+
+    <div class="dm-inside">
+      <article class="dm-in">
+        <div class="dm-day"><b>1 diena</b><span>Įskaičiuota į kainą</span></div>
+        <div class="dm-figure" data-dm-img="pagrindai" data-dm-ratio="16/9"></div>
+        <div class="dm-in-txt">
+          <h3 class="dm-h3">FPV dronų pagrindai</h3>
+          <ul class="dm-ticks">
+            <li>Suprasi, kaip veikia FPV dronai</li>
+            <li>Mokėsi įvardinti pagrindinius FPV dronų tipus</li>
+            <li>Sužinosi, ką gali FPV dronai</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="dm-in">
+        <div class="dm-day"><b>5 diena</b><span>Įskaičiuota į kainą</span></div>
+        <div class="dm-figure" data-dm-img="valdymoIranga" data-dm-ratio="16/9"></div>
+        <div class="dm-in-txt">
+          <h3 class="dm-h3">FPV valdymo įranga</h3>
+          <ul class="dm-ticks">
+            <li>Gausi savo asmeninį valdymo pultą</li>
+            <li>Sužinosi, kaip veikia valdymo pultas</li>
+            <li>Sukalibruosi ir prijungsi pultą prie simuliatoriaus</li>
+          </ul>
+          <div class="dm-lessons">
+            <span class="dm-lesson">Pamoka #1</span>
+            <span class="dm-lesson">Pamoka #2</span>
+            <span class="dm-lesson">Pamoka #3</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="dm-in">
+        <div class="dm-day"><b>10 diena</b><span>Įskaičiuota į kainą</span></div>
+        <div class="dm-figure" data-dm-img="pilotavimoPratimai" data-dm-ratio="16/9"></div>
+        <div class="dm-in-txt">
+          <h3 class="dm-h3">FPV pilotavimo pratimai</h3>
+          <ul class="dm-ticks">
+            <li>Suprasi, kaip valdomas FPV dronas</li>
+            <li>Susipažinsi su skirtingais skrydžio režimais</li>
+            <li>Mokėsi pakilti, skristi, atlikti posūkius ir stabdyti</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="dm-in dm-in--result">
+        <div class="dm-day"><b>14 diena</b><span>Rezultatas</span></div>
+        <div class="dm-figure" data-dm-img="rezultatas" data-dm-ratio="16/9"></div>
+        <div class="dm-in-txt">
+          <p class="dm-in-eyebrow">Rezultatas po dviejų savaičių</p>
+          <h3 class="dm-h3">Sugebėsi valdyti droną trasoje</h3>
+          <ul class="dm-ticks">
+            <li>Išmoksi skristi „acro" režimu</li>
+            <li>Turėsi visus įrankius tobulėti skraidyme toliau</li>
+            <li>Būsi pasiruošęs skristi realiu FPV dronu lauke</li>
+            <li>Įgysi bazinius pagrindus gynybos atveju</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <div class="dm-trustbar dm-trustbar--3" style="margin-top:44px;">
+      <div>
+        <h3>Pasiruošęs realiam skrydžiui</h3>
+        <p>Išmokus skristi simuliatoriuje, būsi pasiruošęs valdyti realų droną.</p>
+      </div>
+      <div>
+        <h3>Žinios niekur nedings</h3>
+        <p>Įgytos žinios kurse tik padės tau progresuoti vėliau.</p>
+      </div>
+      <div>
+        <h3>Savo tempu</h3>
+        <p>Visada galėsi sugrįžti ir pasikartoti išmoktus pratimus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 8. KAS MOKO ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap dm-who">
+    <div class="dm-figure" data-dm-img="instruktoriai"></div>
+
+    <div>
+      <h2 class="dm-h2">Kas moko</h2>
+      <p class="dm-lead" style="margin-top:16px;">
+        Labas, esame Karolis ir Faustas iš DroneFix.lt — kartu sukūrėme šį FPV
+        pilotavimo kursą pradedantiesiems.
+      </p>
+
+      <ul class="dm-proof">
+        <li><span class="dm-bar" aria-hidden="true"></span><span>Su FPV dronais skraidome jau nuo dvylikos metų</span></li>
+        <li><span class="dm-bar" aria-hidden="true"></span><span>Įkūrėme pirmąjį FPV dronų servisą Lietuvoje</span></li>
+        <li><span class="dm-bar" aria-hidden="true"></span><span>Faustas tapo Lietuvos FPV dronų lenktynių čempionu <b class="dm-num">2024</b> metais</span></li>
+        <li><span class="dm-bar" aria-hidden="true"></span><span>Išmokėme daugiau nei <b class="dm-num">300</b> žmonių, kaip rinkti ir pilotuoti FPV dronus</span></li>
+        <li><span class="dm-bar" aria-hidden="true"></span><span>Pradėjome mokyti Lietuvos kariuomenės pajėgas</span></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="dm-wrap dm-narrow dm-story">
+    <img src="" data-dm-img-src="istorijaKariuomene" alt="Karolis ir Faustas moko Lietuvos kariuomenės pajėgas" loading="lazy" style="margin-top:0;">
+
+    <p style="margin-top:28px;"><b>Tačiau mūsų istorija su FPV dronais prasidėjo dar nuo mokyklos.</b></p>
+    <p>Nuo pat mažens mūsų akys krypo į dangų ir su didele aistra pradėjome čiupinėti
+       elektronikos detales, esančias bepiločiuose orlaiviuose.</p>
+    <p>Patiems sukonstruoti savo droną buvo didžiulė svajonė. Svajonės pildosi.</p>
+    <p>Niekada nebūtume pagalvoję, jog mūsų žinios gali būti tokios naudingos stiprinant
+       mūsų visų saugumą, tačiau taip nutiko.</p>
+    <p>Prieš 2 metus pradėjome mokyti žmones, norinčius susirinkti ir pilotuoti FPV dronus —
+       taip gimė FPV College, pirmieji praktiniai FPV dronų mokymai Lietuvoje. Kiek vėliau
+       pradėjome mokyti ir vaikus, dar vėliau pradėjome ruošti FPV dronų specialistus
+       Lietuvos kariuomenėje.</p>
+
+    <img src="" data-dm-img-src="istorija" alt="FPV dronų mokymai gyvai" loading="lazy">
+
+    <p style="margin-top:28px;"><b>Tačiau supratome, kad paprasčiausiai nebespėjame išmokyti visų žmonių gyvai.</b></p>
+    <p>Tikime, kad išmokti valdyti FPV droną gali bet kas — tam reikia tiesiog noro, pultelio,
+       simuliatoriaus, kompiuterio ir šiek tiek laiko.</p>
+    <p>Todėl savo patirtį sudėjome į šį pradžiamokslį, kurį galėsi užbaigti per dvi savaites.
+       Jame rasi viską, ko reikia, nuo A iki Z:</p>
+
+    <ul class="dm-ticks" style="margin-top:18px;">
+      <li>Sužinosi, kaip veikia ir kuo ypatingi yra FPV dronai</li>
+      <li>Mokėsi įvardinti FPV dronų tipus ir panaudojimo galimybes</li>
+      <li>Įgysi bazinius valdymo įgūdžius ir išmoksi skraidyti su FPV dronais</li>
+      <li>Gyvensi ramiau, nes būsi geriau pasiruošęs</li>
+    </ul>
+
+    <p style="margin-top:20px;">Tam, kad jeigu ateitų priešas, būtumėm visi žymiai geriau
+       pasirengę apsiginti FPV dronų pagalba.</p>
+
+    <img src="" data-dm-img-src="karolisFaustas" alt="Karolis ir Faustas" loading="lazy">
+    <p class="dm-sign">Linkim gero skrydžio! Karolis ir Faustas</p>
+  </div>
+</section>
+
+
+<!-- ============ BENDRUOMENĖ ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap">
+    <h2 class="dm-h2">Tapk augančios bendruomenės dalimi</h2>
+    <p class="dm-lead" style="margin-top:16px;">
+      Mokymai, lenktynės, dirbtuvės. Junkis prie tų, kurie jau skraido.
+    </p>
+    <div class="dm-why" style="margin-top:36px;">
+      <figure><div data-dm-img="bendruomene1" data-dm-plain="1"></div></figure>
+      <figure><div data-dm-img="bendruomene2" data-dm-plain="1"></div></figure>
+      <figure><div data-dm-img="bendruomene3" data-dm-plain="1"></div></figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 9. ATSILIEPIMAI ============ -->
+<section class="dm-sec dm-grey">
+  <div class="dm-wrap">
+    <div class="dm-revhead">
+      <div class="dm-revstars" aria-hidden="true">★★★★★</div>
+      <div class="dm-revscore"><span id="dm-rev-suma">4,83</span> iš 5 — <span id="dm-rev-kiekis">48</span> atsiliepimai</div>
+      <h2 class="dm-h2">Ką sako mūsų mokiniai</h2>
+    </div>
+
+    <div class="dm-revwrap" id="dm-revwrap">
+      <div class="dm-revwall" id="dm-revs">
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Aiškiai, paprastai, niekad neturėjusiems nieko bendro su dronais, suprantamai parengtos video pamokos, nesigailiu kad įsigijau."</p>
+        <img class="dm-rev-img" src="https://review-images.judgeme.com/dronu-mokykla/1785346020__1785345995383-dronumokykla__original.jpg?quality=80&width=800" alt="Aivaras C. — kliento nuotrauka" loading="lazy">
+        <div class="dm-rev-foot">
+          <cite>Aivaras C.</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Prisedu kai randu laiko, medžiaga išsami, viskas paaiškinta nuosekliai ir suprantamai, jau pavyksta suvaldyti drona. Tęsiam mokymus toliau :)"</p>
+        <img class="dm-rev-img" src="https://review-images.judgeme.com/dronu-mokykla/1779765123__1779765110289-_comapplepasteboardyoahqk__original.jpeg?quality=80&width=800" alt="Povilas M. — kliento nuotrauka" loading="lazy">
+        <div class="dm-rev-foot">
+          <cite>Povilas M.</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Puikus įrankis dronų „pirmokams". :) Suprantamai išdėstyta teorija ir parodytos praktinės pamokos."</p>
+        <img class="dm-rev-img" src="https://review-images.judgeme.com/dronu-mokykla/1773674056__1773674003341-img_4913__original.jpeg?quality=80&width=800" alt="Rimantė — kliento nuotrauka" loading="lazy">
+        <div class="dm-rev-foot">
+          <cite>Rimantė</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Žiauriai viskas patiko, pamatęs A. Mamontovo komentarą jūsų reklamos post'e iš karto nusipirkau ir tikrai nesigailiu. Viskas aiškiai išdėstyta, žingsnis po žingsnio."</p>
+        <div class="dm-rev-foot">
+          <cite>Justinas A.</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Pamokos naudingos. Labai aiškios. Geros. Reikalinga tik pačio kantrybė bandyti vėl ir vėl."</p>
+        <div class="dm-rev-foot">
+          <cite>Donatas R.</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      <blockquote class="dm-rev">
+        <div class="dm-rev-top"><div class="dm-rev-stars" aria-hidden="true">★★★★★</div></div>
+        <p>„Patiko, kad norinčiam mokintis savarankiškai tikrai visko užtenka."</p>
+        <div class="dm-rev-foot">
+          <cite>Anonimas</cite>
+          <span class="dm-rev-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+        </div>
+      </blockquote>
+      </div>
+    </div>
+
+    <div class="dm-revmore">
+      <button type="button" id="dm-rev-more" aria-expanded="false" aria-controls="dm-revwrap">
+        Rodyti visus atsiliepimus
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 10. GRĄŽINIMO GARANTIJA ============ -->
+<section class="dm-sec dm-grey">
+  <div class="dm-wrap dm-narrow">
+    <div class="dm-guard">
+      <div class="dm-guard-badge" aria-hidden="true"><b>14</b><span>dienų</span></div>
+      <h2 class="dm-h2">Nepatenkintas mokymais?<br>Susigrąžink pinigus per 14 dienų</h2>
+      <p class="dm-muted">
+        Jeigu kursas nepatiks arba neatitiks lūkesčių — susisiek su mumis ir užpildyk
+        grąžinimo formą.
+        <a href="/policies/refund-policy">Daugiau sužinosi čia.</a>
+      </p>
+      <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 11. SUSIJĘ PRODUKTAI ============ -->
+<section class="dm-sec">
+  <div class="dm-wrap">
+    <h2 class="dm-h2">Kai norėsi skristi lauke</h2>
+    <p class="dm-lead" style="margin-top:16px;">
+      Simuliatorius paruošia rankas. Šitie — tavo pirmas realus skrydis.
+    </p>
+
+    <div class="dm-cards">
+      <a class="dm-card" href="/products/fpv-drono-rinkinys" data-dm-handle="fpv-drono-rinkinys">
+        <span class="dm-card-img">
+          <img src="https://dronumokykla.lt/cdn/shop/files/composited-grid.png?v=1785236270&width=600" alt="" width="600" height="600" loading="lazy">
+        </span>
+        <span class="dm-card-name">FPV Whoop drono rinkinys</span>
+        <span class="dm-card-price dm-num">nuo €189,99</span>
+        <span class="dm-card-go">Žiūrėti</span>
+      </a>
+
+      <a class="dm-card" href="/products/betafpv-air65-whoop-fpv-dronas" data-dm-handle="betafpv-air65-whoop-fpv-dronas">
+        <span class="dm-card-img">
+          <img src="https://dronumokykla.lt/cdn/shop/files/Air65_II_Brushless_Whoop_Quadcopter_Freestyle_1080x-Photoroom.png?v=1782385191&width=600" alt="" width="600" height="600" loading="lazy">
+        </span>
+        <span class="dm-card-name">BETAFPV Air65 II Whoop FPV dronas</span>
+        <span class="dm-card-price dm-num">€129,99 <span class="dm-was">€134,99</span></span>
+        <span class="dm-card-go">Žiūrėti</span>
+      </a>
+
+      <a class="dm-card" href="/products/emax-transporter-fpv-akiniai" data-dm-handle="emax-transporter-fpv-akiniai">
+        <span class="dm-card-img">
+          <img src="https://dronumokykla.lt/cdn/shop/files/photo-0865-Photoroom_389d8999-13a7-4d4e-bfae-03c0408c8622.png?v=1785234582&width=600" alt="" width="600" height="600" loading="lazy">
+        </span>
+        <span class="dm-card-name">EMAX Transporter FPV akiniai</span>
+        <span class="dm-card-price dm-num">€99,99 <span class="dm-was">€129,99</span></span>
+        <span class="dm-card-go">Žiūrėti</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 12. DUK ============ -->
+<section class="dm-sec dm-grey">
+  <div class="dm-wrap">
+    <h2 class="dm-h2">Klausimai, atsakymai</h2>
+
+    <div class="dm-faqgrid">
+      <div class="dm-faqcard">
+        <div class="dm-faqcard-q">Ar tikrai galima išmokti skraidyti neturint drono?</div>
+        <div class="dm-faqcard-a">Taip. Profesionalūs FPV pilotai dažniau skraido simuliatoriuje negu realybėje. Skiriant bent pusvalandį per dieną dvi savaites, galima išmokti neišeinant iš namų.</div>
+      </div>
+      <div class="dm-faqcard">
+        <div class="dm-faqcard-q">Ar mokymai tinka ir vaikams?</div>
+        <div class="dm-faqcard-a">Rekomenduojame ne jaunesniems nei 14 metų dalyviams. Jei vaikas itin domisi technologijomis, kursas neturėtų būti neįveikiamas.</div>
+      </div>
+      <div class="dm-faqcard">
+        <div class="dm-faqcard-q">Ar gautas pultas veiks su tikru dronu?</div>
+        <div class="dm-faqcard-a">Taip. Visuose pultuose naudojama ELRS radijo ryšio sistema — greita, tiksli ir plačiai naudojama FPV dronuose.</div>
+      </div>
+      <div class="dm-faqcard">
+        <div class="dm-faqcard-q">Ar simuliatoriui reikia galingo kompiuterio?</div>
+        <div class="dm-faqcard-a">Ne, užtenka vidutinės klasės kompiuterio. Jei simuliatorius stringa, galima sumažinti rezoliuciją ir grafikos nustatymus.</div>
+      </div>
+      <div class="dm-faqcard dm-faqcard--platus">
+        <div class="dm-faqcard-q">Kada gausiu prieigą ir kada atkeliaus pultas?</div>
+        <div class="dm-faqcard-a">Mokymus galėsi pradėti tą pačią dieną — prieigą gauni iš karto po apmokėjimo. Pultelį pristatome per 1–3 darbo dienas. Pristatymas nemokamas užsakymams virš €99.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ PASITIKĖJIMO JUOSTA ============ -->
+<section class="dm-sec dm-grey dm-sec--tight" style="padding-bottom:clamp(40px,5vw,56px);">
+  <div class="dm-wrap dm-trustbar">
+    <div>
+      <h3>Nemokamas pristatymas</h3>
+      <p>Perkant prekių virš €99 suteikiame nemokamą pristatymą.</p>
+    </div>
+    <div>
+      <h3>14 dienų grąžinimas</h3>
+      <p>Suteikiame 14 dienų pinigų grąžinimo garantiją.</p>
+    </div>
+    <div>
+      <h3>2 metų kokybės garantija</h3>
+      <p>Visoms prekėms teikiame dvejų metų garantiją.</p>
+    </div>
+    <div>
+      <h3>Saugūs atsiskaitymai</h3>
+      <p>Mokėk kortele, el. bankininkyste arba prekių atsiėmimo metu.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 13. BAIGIAMASIS CTA ============ -->
+<section class="dm-sec dm-blue">
+  <div class="dm-wrap dm-narrow">
+    <h2 class="dm-h2">Nelauk, kol kiti prisiims atsakomybę už tave</h2>
+    <p class="dm-lead" style="margin-top:16px;">
+      Pusvalandis per dieną, dvi savaitės. Nereikia niekur važiuoti ir nereikia pirkti drono.
+    </p>
+    <p style="margin-top:28px;">
+      <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
+    </p>
+    <p class="dm-small dm-muted" style="margin-top:20px;">
+      14 dienų pinigų grąžinimo garantija. Nemokamas pristatymas virš €99.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============ LIPNI JUOSTA TELEFONE ============ -->
+<div class="dm-sticky" id="dm-sticky" aria-hidden="true">
+  <div class="dm-sticky-price dm-num">
+    <span id="dm-sticky-price">€69,00</span>
+    <span class="dm-was dm-sticky-was dm-num" id="dm-sticky-was">€79,00</span>
+  </div>
+  <a class="dm-btn" id="dm-sticky-cta" href="#dm-pirkti">Pradėti mokymus</a>
+</div>
+
+
+<!-- ============ PORAŠTĖ ============ -->
+<footer class="dm-foot">
+  <div class="dm-foot-in">
+    <div class="dm-foot-grid">
+      <div>
+        <img src="" data-dm-img-src="logo" alt="Dronų Mokykla" width="132" height="38">
+        <p>Esame pirmasis FPV servisas Lietuvoje, užsiimantis FPV dronų prekyba,
+           dalių prekyba, mokymais ir serviso paslaugomis.</p>
+      </div>
+      <div>
+        <h3>Informacija</h3>
+        <ul>
+          <li><a href="https://dronumokykla.lt/policies/terms-of-service">Pirkimo taisyklės</a></li>
+          <li><a href="https://dronumokykla.lt/policies/shipping-policy">Pristatymo sąlygos</a></li>
+          <li><a href="https://dronumokykla.lt/policies/refund-policy">Prekių grąžinimas</a></li>
+          <li><a href="https://dronumokykla.lt/policies/legal-notice">Garantinis aptarnavimas</a></li>
+          <li><a href="https://dronumokykla.lt/policies/privacy-policy">Privatumo politika</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Pagalba</h3>
+        <ul>
+          <li>Iešmininkų g. 17A, Vilnius, 02151</li>
+          <li><a href="mailto:info@dronefix.lt">info@dronefix.lt</a></li>
+          <li><a href="tel:+37061930080">+370 619 30080</a></li>
+          <li><a href="https://dronumokykla.lt">dronumokykla.lt</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dm-foot-bottom">
+      <span>© 2026 Dronų Mokykla</span>
+      <span>
+        <a href="https://www.facebook.com/people/DroneFixlt/100089861933596/" target="_blank" rel="noopener">Facebook</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.instagram.com/dronefix.lt/" target="_blank" rel="noopener">Instagram</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function dmInit() {
+  "use strict";
+
+  /* =========================================================
+     KONFIGŪRACIJA 1 — NUOTRAUKOS
+     =========================================================
+
+     Kiekvienam laukui įklijuok adresą iš Shopify Files.
+     Kur gauti: Shopify admin -> Content -> Files -> prie failo
+     paspausk „Copy link". Gausi adresą, kuris atrodo taip:
+     https://cdn.shopify.com/s/files/1/0983/9879/8169/files/vardas.jpg?v=123456
+
+     Palik tuščią ("") — vietoje nuotraukos matysis brūkšniuotas
+     langelis su paaiškinimu. Puslapis veikia ir tuščias.
+  */
+  var DM_NUOTRAUKOS = {
+    // Hero, dešinėje pusėje. Numatytoji — jau esantis kurso komplekto vaizdas.
+    hero: "https://dronumokykla.lt/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1200",
+
+    // Įrodymų juosta po hero — keturios kvadratinės nuotraukos.
+    // DĖMESIO: dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
+    // Saugiausia rinktis kadrus be atpažįstamų pašalinių veidų arba
+    // tuos, kuriuose žmonės sutiko būti rodomi reklamoje.
+    irodymai1: "",
+    irodymai2: "",
+    irodymai3: "",
+    irodymai4: "",
+
+    // „Kas įeina" kortelės.
+    medziaga: "",       // mokymų medžiagos vaizdas (buvęs one-boxy.png)
+    simuliatorius: "",  // simuliatoriaus vaizdas (buvęs box-simulkes.jpg)
+
+    // Plati nuotrauka su antrašte „Tam nereikia net drono...".
+    // Paruoštas kadras: nuotraukos/kadrai/adin.jpg
+
+    // Sekcija „Ką rasi viduje". Paruošti kadrai iš tavo pačių video —
+    // aplankas nuotraukos/kadrai/. Statinis kadras vietoj 128 MB video.
+    videoPosteris: "",       // kadras-ka-rasi-viduje.jpg
+    pagrindai: "",           // kadras-pagrindai.jpg
+    valdymoIranga: "",       // kadras-valdymo-iranga.jpg
+    pilotavimoPratimai: "",  // kadras-pilotavimo-pratimai.jpg
+    rezultatas: "",          // kadras-rezultatas.jpg
+
+    // Sekcija „Kodėl šis įgūdis tapo svarbus". Sava nuotrauka (dsc09805) —
+    // svetimos ziniasklaidos kadrai (WSJ, AP) is cia pasalinti sąmoningai.
+    kodelSvarbu: "",
+
+    // Faktu korteles sekcijoje „Kodel sis igudis tapo svarbus".
+    // Sekcija „Ismokti pilotuoti FPV dronus galime visi".
+    // image00017 — zmogus su akiniais davė sutikimą (patvirtinta 2026-09-05).
+    visiGali: "",
+
+
+    // Pultų persijungimas komplekto kortelėje (3 kadrai iš buvusio GIF'o)
+    pultas1: "",
+    pultas2: "",
+    pultas3: "",
+
+    // Bendruomenės sekcija
+    bendruomene1: "",
+    bendruomene2: "",
+    bendruomene3: "",
+
+    // Įkūrėjų istorija
+    istorijaKariuomene: "", // asas-3 — mokymai Lietuvos kariuomenei
+    istorija: "",       // img1919 — mokymai gyvai
+    karolisFaustas: "", // theboys — Karolis ir Faustas
+
+    // Logotipas antraštėje ir poraštėje (baltas, skaidriu fonu).
+    logo: "",
+
+    // Instruktorių nuotrauka (buvusi thefounders.png).
+    instruktoriai: ""
+  };
+
+  /* Kas rodoma, kol nuotrauka neįkelta */
+  var DM_PLACEHOLDER = {
+    pultas1:"pultas 1", pultas2:"pultas 2", pultas3:"pultas 3",
+    logo:          "logotipas",
+    bendruomene1:  "FPV lenktynių dalyviai",
+    bendruomene2:  "Dirbtuvės",
+    bendruomene3:  "Mokymai",
+    istorijaKariuomene: "asas-3.jpg",
+    istorija:      "img1919.jpg",
+    karolisFaustas:"theboys.jpg",
+    hero:          "HERO nuotrauka",
+    irodymai1:     "ĮRODYMAI 1 (kvadratas, tik su sutikimu)",
+    irodymai2:     "ĮRODYMAI 2 (kvadratas, tik su sutikimu)",
+    irodymai3:     "ĮRODYMAI 3 (kvadratas, tik su sutikimu)",
+    irodymai4:     "ĮRODYMAI 4 (kvadratas, tik su sutikimu)",
+    medziaga:      "Mokymų medžiaga (buvusi one-boxy.png)",
+    simuliatorius: "Simuliatorius (buvusi box-simulkes.jpg)",
+    videoPosteris:      "kadrai/kadras-ka-rasi-viduje.jpg",
+    pagrindai:          "kadrai/kadras-pagrindai.jpg",
+    valdymoIranga:      "kadrai/kadras-valdymo-iranga.jpg",
+    pilotavimoPratimai: "kadrai/kadras-pilotavimo-pratimai.jpg",
+    rezultatas:         "kadrai/kadras-rezultatas.jpg",
+    instruktoriai:      "Karolis ir Faustas (buvusi thefounders.png)"
+  };
+
+  /* Trumpi alt tekstai */
+  /* Antras, didesnis variantas toms nuotraukoms, kurios rodomos dideliu
+     langeliu. Telefonas ima maza faila, platus ekranas - didesni.
+     Tuscia = naudojamas tik vienas failas. */
+  var DM_NUOTRAUKOS_2X = {};
+
+  var DM_ALT = {
+    pultas1:"LiteRadio 2 SE", pultas2:"RadioMaster Pocket", pultas3:"RadioMaster TX15",
+    logo:          "Dronų Mokykla",
+    bendruomene1:  "FPV dronų lenktynių dalyviai",
+    bendruomene2:  "FPV dronų surinkimo dirbtuvės",
+    bendruomene3:  "FPV dronų mokymai",
+    istorijaKariuomene: "Karolis ir Faustas moko Lietuvos kariuomenės pajėgas",
+    istorija:      "FPV dronų mokymai gyvai",
+    karolisFaustas:"Karolis ir Faustas",
+    hero:          "FPV pradžiamokslio komplektas: video pamokos, simuliatorius ir valdymo pultas",
+    irodymai1:     "Dronų Mokyklos veikla",
+    irodymai2:     "Dronų Mokyklos veikla",
+    irodymai3:     "Dronų Mokyklos veikla",
+    irodymai4:     "Dronų Mokyklos veikla",
+    medziaga:      "Kurso mokymų medžiaga",
+    simuliatorius: "FPV pilotavimo simuliatorius",
+    videoPosteris:      "Kurso apžvalgos vaizdo įrašas",
+    pagrindai:          "Instruktorius rankose laiko FPV droną",
+    valdymoIranga:      "Valdymo pultai ir jų kalibravimas",
+    pilotavimoPratimai: "Pilotavimo pratimas simuliatoriuje",
+    rezultatas:         "Skrydis trasoje acro režimu",
+    instruktoriai:      "Karolis ir Faustas, kurso autoriai",
+    kodelSvarbu:        "Du žmonės iš arti apžiūri surinktą FPV droną",
+    visiGali:           "Skirtingo amžiaus žmonės kartu dirba prie FPV drono"
+  };
+
+  /* =========================================================
+     KONFIGŪRACIJA 2 — VARIANTAI
+     =========================================================
+
+     KUR RASTI VARIANTŲ ID:
+     Greičiausias būdas — atidaryk naršyklėje
+     https://dronumokykla.lt/products/fpv.js
+     Ten JSON su visais variantais; kiekvieno "id" laukas ir yra tas skaičius.
+
+     Kitas būdas: Shopify admin -> Products -> „FPV dronų valdymo pradžiamokslis"
+     -> Variants -> paspaudus variantą, ID matomas adreso juostoje po /variants/.
+
+     Žemiau esantys ID paimti iš /products/fpv.js.
+     Kainos rašomos eurais, skaičiais, be simbolio.
+     „populiarus: true" uždeda mėlyną „Populiariausias" žymą (tik vienam).
+     „savas: true" perkelia variantą į atskirą juostą „Turiu savo pultelį"
+     po kortelėmis ir pažymi jį pagal nutylėjimą.
+  */
+  /* Produkto handle — iš jo paimamos gyvos kainos. Adresas parduotuvėje
+     yra /products/fpv, todėl handle yra „fpv". */
+  var DM_PRODUKTO_HANDLE = "fpv";
+
+  /* =========================================================
+     KONFIGŪRACIJA 3 — ATSILIEPIMAI IŠ JUDGE.ME
+     =========================================================
+     Atsiliepimai, įvertinimas ir jų skaičius paimami tiesiai iš
+     Judge.me, todėl nauji atsiliepimai atsiranda savaime.
+
+     shopDomain — tavo .myshopify.com adresas (Shopify admin -> Settings
+                  -> Domains, eilutė su „myshopify.com").
+     productId  — produkto ID. Rasi Shopify admin, produkto adreso
+                  juostoje po /products/, arba puslapio kode
+                  atributuose data-product-id.
+
+     Nepavykus prisijungti prie Judge.me lieka žemiau HTML įrašyti
+     atsiliepimai — puslapis niekada nelieka tuščias.
+  */
+  var DM_ATSILIEPIMAI = {
+    shopDomain: "inmmjj-kg.myshopify.com",
+    productId: "15967682527577",
+    kiekRodyti: 0,        // 0 = rodyti visus; įrašyk skaičių, jei nori apriboti
+    minZvaigzdes: 4,      // rodyti tik nuo tiek žvaigždučių (1 = visus, ir neigiamus)
+    minIlgis: 0,          // 0 = nefiltruoti pagal ilgį
+    maxPuslapiu: 6        // po 30 atsiliepimų puslapyje; 6 = iki 180
+  };
+
+  var DM_VARIANTAI = [
+    {
+      id: 56748654362969,                       // BETAFPV LiteRadio 2 SE ELRS
+      variantoPav: "BETAFPV LiteRadio 2 SE ELRS",   // tikslus varianto pavadinimas Shopify
+      role: "Pradedantiesiems",
+      pavadinimas: "BETAFPV LiteRadio 2 SE ELRS",
+      nuotraukaDidele: "img/pultas-literadio.webp",
+      trumpas: { pav: "LiteRadio 2 SE", ekranas: "Nėra", kanalai: "8",
+        baterija: "Įmontuota", svoris: "179 g", dydis: "Mažas",
+        programine: "LiteRadio", modulis: "Nėra" },
+      busena: { ekranas: "nera", kanalai: "vidut", baterija: "gerai", modulis: "nera" },
+      ekranas: "Nėra",
+      baterija: "Įmontuota 1000 mAh, iki 8 val.",
+      svoris: "179 g",   // pamatuota DroneFix (gamintojas svorio nepublikuoja)
+      kanalai: "8",
+      modulis: "Nėra",
+      dydis: "Žaidimų pulto formos",
+      programine: "BETAFPV LiteRadio",
+      kaina: 79.00,
+      senaKaina: 119.00,
+      populiarus: true,
+      savas: false,
+      nuotrauka: "https://dronumokykla.lt/cdn/shop/files/swbeta.png?width=500"
+    },
+    {
+      id: 56748654395737,                       // RadioMaster Pocket ELRS
+      variantoPav: "RadioMaster Pocket ELRS",   // tikslus varianto pavadinimas Shopify
+      role: "Universaliausias",
+      pavadinimas: "RadioMaster Pocket ELRS",
+      nuotraukaDidele: "img/pultas-pocket.webp",
+      trumpas: { pav: "Pocket", ekranas: "LCD", kanalai: "16",
+        baterija: "Pridedame", svoris: "288 g", dydis: "Vidutinis",
+        programine: "EdgeTX", modulis: "Nano" },
+      busena: { ekranas: "gerai", kanalai: "gerai", baterija: "gerai", modulis: "gerai" },
+      ekranas: "128 × 64 monochrominis",
+      baterija: "2 × 18650 — pridedame",   // gamintojas neprideda, DroneFix prideda
+      svoris: "288 g",
+      kanalai: "iki 16",
+      modulis: "Nano dydžio",
+      dydis: "Kišeninis",
+      programine: "EdgeTX",
+      kaina: 149.00,
+      senaKaina: 200.00,
+      populiarus: false,
+      savas: false,
+      nuotrauka: "https://dronumokykla.lt/cdn/shop/files/swradio.png?width=500"
+    },
+    {
+      id: 56748654428505,                       // RadioMaster TX15 ELRS
+      variantoPav: "RadioMaster TX15 ELRS",   // tikslus varianto pavadinimas Shopify
+      role: "Pro",
+      pavadinimas: "RadioMaster TX15 ELRS",
+      rekomenduojamas: true,
+      nuotraukaDidele: "img/pultas-tx15.webp",
+      trumpas: { pav: "TX15", ekranas: "Spalvotas", kanalai: "16",
+        baterija: "Pridedame", svoris: "605 g", dydis: "Didelis",
+        programine: "EdgeTX", modulis: "JR" },
+      busena: { ekranas: "gerai", kanalai: "gerai", baterija: "gerai", modulis: "gerai" },
+      ekranas: "3,5\" spalvotas jutiklinis",
+      baterija: "2 × 18650 — pridedame",   // gamintojas neprideda, DroneFix prideda
+      svoris: "605 g (be baterijos)",
+      kanalai: "iki 16",
+      modulis: "JR suderinamas",
+      dydis: "Pilno dydžio",
+      programine: "EdgeTX",
+      kaina: 249.00,
+      senaKaina: 300.00,
+      populiarus: false,
+      savas: false,
+      nuotrauka: "https://dronumokykla.lt/cdn/shop/files/aswradio.png?width=500"
+    },
+    {
+      id: 56748685164889,                       // Be pultelio
+      variantoPav: "Be pultelio",   // tikslus varianto pavadinimas Shopify
+      role: "Turiu savo pultelį",
+      pavadinimas: "Tik mokymai ir simuliatorius",
+      kaina: 69.00,
+      senaKaina: 79.00,
+      populiarus: false,
+      savas: true,
+      nuotrauka: ""
+    }
+  ];
+
+  /* ========================================================= */
+
+  var root = document.getElementById("dm");
+  if (!root) {
+    // Turinio sekcija dar neįkelta — palaukiam, kol naršyklė baigs skaityti puslapį.
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", dmInit, { once: true });
+    }
+    return;
+  }
+
+  /* --- Video plakatas (poster) iš tos pačios konfigūracijos --- */
+  root.querySelectorAll("[data-dm-poster]").forEach(function (v) {
+    var src = DM_NUOTRAUKOS[v.getAttribute("data-dm-poster")];
+    if (src) v.setAttribute("poster", src);
+  });
+
+  /* --- Nuotraukos, dedamos į jau esantį <img> --- */
+  root.querySelectorAll("[data-dm-img-src]").forEach(function (img) {
+    var src = DM_NUOTRAUKOS[img.getAttribute("data-dm-img-src")];
+    if (src) { img.src = src; } else { img.remove(); }
+  });
+
+  /* --- Nuotraukų įdėjimas --- */
+  root.querySelectorAll("[data-dm-img]").forEach(function (slot) {
+    var raktas = slot.getAttribute("data-dm-img");
+    var src = DM_NUOTRAUKOS[raktas];
+    var ratio = slot.getAttribute("data-dm-ratio");
+    var isShot = slot.hasAttribute("data-dm-shot");
+
+    if (src) {
+      var img = document.createElement("img");
+      img.src = src;
+      var src2x = DM_NUOTRAUKOS_2X[raktas];
+      if (src2x) {
+        img.srcset = src + " 440w, " + src2x + " 900w";
+        img.sizes = slot.getAttribute("data-dm-sizes") || "(max-width:620px) 46vw, 23vw";
+      }
+      img.alt = DM_ALT[raktas] || "";
+      img.loading = (raktas === "hero") ? "eager" : "lazy";
+      if (ratio) img.style.aspectRatio = ratio;
+      slot.appendChild(img);
+      if (isShot || slot.hasAttribute("data-dm-plain")) slot.replaceWith(img);
+    } else {
+      var ph = document.createElement("div");
+      ph.className = "dm-ph";
+      ph.textContent = "ĮKELK: " + (DM_PLACEHOLDER[raktas] || raktas);
+      if (ratio) ph.style.aspectRatio = ratio;
+      if (isShot) {
+        slot.replaceWith(ph);
+      } else {
+        slot.classList.remove("dm-figure");
+        slot.replaceWith(ph);
+      }
+    }
+  });
+
+  var optsBox  = document.getElementById("dm-opts");
+  var ownBox   = document.getElementById("dm-own");
+  var elPrice  = document.getElementById("dm-price");
+  var elWas    = document.getElementById("dm-was");
+  var elOff    = document.getElementById("dm-off");
+  var elCta    = document.getElementById("dm-cta");
+  var sticky   = document.getElementById("dm-sticky");
+  var stPrice  = document.getElementById("dm-sticky-price");
+  var stWas    = document.getElementById("dm-sticky-was");
+  var stCta    = document.getElementById("dm-sticky-cta");
+  var buyBlock = document.getElementById("dm-pirkti");
+  var heroSec  = document.getElementById("dm-hero");
+
+  function eur(n) {
+    return "€" + n.toFixed(2).replace(".", ",");
+  }
+
+  function nuolaida(kaina, sena) {
+    if (!sena || sena <= kaina) return null;
+    return "−" + Math.round((1 - kaina / sena) * 100) + "%";
+  }
+
+  function radijas(v, checked) {
+    var input = document.createElement("input");
+    input.type = "radio";
+    input.name = "dm-variantas";
+    input.id = "dm-var-" + v.id;
+    input.value = String(v.id);
+    input.checked = !!checked;
+    input.addEventListener("change", function () {
+      if (input.checked) atnaujinti(v);
+    });
+    return input;
+  }
+
+  /* --- Pultų kortelės ir „Turiu savo pultelį" --- */
+  function pastatyti(pasirinktasId) {
+    optsBox.innerHTML = "";
+    ownBox.innerHTML = "";
+
+    DM_VARIANTAI.filter(function (v) { return !v.savas; }).forEach(function (v) {
+      var wrap = document.createElement("div");
+      wrap.className = "dm-opt";
+      var input = radijas(v, v.id === pasirinktasId);
+
+      var label = document.createElement("label");
+      label.className = "dm-opt-body";
+      label.setAttribute("for", input.id);
+
+      /* Žyma kortelės viduje, kad būtų aišku, kuriai ji priklauso.
+         „Populiariausias" — mėlyna, „Rekomenduojame" — juoda, kad
+         abi žymos atrodytų skirtingai, bet liktų firminėse spalvose. */
+      if (v.populiarus || v.rekomenduojamas) {
+        var tag = document.createElement("span");
+        tag.className = "dm-tag" + (v.rekomenduojamas ? " dm-tag--rek" : "");
+        tag.textContent = v.rekomenduojamas ? "Rekomenduojame" : "Populiariausias";
+        label.appendChild(tag);
+      }
+
+      var imgBox = document.createElement("span");
+      imgBox.className = "dm-opt-img";
+      if (v.nuotrauka) {
+        var img = document.createElement("img");
+        img.src = v.nuotrauka;
+        img.alt = v.pavadinimas;
+        img.loading = "lazy";
+        imgBox.appendChild(img);
+      }
+      label.appendChild(imgBox);
+
+      var role = document.createElement("span");
+      role.className = "dm-opt-role";
+      role.textContent = v.role;
+      label.appendChild(role);
+
+      var name = document.createElement("span");
+      name.className = "dm-opt-name";
+      name.textContent = v.pavadinimas;
+      label.appendChild(name);
+
+      label.appendChild(kainosBlokas(v, "dm-opt-price"));
+      wrap.appendChild(input);
+      wrap.appendChild(label);
+      optsBox.appendChild(wrap);
+    });
+
+    pieshtiLentele();
+
+    var sv = DM_VARIANTAI.filter(function (v) { return v.savas; })[0];
+    if (!sv) return;
+
+    var sInput = radijas(sv, sv.id === pasirinktasId);
+    var sLabel = document.createElement("label");
+    sLabel.className = "dm-own-body";
+    sLabel.setAttribute("for", sInput.id);
+
+    var dot = document.createElement("span");
+    dot.className = "dm-dot";
+    dot.setAttribute("aria-hidden", "true");
+    sLabel.appendChild(dot);
+
+    var sTxt = document.createElement("span");
+    sTxt.className = "dm-own-txt";
+    sTxt.appendChild(document.createTextNode(sv.role));
+    var sNote = document.createElement("span");
+    sNote.className = "dm-own-note";
+    sNote.textContent = sv.pavadinimas;
+    sTxt.appendChild(sNote);
+    sLabel.appendChild(sTxt);
+
+    sLabel.appendChild(kainosBlokas(sv, "dm-own-price"));
+    ownBox.appendChild(sInput);
+    ownBox.appendChild(sLabel);
+  }
+
+  /* --- Pultų palyginimo lentelė ---
+     Stulpeliai imami iš tų pačių DM_VARIANTAI, todėl kainos ir pavadinimai
+     niekada neišsiderina nuo kortelių viršuje. Duomenys — tik iš gamintojų
+     specifikacijų (BETAFPV, RadioMaster), niekas nespėliota. */
+  var DM_CMP_IKONOS = {
+    signalas: "M2 8.8a12 12 0 0 1 16 0M5 12a8 8 0 0 1 10 0M8 15.2a4 4 0 0 1 4 0",
+    zaidimas: "M6 12h4M8 10v4M15 11h.01M17.5 13h.01M4 8h14a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3z",
+    ekranas:  "M3 5h18v11H3zM9 20h6M12 16v4",
+    kanalai:  "M4 7h16M4 12h16M4 17h16M8 5v4M15 10v4M10 15v4",
+    baterija: "M4 8h13v8H4zM19 11v2M8 11v2M11 11v2",
+    svoris:   "M12 4v3M7 7h10l3 12H4zM12 11v4",
+    dydis:    "M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5",
+    programa: "M9 8l-4 4 4 4M15 8l4 4-4 4",
+    modulis:  "M9 3v4M15 3v4M6 7h12v7a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4zM12 18v3",
+    kaina:    "M3 11l8-8h8v8l-8 8zM16 8h.01"
+  };
+
+  function cmpIkona(vardas) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", "0 0 24 24");
+    s.setAttribute("fill", "none");
+    s.setAttribute("aria-hidden", "true");
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("d", DM_CMP_IKONOS[vardas] || "");
+    p.setAttribute("stroke", "currentColor");
+    p.setAttribute("stroke-width", "1.7");
+    p.setAttribute("stroke-linecap", "round");
+    p.setAttribute("stroke-linejoin", "round");
+    s.appendChild(p);
+    return s;
+  }
+
+  /* Būsenos ženklas: žalia varnelė / gintaro brūkšnys / raudonas kryžiukas.
+     Piešiam SVG, o ne emoji — emoji kiekvienoje sistemoje atrodo kitaip. */
+  var DM_CMP_ZENKLAI = {
+    gerai: { kelias: "M5 10.5l3.2 3.2L15 7", etikete: "taip" },
+    vidut: { kelias: "M6 10h8", etikete: "iš dalies" },
+    nera:  { kelias: "M6.5 6.5l7 7M13.5 6.5l-7 7", etikete: "ne" }
+  };
+
+  function cmpZenklas(busena) {
+    var cfg = DM_CMP_ZENKLAI[busena] || DM_CMP_ZENKLAI.vidut;
+    var sp = document.createElement("span");
+    sp.className = "dm-cmp-z dm-cmp-z--" + busena;
+    sp.setAttribute("role", "img");
+    sp.setAttribute("aria-label", cfg.etikete);
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "0 0 20 20");
+    svg.setAttribute("fill", "none");
+    var pth = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    pth.setAttribute("d", cfg.kelias);
+    pth.setAttribute("stroke", "currentColor");
+    pth.setAttribute("stroke-width", "2.4");
+    pth.setAttribute("stroke-linecap", "round");
+    pth.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(pth);
+    sp.appendChild(svg);
+    return sp;
+  }
+
+  function cmpVarnele(yra) {
+    return cmpZenklas(yra ? "gerai" : "nera");
+  }
+
+  /* Du tekstai viename langelyje: ilgas rodomas kompiuteryje, trumpas
+     telefone. Perjungiama CSS — be JS ir be resize klausymosi. */
+  function cmpTekstas(ilgas, trumpas) {
+    var f = document.createDocumentFragment();
+    var il = document.createElement("span");
+    il.className = "dm-cmp-ilgas";
+    il.textContent = ilgas;
+    f.appendChild(il);
+    var tr = document.createElement("span");
+    tr.className = "dm-cmp-trumpas";
+    tr.textContent = (trumpas === undefined || trumpas === null) ? ilgas : trumpas;
+    f.appendChild(tr);
+    return f;
+  }
+
+  var DM_CMP_EILUTES = [
+    { pav: "Suderinamas su ELRS", trum: "ELRS", ikona: "signalas", taip: true },
+    { pav: "Veikia su simuliatoriumi", trum: "Simuliatorius", ikona: "zaidimas", taip: true },
+    { pav: "Ekranas", trum: "Ekranas", ikona: "ekranas", laukas: "ekranas", zenklas: true },
+    { pav: "Kanalai", trum: "Kanalai", ikona: "kanalai", laukas: "kanalai", zenklas: true },
+    { pav: "Baterija", trum: "Baterija", ikona: "baterija", laukas: "baterija", zenklas: true },
+    { pav: "Svoris", trum: "Svoris", ikona: "svoris", laukas: "svoris" },
+    { pav: "Dydis", trum: "Dydis", ikona: "dydis", laukas: "dydis" },
+    { pav: "Programinė įranga", trum: "Programa", ikona: "programa", laukas: "programine" },
+    { pav: "Išorinio modulio lizdas", trum: "Modulis", ikona: "modulis", laukas: "modulis", zenklas: true },
+    { pav: "Kaina komplekte", trum: "Kaina", ikona: "kaina", kaina: true }
+  ];
+
+  /* --- Telefonui: vietoj lentelės — trys kortelės ---
+     Lentelė telefone reikalautų slinkimo į šoną, o to žmonės nepastebi.
+     Todėl siauruose ekranuose rodom tą pačią informaciją kortelėmis. */
+  function pieshtiKorteles(pultai) {
+    var dez = document.getElementById("dm-cmp-korteles");
+    if (!dez) return;
+    dez.innerHTML = "";
+
+    pultai.forEach(function (v) {
+      var kort = document.createElement("article");
+      kort.className = "dm-cmpk";
+
+      var virsus = document.createElement("div");
+      virsus.className = "dm-cmpk-virsus";
+
+      if (v.nuotraukaDidele || v.nuotrauka) {
+        var box = document.createElement("span");
+        box.className = "dm-cmpk-foto";
+        var img = document.createElement("img");
+        img.src = v.nuotraukaDidele || v.nuotrauka;
+        img.alt = v.pavadinimas;
+        img.loading = "lazy";
+        box.appendChild(img);
+        virsus.appendChild(box);
+      }
+
+      var txt = document.createElement("div");
+      var role = document.createElement("span");
+      role.className = "dm-cmp-role";
+      role.textContent = v.role;
+      txt.appendChild(role);
+
+      if (v.populiarus || v.rekomenduojamas) {
+        var z = document.createElement("span");
+        z.className = "dm-cmp-zenklas" + (v.rekomenduojamas ? " dm-cmp-zenklas--rek" : "");
+        z.textContent = v.rekomenduojamas ? "Rekomenduojame" : "Populiariausias";
+        txt.appendChild(z);
+      }
+
+      var pav = document.createElement("span");
+      pav.className = "dm-cmpk-pav";
+      pav.textContent = v.pavadinimas;
+      txt.appendChild(pav);
+      virsus.appendChild(txt);
+      kort.appendChild(virsus);
+
+      var dl = document.createElement("dl");
+      dl.className = "dm-cmpk-sarasas";
+      DM_CMP_EILUTES.forEach(function (eil) {
+        var dt = document.createElement("dt");
+        var ik = document.createElement("span");
+        ik.className = "dm-cmp-ikona";
+        ik.appendChild(cmpIkona(eil.ikona));
+        dt.appendChild(ik);
+        dt.appendChild(document.createTextNode(eil.pav));
+
+        var dd = document.createElement("dd");
+        if (eil.taip) {
+          dd.appendChild(cmpVarnele(true));
+        } else if (eil.kaina) {
+          dd.className = "dm-cmp-kaina";
+          dd.appendChild(kainosBlokas(v, "dm-cmp-kaina-in"));
+        } else if (eil.zenklas) {
+          var apv2 = document.createElement("span");
+          apv2.className = "dm-cmp-su-zenklu dm-cmp-su-zenklu--dd";
+          var b2 = (v.busena && v.busena[eil.laukas]) || "vidut";
+          apv2.appendChild(cmpZenklas(b2));
+          var t2 = document.createElement("span");
+          t2.textContent = v[eil.laukas] || "\u2013";
+          apv2.appendChild(t2);
+          dd.appendChild(apv2);
+        } else {
+          dd.textContent = v[eil.laukas] || "\u2013";
+        }
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      });
+      kort.appendChild(dl);
+      dez.appendChild(kort);
+    });
+  }
+
+  function pieshtiLentele() {
+    var dez = document.getElementById("dm-cmp");
+    if (!dez) return;
+    dez.innerHTML = "";
+
+    var pultai = DM_VARIANTAI.filter(function (v) { return !v.savas; });
+    if (!pultai.length) return;
+
+    var table = document.createElement("table");
+
+    /* --- antraštė su nuotraukomis --- */
+    var thead = document.createElement("thead");
+    var trh = document.createElement("tr");
+    trh.appendChild(document.createElement("th"));
+    pultai.forEach(function (v) {
+      var th = document.createElement("th");
+
+      var zyma = document.createElement("span");
+      zyma.className = "dm-cmp-role";
+      zyma.textContent = v.role;
+      th.appendChild(zyma);
+
+      /* Žymos vieta rezervuojama visada — kitaip stulpelis be žymos
+         išsilygiuotų kitaip nei stulpeliai su žyma. */
+      var zenklas = document.createElement("span");
+      zenklas.className = "dm-cmp-zenklas"
+        + (v.rekomenduojamas ? " dm-cmp-zenklas--rek" : "")
+        + ((v.populiarus || v.rekomenduojamas) ? "" : " dm-cmp-zenklas--tuscia");
+      zenklas.textContent = v.rekomenduojamas ? "Rekomenduojame"
+        : (v.populiarus ? "Populiariausias" : " ");
+      if (!(v.populiarus || v.rekomenduojamas)) zenklas.setAttribute("aria-hidden", "true");
+      th.appendChild(zenklas);
+
+      var src = v.nuotraukaDidele || v.nuotrauka;
+      if (src) {
+        var box = document.createElement("span");
+        box.className = "dm-cmp-foto";
+        var img = document.createElement("img");
+        img.src = src;
+        img.alt = v.pavadinimas;
+        img.loading = "lazy";
+        box.appendChild(img);
+        th.appendChild(box);
+      }
+
+      var pav = document.createElement("span");
+      pav.className = "dm-cmp-pav";
+      pav.appendChild(cmpTekstas(v.pavadinimas, v.trumpas && v.trumpas.pav));
+      th.appendChild(pav);
+
+      var elrs = document.createElement("span");
+      elrs.className = "dm-cmp-chip";
+      elrs.textContent = "ELRS";
+      th.appendChild(elrs);
+
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh);
+    table.appendChild(thead);
+
+    /* --- eilutės --- */
+    var eilutes = DM_CMP_EILUTES;
+    var nenaudojama = [
+      { pav: "Suderinamas su ELRS", ikona: "signalas", taip: true },
+      { pav: "Veikia su simuliatoriumi", ikona: "zaidimas", taip: true },
+      { pav: "Ekranas", ikona: "ekranas", laukas: "ekranas" },
+      { pav: "Kanalai", ikona: "kanalai", laukas: "kanalai" },
+      { pav: "Baterija", ikona: "baterija", laukas: "baterija" },
+      { pav: "Svoris", ikona: "svoris", laukas: "svoris" },
+      { pav: "Dydis", ikona: "dydis", laukas: "dydis" },
+      { pav: "Programinė įranga", ikona: "programa", laukas: "programine" },
+      { pav: "Išorinio modulio lizdas", ikona: "modulis", laukas: "modulis" },
+      { pav: "Kaina komplekte", ikona: "kaina", kaina: true }
+    ];
+    void nenaudojama;
+
+    var tbody = document.createElement("tbody");
+    eilutes.forEach(function (eil) {
+      var tr = document.createElement("tr");
+
+      var th = document.createElement("th");
+      th.scope = "row";
+      var ikonBox = document.createElement("span");
+      ikonBox.className = "dm-cmp-ikona";
+      ikonBox.appendChild(cmpIkona(eil.ikona));
+      th.appendChild(ikonBox);
+      th.appendChild(cmpTekstas(eil.pav, eil.trum));
+      tr.appendChild(th);
+
+      pultai.forEach(function (v) {
+        var td = document.createElement("td");
+        if (eil.taip) {
+          td.className = "dm-cmp-c";
+          td.appendChild(cmpVarnele(true));
+        } else if (eil.kaina) {
+          td.className = "dm-cmp-kaina";
+          td.appendChild(kainosBlokas(v, "dm-cmp-kaina-in"));
+        } else if (eil.zenklas) {
+          /* Flex tik viduje — ant paties <td> jis sulaužytų lentelę. */
+          var apv = document.createElement("span");
+          apv.className = "dm-cmp-su-zenklu";
+          var bus = (v.busena && v.busena[eil.laukas]) || "vidut";
+          apv.appendChild(cmpZenklas(bus));
+          var tekst = document.createElement("span");
+          tekst.appendChild(cmpTekstas(v[eil.laukas] || "\u2013",
+                                       v.trumpas && v.trumpas[eil.laukas]));
+          apv.appendChild(tekst);
+          td.appendChild(apv);
+        } else {
+          td.appendChild(cmpTekstas(v[eil.laukas] || "\u2013",
+                                    v.trumpas && v.trumpas[eil.laukas]));
+        }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    dez.appendChild(table);
+
+  }
+
+  function kainosBlokas(v, cls) {
+    var el = document.createElement("span");
+    el.className = cls + " dm-num";
+    el.appendChild(document.createTextNode(eur(v.kaina)));
+    if (v.senaKaina && v.senaKaina > v.kaina) {
+      var was = document.createElement("span");
+      was.className = "dm-was dm-opt-was dm-num";
+      was.textContent = eur(v.senaKaina);
+      el.appendChild(was);
+    }
+    return el;
+  }
+
+  /* --- Kaina, nuolaida ir krepšelio nuoroda pagal pasirinkimą --- */
+  function atnaujinti(v) {
+    if (!v) return;
+    var href = "/cart/" + v.id + ":1";
+    var turi = !!(v.senaKaina && v.senaKaina > v.kaina);
+
+    elPrice.textContent = eur(v.kaina);
+    elCta.setAttribute("href", href);
+
+    elWas.textContent = turi ? eur(v.senaKaina) : "";
+    elWas.style.display = turi ? "" : "none";
+    elOff.textContent = turi ? nuolaida(v.kaina, v.senaKaina) : "";
+    elOff.style.display = turi ? "" : "none";
+
+    stPrice.textContent = eur(v.kaina);
+    stWas.textContent = turi ? eur(v.senaKaina) : "";
+    stWas.style.display = turi ? "" : "none";
+    /* Lipnios juostos mygtukas veda į pultų pasirinkimą, o ne tiesiai į
+       krepšelį: kitaip nepasirinkus pulto į krepšelį patektų numatytasis
+       variantas „Be pultelio". Vienintelis pirkimo mygtukas yra pačiame
+       pasirinkimo bloke. */
+  }
+
+  var savas = DM_VARIANTAI.filter(function (v) { return v.savas; })[0];
+  var pradinis = (savas || DM_VARIANTAI[0]).id;
+  pastatyti(pradinis);
+  atnaujinti(savas || DM_VARIANTAI[0]);
+
+  /* --- Hero kaina: pigiausias variantas --- */
+  function atnaujintiHero() {
+    var pigiausias = DM_VARIANTAI.slice().sort(function (a, b) { return a.kaina - b.kaina; })[0];
+    var hp = document.getElementById("dm-hero-price");
+    var hw = document.getElementById("dm-hero-was");
+    var ho = document.getElementById("dm-hero-off");
+    if (!hp) return;
+    var turi = !!(pigiausias.senaKaina && pigiausias.senaKaina > pigiausias.kaina);
+    hp.textContent = eur(pigiausias.kaina);
+    hw.textContent = turi ? eur(pigiausias.senaKaina) : "";
+    hw.style.display = turi ? "" : "none";
+    ho.textContent = turi ? nuolaida(pigiausias.kaina, pigiausias.senaKaina) : "";
+    ho.style.display = turi ? "" : "none";
+  }
+  atnaujintiHero();
+
+  /* --- Gyvos kainos tiesiai iš Shopify ---
+     Užkrovus puslapį paimame /products/<handle>.js ir perrašome kainas bei
+     variantų ID. Todėl pakeitus kainą Shopify nereikia liesti šio kodo.
+     Nepavykus (nėra ryšio, pakeistas handle) lieka aukščiau įrašytos vertės. */
+  fetch("/products/" + DM_PRODUKTO_HANDLE + ".js", { headers: { Accept: "application/json" } })
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (p) {
+      var pagalId = {}, pagalPav = {};
+      p.variants.forEach(function (v) {
+        pagalId[v.id] = v;
+        pagalPav[v.title.trim().toLowerCase()] = v;
+      });
+      var rasta = 0;
+      DM_VARIANTAI.forEach(function (c) {
+        var v = pagalId[c.id] || pagalPav[String(c.variantoPav || "").trim().toLowerCase()];
+        if (!v) return;
+        rasta++;
+        c.id = v.id;
+        c.kaina = v.price / 100;
+        c.senaKaina = v.compare_at_price ? v.compare_at_price / 100 : null;
+        c.yra = v.available;
+      });
+      if (!rasta) return;
+      var buvo = optsBox.parentNode.querySelector("input:checked");
+      var id = buvo ? Number(buvo.value) : pradinis;
+      if (!DM_VARIANTAI.some(function (c) { return c.id === id; })) id = pradinis;
+      pastatyti(id);
+      atnaujinti(DM_VARIANTAI.filter(function (c) { return c.id === id; })[0]);
+      atnaujintiHero();
+    })
+    .catch(function () { /* liekam prie įrašytų kainų */ });
+
+  /* --- Susijusių produktų kainos taip pat gyvos ---
+     Kiekvienai kortelei paimam jos produkto JSON ir perrašom kainą.
+     Nepavykus lieka HTML įrašyta kaina. */
+  root.querySelectorAll(".dm-card[data-dm-handle]").forEach(function (card) {
+    fetch("/products/" + card.getAttribute("data-dm-handle") + ".js",
+          { headers: { Accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (p) {
+        var el = card.querySelector(".dm-card-price");
+        if (!el) return;
+        var kainos = p.variants.map(function (v) { return v.price; });
+        var min = Math.min.apply(null, kainos);
+        var daugVariantu = Math.max.apply(null, kainos) > min;
+        var sena = p.variants[0].compare_at_price;
+
+        el.textContent = "";
+        el.appendChild(document.createTextNode((daugVariantu ? "nuo " : "") + eur(min / 100)));
+        if (!daugVariantu && sena && sena > min) {
+          var w = document.createElement("span");
+          w.className = "dm-was";
+          w.textContent = " " + eur(sena / 100);
+          el.appendChild(w);
+        }
+      })
+      .catch(function () { /* liekam prie įrašytos kainos */ });
+  });
+
+  /* --- Lipni juosta: pasirodo praslinkus hero, dingsta ties pirkimo bloku --- */
+  var praslinkoHero = false;
+  var pirkimasMatomas = false;
+
+  function perpiesti() {
+    var rodyti = praslinkoHero && !pirkimasMatomas;
+    sticky.classList.toggle("dm-on", rodyti);
+    sticky.setAttribute("aria-hidden", rodyti ? "false" : "true");
+  }
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      praslinkoHero = !entries[0].isIntersecting;
+      perpiesti();
+    }).observe(heroSec);
+
+    new IntersectionObserver(function (entries) {
+      pirkimasMatomas = entries[0].isIntersecting;
+      perpiesti();
+    }, { rootMargin: "-15% 0px -15% 0px" }).observe(buyBlock);
+  }
+
+  /* --- Atsiliepimai iš Judge.me ---
+     Iš atsakymo imamas tik tekstas (textContent), o nuotraukų adresai
+     tikrinami — priimami tik iš review-images.judgeme.com. Todėl svetimas
+     HTML į puslapį niekada nepatenka. */
+  function judgemeUrl(psl) {
+    var c = DM_ATSILIEPIMAI;
+    return "https://judge.me/reviews/reviews_for_widget?url=" + encodeURIComponent(c.shopDomain) +
+           "&shop_domain=" + encodeURIComponent(c.shopDomain) +
+           "&platform=shopify&per_page=30&page=" + psl +
+           "&product_id=" + encodeURIComponent(c.productId);
+  }
+
+  function saugusFoto(url) {
+    if (!url) return null;
+    if (url.indexOf("https://review-images.judgeme.com/") !== 0) return null;
+    return url.replace(/([?&])width=\d+/, "$1width=1024");
+  }
+
+  function zvaigzdes(n) {
+    var el = document.createElement("div");
+    el.className = "dm-rev-stars";
+    el.setAttribute("aria-hidden", "true");
+    el.textContent = "★★★★★".slice(0, Math.max(1, Math.round(n || 5)));
+    return el;
+  }
+
+  function patvirtintaZenklas() {
+    var s = document.createElement("span");
+    s.className = "dm-rev-ok";
+    s.innerHTML = '<svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">' +
+      '<path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>';
+    s.appendChild(document.createTextNode("Patvirtinta"));
+    return s;
+  }
+
+  function piestiAtsiliepimus(sarasas, kiekis, vidurkis) {
+    var dez = document.getElementById("dm-revs");
+    if (!dez || !sarasas.length) return;
+    dez.innerHTML = "";
+
+    sarasas.forEach(function (r) {
+      var bq = document.createElement("blockquote");
+      bq.className = "dm-rev";
+
+      var top = document.createElement("div");
+      top.className = "dm-rev-top";
+      top.appendChild(zvaigzdes(r.balas));
+      bq.appendChild(top);
+
+      var p = document.createElement("p");
+      p.textContent = "„" + r.tekstas + "“";
+      bq.appendChild(p);
+
+      if (r.foto) {
+        var img = document.createElement("img");
+        img.className = "dm-rev-img";
+        img.src = r.foto;
+        img.alt = r.vardas + " — kliento nuotrauka";
+        img.loading = "lazy";
+        bq.appendChild(img);
+      }
+
+      var foot = document.createElement("div");
+      foot.className = "dm-rev-foot";
+      var cite = document.createElement("cite");
+      cite.textContent = r.vardas;
+      foot.appendChild(cite);
+      if (r.patvirtinta) foot.appendChild(patvirtintaZenklas());
+      bq.appendChild(foot);
+
+      dez.appendChild(bq);
+    });
+
+    var elS = document.getElementById("dm-rev-suma");
+    var elK = document.getElementById("dm-rev-kiekis");
+    if (elS && vidurkis) elS.textContent = vidurkis.toFixed(2).replace(".", ",");
+    if (elK && kiekis) elK.textContent = String(kiekis);
+
+    var hR = document.getElementById("dm-hero-rating");
+    var hK = document.getElementById("dm-hero-count");
+    if (hR && vidurkis) hR.textContent = vidurkis.toFixed(2).replace(".", ",") + " / 5";
+    if (hK && kiekis) hK.textContent = String(kiekis);
+
+    atnaujintiMygtuka();
+  }
+
+  /* --- „Rodyti visus" mygtukas ---
+     Karuselė pakeista sienele: 47 atsiliepimai sudėti į stulpelius,
+     aukštis apribotas, o mygtukas juos atskleidžia. Taip iš karto matosi,
+     kiek jų yra, ir nereikia niekur spaudinėti norint paskaityti. */
+  function atnaujintiMygtuka() {
+    var wrap = document.getElementById("dm-revwrap");
+    var mygt = document.getElementById("dm-rev-more");
+    var dez = document.getElementById("dm-revs");
+    if (!wrap || !mygt || !dez) return;
+    var atverta = wrap.classList.contains("dm-atverta");
+    /* Jei ir taip viskas telpa, mygtuko nereikia. */
+    if (!atverta && wrap.scrollHeight <= wrap.clientHeight + 8) {
+      mygt.parentNode.hidden = true;
+      return;
+    }
+    mygt.parentNode.hidden = false;
+    var kiek = dez.querySelectorAll(".dm-rev").length;
+    mygt.textContent = atverta ? "Suskleisti" : "Rodyti visus atsiliepimus (" + kiek + ")";
+    mygt.setAttribute("aria-expanded", atverta ? "true" : "false");
+  }
+
+  (function atsiliepimuMygtukas() {
+    var wrap = document.getElementById("dm-revwrap");
+    var mygt = document.getElementById("dm-rev-more");
+    if (!wrap || !mygt) return;
+    mygt.addEventListener("click", function () {
+      var buvoAtverta = wrap.classList.contains("dm-atverta");
+      wrap.classList.toggle("dm-atverta");
+      if (buvoAtverta) {
+        /* Suskleidus grazinam zmogu prie sekcijos pradzios — kitaip jis
+           liktu kazkur puslapio viduryje, kur turinys ka tik dingo. */
+        window.scrollTo({
+          top: wrap.getBoundingClientRect().top + window.pageYOffset - 90,
+          behavior: "auto"
+        });
+      }
+      atnaujintiMygtuka();
+    });
+    window.addEventListener("resize", atnaujintiMygtuka);
+    atnaujintiMygtuka();
+  })();
+
+  (function krautiAtsiliepimus() {
+    var c = DM_ATSILIEPIMAI;
+    if (!c.shopDomain || !c.productId) return;
+
+    /* Pirma paimam 1 puslapį, iš jo sužinom bendrą kiekį,
+       tada dokraunam likusius (po 30 viename). */
+    fetch(judgemeUrl(1))
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (pirmas) {
+        var viso = Number(pirmas.total_count) || 0;
+        var puslapiu = Math.min(Math.ceil(viso / 30) || 1, c.maxPuslapiu || 6);
+        var likusieji = [];
+        for (var i = 2; i <= puslapiu; i++) {
+          likusieji.push(
+            fetch(judgemeUrl(i))
+              .then(function (r) { return r.ok ? r.json() : { html: "" }; })
+              .catch(function () { return { html: "" }; })
+          );
+        }
+        return Promise.all(likusieji).then(function (kiti) {
+          return [pirmas].concat(kiti);
+        });
+      })
+      .then(function (dalys) {
+        var visi = [], balai = [], kiekis = 0;
+
+        dalys.forEach(function (d) {
+          if (d.total_count) kiekis = d.total_count;
+          var doc = new DOMParser().parseFromString(d.html || "", "text/html");
+          doc.querySelectorAll(".jdgm-rev").forEach(function (el) {
+            var rat = el.querySelector(".jdgm-rev__rating");
+            var balas = rat ? Number(rat.getAttribute("data-score")) : 0;
+            balai.push(balas);
+
+            var kunas = el.querySelector(".jdgm-rev__body");
+            var tekstas = (kunas ? kunas.textContent : "").replace(/\s+/g, " ").trim();
+            var aut = el.querySelector(".jdgm-rev__author");
+            var pic = el.querySelector("img.jdgm-rev__pic-img");
+
+            visi.push({
+              patvirtinta: el.getAttribute("data-verified-buyer") === "true",
+              vardas: (aut ? aut.textContent : "").trim() || "Pirkėjas",
+              tekstas: tekstas,
+              balas: balas,
+              foto: saugusFoto(pic ? (pic.getAttribute("data-src") || pic.getAttribute("src")) : null)
+            });
+          });
+        });
+
+        if (!visi.length) return;
+
+        var tinkami = visi.filter(function (r) {
+          return r.balas >= c.minZvaigzdes && r.tekstas.length >= (c.minIlgis || 0);
+        });
+        // Pirma su nuotraukomis, paskui naujausi (Judge.me grąžina naujausius pirmus)
+        tinkami.sort(function (a, b) { return (b.foto ? 1 : 0) - (a.foto ? 1 : 0); });
+
+        var vidurkis = balai.length ? balai.reduce(function (s, x) { return s + x; }, 0) / balai.length : 0;
+        var rodomi = c.kiekRodyti > 0 ? tinkami.slice(0, c.kiekRodyti) : tinkami;
+        piestiAtsiliepimus(rodomi, kiekis || balai.length, vidurkis);
+      })
+      .catch(function () { /* liekam prie HTML įrašytų atsiliepimų */ });
+  })();
+
+  /* --- Slinkimas iki pirkimo bloko --- */
+  root.addEventListener("click", function (e) {
+    var t = e.target;
+    var a = (t && t.closest) ? t.closest('a[href="#dm-pirkti"]') : null;
+    if (!a) return;
+    e.preventDefault();
+
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    buyBlock.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+
+    var pasirinktas = optsBox.parentNode.querySelector("input:checked");
+    if (pasirinktas) {
+      window.setTimeout(function () {
+        pasirinktas.focus({ preventScroll: true });
+      }, reduce ? 0 : 550);
+    }
+  });
+})();
+</script>
+
+</div>
+<!-- /#dm -->
+
+<!-- =========================================================
+     KĄ PAKEISTI PRIEŠ PALEIDŽIANT
+
+     1. DM_NUOTRAUKOS — įklijuok adresus iš Shopify Files.
+        Paruošti statiniai kadrai: nuotraukos/kadrai/.
+        Į įrodymų juostą dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
+     2. „Kas įeina" — video pamokų vertė vietoj [ĮRAŠYK VERTĘ] ir suma vietoj [SUMA].
+     3. DUK, penktas klausimas — tikri prieigos ir pristatymo terminai.
+
+     KAS ATSINAUJINA SAVAIME (nereikia liesti kodo):
+     - visų keturių kurso variantų kainos, senos kainos, nuolaidų procentai;
+     - variantų ID ir krepšelio nuorodos;
+     - hero kaina „nuo";
+     - trijų susijusių produktų kainos;
+     - atsiliepimai, jų skaičius ir vidutinis įvertinimas (Judge.me).
+     Nepavykus prisijungti lieka kode įrašytos vertės — puslapis veikia visada.
+
+     KAS LIEKA STATIŠKA (keisti ranka, nes tų skaičių niekur nėra):
+     - „Kas įeina" vertės: €20 simuliatorius, €85 bendruomenė, €75 konsultacija;
+     - skaičiai 300+, 500+, 600+;
+     - nemokamo pristatymo riba €99.
+     ========================================================= -->

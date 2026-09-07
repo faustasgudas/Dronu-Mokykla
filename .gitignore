@@ -1,0 +1,23 @@
+# Žalios nuotraukos — Į VIEŠĄ REPO NEKELIAMOS.
+#
+# Priežastis: aplanke yra medžiagos, kurios negalima platinti:
+#   image00026jpegkopija.jpg  — žmogus nedavė sutikimo naudoti savo atvaizdą
+#   kadrai/                   — svetimų žiniasklaidos priemonių (AP, WSJ) kadrai
+#
+# Git istorijoje failai lieka net juos vėliau ištrynus, todėl saugiau
+# jų iš viso neįtraukti. Į svetainę einančios nuotraukos jau paruoštos
+# ir guli landingas/img/.
+nuotraukos/
+
+# Laikini darbo failai
+_*.py
+_whoop_*.txt
+_whoop_*.html
+check.js
+
+# Windows / redaktoriai
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
