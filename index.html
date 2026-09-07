@@ -685,6 +685,40 @@ html,body{margin:0;padding:0;background:#fff;}
   #dm .dm-buybar{margin-top:18px;padding-top:16px;gap:12px;}
   #dm .dm-ship{margin-top:14px;}
 }
+/* ===== HERO NUOTRAUKOS REMAS =====
+   Saltinio PNG buvo 1600x1600, bet pats produktas jame - tik 1500x1272:
+   virsuje likdavo 225 px tuscios vietos. Nuotrauka apkirpta (img/hero.webp,
+   1560x1332), o remui duodam ta pati santyki, kad neliktu pilkos juostos. */
+#dm .dm-hero-media .dm-figure{aspect-ratio:1560/1332;}
+#dm .dm-hero-media .dm-figure img{width:100%;height:100%;object-fit:contain;}
+@media (max-width:900px){
+  /* Auksti nebereikia riboti - remas jau tiek pat zemas, kiek nuotrauka. */
+  #dm .dm-hero-media img{max-height:none;width:100%;}
+}
+/* Zemi telefonai (pvz. iPhone SE): mazinam visa rema, o ne tik nuotrauka -
+   taip nelieka tarpu is sonu ir kaina su mygtuku telpa i pirma ekrana. */
+@media (max-width:900px) and (max-height:740px){
+  #dm .dm-hero-media{max-width:56%;margin-left:auto;margin-right:auto;}
+  #dm .dm-hero-media img{max-height:none;}
+}
+/* ===== PALYGINIMO LENTELE TELEFONE: suskleidziama =====
+   Telefone lentele uzima kelis ekranus, todel pradzioje ji suskleista,
+   o "Palyginti visus tris" ja isskleidzia. Mygtuka kuria JS, tad be JS
+   lentele lieka matoma, kaip ir anksciau. Kompiuteryje niekas nesikeicia. */
+#dm .dm-cmp-jungiklis{display:none;}
+@media (max-width:620px){
+  #dm .dm-cmp-jungiklis{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;margin-top:18px;padding:13px 18px;min-height:48px;
+    border:1.5px solid var(--dm-blue);border-radius:14px;background:#fff;
+    font-family:inherit;font-size:1rem;font-weight:700;color:var(--dm-blue);
+    cursor:pointer;-webkit-appearance:none;appearance:none;
+  }
+  #dm .dm-cmp-jungiklis-rodykle{font-size:0.75rem;line-height:1;transition:transform .18s ease;}
+  #dm .dm-cmp-jungiklis[aria-expanded="true"] .dm-cmp-jungiklis-rodykle{transform:rotate(180deg);}
+  #dm .dm-cmp-uzdaryta .dm-cmp,
+  #dm .dm-cmp-uzdaryta .dm-cmp-juosta{display:none;}
+}
 </style>
 
 <!-- ANALITIKA — įklijuok savo kodus čia:
@@ -1476,7 +1510,7 @@ html,body{margin:0;padding:0;background:#fff;}
   */
   var DM_NUOTRAUKOS = {
     // Hero, dešinėje pusėje. Numatytoji — jau esantis kurso komplekto vaizdas.
-    hero: "https://dronumokykla.lt/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1000",
+    hero: "img/hero@2x.webp",
 
     // Įrodymų juosta po hero — keturios kvadratinės nuotraukos.
     // DĖMESIO: dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
@@ -1568,7 +1602,7 @@ html,body{margin:0;padding:0;background:#fff;}
   /* Plačios turinio nuotraukos: telefonui atiduodam mažesnį failą.
      Reikšmė: { sm: kelias, smW: plotis, lgW: plotis, sizes: ... }
      Tuščia = naudojamas tik vienas failas. build.py užpildo. */
-  var DM_PLACIOS = { istorijaKariuomene: { sm: "img/istorija-kariuomene@sm.webp", smW: 760, lgW: 1200, sizes: "(max-width:700px) 92vw, 620px" }, kodelSvarbu: { sm: "img/kodel-svarbu@sm.webp", smW: 760, lgW: 1400, sizes: "(max-width:1080px) 92vw, 1040px" }, visiGali: { sm: "img/visi-gali@sm.webp", smW: 760, lgW: 1320, sizes: "(max-width:800px) 92vw, 760px" } };
+  var DM_PLACIOS = { hero: { sm: "img/hero.webp", smW: 760, lgW: 1520, sizes: "(max-width:900px) 89vw, 488px" }, istorijaKariuomene: { sm: "img/istorija-kariuomene@sm.webp", smW: 760, lgW: 1200, sizes: "(max-width:700px) 92vw, 620px" }, kodelSvarbu: { sm: "img/kodel-svarbu@sm.webp", smW: 760, lgW: 1400, sizes: "(max-width:1080px) 92vw, 1040px" }, visiGali: { sm: "img/visi-gali@sm.webp", smW: 760, lgW: 1320, sizes: "(max-width:800px) 92vw, 760px" } };
 
   var DM_ALT = {
     pultas1:"LiteRadio 2 SE", pultas2:"RadioMaster Pocket", pultas3:"RadioMaster TX15",
@@ -2592,6 +2626,64 @@ html,body{margin:0;padding:0;background:#fff;}
         piestiAtsiliepimus(rodomi, kiekis || balai.length, vidurkis);
       })
       .catch(function () { /* liekam prie HTML įrašytų atsiliepimų */ });
+  })();
+
+  /* --- Palyginimo lentele telefone: suskleidziama ---
+     Telefone lentele uzima kelis ekranus. Mygtukas kuriamas per JS, todel
+     be JS lentele lieka matoma, kaip ir anksciau. */
+  (function () {
+    var blokas = document.getElementById("dm-palyginimas");
+    var intro = blokas && blokas.querySelector(".dm-cmp-intro");
+    if (!blokas || !intro) return;
+
+    var mygtukas = document.createElement("button");
+    mygtukas.type = "button";
+    mygtukas.className = "dm-cmp-jungiklis";
+    mygtukas.setAttribute("aria-controls", "dm-cmp");
+    var etikete = document.createElement("span");
+    var rodykle = document.createElement("span");
+    rodykle.className = "dm-cmp-jungiklis-rodykle";
+    rodykle.setAttribute("aria-hidden", "true");
+    rodykle.textContent = "▼";
+    mygtukas.appendChild(etikete);
+    mygtukas.appendChild(rodykle);
+    intro.appendChild(mygtukas);
+
+    var siauras = window.matchMedia("(max-width:620px)");
+    var svelniai = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function nustatyti(atidaryta) {
+      blokas.classList.toggle("dm-cmp-uzdaryta", !atidaryta);
+      mygtukas.setAttribute("aria-expanded", atidaryta ? "true" : "false");
+      etikete.textContent = atidaryta ? "Suskleisti palyginimą" : "Palyginti visus tris";
+    }
+
+    /* Telefone pradzioje suskleista, kompiuteryje - kaip buvo. */
+    nustatyti(!siauras.matches);
+
+    mygtukas.addEventListener("click", function () {
+      var buvoAtidaryta = mygtukas.getAttribute("aria-expanded") === "true";
+      nustatyti(!buvoAtidaryta);
+      /* Suskleidus grazinam prie bloko, kad neliktume tuscioje vietoje. */
+      if (buvoAtidaryta) {
+        blokas.scrollIntoView({ behavior: svelniai ? "smooth" : "auto", block: "start" });
+      }
+    });
+
+    /* Isplatinus langa lentele visada matoma. */
+    var perjungti = function () { if (!siauras.matches) nustatyti(true); };
+    if (siauras.addEventListener) siauras.addEventListener("change", perjungti);
+    else if (siauras.addListener) siauras.addListener(perjungti);
+
+    /* Nuoroda „Palyginti visus tris" isskleidzia ir nuslenka. */
+    root.addEventListener("click", function (e) {
+      var t = e.target;
+      var a = (t && t.closest) ? t.closest('a[href="#dm-palyginimas"]') : null;
+      if (!a) return;
+      e.preventDefault();
+      nustatyti(true);
+      blokas.scrollIntoView({ behavior: svelniai ? "smooth" : "auto", block: "start" });
+    });
   })();
 
   /* --- Slinkimas iki pirkimo bloko ---
