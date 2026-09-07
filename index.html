@@ -29,11 +29,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://dronumokykla.lt">
 <link rel="dns-prefetch" href="https://judge.me">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap">
+<!-- Šriftai neblokuoja pirmojo piešimo: stilius užkraunamas asinchroniškai,
+     o pats šrifto failas prašomas iš anksto. Anksčiau šis vienas įrašas
+     blokavo piešimą ~1,4 s (Lighthouse). -->
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"></noscript>
 
 <style>
 html,body{margin:0;padding:0;background:#fff;}
-#dm{--dm-blue:#1919FF;--dm-blue-hover:#1414CC;--dm-ink:#000000;--dm-muted:#5B5B66;--dm-bg:#FFFFFF;--dm-card:#F6F6F6;--dm-line:#E4E4EA;--dm-sale:#CB321E;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--dm-ink);background:var(--dm-bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}#dm *{box-sizing:border-box}#dm p,#dm h1,#dm h2,#dm h3,#dm h4,#dm ul,#dm ol,#dm li,#dm figure,#dm blockquote{margin:0;padding:0}#dm ul,#dm ol{list-style:none}#dm img{display:block;max-width:100%;height:auto}#dm a{color:inherit}#dm .dm-h1{font-size:clamp(2.1rem,5.6vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em}#dm .dm-h2{font-size:clamp(1.6rem,3.6vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}#dm .dm-h3{font-size:1.125rem;font-weight:700;line-height:1.35;letter-spacing:-0.01em}#dm .dm-lead{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--dm-muted);line-height:1.55}#dm .dm-muted{color:var(--dm-muted)}#dm .dm-small{font-size:0.9375rem;line-height:1.55}#dm .dm-num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}#dm .dm-sec{padding:clamp(56px,8vw,104px)20px}#dm .dm-sec--tight{padding-top:clamp(32px,4vw,48px)}#dm .dm-wrap{max-width:1040px;margin:0 auto}#dm .dm-narrow{max-width:760px}#dm .dm-grey{background:var(--dm-card)}#dm .dm-black{background:var(--dm-ink);color:#fff}#dm .dm-black .dm-muted{color:#B4B4BE}#dm .dm-blue{background:var(--dm-blue);color:#fff}#dm .dm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--dm-blue);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:17px 30px;border-radius:14px;border:0;cursor:pointer;font-family:inherit;line-height:1;transition:background-color .15s ease}#dm .dm-btn:hover{background:var(--dm-blue-hover)}#dm .dm-btn--wide{width:100%;justify-content:center;padding:20px 24px;font-size:1.125rem}#dm .dm-arrow{font-weight:700}#dm a:focus-visible,#dm button:focus-visible,#dm summary:focus-visible{outline:3px solid var(--dm-blue);outline-offset:3px;border-radius:6px}#dm .dm-opt input:focus-visible+.dm-opt-body,#dm .dm-own input:focus-visible+.dm-own-body{outline:3px solid var(--dm-blue);outline-offset:3px}#dm .dm-blue a:focus-visible,#dm .dm-black a:focus-visible,#dm .dm-black summary:focus-visible{outline-color:#fff}#dm .dm-price{font-size:clamp(2rem,4.4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1}#dm .dm-was{color:var(--dm-sale);text-decoration:line-through;font-weight:500;font-size:1.0625rem}#dm .dm-off{color:var(--dm-sale);font-weight:700;font-size:0.875rem;border:1px solid var(--dm-sale);border-radius:999px;padding:4px 10px;line-height:1}#dm .dm-figure{border-radius:18px;overflow:hidden;background:var(--dm-card)}#dm .dm-figure img{width:100%;height:100%;object-fit:cover}#dm .dm-ph{border:2px dashed #C9C9D4;border-radius:18px;background:var(--dm-card);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:0.8125rem;color:var(--dm-muted);font-weight:600;line-height:1.5}#dm .dm-black .dm-ph,#dm .dm-blue .dm-ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
+#dm{--dm-blue:#1919FF;--dm-blue-hover:#1414CC;--dm-ink:#000000;--dm-muted:#5B5B66;--dm-bg:#FFFFFF;--dm-card:#F6F6F6;--dm-line:#E4E4EA;--dm-sale:#CB321E;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--dm-ink);background:var(--dm-bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}#dm *{box-sizing:border-box}#dm p,#dm h1,#dm h2,#dm h3,#dm h4,#dm ul,#dm ol,#dm li,#dm figure,#dm blockquote{margin:0;padding:0}#dm ul,#dm ol{list-style:none}#dm img{display:block;max-width:100%;height:auto}#dm a{color:inherit}#dm .dm-h1{font-size:clamp(2.1rem,5.6vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em}#dm .dm-h2{font-size:clamp(1.6rem,3.6vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}#dm .dm-h3{font-size:1.125rem;font-weight:700;line-height:1.35;letter-spacing:-0.01em}#dm .dm-lead{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--dm-muted);line-height:1.55}#dm .dm-muted{color:var(--dm-muted)}#dm .dm-small{font-size:0.9375rem;line-height:1.55}#dm .dm-num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}#dm .dm-sec{padding:clamp(56px,8vw,104px)20px}#dm .dm-sec--tight{padding-top:clamp(32px,4vw,48px)}#dm .dm-wrap{max-width:1040px;margin:0 auto}#dm .dm-narrow{max-width:760px}#dm .dm-grey{background:var(--dm-card)}#dm .dm-black{background:var(--dm-ink);color:#fff}#dm .dm-black .dm-muted{color:#B4B4BE}#dm .dm-blue{background:var(--dm-blue);color:#fff}#dm .dm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--dm-blue);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:17px 30px;border-radius:14px;border:0;cursor:pointer;font-family:inherit;line-height:1;transition:background-color .15s ease}#dm .dm-btn:hover{background:var(--dm-blue-hover)}#dm .dm-btn--wide{width:100%;justify-content:center;padding:20px 24px;font-size:1.125rem}#dm .dm-arrow{font-weight:700}#dm a:focus-visible,#dm button:focus-visible,#dm summary:focus-visible{outline:3px solid var(--dm-blue);outline-offset:3px;border-radius:6px}#dm .dm-opt input:focus-visible+.dm-opt-body,#dm .dm-own input:focus-visible+.dm-own-body{outline:3px solid var(--dm-blue);outline-offset:3px}#dm .dm-blue a:focus-visible,#dm .dm-black a:focus-visible,#dm .dm-black summary:focus-visible{outline-color:#fff}#dm .dm-price{font-size:clamp(2rem,4.4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1}#dm .dm-was{color:var(--dm-sale);text-decoration:line-through;font-weight:500;font-size:1.0625rem}#dm .dm-off{color:var(--dm-sale);font-weight:700;font-size:0.875rem;border:1px solid var(--dm-sale);border-radius:999px;padding:4px 10px;line-height:1}#dm .dm-figure{border-radius:18px;overflow:hidden;background:var(--dm-card)}/* Vieta hero nuotraukai rezervuojama CSS'e, o ne JS'u. Kitaip lėtu ryšiu dėžutė būna 0 px aukščio, kol atkeliauja nuotrauka, ir visas turinys žemiau pašoka (Lighthouse CLS 0,316). */#dm .dm-hero-media .dm-figure{aspect-ratio:1/1}#dm .dm-figure img{width:100%;height:100%;object-fit:cover}#dm .dm-ph{border:2px dashed #C9C9D4;border-radius:18px;background:var(--dm-card);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:0.8125rem;color:var(--dm-muted);font-weight:600;line-height:1.5}#dm .dm-black .dm-ph,#dm .dm-blue .dm-ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
 /* Mygtukas ir pilkas tekstas ant melyno fono - be sito butu melyna ant melynos
    (ta pati klaida kaip anksciau su garantijos mygtuku), o pilkas dm-muted
    tekstas beveik nesimatytu. */
@@ -615,6 +622,9 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-btn{min-height:48px;}
 #dm .dm-top .dm-btn{min-height:44px;padding:12px 22px;}
 #dm .dm-top-logo{display:inline-flex;align-items:center;min-height:44px;}
+/* Aiškus aukštis — su height:auto naršyklė laukia nuotraukos, kad žinotų
+   dydį, ir tai sukelia poslinkį. */
+#dm .dm-top-logo img,#dm .dm-foot img[alt="Dronų Mokykla"]{width:132px;height:38px;object-fit:contain;}
 #dm .dm-foot li{margin-bottom:2px;}
 #dm .dm-foot a{display:inline-flex;align-items:center;min-height:44px;}
 #dm .dm-foot-bottom a{min-height:44px;}
@@ -1458,7 +1468,7 @@ html,body{margin:0;padding:0;background:#fff;}
   */
   var DM_NUOTRAUKOS = {
     // Hero, dešinėje pusėje. Numatytoji — jau esantis kurso komplekto vaizdas.
-    hero: "https://dronumokykla.lt/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1200",
+    hero: "https://dronumokykla.lt/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1000",
 
     // Įrodymų juosta po hero — keturios kvadratinės nuotraukos.
     // DĖMESIO: dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
@@ -1546,6 +1556,11 @@ html,body{margin:0;padding:0;background:#fff;}
      langeliu. Telefonas ima maza faila, platus ekranas - didesni.
      Tuscia = naudojamas tik vienas failas. */
   var DM_NUOTRAUKOS_2X = { irodymai1: "img/irodymai-mokymai@2x.webp", irodymai2: "img/irodymai-kariuomene@2x.webp", irodymai3: "img/irodymai-lenktynes@2x.webp", irodymai4: "img/irodymai-servisas@2x.webp" };
+
+  /* Plačios turinio nuotraukos: telefonui atiduodam mažesnį failą.
+     Reikšmė: { sm: kelias, smW: plotis, lgW: plotis, sizes: ... }
+     Tuščia = naudojamas tik vienas failas. build.py užpildo. */
+  var DM_PLACIOS = { istorijaKariuomene: { sm: "img/istorija-kariuomene@sm.webp", smW: 760, lgW: 1200, sizes: "(max-width:700px) 92vw, 620px" }, kodelSvarbu: { sm: "img/kodel-svarbu@sm.webp", smW: 760, lgW: 1400, sizes: "(max-width:1080px) 92vw, 1040px" }, visiGali: { sm: "img/visi-gali@sm.webp", smW: 760, lgW: 1320, sizes: "(max-width:800px) 92vw, 760px" } };
 
   var DM_ALT = {
     pultas1:"LiteRadio 2 SE", pultas2:"RadioMaster Pocket", pultas3:"RadioMaster TX15",
@@ -1722,8 +1737,15 @@ html,body{margin:0;padding:0;background:#fff;}
 
   /* --- Nuotraukos, dedamos į jau esantį <img> --- */
   root.querySelectorAll("[data-dm-img-src]").forEach(function (img) {
-    var src = DM_NUOTRAUKOS[img.getAttribute("data-dm-img-src")];
-    if (src) { img.src = src; } else { img.remove(); }
+    var raktas = img.getAttribute("data-dm-img-src");
+    var src = DM_NUOTRAUKOS[raktas];
+    if (!src) { img.remove(); return; }
+    img.src = src;
+    var pl = DM_PLACIOS[raktas];
+    if (pl) {
+      img.srcset = pl.sm + " " + pl.smW + "w, " + src + " " + pl.lgW + "w";
+      img.sizes = img.getAttribute("data-dm-sizes") || pl.sizes;
+    }
   });
 
   /* --- Nuotraukų įdėjimas --- */
@@ -1735,11 +1757,21 @@ html,body{margin:0;padding:0;background:#fff;}
 
     if (src) {
       var img = document.createElement("img");
+      /* Hero yra LCP elementas — prašom naršyklės imti jį pirmiausia. */
+      if (raktas === "hero") {
+        img.setAttribute("fetchpriority", "high");
+        img.decoding = "async";
+      }
       img.src = src;
       var src2x = DM_NUOTRAUKOS_2X[raktas];
       if (src2x) {
         img.srcset = src + " 440w, " + src2x + " 900w";
         img.sizes = slot.getAttribute("data-dm-sizes") || "(max-width:620px) 46vw, 23vw";
+      }
+      var pl = DM_PLACIOS[raktas];
+      if (pl) {
+        img.srcset = pl.sm + " " + pl.smW + "w, " + src + " " + pl.lgW + "w";
+        img.sizes = slot.getAttribute("data-dm-sizes") || pl.sizes;
       }
       img.alt = DM_ALT[raktas] || "";
       img.loading = (raktas === "hero") ? "eager" : "lazy";
