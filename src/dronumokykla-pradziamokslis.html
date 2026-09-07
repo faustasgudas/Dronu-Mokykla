@@ -623,6 +623,26 @@
   #dm .dm-opt-img{width:64px;height:64px;}
 }
 
+/* ===== PIRKIMO BLOKAS TELEFONE: viskas viename ekrane =====
+   Paspaudus "Pradeti mokymus" telefone turi matytis visos TRYS pultu
+   korteles IR mygtukas "Pereiti prie apmokejimo". Todel mazame ekrane:
+     a) pagalbos nuorodos nukeliamos zemiau mygtuko (order),
+     b) suglaudinami tarpai tarp korteliu ir pirkimo juostos.
+   Turinys nekeiciamas - tik eiles tvarka ir tarpai. */
+@media (max-width:620px){
+  #dm #dm-pirkti .dm-wrap{display:flex;flex-direction:column;}
+  #dm #dm-pirkti .dm-pirkti-pagalba{order:1;margin-top:20px !important;}
+  #dm #dm-pirkti .dm-ship{order:2;}
+  #dm #dm-pirkti .dm-cmp-blokas{order:3;}
+
+  #dm .dm-picker{margin-top:20px;}
+  #dm .dm-cards3{gap:10px;}
+  #dm .dm-opt-body{padding:11px 12px;}
+  #dm .dm-own{margin-top:10px;}
+  #dm .dm-own-body{padding:13px 16px;}
+  #dm .dm-buybar{margin-top:18px;padding-top:16px;gap:12px;}
+  #dm .dm-ship{margin-top:14px;}
+}
 </style>
 
 
@@ -648,11 +668,6 @@
       </ul>
 
       <h1 class="dm-h1">Per dvi savaites išmoksi pilotuoti FPV droną</h1>
-      <p class="dm-lead" style="margin-top:20px;">
-        Namuose, per simuliatorių. Drono pirkti nereikia — komplekte valdymo pultas,
-        simuliatorius ir 14 valandų filmuotos mokymų medžiagos.
-      </p>
-
       <div class="dm-hero-buy">
         <span class="dm-hero-from">nuo</span>
         <span class="dm-price dm-num" id="dm-hero-price">€69,00</span>
@@ -782,11 +797,6 @@
 <section class="dm-sec dm-grey" id="dm-pirkti">
   <div class="dm-wrap dm-narrow">
     <h2 class="dm-h2">Pasirink valdymo pultą</h2>
-    <p class="dm-lead" style="margin-top:16px;">
-      Norint išmokti skristi simuliatoriumi, reikės turėti valdymo pultelį. Visi pulteliai
-      žemiau vėliau gali būti pritaikomi skraidymui su tikru dronu.
-    </p>
-
     <div class="dm-picker">
       <div class="dm-cards3" id="dm-opts" role="radiogroup" aria-label="Valdymo pulto pasirinkimas">
         <!-- Kortelės sugeneruojamos iš DM_VARIANTAI -->
@@ -798,7 +808,7 @@
     </div>
 
     <!-- Nuoroda į vaizdo įrašą. Jei įkelsi naują video, pakeisk adresą čia. -->
-    <p style="margin-top:22px;">
+    <p class="dm-pirkti-pagalba" style="margin-top:22px;">
       <a class="dm-help-link" href="https://youtu.be/ImaGXtGmk5s" target="_blank" rel="noopener">
         <span class="dm-help-icon" aria-hidden="true">▶</span>
         <span class="dm-help-label">Kaip išsirinkti pultelį?</span>
@@ -2468,6 +2478,31 @@
       .catch(function () { /* liekam prie HTML įrašytų atsiliepimų */ });
   })();
 
+  /* --- Slinkimas iki pirkimo bloko ---
+     Telefone neuztenka nuslinkti iki sekcijos pradzios: mygtukas
+     "Pereiti prie apmokejimo" lieka uz ekrano ribos. Todel skaiciuojam
+     pozicija, kurioje matosi ir visos trys korteles, ir mygtukas. */
+  function pirkimoPozicija() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var virsus = buyBlock.getBoundingClientRect().top + y;
+    if (!optsBox || !elCta) return virsus;
+
+    var atsarga = 12;
+    var korteliuVirsus = optsBox.getBoundingClientRect().top + y;
+    var mygtukoApacia = elCta.getBoundingClientRect().bottom + y;
+
+    /* Veliausia pozicija, kurioje dar matosi korteliu virsus, ir
+       anksciausia, kurioje jau matosi mygtukas. */
+    var veliausia = korteliuVirsus - atsarga;
+    var anksciausia = mygtukoApacia + atsarga - window.innerHeight;
+
+    /* Netelpa (labai zemas ekranas) - rodom bent visas korteles. */
+    if (anksciausia > veliausia) return veliausia;
+
+    /* Telpa: pradedam nuo antrastes, bet nuleidziam tiek, kiek reikia mygtukui. */
+    return Math.max(anksciausia, Math.min(virsus - atsarga, veliausia));
+  }
+
   /* --- Slinkimas iki pirkimo bloko --- */
   root.addEventListener("click", function (e) {
     var t = e.target;
@@ -2476,7 +2511,7 @@
     e.preventDefault();
 
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    buyBlock.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    window.scrollTo({ top: pirkimoPozicija(), behavior: reduce ? "auto" : "smooth" });
 
     var pasirinktas = optsBox.parentNode.querySelector("input:checked");
     if (pasirinktas) {
