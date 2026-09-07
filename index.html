@@ -139,6 +139,10 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-zv-tusti{color:#C9C9DB;}
 #dm .dm-zv-pilni{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;
   color:var(--dm-blue);}
+/* Hero juostoje: skaicius, zvaigzdutes, kiekis skliaustuose. Zvaigzdutes
+   didesnes ir su tarpais, kitaip dalinio uzpildymo (4,83) nesimato. */
+#dm .dm-trust .dm-zv{font-size:1.125rem;letter-spacing:2px;vertical-align:-3px;}
+#dm .dm-zv-suma{font-size:1.0625rem;margin-right:4px;}
 #dm .dm-revstars{
   color:var(--dm-blue);font-size:1.75rem;letter-spacing:4px;line-height:1;
 }
@@ -726,7 +730,7 @@ html,body{margin:0;padding:0;background:#fff;}
       <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
 
       <ul class="dm-trust">
-        <li><span class="dm-stars dm-zv" id="dm-hero-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></span> <b class="dm-num" id="dm-hero-rating">4,83 / 5</b> <span class="dm-muted">— <span class="dm-num" id="dm-hero-count">48</span> atsiliepimai</span></li>
+        <li><b class="dm-num dm-zv-suma" id="dm-hero-rating">4,83</b> <span class="dm-stars dm-zv" id="dm-hero-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></span> <span class="dm-muted">(<span class="dm-num" id="dm-hero-count">48</span> atsiliepimai)</span></li>
         <li><b class="dm-num">1 000+</b> apmokytų mokinių</li>
         <li><b class="dm-num">14</b> dienų pinigų grąžinimo garantija</li>
       </ul>
@@ -2419,17 +2423,56 @@ html,body{margin:0;padding:0;background:#fff;}
       dez.appendChild(bq);
     });
 
-    /* Zvaigzduciu uzpildymas pagal tikra vidurki. */
+    /* Zvaigzduciu uzpildymas pagal tikra vidurki.
+       Plotis skaiciuojamas pikseliais, o ne procentais: tarp zvaigzduciu yra
+       letter-spacing, ir procentai apimtu ir tarpa uz penktosios, todel
+       uzpildymas nusislinktu i desine. */
     if (vidurkis) {
-      var proc = Math.max(0, Math.min(100, (vidurkis / 5) * 100)).toFixed(1) + "%";
-      var etikete = vidurkis.toFixed(2).replace(".", ",") + " iš 5";
-      ["dm-hero-stars", "dm-rev-stars"].forEach(function (id) {
-        var zv = document.getElementById(id);
-        if (!zv) return;
-        var pilni = zv.querySelector(".dm-zv-pilni");
-        if (pilni) pilni.style.width = proc;
-        zv.setAttribute("aria-label", etikete);
-      });
+      var v = Math.max(0, Math.min(5, vidurkis));
+      var etikete = v.toFixed(2).replace(".", ",") + " iš 5";
+      /* Zvaigzdutes piesinys siauresnis uz raides ploti (yra tarpai is sonu).
+         Issimatuojam, kad dalinis uzpildymas atitiktu tai, ka mato akis. */
+      var zvaigzdesPiesinys = function (st, viena) {
+        var atsarga = { pradzia: 0, plotis: viena };
+        try {
+          var ctx = document.createElement("canvas").getContext("2d");
+          ctx.font = st.fontWeight + " " + st.fontSize + " " + st.fontFamily;
+          var m = ctx.measureText("★");
+          if (typeof m.actualBoundingBoxRight !== "number") return atsarga;
+          var pradzia = -m.actualBoundingBoxLeft;
+          var plotis = m.actualBoundingBoxRight - pradzia;
+          if (!(plotis > 0) || plotis > viena) return atsarga;
+          return { pradzia: pradzia, plotis: plotis };
+        } catch (e) { return atsarga; }
+      };
+
+      var piestiZvaigzdutes = function () {
+        ["dm-hero-stars", "dm-rev-stars"].forEach(function (id) {
+          var zv = document.getElementById(id);
+          if (!zv) return;
+          var tusti = zv.querySelector(".dm-zv-tusti");
+          var pilni = zv.querySelector(".dm-zv-pilni");
+          if (!tusti || !pilni) return;
+          var visas = tusti.getBoundingClientRect().width;
+          if (!visas) return;
+          var st = window.getComputedStyle(tusti);
+          var tarpas = parseFloat(st.letterSpacing) || 0;
+          var viena = (visas - 5 * tarpas) / 5;
+          var pies = zvaigzdesPiesinys(st, viena);
+          var sveikos = Math.floor(v);
+          var dalis = v - sveikos;
+          var plotis = sveikos * (viena + tarpas);
+          /* Nepilna zvaigzdute pildoma nuo jos piesinio krasto, o ne nuo
+             raides pradzios — kitaip pusė nesutaptu su zvaigzdes viduriu. */
+          if (dalis > 0) plotis += pies.pradzia + dalis * pies.plotis;
+          pilni.style.width = plotis.toFixed(1) + "px";
+          zv.setAttribute("aria-label", etikete);
+        });
+      };
+      piestiZvaigzdutes();
+      /* Sriftui uzsikrovus zvaigzduciu plotis pasikeicia — perskaiciuojam. */
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(piestiZvaigzdutes);
+      window.addEventListener("resize", piestiZvaigzdutes);
     }
 
     var elS = document.getElementById("dm-rev-suma");
@@ -2439,7 +2482,7 @@ html,body{margin:0;padding:0;background:#fff;}
 
     var hR = document.getElementById("dm-hero-rating");
     var hK = document.getElementById("dm-hero-count");
-    if (hR && vidurkis) hR.textContent = vidurkis.toFixed(2).replace(".", ",") + " / 5";
+    if (hR && vidurkis) hR.textContent = vidurkis.toFixed(2).replace(".", ",");
     if (hK && kiekis) hK.textContent = String(kiekis);
 
     atnaujintiMygtuka();
