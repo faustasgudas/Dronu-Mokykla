@@ -22,7 +22,7 @@ DOMENAS = "https://shop.dronumokykla.lt"   # PAKEISK, jei landingo domenas kitas
 
 # Nuotraukos atskirai versijai - vietiniai failai salia index.html
 VIETINES = {
-    "hero": PARDUOTUVE + "/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1000",
+    "hero": "img/hero@2x.webp",
     "medziaga": "img/medziaga.webp",
     "simuliatorius": "img/simuliatorius.webp",
     "videoPosteris": "img/video-plakatas.webp",
@@ -53,6 +53,8 @@ VIETINES = {
 # Placios turinio nuotraukos: (mazas failas, jo plotis, didelio plotis, sizes)
 # Telefonas gauna @sm, kompiuteris - pilna versija.
 VIETINES_PLACIOS = {
+    "hero": ("img/hero.webp", 760, 1520,
+             "(max-width:900px) 89vw, 488px"),
     "kodelSvarbu": ("img/kodel-svarbu@sm.webp", 760, 1400,
                     "(max-width:1080px) 92vw, 1040px"),
     "visiGali": ("img/visi-gali@sm.webp", 760, 1320,
