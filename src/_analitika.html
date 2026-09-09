@@ -1,0 +1,124 @@
+<!-- ===================== ANALITIKA + SUTIKIMAS =====================
+     Bendras abiem landingams. Keitimus daryk TIK cia — build.py ir
+     build_whoop.py ji iterpia i abu puslapius.
+
+     Kaip veikia:
+       - Meta pikselis NEKRAUNAMAS, kol zmogus nepaspaude "Sutinku".
+         ES be sutikimo sekti negalima, o Meta reikalauja sutikimo signalo.
+         Tekstas ir mygtukai suderinti su Shopify juosta dronumokykla.lt,
+         kad per abu puslapius butu ta pati kalba ir ta pati politika.
+       - Shopify sutikimas (_tracking_consent) cia NESKAITOMAS: neaisku, ar
+         jis matomas is shop. padomenio, o remtis nepatikrintu spejimu butu
+         blogiau nei paklausti dar karta.
+       - Pasirinkimas issaugomas naršyklėje 6 menesiams (localStorage).
+       - Juosta yra position:fixed, todel neistumia turinio ir nekelia CLS.
+     ================================================================= -->
+
+<style>
+#dm-sutikimas{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;
+  display:none;gap:14px;align-items:center;flex-wrap:wrap;
+  max-width:760px;margin:0 auto;padding:16px 18px;
+  background:#0B0B12;color:#fff;border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  font-size:.875rem;line-height:1.5;
+}
+#dm-sutikimas.dm-rodom{display:flex}
+#dm-sutikimas p{margin:0;flex:1 1 300px}
+#dm-sutikimas a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.dm-sut-mygtukai{display:flex;gap:8px;flex:0 0 auto}
+.dm-sut-mygtukai button{
+  font:inherit;font-weight:700;cursor:pointer;border-radius:999px;
+  padding:11px 20px;min-height:44px;border:1.5px solid rgba(255,255,255,.4);
+  background:transparent;color:#fff;-webkit-appearance:none;appearance:none;
+}
+.dm-sut-mygtukai button.dm-sut-taip{background:#fff;color:#0B0B12;border-color:#fff}
+@media (max-width:560px){
+  #dm-sutikimas{padding:14px}
+  .dm-sut-mygtukai{width:100%}
+  .dm-sut-mygtukai button{flex:1 1 0;padding:11px 12px}
+}
+</style>
+
+<div id="dm-sutikimas" role="dialog" aria-live="polite" aria-label="Slapukų sutikimas">
+  <p>Mes ir mūsų partneriai naudojame slapukus, kad rodytume jums skelbimus ir
+     matuotume jų veiksmingumą. Šiais tikslais jų nenaudosime, kol nesutiksite.
+     Daugiau — <a href="https://dronumokykla.lt/policies/privacy-policy"
+     target="_blank" rel="noopener">Privatumo politikoje</a>.</p>
+  <div class="dm-sut-mygtukai">
+    <button type="button" id="dm-sut-ne">Atmesti</button>
+    <button type="button" id="dm-sut-taip" class="dm-sut-taip">Priimti</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var PIKSELIS = "2126706211407809";
+  var PRODUKTAS = "{{PRODUKTAS}}";
+  var RAKTAS = "dm-sutikimas";
+  var GALIOJA = 1000 * 60 * 60 * 24 * 182;   /* 6 menesiai */
+
+  function skaityti() {
+    try {
+      var v = JSON.parse(window.localStorage.getItem(RAKTAS) || "null");
+      if (!v || !v.laikas || Date.now() - v.laikas > GALIOJA) return null;
+      return v.atsakymas;
+    } catch (e) { return null; }
+  }
+  function irasyti(atsakymas) {
+    try {
+      window.localStorage.setItem(RAKTAS,
+        JSON.stringify({ atsakymas: atsakymas, laikas: Date.now() }));
+    } catch (e) { /* privatus rezimas — tiesiog neisimenam */ }
+  }
+
+  /* --- Meta pikselis. Kraunamas tik gavus sutikima. --- */
+  var pakrautas = false;
+  function pikselis() {
+    if (pakrautas) return;
+    pakrautas = true;
+
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+    fbq("init", PIKSELIS);
+    fbq("track", "PageView");
+
+    /* ViewContent — zmogus ziuri konkretu produkta.
+       AddToCart, InitiateCheckout ir Purchase siuncia Shopify, todel
+       cia ju NESIUNCIAM: kitaip tas pats veiksmas butu suskaiciuotas du kartus. */
+    fbq("track", "ViewContent", {
+      content_type: "product",
+      content_ids: [PRODUKTAS],
+      content_name: document.title,
+      currency: "EUR"
+    });
+  }
+
+  /* --- Juosta --- */
+  var juosta = document.getElementById("dm-sutikimas");
+
+  function atsakyti(sutinka) {
+    irasyti(sutinka ? "taip" : "ne");
+    juosta.classList.remove("dm-rodom");
+    if (sutinka) pikselis();
+  }
+
+  document.getElementById("dm-sut-taip").addEventListener("click", function () { atsakyti(true); });
+  document.getElementById("dm-sut-ne").addEventListener("click", function () { atsakyti(false); });
+
+  var buves = skaityti();
+  if (buves === "taip") pikselis();
+  else if (buves !== "ne") juosta.classList.add("dm-rodom");
+})();
+</script>

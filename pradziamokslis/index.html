@@ -1,8 +1,46 @@
-<!-- =========================================================
-     DRONŲ MOKYKLA — FPV dronų valdymo pradžiamokslis
-     Landing page Shopify „Custom Liquid" sekcijai.
-     Viskas viename faile: HTML + <style>
-+<script>. Nėra Liquid žymų,nėra naršyklės saugyklos,nėra išorinių bibliotekų. NUOTRAUKAS ĮRAŠYK VIENOJE VIETOJE — objekte DM_NUOTRAUKOS(JS pradžioje,ieškok „KONFIGŪRACIJA 1"). Tuščias laukas rodo brūkšniuotą placeholder'į su paaiškinimu,todėl puslapis veikia ir dar neužpildytas. ========================================================= --><div id="dm"><style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');#dm{--dm-blue:#1919FF;--dm-blue-hover:#1414CC;--dm-ink:#000000;--dm-muted:#5B5B66;--dm-bg:#FFFFFF;--dm-card:#F6F6F6;--dm-line:#E4E4EA;--dm-sale:#CB321E;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--dm-ink);background:var(--dm-bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}#dm *{box-sizing:border-box}#dm p,#dm h1,#dm h2,#dm h3,#dm h4,#dm ul,#dm ol,#dm li,#dm figure,#dm blockquote{margin:0;padding:0}#dm ul,#dm ol{list-style:none}#dm img{display:block;max-width:100%;height:auto}#dm a{color:inherit}#dm .dm-h1{font-size:clamp(2.1rem,5.6vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em}#dm .dm-h2{font-size:clamp(1.6rem,3.6vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}#dm .dm-h3{font-size:1.125rem;font-weight:700;line-height:1.35;letter-spacing:-0.01em}#dm .dm-lead{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--dm-muted);line-height:1.55}#dm .dm-muted{color:var(--dm-muted)}#dm .dm-small{font-size:0.9375rem;line-height:1.55}#dm .dm-num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}#dm .dm-sec{padding:clamp(56px,8vw,104px)20px}#dm .dm-sec--tight{padding-top:clamp(32px,4vw,48px)}#dm .dm-wrap{max-width:1040px;margin:0 auto}#dm .dm-narrow{max-width:760px}#dm .dm-grey{background:var(--dm-card)}#dm .dm-black{background:var(--dm-ink);color:#fff}#dm .dm-black .dm-muted{color:#B4B4BE}#dm .dm-blue{background:var(--dm-blue);color:#fff}#dm .dm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--dm-blue);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:17px 30px;border-radius:14px;border:0;cursor:pointer;font-family:inherit;line-height:1;transition:background-color .15s ease}#dm .dm-btn:hover{background:var(--dm-blue-hover)}#dm .dm-btn--wide{width:100%;justify-content:center;padding:20px 24px;font-size:1.125rem}#dm .dm-arrow{font-weight:700}#dm a:focus-visible,#dm button:focus-visible,#dm summary:focus-visible{outline:3px solid var(--dm-blue);outline-offset:3px;border-radius:6px}#dm .dm-opt input:focus-visible+.dm-opt-body,#dm .dm-own input:focus-visible+.dm-own-body{outline:3px solid var(--dm-blue);outline-offset:3px}#dm .dm-blue a:focus-visible,#dm .dm-black a:focus-visible,#dm .dm-black summary:focus-visible{outline-color:#fff}#dm .dm-price{font-size:clamp(2rem,4.4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1}#dm .dm-was{color:var(--dm-sale);text-decoration:line-through;font-weight:500;font-size:1.0625rem}#dm .dm-off{color:var(--dm-sale);font-weight:700;font-size:0.875rem;border:1px solid var(--dm-sale);border-radius:999px;padding:4px 10px;line-height:1}#dm .dm-figure{border-radius:18px;overflow:hidden;background:var(--dm-card)}/* Vieta hero nuotraukai rezervuojama CSS'e, o ne JS'u. Kitaip lėtu ryšiu dėžutė būna 0 px aukščio, kol atkeliauja nuotrauka, ir visas turinys žemiau pašoka (Lighthouse CLS 0,316). */#dm .dm-hero-media .dm-figure{aspect-ratio:1/1}#dm .dm-figure img{width:100%;height:100%;object-fit:cover}#dm .dm-ph{border:2px dashed #C9C9D4;border-radius:18px;background:var(--dm-card);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:0.8125rem;color:var(--dm-muted);font-weight:600;line-height:1.5}#dm .dm-black .dm-ph,#dm .dm-blue .dm-ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Išmok pilotuoti FPV droną per dvi savaites — Dronų Mokykla</title>
+<meta name="description" content="Namuose, per simuliatorių. Komplekte valdymo pultas, simuliatoriaus licencija ir 14 valandų video mokymų. Nuo €69. 14 dienų pinigų grąžinimo garantija.">
+<link rel="canonical" href="https://shop.dronumokykla.lt/pradziamokslis/">
+
+<!-- Kaip atrodo dalinantis Facebook ir Messenger. og:image privalo būti JPEG. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="lt_LT">
+<meta property="og:site_name" content="Dronų Mokykla">
+<meta property="og:url" content="https://shop.dronumokykla.lt/pradziamokslis/">
+<meta property="og:title" content="Išmok pilotuoti FPV droną per dvi savaites">
+<meta property="og:description" content="Namuose, per simuliatorių. Drono pirkti nereikia — komplekte pultas, simuliatorius ir 14 val. mokymų. Nuo €69.">
+<meta property="og:image" content="https://shop.dronumokykla.lt/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/img/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
+<link rel="icon" href="/img/icon-512.png" sizes="512x512">
+<meta name="theme-color" content="#1919FF">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://dronumokykla.lt">
+<link rel="dns-prefetch" href="https://judge.me">
+<!-- Šriftai neblokuoja pirmojo piešimo: stilius užkraunamas asinchroniškai,
+     o pats šrifto failas prašomas iš anksto. Anksčiau šis vienas įrašas
+     blokavo piešimą ~1,4 s (Lighthouse). -->
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"
+      onload="this.rel='stylesheet'">
+<noscript><link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap"></noscript>
+
+<style>
+html,body{margin:0;padding:0;background:#fff;}
+#dm{--dm-blue:#1919FF;--dm-blue-hover:#1414CC;--dm-ink:#000000;--dm-muted:#5B5B66;--dm-bg:#FFFFFF;--dm-card:#F6F6F6;--dm-line:#E4E4EA;--dm-sale:#CB321E;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:var(--dm-ink);background:var(--dm-bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}#dm *{box-sizing:border-box}#dm p,#dm h1,#dm h2,#dm h3,#dm h4,#dm ul,#dm ol,#dm li,#dm figure,#dm blockquote{margin:0;padding:0}#dm ul,#dm ol{list-style:none}#dm img{display:block;max-width:100%;height:auto}#dm a{color:inherit}#dm .dm-h1{font-size:clamp(2.1rem,5.6vw,3.75rem);font-weight:800;line-height:1.04;letter-spacing:-0.035em}#dm .dm-h2{font-size:clamp(1.6rem,3.6vw,2.5rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}#dm .dm-h3{font-size:1.125rem;font-weight:700;line-height:1.35;letter-spacing:-0.01em}#dm .dm-lead{font-size:clamp(1.05rem,1.7vw,1.25rem);color:var(--dm-muted);line-height:1.55}#dm .dm-muted{color:var(--dm-muted)}#dm .dm-small{font-size:0.9375rem;line-height:1.55}#dm .dm-num{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}#dm .dm-sec{padding:clamp(56px,8vw,104px)20px}#dm .dm-sec--tight{padding-top:clamp(32px,4vw,48px)}#dm .dm-wrap{max-width:1040px;margin:0 auto}#dm .dm-narrow{max-width:760px}#dm .dm-grey{background:var(--dm-card)}#dm .dm-black{background:var(--dm-ink);color:#fff}#dm .dm-black .dm-muted{color:#B4B4BE}#dm .dm-blue{background:var(--dm-blue);color:#fff}#dm .dm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--dm-blue);color:#fff;text-decoration:none;font-weight:700;font-size:1.0625rem;padding:17px 30px;border-radius:14px;border:0;cursor:pointer;font-family:inherit;line-height:1;transition:background-color .15s ease}#dm .dm-btn:hover{background:var(--dm-blue-hover)}#dm .dm-btn--wide{width:100%;justify-content:center;padding:20px 24px;font-size:1.125rem}#dm .dm-arrow{font-weight:700}#dm a:focus-visible,#dm button:focus-visible,#dm summary:focus-visible{outline:3px solid var(--dm-blue);outline-offset:3px;border-radius:6px}#dm .dm-opt input:focus-visible+.dm-opt-body,#dm .dm-own input:focus-visible+.dm-own-body{outline:3px solid var(--dm-blue);outline-offset:3px}#dm .dm-blue a:focus-visible,#dm .dm-black a:focus-visible,#dm .dm-black summary:focus-visible{outline-color:#fff}#dm .dm-price{font-size:clamp(2rem,4.4vw,2.75rem);font-weight:800;letter-spacing:-0.03em;line-height:1}#dm .dm-was{color:var(--dm-sale);text-decoration:line-through;font-weight:500;font-size:1.0625rem}#dm .dm-off{color:var(--dm-sale);font-weight:700;font-size:0.875rem;border:1px solid var(--dm-sale);border-radius:999px;padding:4px 10px;line-height:1}#dm .dm-figure{border-radius:18px;overflow:hidden;background:var(--dm-card)}/* Vieta hero nuotraukai rezervuojama CSS'e, o ne JS'u. Kitaip lėtu ryšiu dėžutė būna 0 px aukščio, kol atkeliauja nuotrauka, ir visas turinys žemiau pašoka (Lighthouse CLS 0,316). */#dm .dm-hero-media .dm-figure{aspect-ratio:1/1}#dm .dm-figure img{width:100%;height:100%;object-fit:cover}#dm .dm-ph{border:2px dashed #C9C9D4;border-radius:18px;background:var(--dm-card);min-height:200px;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font-size:0.8125rem;color:var(--dm-muted);font-weight:600;line-height:1.5}#dm .dm-black .dm-ph,#dm .dm-blue .dm-ph{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.4);color:#fff}
 /* Mygtukas ir pilkas tekstas ant melyno fono - be sito butu melyna ant melynos
    (ta pati klaida kaip anksciau su garantijos mygtuku), o pilkas dm-muted
    tekstas beveik nesimatytu. */
@@ -677,6 +715,16 @@
 }
 </style>
 
+<!-- ANALITIKA — įklijuok savo kodus čia:
+     1) Google Analytics 4 (Admin -> Data streams -> Measurement ID G-XXXX)
+     2) Meta Pixel (Events Manager -> Data sources)
+     Be jų nematysi, ar landingas konvertuoja geriau nei parduotuvė. -->
+
+</head>
+<body>
+
+<div id="dm">
+
 
 <!-- ============ ANTRAŠTĖ ============ -->
 <header class="dm-top">
@@ -856,7 +904,7 @@
         <span class="dm-was dm-num" id="dm-was">€79,00</span>
         <span class="dm-off dm-num" id="dm-off">−13%</span>
       </div>
-      <a class="dm-btn dm-btn--wide" id="dm-cta" href="/cart/56748685164889:1">Pereiti prie apmokėjimo</a>
+      <a class="dm-btn dm-btn--wide" id="dm-cta" href="https://dronumokykla.lt/cart/56748685164889:1">Pereiti prie apmokėjimo</a>
     </div>
 
     <p class="dm-ship">
@@ -1241,7 +1289,7 @@
       <p class="dm-muted">
         Jeigu kursas nepatiks arba neatitiks lūkesčių — susisiek su mumis ir užpildyk
         grąžinimo formą.
-        <a href="/policies/refund-policy">Daugiau sužinosi čia.</a>
+        <a href="https://dronumokykla.lt/policies/refund-policy">Daugiau sužinosi čia.</a>
       </p>
       <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
     </div>
@@ -1258,7 +1306,7 @@
     </p>
 
     <div class="dm-cards">
-      <a class="dm-card" href="/products/fpv-drono-rinkinys" data-dm-handle="fpv-drono-rinkinys">
+      <a class="dm-card" href="https://dronumokykla.lt/products/fpv-drono-rinkinys" data-dm-handle="fpv-drono-rinkinys">
         <span class="dm-card-img">
           <img src="https://dronumokykla.lt/cdn/shop/files/composited-grid.png?v=1785236270&width=600" alt="" width="600" height="600" loading="lazy">
         </span>
@@ -1267,7 +1315,7 @@
         <span class="dm-card-go">Žiūrėti</span>
       </a>
 
-      <a class="dm-card" href="/products/betafpv-air65-whoop-fpv-dronas" data-dm-handle="betafpv-air65-whoop-fpv-dronas">
+      <a class="dm-card" href="https://dronumokykla.lt/products/betafpv-air65-whoop-fpv-dronas" data-dm-handle="betafpv-air65-whoop-fpv-dronas">
         <span class="dm-card-img">
           <img src="https://dronumokykla.lt/cdn/shop/files/Air65_II_Brushless_Whoop_Quadcopter_Freestyle_1080x-Photoroom.png?v=1782385191&width=600" alt="" width="600" height="600" loading="lazy">
         </span>
@@ -1276,7 +1324,7 @@
         <span class="dm-card-go">Žiūrėti</span>
       </a>
 
-      <a class="dm-card" href="/products/emax-transporter-fpv-akiniai" data-dm-handle="emax-transporter-fpv-akiniai">
+      <a class="dm-card" href="https://dronumokykla.lt/products/emax-transporter-fpv-akiniai" data-dm-handle="emax-transporter-fpv-akiniai">
         <span class="dm-card-img">
           <img src="https://dronumokykla.lt/cdn/shop/files/photo-0865-Photoroom_389d8999-13a7-4d4e-bfae-03c0408c8622.png?v=1785234582&width=600" alt="" width="600" height="600" loading="lazy">
         </span>
@@ -1410,11 +1458,36 @@
     </div>
   </div>
 </footer>
-
+</div>
 
 <script>
+
 (function dmInit() {
   "use strict";
+
+  /* =========================================================
+     KONFIGURACIJA 0 - PARDUOTUVES ADRESAS
+     =========================================================
+     Sis puslapis gyvena atskirai nuo Shopify, todel nuorodos i
+     parduotuve turi buti pilnos. Keisi tik jei keisis domenas. */
+  var DM_PARDUOTUVE = "https://dronumokykla.lt";
+
+  /* UTM zymos is reklamos perkeliamos i krepselio nuoroda, kad
+     Shopify matytu, is kurios kampanijos atejo uzsakymas. */
+  function dmUtm() {
+    var q = window.location.search;
+    if (!q || q.length < 2) return "";
+    var leisti = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid"];
+    var r = [];
+    q.replace(/^[?]/, "").split("&").forEach(function (p) {
+      if (leisti.indexOf(p.split("=")[0]) !== -1) r.push(p);
+    });
+    return r.length ? "?" + r.join("&") : "";
+  }
+
+  function dmKrepselis(id) {
+    return DM_PARDUOTUVE + "/cart/" + id + ":1" + dmUtm();
+  }
 
   /* =========================================================
      KONFIGŪRACIJA 1 — NUOTRAUKOS
@@ -1430,62 +1503,62 @@
   */
   var DM_NUOTRAUKOS = {
     // Hero, dešinėje pusėje. Numatytoji — jau esantis kurso komplekto vaizdas.
-    hero: "https://dronumokykla.lt/cdn/shop/files/pocket_df2d9885-b492-475e-967a-ae5c7b3641fb.png?v=1764994452&width=1200",
+    hero: "/img/hero@2x.webp",
 
     // Įrodymų juosta po hero — keturios kvadratinės nuotraukos.
     // DĖMESIO: dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
     // Saugiausia rinktis kadrus be atpažįstamų pašalinių veidų arba
     // tuos, kuriuose žmonės sutiko būti rodomi reklamoje.
-    irodymai1: "",
-    irodymai2: "",
-    irodymai3: "",
-    irodymai4: "",
+    irodymai1: "/img/irodymai-mokymai.webp",
+    irodymai2: "/img/irodymai-kariuomene.webp",
+    irodymai3: "/img/irodymai-lenktynes.webp",
+    irodymai4: "/img/irodymai-servisas.webp",
 
     // „Kas įeina" kortelės.
-    medziaga: "",       // mokymų medžiagos vaizdas (buvęs one-boxy.png)
-    simuliatorius: "",  // simuliatoriaus vaizdas (buvęs box-simulkes.jpg)
+    medziaga: "/img/medziaga.webp",       // mokymų medžiagos vaizdas (buvęs one-boxy.png)
+    simuliatorius: "/img/simuliatorius.webp",  // simuliatoriaus vaizdas (buvęs box-simulkes.jpg)
 
     // Plati nuotrauka su antrašte „Tam nereikia net drono...".
     // Paruoštas kadras: nuotraukos/kadrai/adin.jpg
 
     // Sekcija „Ką rasi viduje". Paruošti kadrai iš tavo pačių video —
     // aplankas nuotraukos/kadrai/. Statinis kadras vietoj 128 MB video.
-    videoPosteris: "",       // kadras-ka-rasi-viduje.jpg
-    pagrindai: "",           // kadras-pagrindai.jpg
-    valdymoIranga: "",       // kadras-valdymo-iranga.jpg
-    pilotavimoPratimai: "",  // kadras-pilotavimo-pratimai.jpg
-    rezultatas: "",          // kadras-rezultatas.jpg
+    videoPosteris: "/img/video-plakatas.webp",       // kadras-ka-rasi-viduje.jpg
+    pagrindai: "/img/pagrindai.webp",           // kadras-pagrindai.jpg
+    valdymoIranga: "/img/valdymo-iranga.webp",       // kadras-valdymo-iranga.jpg
+    pilotavimoPratimai: "/img/pilotavimo-pratimai.webp",  // kadras-pilotavimo-pratimai.jpg
+    rezultatas: "/img/rezultatas.webp",          // kadras-rezultatas.jpg
 
     // Sekcija „Kodėl šis įgūdis tapo svarbus". Sava nuotrauka (dsc09805) —
     // svetimos ziniasklaidos kadrai (WSJ, AP) is cia pasalinti sąmoningai.
-    kodelSvarbu: "",
+    kodelSvarbu: "/img/kodel-svarbu.webp",
 
     // Faktu korteles sekcijoje „Kodel sis igudis tapo svarbus".
     // Sekcija „Ismokti pilotuoti FPV dronus galime visi".
     // image00017 — zmogus su akiniais davė sutikimą (patvirtinta 2026-09-05).
-    visiGali: "",
+    visiGali: "/img/visi-gali.webp",
 
 
     // Pultų persijungimas komplekto kortelėje (3 kadrai iš buvusio GIF'o)
-    pultas1: "",
-    pultas2: "",
-    pultas3: "",
+    pultas1: "/img/pultas-1.webp",
+    pultas2: "/img/pultas-2.webp",
+    pultas3: "/img/pultas-3.webp",
 
     // Bendruomenės sekcija
-    bendruomene1: "",
-    bendruomene2: "",
-    bendruomene3: "",
+    bendruomene1: "/img/bendruomene1.webp",
+    bendruomene2: "/img/bendruomene2.webp",
+    bendruomene3: "/img/bendruomene3.webp",
 
     // Įkūrėjų istorija
-    istorijaKariuomene: "", // asas-3 — mokymai Lietuvos kariuomenei
-    istorija: "",       // img1919 — mokymai gyvai
-    karolisFaustas: "", // theboys — Karolis ir Faustas
+    istorijaKariuomene: "/img/istorija-kariuomene.webp", // asas-3 — mokymai Lietuvos kariuomenei
+    istorija: "/img/istorija.webp",       // img1919 — mokymai gyvai
+    karolisFaustas: "/img/karolis-faustas.webp", // theboys — Karolis ir Faustas
 
     // Logotipas antraštėje ir poraštėje (baltas, skaidriu fonu).
-    logo: "",
+    logo: "/img/logo.webp",
 
     // Instruktorių nuotrauka (buvusi thefounders.png).
-    instruktoriai: ""
+    instruktoriai: "/img/instruktoriai.webp"
   };
 
   /* Kas rodoma, kol nuotrauka neįkelta */
@@ -1517,12 +1590,12 @@
   /* Antras, didesnis variantas toms nuotraukoms, kurios rodomos dideliu
      langeliu. Telefonas ima maza faila, platus ekranas - didesni.
      Tuscia = naudojamas tik vienas failas. */
-  var DM_NUOTRAUKOS_2X = {};
+  var DM_NUOTRAUKOS_2X = { irodymai1: "/img/irodymai-mokymai@2x.webp", irodymai2: "/img/irodymai-kariuomene@2x.webp", irodymai3: "/img/irodymai-lenktynes@2x.webp", irodymai4: "/img/irodymai-servisas@2x.webp" };
 
   /* Plačios turinio nuotraukos: telefonui atiduodam mažesnį failą.
      Reikšmė: { sm: kelias, smW: plotis, lgW: plotis, sizes: ... }
      Tuščia = naudojamas tik vienas failas. build.py užpildo. */
-  var DM_PLACIOS = {};
+  var DM_PLACIOS = { hero: { sm: "/img/hero.webp", smW: 760, lgW: 1520, sizes: "(max-width:900px) 89vw, 488px" }, istorijaKariuomene: { sm: "/img/istorija-kariuomene@sm.webp", smW: 760, lgW: 1200, sizes: "(max-width:700px) 92vw, 620px" }, kodelSvarbu: { sm: "/img/kodel-svarbu@sm.webp", smW: 760, lgW: 1400, sizes: "(max-width:1080px) 92vw, 1040px" }, visiGali: { sm: "/img/visi-gali@sm.webp", smW: 760, lgW: 1320, sizes: "(max-width:800px) 92vw, 760px" } };
 
   var DM_ALT = {
     pultas1:"LiteRadio 2 SE", pultas2:"RadioMaster Pocket", pultas3:"RadioMaster TX15",
@@ -2182,7 +2255,7 @@
   /* --- Kaina, nuolaida ir krepšelio nuoroda pagal pasirinkimą --- */
   function atnaujinti(v) {
     if (!v) return;
-    var href = "/cart/" + v.id + ":1";
+    var href = dmKrepselis(v.id);
     var turi = !!(v.senaKaina && v.senaKaina > v.kaina);
 
     elPrice.textContent = eur(v.kaina);
@@ -2227,7 +2300,7 @@
      Užkrovus puslapį paimame /products/<handle>.js ir perrašome kainas bei
      variantų ID. Todėl pakeitus kainą Shopify nereikia liesti šio kodo.
      Nepavykus (nėra ryšio, pakeistas handle) lieka aukščiau įrašytos vertės. */
-  fetch("/products/" + DM_PRODUKTO_HANDLE + ".js", { headers: { Accept: "application/json" } })
+  fetch(DM_PARDUOTUVE + "/products/" + DM_PRODUKTO_HANDLE + ".js", { headers: { Accept: "application/json" } })
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (p) {
       var pagalId = {}, pagalPav = {};
@@ -2259,7 +2332,7 @@
      Kiekvienai kortelei paimam jos produkto JSON ir perrašom kainą.
      Nepavykus lieka HTML įrašyta kaina. */
   root.querySelectorAll(".dm-card[data-dm-handle]").forEach(function (card) {
-    fetch("/products/" + card.getAttribute("data-dm-handle") + ".js",
+    fetch(DM_PARDUOTUVE + "/products/" + card.getAttribute("data-dm-handle") + ".js",
           { headers: { Accept: "application/json" } })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (p) {
@@ -2649,30 +2722,133 @@
     }
   });
 })();
+
 </script>
 
+<!-- ===================== ANALITIKA + SUTIKIMAS =====================
+     Bendras abiem landingams. Keitimus daryk TIK cia — build.py ir
+     build_whoop.py ji iterpia i abu puslapius.
+
+     Kaip veikia:
+       - Meta pikselis NEKRAUNAMAS, kol zmogus nepaspaude "Sutinku".
+         ES be sutikimo sekti negalima, o Meta reikalauja sutikimo signalo.
+         Tekstas ir mygtukai suderinti su Shopify juosta dronumokykla.lt,
+         kad per abu puslapius butu ta pati kalba ir ta pati politika.
+       - Shopify sutikimas (_tracking_consent) cia NESKAITOMAS: neaisku, ar
+         jis matomas is shop. padomenio, o remtis nepatikrintu spejimu butu
+         blogiau nei paklausti dar karta.
+       - Pasirinkimas issaugomas naršyklėje 6 menesiams (localStorage).
+       - Juosta yra position:fixed, todel neistumia turinio ir nekelia CLS.
+     ================================================================= -->
+
+<style>
+#dm-sutikimas{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;
+  display:none;gap:14px;align-items:center;flex-wrap:wrap;
+  max-width:760px;margin:0 auto;padding:16px 18px;
+  background:#0B0B12;color:#fff;border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+  font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+  font-size:.875rem;line-height:1.5;
+}
+#dm-sutikimas.dm-rodom{display:flex}
+#dm-sutikimas p{margin:0;flex:1 1 300px}
+#dm-sutikimas a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.dm-sut-mygtukai{display:flex;gap:8px;flex:0 0 auto}
+.dm-sut-mygtukai button{
+  font:inherit;font-weight:700;cursor:pointer;border-radius:999px;
+  padding:11px 20px;min-height:44px;border:1.5px solid rgba(255,255,255,.4);
+  background:transparent;color:#fff;-webkit-appearance:none;appearance:none;
+}
+.dm-sut-mygtukai button.dm-sut-taip{background:#fff;color:#0B0B12;border-color:#fff}
+@media (max-width:560px){
+  #dm-sutikimas{padding:14px}
+  .dm-sut-mygtukai{width:100%}
+  .dm-sut-mygtukai button{flex:1 1 0;padding:11px 12px}
+}
+</style>
+
+<div id="dm-sutikimas" role="dialog" aria-live="polite" aria-label="Slapukų sutikimas">
+  <p>Mes ir mūsų partneriai naudojame slapukus, kad rodytume jums skelbimus ir
+     matuotume jų veiksmingumą. Šiais tikslais jų nenaudosime, kol nesutiksite.
+     Daugiau — <a href="https://dronumokykla.lt/policies/privacy-policy"
+     target="_blank" rel="noopener">Privatumo politikoje</a>.</p>
+  <div class="dm-sut-mygtukai">
+    <button type="button" id="dm-sut-ne">Atmesti</button>
+    <button type="button" id="dm-sut-taip" class="dm-sut-taip">Priimti</button>
+  </div>
 </div>
-<!-- /#dm -->
 
-<!-- =========================================================
-     KĄ PAKEISTI PRIEŠ PALEIDŽIANT
+<script>
+(function () {
+  "use strict";
 
-     1. DM_NUOTRAUKOS — įklijuok adresus iš Shopify Files.
-        Paruošti statiniai kadrai: nuotraukos/kadrai/.
-        Į įrodymų juostą dėk tik tas nuotraukas, kurioms turi žmonių sutikimą.
-     2. „Kas įeina" — video pamokų vertė vietoj [ĮRAŠYK VERTĘ] ir suma vietoj [SUMA].
-     3. DUK, penktas klausimas — tikri prieigos ir pristatymo terminai.
+  var PIKSELIS = "2126706211407809";
+  var PRODUKTAS = "fpv";
+  var RAKTAS = "dm-sutikimas";
+  var GALIOJA = 1000 * 60 * 60 * 24 * 182;   /* 6 menesiai */
 
-     KAS ATSINAUJINA SAVAIME (nereikia liesti kodo):
-     - visų keturių kurso variantų kainos, senos kainos, nuolaidų procentai;
-     - variantų ID ir krepšelio nuorodos;
-     - hero kaina „nuo";
-     - trijų susijusių produktų kainos;
-     - atsiliepimai, jų skaičius ir vidutinis įvertinimas (Judge.me).
-     Nepavykus prisijungti lieka kode įrašytos vertės — puslapis veikia visada.
+  function skaityti() {
+    try {
+      var v = JSON.parse(window.localStorage.getItem(RAKTAS) || "null");
+      if (!v || !v.laikas || Date.now() - v.laikas > GALIOJA) return null;
+      return v.atsakymas;
+    } catch (e) { return null; }
+  }
+  function irasyti(atsakymas) {
+    try {
+      window.localStorage.setItem(RAKTAS,
+        JSON.stringify({ atsakymas: atsakymas, laikas: Date.now() }));
+    } catch (e) { /* privatus rezimas — tiesiog neisimenam */ }
+  }
 
-     KAS LIEKA STATIŠKA (keisti ranka, nes tų skaičių niekur nėra):
-     - „Kas įeina" vertės: €20 simuliatorius, €85 bendruomenė, €75 konsultacija;
-     - skaičiai 300+, 500+, 600+;
-     - nemokamo pristatymo riba €99.
-     ========================================================= -->
+  /* --- Meta pikselis. Kraunamas tik gavus sutikima. --- */
+  var pakrautas = false;
+  function pikselis() {
+    if (pakrautas) return;
+    pakrautas = true;
+
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+    fbq("init", PIKSELIS);
+    fbq("track", "PageView");
+
+    /* ViewContent — zmogus ziuri konkretu produkta.
+       AddToCart, InitiateCheckout ir Purchase siuncia Shopify, todel
+       cia ju NESIUNCIAM: kitaip tas pats veiksmas butu suskaiciuotas du kartus. */
+    fbq("track", "ViewContent", {
+      content_type: "product",
+      content_ids: [PRODUKTAS],
+      content_name: document.title,
+      currency: "EUR"
+    });
+  }
+
+  /* --- Juosta --- */
+  var juosta = document.getElementById("dm-sutikimas");
+
+  function atsakyti(sutinka) {
+    irasyti(sutinka ? "taip" : "ne");
+    juosta.classList.remove("dm-rodom");
+    if (sutinka) pikselis();
+  }
+
+  document.getElementById("dm-sut-taip").addEventListener("click", function () { atsakyti(true); });
+  document.getElementById("dm-sut-ne").addEventListener("click", function () { atsakyti(false); });
+
+  var buves = skaityti();
+  if (buves === "taip") pikselis();
+  else if (buves !== "ne") juosta.classList.add("dm-rodom");
+})();
+</script>
+
+</body>
+</html>

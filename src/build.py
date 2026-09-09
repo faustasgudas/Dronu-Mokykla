@@ -18,7 +18,8 @@ from _keliai import saltinis, isvestis
 
 SALTINIS = saltinis("dronumokykla-pradziamokslis.html")
 PARDUOTUVE = "https://dronumokykla.lt"
-DOMENAS = "https://shop.dronumokykla.lt"   # PAKEISK, jei landingo domenas kitas
+SAKNIS  = "https://shop.dronumokykla.lt"           # svetaines saknis (nuotraukoms)
+DOMENAS = SAKNIS + "/pradziamokslis"               # sio puslapio adresas
 
 # Nuotraukos atskirai versijai - vietiniai failai salia index.html
 VIETINES = {
@@ -148,6 +149,11 @@ def atskiras(css, body, js):
                     'fetch(DM_PARDUOTUVE + "/products/" + DM_PRODUKTO_HANDLE + ".js"')
     js = js.replace('fetch("/products/" + card.getAttribute("data-dm-handle") + ".js",',
                     'fetch(DM_PARDUOTUVE + "/products/" + card.getAttribute("data-dm-handle") + ".js",')
+    def zeme(v):
+        """Kelias nuo svetaines saknies. Puslapis gyvena /pradziamokslis/,
+        todel santykinis "img/x" rodytu i /pradziamokslis/img/x."""
+        return "/" + v if v.startswith("img/") else v
+
     # Kelia irasom TIK jei failas tikrai yra. Kitaip liktu <img> i neesanti
     # faila (sulauzyta nuotrauka); tuscias laukas vietoj to parodo bruksniuota
     # langeli su paaiskinimu, ir puslapi galima kelti dar nebaigta.
@@ -156,14 +162,14 @@ def atskiras(css, body, js):
         if v.startswith("img/") and not os.path.exists(isvestis(v)):
             truksta.append((k, v))
             continue
-        js = re.sub(r'(\b' + k + r':\s*)"[^"]*"', lambda m, v=v: m.group(1) + '"' + v + '"', js, count=1)
+        js = re.sub(r'(\b' + k + r':\s*)"[^"]*"', lambda m, v=v: m.group(1) + '"' + zeme(v) + '"', js, count=1)
     for k, v in truksta:
         print("  TRUKSTA %-12s -> %s (rodomas placeholder'is)" % (k, v))
 
     turimi = dict((k, v) for k, v in VIETINES_2X.items()
                   if os.path.exists(isvestis(v)))
     if turimi:
-        eil = ", ".join('%s: "%s"' % (k, v) for k, v in sorted(turimi.items()))
+        eil = ", ".join('%s: "%s"' % (k, zeme(v)) for k, v in sorted(turimi.items()))
         js = js.replace("var DM_NUOTRAUKOS_2X = {};",
                         "var DM_NUOTRAUKOS_2X = { " + eil + " };", 1)
 
@@ -171,7 +177,7 @@ def atskiras(css, body, js):
     for k, (sm, smw, lgw, sizes) in VIETINES_PLACIOS.items():
         if os.path.exists(isvestis(sm)):
             placios[k] = '%s: { sm: "%s", smW: %d, lgW: %d, sizes: "%s" }' % (
-                k, sm, smw, lgw, sizes)
+                k, zeme(sm), smw, lgw, sizes)
     if placios:
         js = js.replace("var DM_PLACIOS = {};",
                         "var DM_PLACIOS = { " + ", ".join(
@@ -182,10 +188,15 @@ def atskiras(css, body, js):
     body = body.replace('href="/cart/', 'href="%s/cart/' % PARDUOTUVE)
 
     galva = io.open(saltinis("_head.html"), encoding="utf-8").read().replace("{{DOMENAS}}", DOMENAS)
+    galva = galva.replace("{{SAKNIS}}", SAKNIS)
     galva = galva.replace("/*{{CSS}}*/", css)
 
-    out = galva + body + "\n</div>\n\n<script>\n" + js + "\n</script>\n\n</body>\n</html>\n"
-    io.open(isvestis("index.html"), "w", encoding="utf-8").write(out)
+    analitika = io.open(saltinis("_analitika.html"), encoding="utf-8").read()
+    analitika = analitika.replace("{{PRODUKTAS}}", "fpv")
+    out = (galva + body + "\n</div>\n\n<script>\n" + js + "\n</script>\n\n"
+           + analitika + "\n</body>\n</html>\n")
+    os.makedirs(isvestis("pradziamokslis"), exist_ok=True)
+    io.open(isvestis("pradziamokslis", "index.html"), "w", encoding="utf-8").write(out)
     return out
 
 
@@ -203,4 +214,4 @@ if __name__ == "__main__":
             zyma = "OK" if b <= 50000 else "PER DIDELIS"
             print("%-20s %6d B  (%s)" % (vardas, b, zyma))
     idx = atskiras(css, body, js)
-    print("%-20s %6d B" % ("index.html", len(idx.encode("utf-8"))))
+    print("%-20s %6d B" % ("pradziamokslis/index.html", len(idx.encode("utf-8"))))

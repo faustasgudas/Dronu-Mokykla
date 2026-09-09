@@ -20,8 +20,8 @@ from _keliai import saltinis, isvestis
 SALTINIS = saltinis("dronumokykla-whoop.html")
 GALVA = saltinis("_head_whoop.html")
 PARDUOTUVE = "https://dronumokykla.lt"
-DOMENAS = "https://shop.dronumokykla.lt/whoop"   # PAKEISK, jei adresas kitas
-ISVESTIS = isvestis("whoop", "index.html")
+DOMENAS = "https://shop.dronumokykla.lt/rinkinys"   # PAKEISK, jei adresas kitas
+ISVESTIS = isvestis("rinkinys", "index.html")
 
 
 def dalys():
@@ -58,11 +58,14 @@ def surinkti():
     galva = galva.replace("/*{{CSS}}*/", css)
 
     os.makedirs(os.path.dirname(ISVESTIS), exist_ok=True)
-    out = galva + body + "\n</div>\n\n<script>\n" + js + "\n</script>\n\n</body>\n</html>\n"
+    analitika = io.open(saltinis("_analitika.html"), encoding="utf-8").read()
+    analitika = analitika.replace("{{PRODUKTAS}}", "fpv-drono-rinkinys")
+    out = (galva + body + "\n</div>\n\n<script>\n" + js + "\n</script>\n\n"
+           + analitika + "\n</body>\n</html>\n")
     io.open(ISVESTIS, "w", encoding="utf-8").write(out)
     return out
 
 
 if __name__ == "__main__":
     out = surinkti()
-    print("%-28s %6d B" % ("whoop/index.html", len(out.encode("utf-8"))))
+    print("%-28s %6d B" % ("rinkinys/index.html", len(out.encode("utf-8"))))
