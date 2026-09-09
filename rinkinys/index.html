@@ -231,10 +231,13 @@ button.smulki{width:100%;text-align:left}
      ir baterijos. Dronas virsuje ir nesukamas, akiniai tiesiai po juo —
      kad ju nebeuzstotu. Akiniams didesnis z-index del tikrumo. */
   #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75{display:none}
-  #kruva .p-air65  {--x:0;--y:-92;--sukti:0}
-  #kruva .p-akiniai{--x:0;--y:58;z-index:2}
-  #kruva .p-lite   {--x:-178;--y:28}
-  #kruva .p-bat    {--x:176;--y:34}
+  /* Dronas ir akiniai — greta, ne vienas ant kito. Vertikaliai sudejus
+     akinius pakelti reiskia stipriau uzlipti ant drono; greta abu telpa
+     ir abu matomi pilnai. */
+  #kruva .p-air65  {--w:190px;--x:-98;--y:-58;--sukti:0}
+  #kruva .p-akiniai{--w:212px;--x:92;--y:-30}
+  #kruva .p-lite   {--x:-168;--y:66}
+  #kruva .p-bat    {--x:168;--y:72}
   .hero{height:520px;padding:0 16px}
   .hero-in{padding-top:36px}
   .chip{padding:7px 14px;font-size:.75rem}
