@@ -41,7 +41,11 @@
      Aukstyn kilti daugiau, nei reikia produktams uzdengti, nera prasmes —
      virs ju lieka tik tuscias baltas plotas. */
   --briauna-zemai:.84;
-  --briauna-aukstai:.50;
+  /* Kompiuteryje skritulys NEJUDA (aukstai = zemai) — vietoj to pati kruva
+     nusileidzia uz jo per --nusileidimas. Telefone atvirksciai: skritulys
+     kyla, o kruva nesileidzia. */
+  --briauna-aukstai:.84;
+  --nusileidimas:270px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 /* Paspaudus „Rinktis komplekta" nuslenkam sklandziai, ne soktelim.
@@ -222,15 +226,15 @@ button.smulki{width:100%;text-align:left}
      --krastas mažesnis, kad siauresnėje krūvoje pasukimai liktų ryškūs. */
   /* Telefone hero zemesnis, o skritulys sustoja vos uzdenges produktus
      (.62 vietoj .40) — kitaip virs ju lieka ~100 px tuscio balto ploto. */
-  :root{--kruvos-mastelis:.68;--krastas:230;--briauna-aukstai:.62}
-  #kruva .p-tx15,#kruva .p-krov{display:none}
-  /* Telefone dronai nesukami — jie ir taip yra pačiame viršuje ir
-     pasukti atrodo neramiai siaurame ekrane. */
-  #kruva .p-air75  {--x:-88;--y:-52;--sukti:0}
-  #kruva .p-air65  {--x:88;--y:-58;--sukti:0}
-  #kruva .p-akiniai{--x:0;--y:72}
-  #kruva .p-lite   {--x:-186;--y:34}
-  #kruva .p-bat    {--x:180;--y:40}
+  :root{--kruvos-mastelis:.68;--krastas:230;--briauna-aukstai:.62;--nusileidimas:0px}
+  /* Telefone rodomi tik keturi daiktai: vienas dronas, pultas, akiniai
+     ir baterijos. Dronas virsuje ir nesukamas, akiniai tiesiai po juo —
+     kad ju nebeuzstotu. Akiniams didesnis z-index del tikrumo. */
+  #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75{display:none}
+  #kruva .p-air65  {--x:0;--y:-92;--sukti:0}
+  #kruva .p-akiniai{--x:0;--y:58;z-index:2}
+  #kruva .p-lite   {--x:-178;--y:28}
+  #kruva .p-bat    {--x:176;--y:34}
   .hero{height:520px;padding:0 16px}
   .hero-in{padding-top:36px}
   .chip{padding:7px 14px;font-size:.75rem}
@@ -443,11 +447,14 @@ button.smulki{width:100%;text-align:left}
 
     var liko = 1 - dabar;                 /* 1 = išsiskleidę, 0 = viename taške */
     var mastelis = 1 - dabar * 0.4;       /* suvažiuodami truputį susitraukia */
+    var nusil = parseFloat(getComputedStyle(saknis)
+                  .getPropertyValue("--nusileidimas")) || 0;
     for (var i = 0; i < prekes.length; i++) {
       var p = prekes[i];
       p.el.style.transform =
         "translate(-50%,-50%) translate(" + (p.x * liko).toFixed(1) + "px," +
-        (p.y * liko).toFixed(1) + "px) rotate(" + (p.kampas * liko).toFixed(2) + "deg) scale(" +
+        (p.y * liko + dabar * nusil).toFixed(1) + "px) rotate(" +
+        (p.kampas * liko).toFixed(2) + "deg) scale(" +
         mastelis.toFixed(3) + ")";
     }
   }
