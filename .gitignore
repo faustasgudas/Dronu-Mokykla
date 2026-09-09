@@ -11,8 +11,8 @@ nuotraukos/
 
 # Laikini darbo failai
 _*.py
+_*.html
 _whoop_*.txt
-_whoop_*.html
 check.js
 
 # Windows / redaktoriai
