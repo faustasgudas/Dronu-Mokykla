@@ -37,6 +37,11 @@
   --briauna:560px;
   --kruvos-mastelis:1;
   --krastas:330;   /* koks --x atitinka 45 laipsniu pasukima */
+  /* Kiek skritulio briauna keliauja: nuo (produktai matomi) iki (uzdengti).
+     Aukstyn kilti daugiau, nei reikia produktams uzdengti, nera prasmes —
+     virs ju lieka tik tuscias baltas plotas. */
+  --briauna-zemai:.84;
+  --briauna-aukstai:.50;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 /* Paspaudus „Rinktis komplekta" nuslenkam sklandziai, ne soktelim.
@@ -215,7 +220,9 @@ button.smulki{width:100%;text-align:left}
      Todėl čia visai kita sudėtis: du kraštiniai nerodomi (jie vis tiek
      surašyti „Kas dėžėje"), o likę penki sudėlioti dviem eilėmis.
      --krastas mažesnis, kad siauresnėje krūvoje pasukimai liktų ryškūs. */
-  :root{--kruvos-mastelis:.68;--krastas:230}
+  /* Telefone hero zemesnis, o skritulys sustoja vos uzdenges produktus
+     (.62 vietoj .40) — kitaip virs ju lieka ~100 px tuscio balto ploto. */
+  :root{--kruvos-mastelis:.68;--krastas:230;--briauna-aukstai:.62}
   #kruva .p-tx15,#kruva .p-krov{display:none}
   /* Telefone dronai nesukami — jie ir taip yra pačiame viršuje ir
      pasukti atrodo neramiai siaurame ekrane. */
@@ -224,13 +231,13 @@ button.smulki{width:100%;text-align:left}
   #kruva .p-akiniai{--x:0;--y:72}
   #kruva .p-lite   {--x:-186;--y:34}
   #kruva .p-bat    {--x:180;--y:40}
-  .hero{height:600px;padding:0 16px}
+  .hero{height:520px;padding:0 16px}
   .hero-in{padding-top:36px}
   .chip{padding:7px 14px;font-size:.75rem}
   h1{margin-top:16px;font-size:2rem;line-height:1.08}
   .hero .cta{margin-top:20px;padding:15px 26px;font-size:.9375rem}
   .kaina{margin-top:10px;font-size:.8125rem}
-  .kruva{top:392px}
+  .kruva{top:384px}
   .rinkimas{padding:6px 16px 60px}
   .skiriasi{padding:52px 16px}
   .skiriasi-tinklas,.skiriasi-tinklas--2{grid-template-columns:1fr;gap:12px}
@@ -418,7 +425,10 @@ button.smulki{width:100%;text-align:left}
 
   function ribos() {
     var h = hero.offsetHeight;
-    return { zemai: h * 0.84, aukstai: h * 0.40 };
+    var cs = getComputedStyle(saknis);
+    var z = parseFloat(cs.getPropertyValue("--briauna-zemai")) || 0.84;
+    var a = parseFloat(cs.getPropertyValue("--briauna-aukstai")) || 0.40;
+    return { zemai: h * z, aukstai: h * a };
   }
   function svelniai(x) { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); }
   function tikslas() {
