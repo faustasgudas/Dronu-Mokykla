@@ -21,3 +21,6 @@ desktop.ini
 .DS_Store
 .vscode/
 .idea/
+
+# Vietinis Claude Code paleidimo nustatymas (tik perziurai)
+.claude/

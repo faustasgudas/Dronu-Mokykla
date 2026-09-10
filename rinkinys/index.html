@@ -36,7 +36,7 @@
   --poslinkis:0vw;
   --briauna:560px;
   --kruvos-mastelis:1;
-  --krastas:490;   /* koks --x atitinka 45 laipsniu pasukima */
+  --krastas:600;   /* koks --x atitinka 45 laipsniu pasukima */
   /* Kiek skritulio briauna keliauja: nuo (produktai matomi) iki (uzdengti).
      Aukstyn kilti daugiau, nei reikia produktams uzdengti, nera prasmes —
      virs ju lieka tik tuscias baltas plotas. */
@@ -60,9 +60,14 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none}
 /* Kruvos padetys nurodytos pikseliais, todel siauresniame ekrane ji
    nusikirstu, o labai placiame liktu per maza. Ribos su min-width, kad
    nepersidengtu su telefono bloku (<=900 px). */
-@media (min-width:901px) and (max-width:1100px){ :root{--kruvos-mastelis:.80} }
-@media (min-width:1101px) and (max-width:1279px){ :root{--kruvos-mastelis:.90} }
-@media (min-width:1500px){ :root{--kruvos-mastelis:1.08} }
+/* 761-900 px: telefono isdestymas jau nebegalioja, bet krūva dar netelpa,
+   todel cia ji sumazinama labiausiai. */
+@media (min-width:761px)  and (max-width:900px) { :root{--kruvos-mastelis:.50} }
+@media (min-width:901px)  and (max-width:1100px){ :root{--kruvos-mastelis:.62} }
+@media (min-width:1101px) and (max-width:1279px){ :root{--kruvos-mastelis:.72} }
+@media (min-width:1280px) and (max-width:1439px){ :root{--kruvos-mastelis:.82} }
+@media (min-width:1440px) and (max-width:1699px){ :root{--kruvos-mastelis:.93} }
+@media (min-width:1700px){ :root{--kruvos-mastelis:1.06} }
 
 /* =================== HERO =================== */
 .hero{position:relative;overflow:hidden;height:880px;background:var(--ink);color:#fff;
@@ -88,15 +93,15 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 }
 /* Padetys ir dydziai — CSS, ne inline. Inline stilius nugaletu media query,
    ir telefono israiskymas paprasciausiai neveiktu. */
-#kruva .p-krov{--w:175px;--x:-490;--y:110}
-#kruva .p-tx15{--w:190px;--x:-350;--y:55}
-#kruva .p-air75{--w:235px;--x:-210;--y:-20}
-#kruva .p-akiniai{--w:285px;--x:-70;--y:45}
-#kruva .p-air65{--w:245px;--x:70;--y:-25}
-#kruva .p-pocket{--w:205px;--x:210;--y:30}
-#kruva .p-lite{--w:195px;--x:350;--y:70}
-#kruva .p-bat{--w:150px;--x:470;--y:70}
-#kruva .p-bat2{--w:140px;--x:-455;--y:0}
+#kruva .p-krov{--w:180px;--x:-600;--y:118}
+#kruva .p-bat2{--w:172px;--x:-455;--y:52}
+#kruva .p-tx15{--w:200px;--x:-310;--y:72}
+#kruva .p-air75{--w:245px;--x:-165;--y:-18}
+#kruva .p-akiniai{--w:295px;--x:-20;--y:52}
+#kruva .p-air65{--w:255px;--x:130;--y:-22}
+#kruva .p-pocket{--w:215px;--x:285;--y:32}
+#kruva .p-lite{--w:205px;--x:440;--y:78}
+#kruva .p-bat{--w:155px;--x:590;--y:62}
 #kruva .p-batm{display:none}   /* tik telefonui */
 .kruva img{
   position:absolute;left:0;top:0;width:var(--w);max-width:none;
@@ -473,9 +478,9 @@ button.smulki{width:100%;text-align:left}
     <img class="p-tx15" src="/img/whoop/pultas-tx15.webp"      alt="RadioMaster TX15 pultas" >
     <img class="p-krov" src="/img/whoop/kroviklis.webp"        alt="Įkroviklis"               >
     <img class="p-lite" src="/img/whoop/pultas-literadio.webp" alt="LiteRadio 2 SE pultas"   >
-    <img class="p-bat2" src="/img/whoop/baterijos-4.webp"      alt="Baterijos"               >
+    <img class="p-bat2" src="/img/whoop/baterijos.webp"        alt="Baterijos"               >
     <img class="p-batm" src="/img/whoop/baterijos.webp"        alt="Baterijos"               >
-    <img class="p-bat" src="/img/whoop/baterijos-5.webp"      alt="Baterijos"               >
+    <img class="p-bat" src="/img/whoop/baterijos-4.webp"      alt="Baterijos"               >
     <img class="p-akiniai" src="/img/whoop/akiniai.webp"          alt="EMAX FPV akiniai"        >
     <img class="p-air75" src="/img/whoop/dronas-air75.webp"     alt="Air75 whoop dronas"      >
     <img class="p-pocket" src="/img/whoop/pultas-pocket.webp"   alt="RadioMaster Pocket pultas">
@@ -570,8 +575,8 @@ button.smulki{width:100%;text-align:left}
         <span><em>65 mm · apie 20 g</em>
           Ultralengvas — ramesnis ir saugesnis skraidyti patalpose.</span>
         <span class="skiriasi-bat">
-          <img src="/img/whoop/baterijos-5.webp" alt="">
-          <b>5 × 320 mAh</b> LAVA II 1S 95C LiHV
+          <img src="/img/whoop/baterijos-4.webp" alt="">
+          <b>4 × 320 mAh</b> LAVA II 1S 95C LiHV
         </span>
       </div>
       <div>
@@ -580,8 +585,8 @@ button.smulki{width:100%;text-align:left}
         <span><em>75 mm · apie 22 g</em>
           Platesnis rėmas — stabilesnis ir galingesnis, tinka ir patalpoms, ir lauke.</span>
         <span class="skiriasi-bat">
-          <img src="/img/whoop/baterijos-4.webp" alt="">
-          <b>4 × 580 mAh</b> — didesnė talpa, ilgesnis skrydis
+          <img src="/img/whoop/baterijos.webp" alt="">
+          <b>3 × 580 mAh</b> — didesnė talpa, ilgesnis skrydis
         </span>
       </div>
     </div>
@@ -752,10 +757,10 @@ button.smulki{width:100%;text-align:left}
   var DRONAI = [
     { raktas:"air65", pav:"Air65", apr:"Ramesnis — saugesnis patalpose",
       nuotr:"/img/whoop/dronas-air65.webp",
-      bat:{ n:"/img/whoop/baterijos-5.webp", p:"5 vnt. · 320 mAh" } },
+      bat:{ n:"/img/whoop/baterijos-4.webp", p:"4 vnt. · 320 mAh" } },
     { raktas:"air75", pav:"Air75", apr:"Greitesnis — geriau lauke",
       nuotr:"/img/whoop/dronas-air75.webp",
-      bat:{ n:"/img/whoop/baterijos-4.webp", p:"4 vnt. · 580 mAh" } }
+      bat:{ n:"/img/whoop/baterijos.webp",   p:"3 vnt. · 580 mAh" } }
   ];
 
   var b = { turiPulta:false, pultas:"pocket", dronas:"air65", turiAkinius:false };
@@ -818,7 +823,7 @@ button.smulki{width:100%;text-align:left}
     if (!b.turiPulta) eil.push({ n:pu.nuotr, t:pu.pav, p:"Valdymo pultas" });
     if (!b.turiAkinius) eil.push({ n:"/img/whoop/akiniai.webp",
       t:"EMAX Transporter", p:"FPV akiniai" });
-    /* Bateriju rinkinys priklauso nuo drono: Air65 — 5 vnt., Air75 — 4 vnt. */
+    /* Bateriju rinkinys priklauso nuo drono: Air65 — 4 vnt., Air75 — 3 vnt. */
     eil.push({ n:dr.bat.n, t:"Baterijos", p:dr.bat.p });
     eil.push({ n:"/img/whoop/kroviklis.webp", t:"Įkroviklis", p:"" });
 
