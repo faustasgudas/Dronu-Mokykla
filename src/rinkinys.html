@@ -36,7 +36,7 @@
   --poslinkis:0vw;
   --briauna:560px;
   --kruvos-mastelis:1;
-  --krastas:330;   /* koks --x atitinka 45 laipsniu pasukima */
+  --krastas:490;   /* koks --x atitinka 45 laipsniu pasukima */
   /* Kiek skritulio briauna keliauja: nuo (produktai matomi) iki (uzdengti).
      Aukstyn kilti daugiau, nei reikia produktams uzdengti, nera prasmes —
      virs ju lieka tik tuscias baltas plotas. */
@@ -56,6 +56,13 @@ body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:#fff;color:
   font-size:16px;line-height:1.5}
 img{display:block;max-width:100%}
 button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none}
+
+/* Kruvos padetys nurodytos pikseliais, todel siauresniame ekrane ji
+   nusikirstu, o labai placiame liktu per maza. Ribos su min-width, kad
+   nepersidengtu su telefono bloku (<=900 px). */
+@media (min-width:901px) and (max-width:1100px){ :root{--kruvos-mastelis:.80} }
+@media (min-width:1101px) and (max-width:1279px){ :root{--kruvos-mastelis:.90} }
+@media (min-width:1500px){ :root{--kruvos-mastelis:1.08} }
 
 /* =================== HERO =================== */
 .hero{position:relative;overflow:hidden;height:880px;background:var(--ink);color:#fff;
@@ -81,13 +88,16 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 }
 /* Padetys ir dydziai — CSS, ne inline. Inline stilius nugaletu media query,
    ir telefono israiskymas paprasciausiai neveiktu. */
-#kruva .p-tx15{--w:170px;--x:-330;--y:85}
-#kruva .p-krov{--w:180px;--x:310;--y:95}
-#kruva .p-lite{--w:180px;--x:-205;--y:35}
-#kruva .p-bat{--w:175px;--x:200;--y:45}
-#kruva .p-akiniai{--w:265px;--x:0;--y:40}
-#kruva .p-air75{--w:215px;--x:-138;--y:-32}
-#kruva .p-air65{--w:225px;--x:128;--y:-38}
+#kruva .p-krov{--w:175px;--x:-490;--y:110}
+#kruva .p-tx15{--w:190px;--x:-350;--y:55}
+#kruva .p-air75{--w:235px;--x:-210;--y:-20}
+#kruva .p-akiniai{--w:285px;--x:-70;--y:45}
+#kruva .p-air65{--w:245px;--x:70;--y:-25}
+#kruva .p-pocket{--w:205px;--x:210;--y:30}
+#kruva .p-lite{--w:195px;--x:350;--y:70}
+#kruva .p-bat{--w:150px;--x:470;--y:70}
+#kruva .p-bat2{--w:140px;--x:-455;--y:0}
+#kruva .p-batm{display:none}   /* tik telefonui */
 .kruva img{
   position:absolute;left:0;top:0;width:var(--w);max-width:none;
   transform-origin:50% 50%;will-change:transform;
@@ -409,14 +419,16 @@ button.smulki{width:100%;text-align:left}
   /* Telefone rodomi tik keturi daiktai: vienas dronas, pultas, akiniai
      ir baterijos. Dronas virsuje ir nesukamas, akiniai tiesiai po juo —
      kad ju nebeuzstotu. Akiniams didesnis z-index del tikrumo. */
-  #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75{display:none}
+  #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75,#kruva .p-pocket,
+  #kruva .p-bat2,#kruva .p-bat{display:none}
+  #kruva .p-batm{display:block}
   /* Dronas ir akiniai — greta, ne vienas ant kito. Vertikaliai sudejus
      akinius pakelti reiskia stipriau uzlipti ant drono; greta abu telpa
      ir abu matomi pilnai. */
   #kruva .p-air65  {--w:190px;--x:-98;--y:-58;--sukti:0}
   #kruva .p-akiniai{--w:212px;--x:92;--y:-30}
   #kruva .p-lite   {--x:-168;--y:66}
-  #kruva .p-bat    {--w:158px;--x:212;--y:-16}
+  #kruva .p-batm   {--w:158px;--x:212;--y:-16}
   .hero{height:520px;padding:0 16px}
   .hero-in{padding-top:36px}
   .chip{padding:7px 14px;font-size:.75rem}
@@ -461,9 +473,12 @@ button.smulki{width:100%;text-align:left}
     <img class="p-tx15" src="/img/whoop/pultas-tx15.webp"      alt="RadioMaster TX15 pultas" >
     <img class="p-krov" src="/img/whoop/kroviklis.webp"        alt="Įkroviklis"               >
     <img class="p-lite" src="/img/whoop/pultas-literadio.webp" alt="LiteRadio 2 SE pultas"   >
-    <img class="p-bat" src="/img/whoop/baterijos.webp"        alt="Baterijos"               >
+    <img class="p-bat2" src="/img/whoop/baterijos-4.webp"      alt="Baterijos"               >
+    <img class="p-batm" src="/img/whoop/baterijos.webp"        alt="Baterijos"               >
+    <img class="p-bat" src="/img/whoop/baterijos-5.webp"      alt="Baterijos"               >
     <img class="p-akiniai" src="/img/whoop/akiniai.webp"          alt="EMAX FPV akiniai"        >
     <img class="p-air75" src="/img/whoop/dronas-air75.webp"     alt="Air75 whoop dronas"      >
+    <img class="p-pocket" src="/img/whoop/pultas-pocket.webp"   alt="RadioMaster Pocket pultas">
     <img class="p-air65" src="/img/whoop/dronas-air65.webp"     alt="Air65 whoop dronas"      >
   </div>
 
