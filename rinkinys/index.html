@@ -104,11 +104,16 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
    tarpus tarp stambiu daiktu ir nieko neuzstoja. --sukti keicia pasukima,
    kad greta esantys nesigulotu lygiagreciai. */
 #kruva .p-ak1{--w:132px;--x:-600;--y:26;--sukti:.8}
-#kruva .p-ak2{--w:124px;--x:-372;--y:150;--sukti:1.15}
-#kruva .p-ak3{--w:138px;--x:-232;--y:128;--sukti:-.55}
-#kruva .p-ak4{--w:128px;--x:204;--y:138;--sukti:2.6}
-#kruva .p-ak5{--w:134px;--x:390;--y:152;--sukti:-.9}
+#kruva .p-ak2{--w:124px;--x:-648;--y:-206;--sukti:1.15}
+#kruva .p-ak3{--w:132px;--x:-408;--y:-268;--sukti:-.75}
+#kruva .p-ak4{--w:126px;--x:632;--y:-196;--sukti:1.05}
+#kruva .p-ak5{--w:130px;--x:392;--y:-262;--sukti:-.8}
 #kruva .p-ak6{--w:122px;--x:600;--y:-6;--sukti:.9}
+/* Sitie du kabo auksciau uz visus, antrastes lygyje — uzpildo tuscia juoda
+   plota kaireje ir desineje. Telefone nerodomi. */
+#kruva .p-ak7{--w:128px;--x:-525;--y:-364;--sukti:1.1}
+#kruva .p-ak8{--w:122px;--x:485;--y:-342;--sukti:.7}
+#kruva .p-batm{display:none}   /* tik telefonui */
 .kruva img{
   position:absolute;left:0;top:0;width:var(--w);max-width:none;
   transform-origin:50% 50%;will-change:transform;
@@ -445,15 +450,16 @@ button.smulki{width:100%;text-align:left}
      ir baterijos. Dronas virsuje ir nesukamas, akiniai tiesiai po juo —
      kad ju nebeuzstotu. Akiniams didesnis z-index del tikrumo. */
   #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75,#kruva .p-pocket,
-  #kruva .p-ak2,#kruva .p-ak3,#kruva .p-ak5,#kruva .p-ak6{display:none}
+  #kruva .p-ak1,#kruva .p-ak2,#kruva .p-ak3,#kruva .p-ak4,
+  #kruva .p-ak5,#kruva .p-ak6,#kruva .p-ak7,#kruva .p-ak8{display:none}
+  #kruva .p-batm{display:block}
   /* Dronas ir akiniai — greta, ne vienas ant kito. Vertikaliai sudejus
      akinius pakelti reiskia stipriau uzlipti ant drono; greta abu telpa
      ir abu matomi pilnai. */
   #kruva .p-air65  {--w:190px;--x:-98;--y:-58;--sukti:0}
   #kruva .p-akiniai{--w:212px;--x:92;--y:-30}
   #kruva .p-lite   {--x:-168;--y:66}
-  #kruva .p-ak1    {--w:128px;--x:212;--y:-72;--sukti:.8}
-  #kruva .p-ak4    {--w:112px;--x:-215;--y:-14;--sukti:1.2}
+  #kruva .p-batm   {--w:158px;--x:212;--y:-16}
   .hero{height:520px;padding:0 16px}
   .hero-in{padding-top:36px}
   .chip{padding:7px 14px;font-size:.75rem}
@@ -504,6 +510,9 @@ button.smulki{width:100%;text-align:left}
     <img class="p-ak4" src="/img/whoop/akumas-580.webp"        alt=""                        >
     <img class="p-ak5" src="/img/whoop/akumas-320.webp"        alt=""                        >
     <img class="p-ak6" src="/img/whoop/akumas-580.webp"        alt=""                        >
+    <img class="p-ak7" src="/img/whoop/akumas-580.webp"        alt=""                        >
+    <img class="p-ak8" src="/img/whoop/akumas-320.webp"        alt=""                        >
+    <img class="p-batm" src="/img/whoop/baterijos.webp"        alt=""                        >
     <img class="p-akiniai" src="/img/whoop/akiniai.webp"          alt="EMAX FPV akiniai"        >
     <img class="p-air75" src="/img/whoop/dronas-air75.webp"     alt="Air75 whoop dronas"      >
     <img class="p-pocket" src="/img/whoop/pultas-pocket.webp"   alt="RadioMaster Pocket pultas">
@@ -615,8 +624,8 @@ button.smulki{width:100%;text-align:left}
         <span class="skiriasi-minus">Silpnybė: vėjyje jį neša — lauke geriausiai
           skrenda ramų vakarą.</span>
         <span class="skiriasi-bat">
-          <img src="/img/whoop/baterijos-4.webp" alt="">
-          <b>4 × 320 mAh</b> LAVA II 1S 95C LiHV
+          <img src="/img/whoop/baterijos-5.webp" alt="">
+          <b>5 × 320 mAh</b> LAVA II 1S 95C LiHV
         </span>
       </div>
       <div>
@@ -633,8 +642,8 @@ button.smulki{width:100%;text-align:left}
         <span class="skiriasi-minus">Silpnybė: namuose ankštose vietose reikia
           daugiau vietos ir tikslumo nei su Air65.</span>
         <span class="skiriasi-bat">
-          <img src="/img/whoop/baterijos.webp" alt="">
-          <b>3 × 580 mAh</b> — didesnė talpa, ilgesnis skrydis
+          <img src="/img/whoop/baterijos-4.webp" alt="">
+          <b>4 × 580 mAh</b> — didesnė talpa, ilgesnis skrydis
         </span>
       </div>
     </div>
@@ -807,10 +816,10 @@ button.smulki{width:100%;text-align:left}
   var DRONAI = [
     { raktas:"air65", pav:"Air65", apr:"Ramesnis — saugesnis patalpose",
       nuotr:"/img/whoop/dronas-air65.webp",
-      bat:{ n:"/img/whoop/baterijos-4.webp", p:"4 vnt. · 320 mAh" } },
+      bat:{ n:"/img/whoop/baterijos-5.webp", p:"5 vnt. · 320 mAh" } },
     { raktas:"air75", pav:"Air75", apr:"Greitesnis — geriau lauke",
       nuotr:"/img/whoop/dronas-air75.webp",
-      bat:{ n:"/img/whoop/baterijos.webp",   p:"3 vnt. · 580 mAh" } }
+      bat:{ n:"/img/whoop/baterijos-4.webp", p:"4 vnt. · 580 mAh" } }
   ];
 
   var b = { turiPulta:false, pultas:"pocket", dronas:"air65", turiAkinius:false };
@@ -873,7 +882,7 @@ button.smulki{width:100%;text-align:left}
     if (!b.turiPulta) eil.push({ n:pu.nuotr, t:pu.pav, p:"Valdymo pultas" });
     if (!b.turiAkinius) eil.push({ n:"/img/whoop/akiniai.webp",
       t:"EMAX Transporter", p:"FPV akiniai" });
-    /* Bateriju rinkinys priklauso nuo drono: Air65 — 4 vnt., Air75 — 3 vnt. */
+    /* Bateriju rinkinys priklauso nuo drono: Air65 — 5 vnt., Air75 — 4 vnt. */
     eil.push({ n:dr.bat.n, t:"Baterijos", p:dr.bat.p });
     eil.push({ n:"/img/whoop/kroviklis.webp", t:"Įkroviklis", p:"" });
 
