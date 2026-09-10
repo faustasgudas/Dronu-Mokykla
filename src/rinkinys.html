@@ -101,7 +101,199 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
   top:var(--briauna);border-radius:50%;
   background:linear-gradient(180deg,#FFFFFF 0%,#F6F6FA 22%,var(--sviesus) 100%);
   box-shadow:0 -18px 44px rgba(0,0,0,.4)}
+/* ===== PAGALBOS NUORODOS IR PULTU PALYGINIMAS =====
+   Perkelta is pradziamokslio puslapio. Kainos eilutes cia nera —
+   rinkinio kainos priklauso ir nuo drono su akiniais, todel kaina
+   rodoma tik viena karta, prie mygtuko. */
+.dm-help-link{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-weight:700;font-size:0.9375rem;color:var(--blue);text-decoration:none;
+  min-height:44px;}
+.dm-help-label{text-decoration:underline;text-underline-offset:3px;}
+.dm-help-icon{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  font-size:0.625rem;text-decoration:none;flex:0 0 auto;}
+.dm-pagalba{margin-top:18px;}
+/* ===== PULTŲ PALYGINIMO LENTELĖ =====
+   Vizualas pagal Fausto maketą, spalvos — tik firminės. Telefone lentelė
+   slenka į šoną, nes trijų stulpelių suspausti iki 375 px neįmanoma
+   neprarandant įskaitomumo. */
+.dm-help-link--cmp{margin-left:26px;}
+@media (max-width:620px){
+  .dm-help-link--cmp{margin-left:0;margin-top:12px;}
+  .dm-help-link{display:flex;}
+}
+.dm-cmp-blokas{margin-top:clamp(36px,5vw,52px);border:1px solid var(--line);
+  border-radius:20px;overflow:hidden;background:#fff;
+}
+.dm-cmp-intro{padding:clamp(22px,3vw,34px);}
+@media (min-width:900px){
+  /* Plaèiame ekrane iztraukiam tekstą į kairę, kaip makete. */
+  .dm-cmp-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:28px;align-items:start;}
+  .dm-cmp-intro .dm-cmp-callout{margin-top:0;}
+}
+.dm-cmp-h{font-size:clamp(1.4rem,2.6vw,1.875rem);}
+.dm-cmp-lead{margin-top:10px;color:var(--muted);font-size:1rem;line-height:1.55;
+  max-width:46ch;}
+.dm-cmp-callout{display:flex;gap:12px;align-items:flex-start;margin-top:18px;
+  background:#E6F6EC;border-radius:14px;padding:14px 16px;max-width:520px;}
+.dm-cmp-callout-ico{flex:0 0 auto;width:24px;height:24px;border-radius:50%;
+  background:#16A34A;color:#fff;display:flex;align-items:center;
+  justify-content:center;}
+.dm-cmp-callout-ico svg{width:14px;height:14px;}
+.dm-cmp-callout b{display:block;font-size:0.9375rem;font-weight:800;}
+.dm-cmp-callout > div span{display:block;font-size:0.875rem;
+  color:var(--muted);line-height:1.5;margin-top:2px;}
+/* Ikonos varnelė turi likti balta — bendra span taisyklė ją nudažydavo pilkai. */
+.dm-cmp-callout .dm-cmp-callout-ico{color:#fff;}
+.dm-cmp-callout .dm-cmp-callout-ico svg{fill:#fff;}
 
+.dm-cmp{overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border-top:1px solid var(--line);}
+.dm-cmp table{width:100%;border-collapse:collapse;min-width:640px;}
+.dm-cmp th,.dm-cmp td{padding:14px 16px;text-align:left;
+  border-bottom:1px solid var(--line);font-size:0.9375rem;line-height:1.45;
+  vertical-align:middle;}
+/* Reikšmės centruojamos, eilučių pavadinimai lieka kairėje. */
+.dm-cmp td{text-align:center;}
+.dm-cmp td .dm-cmp-su-zenklu{justify-content:center;}
+.dm-cmp td.dm-cmp-c .dm-cmp-z{margin:0 auto;}
+.dm-cmp thead th{background:#fff;border-bottom:2px solid var(--ink);
+  text-align:center;vertical-align:top;padding:20px 16px 18px;}
+/* Pavadinimui rezervuojam dvi eilutes — kitaip vienos eilutės pavadinimas
+   („Pocket") pakiltų aukščiau nei dviejų eilučių („LiteRadio 2 SE"). */
+.dm-cmp-pav{min-height:2.6em;}
+.dm-cmp thead th:first-child{border-bottom-color:var(--line);}
+.dm-cmp tbody th{font-weight:600;color:var(--ink);white-space:nowrap;
+  background:var(--sviesus);}
+.dm-cmp tbody tr:last-child td,.dm-cmp tbody tr:last-child th{border-bottom:0;}
+
+.dm-cmp-ikona{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-right:10px;color:var(--blue);
+  vertical-align:-5px;}
+.dm-cmp-ikona svg{width:19px;height:19px;}
+
+.dm-cmp-role{display:inline-block;font-size:0.75rem;font-weight:700;
+  padding:4px 11px;border-radius:999px;background:var(--sviesus);
+  color:var(--muted);margin-bottom:12px;}
+.dm-cmp-zenklas{display:inline-block;margin:0 0 12px 6px;font-size:0.6875rem;
+  font-weight:800;padding:4px 11px;border-radius:999px;
+  background:var(--blue);color:#fff;}
+.dm-cmp-zenklas--rek{background:var(--ink);}
+.dm-cmp-zenklas--tuscia{visibility:hidden;}
+.dm-tag--rek{background:var(--ink);}
+/* Aiskus px matmenys, o ne aspect-ratio: lenteles langelyje aspect-ratio
+   kai kuriose narsyklese (Safari) sukelia netiketa isdestyma - nuotraukos
+   issikisdavo virs kitu eiluciu. */
+.dm-cmp-foto{display:block;width:112px;height:112px;margin:0 auto 10px;}
+.dm-cmp-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+.dm-cmp-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;}
+.dm-cmp-chip{display:inline-block;margin-top:8px;font-size:0.6875rem;
+  font-weight:800;letter-spacing:0.04em;padding:3px 10px;border-radius:999px;
+  background:#E9E9FF;color:var(--blue);}
+
+.dm-cmp-c{text-align:center;}
+/* Būsenų spalvos — semantinės: žalia „yra", gintaro „iš dalies",
+   raudona (jau firminė #CB321E) „nėra". */
+.dm-cmp-z{display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;flex:0 0 auto;}
+.dm-cmp-z svg{width:20px;height:20px;}
+.dm-cmp-z--gerai{background:#E6F6EC;color:#16A34A;}
+.dm-cmp-z--vidut{background:#FDF1DD;color:#C77700;}
+.dm-cmp-z--nera{background:#FBE9E6;color:#CB321E;}
+.dm-cmp-su-zenklu{display:inline-flex;align-items:center;gap:10px;
+  text-align:center;vertical-align:middle;}
+.dm-cmp-su-zenklu--dd{justify-content:flex-end;}
+.dm-cmp-pastaba{display:block;font-size:0.8125rem;color:var(--muted);
+  margin-top:5px;}
+.dm-cmp-kaina{font-weight:800;}
+
+.dm-cmp-juosta{display:flex;flex-wrap:wrap;gap:18px 28px;
+  align-items:center;justify-content:space-between;
+  background:var(--sviesus);padding:18px clamp(20px,3vw,32px);}
+.dm-cmp-juosta-txt b{display:block;font-weight:800;font-size:0.9375rem;}
+.dm-cmp-juosta-txt span{display:block;font-size:0.875rem;
+  color:var(--muted);margin-top:3px;}
+.dm-cmp-juosta-zymos{display:flex;flex-wrap:wrap;gap:8px;}
+.dm-cmp-juosta-zymos li{font-size:0.8125rem;font-weight:700;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:6px 13px;}
+
+/* --- Ilgas / trumpas tekstas --- */
+.dm-cmp-trumpas{display:none;}
+.dm-cmpk{border-top:1px solid var(--line);padding:20px clamp(18px,4vw,24px);}
+.dm-cmpk-virsus{display:flex;align-items:center;gap:14px;}
+.dm-cmpk-foto{flex:0 0 84px;width:84px;height:84px;}
+.dm-cmpk-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+.dm-cmpk-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;
+  margin-top:2px;}
+.dm-cmpk .dm-cmp-role{margin-bottom:6px;}
+.dm-cmpk .dm-cmp-zenklas{margin:0 0 6px 6px;}
+.dm-cmpk-sarasas{display:grid;grid-template-columns:1fr auto;gap:0;
+  margin-top:16px;}
+.dm-cmpk-sarasas dt{display:flex;align-items:center;padding:10px 0;
+  font-size:0.875rem;color:var(--muted);border-top:1px solid var(--line);}
+.dm-cmpk-sarasas dd{margin:0;padding:10px 0;text-align:right;
+  font-size:0.875rem;font-weight:600;border-top:1px solid var(--line);
+  padding-left:14px;}
+.dm-cmpk-sarasas dt:first-of-type,
+.dm-cmpk-sarasas dd:first-of-type{border-top:0;}
+.dm-cmp-pastaba--eil{display:inline;margin:0 0 0 8px;}
+
+@media (max-width:760px){
+  /* Telefone rodom trumpas reikšmes — taip visi trys stulpeliai telpa
+     be slinkimo į šoną, o vietoj 30 kortelių eilučių lieka 10. */
+  .dm-cmp-ilgas{display:none;}
+  .dm-cmp-trumpas{display:inline;}
+  .dm-cmp table{min-width:0;width:100%;table-layout:fixed;}
+  .dm-cmp th,.dm-cmp td{padding:9px 6px;font-size:0.75rem;
+    line-height:1.35;}
+  .dm-cmp tbody th{white-space:normal;width:68px;}
+  .dm-cmp thead th{padding:12px 6px 10px;}
+  .dm-cmp-foto{width:64px;height:64px;margin:0 auto 8px;}
+  .dm-cmp-pav{font-size:0.75rem;}
+  .dm-cmp-ikona{display:none;}
+  /* Siaurame stulpelyje telpa tik viena žyma. Vaidmens skiltį slepiam
+     (ji matoma kortelėse viršuje), o „Populiariausias"/„Rekomenduojame"
+     rodom vienoje eilutėje — žodžių per vidurį nelaužom, nes tai atrodo
+     blogai. */
+  .dm-cmp thead .dm-cmp-role{display:none;}
+  /* Žyma per visą stulpelio plotį — taip ji fiziškai negali kyšoti,
+     nesvarbu, koks ilgas žodis. */
+  .dm-cmp-zenklas{display:block;width:100%;box-sizing:border-box;
+    font-size:0.5rem;padding:3px 1px;margin:0 0 6px;text-align:center;
+    white-space:nowrap;overflow-wrap:normal;word-break:normal;
+    letter-spacing:0;}
+  .dm-cmp-chip{display:none;}
+  .dm-cmp-z{width:20px;height:20px;}
+  .dm-cmp-z svg{width:16px;height:16px;}
+  /* Siaurame stulpelyje ženklas ir tekstas gali persikelti į kitą eilutę —
+     kitaip „Spalvotas" su ženklu (82 px) kyšotų iš 71 px langelio. */
+  .dm-cmp-su-zenklu{gap:4px;max-width:100%;flex-wrap:wrap;}
+  .dm-cmp-su-zenklu > span{min-width:0;}
+  /* Sena kaina lentelėje telefone neberodoma — ji matoma kortelėse viršuje. */
+  .dm-cmp .dm-was{display:none;}
+  .dm-cmp-juosta{flex-direction:column;align-items:flex-start;}
+}
+
+/* ===== PALYGINIMO LENTELE TELEFONE: suskleidziama =====
+   Telefone lentele uzima kelis ekranus, todel pradzioje ji suskleista,
+   o "Palyginti visus tris" ja isskleidzia. Mygtuka kuria JS, tad be JS
+   lentele lieka matoma, kaip ir anksciau. Kompiuteryje niekas nesikeicia. */
+.dm-cmp-jungiklis{display:none;}
+@media (max-width:620px){
+  .dm-cmp-jungiklis{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;margin-top:18px;padding:13px 18px;min-height:48px;
+    border:1.5px solid var(--blue);border-radius:14px;background:#fff;
+    font-family:inherit;font-size:1rem;font-weight:700;color:var(--blue);
+    cursor:pointer;-webkit-appearance:none;appearance:none;
+  }
+  .dm-cmp-jungiklis-rodykle{font-size:0.75rem;line-height:1;transition:transform .18s ease;}
+  .dm-cmp-jungiklis[aria-expanded="true"] .dm-cmp-jungiklis-rodykle{transform:rotate(180deg);}
+  .dm-cmp-uzdaryta .dm-cmp,
+  .dm-cmp-uzdaryta .dm-cmp-juosta{display:none;}
+}
 /* =================== PASIRINKIMAS =================== */
 .rinkimas{background:var(--sviesus);padding:10px 20px 84px}
 .wrap{max-width:1180px;margin:0 auto}
@@ -310,6 +502,17 @@ button.smulki{width:100%;text-align:left}
         <div id="pulto-blokas">
           <div class="blokoAntraste">Pasirink pultą <em>viskas kita jau sudėta</em></div>
           <div class="korteles" id="pultai"></div>
+          <p class="dm-pagalba">
+            <a class="dm-help-link" href="https://youtu.be/ImaGXtGmk5s"
+               target="_blank" rel="noopener">
+              <span class="dm-help-icon" aria-hidden="true">▶</span>
+              <span class="dm-help-label">Kaip išsirinkti pultelį?</span>
+            </a>
+            <a class="dm-help-link dm-help-link--cmp" href="#dm-palyginimas">
+              <span class="dm-help-icon" aria-hidden="true">↓</span>
+              <span class="dm-help-label">Palyginti visus tris</span>
+            </a>
+          </p>
         </div>
         <div class="blokoAntraste" style="margin-top:26px">Pasirink droną</div>
         <div class="korteles korteles--2" id="dronai"></div>
@@ -326,6 +529,40 @@ button.smulki{width:100%;text-align:left}
         <a class="pirkti" id="pirkti" href="#">Pereiti prie apmokėjimo <span aria-hidden="true">→</span></a>
         <div class="smulkiai">Nemokamas pristatymas · 14 dienų grąžinimas</div>
       </aside>
+    </div>
+
+    <div class="dm-cmp-blokas" id="dm-palyginimas">
+      <div class="dm-cmp-intro">
+        <div>
+          <h2 class="dm-cmp-h">FPV valdymo pultų palyginimas</h2>
+          <p class="dm-cmp-lead">
+            Visi trys tinka pradedantiesiems ir veikia tiek simuliatoriuje,
+            tiek valdant tikrą FPV droną.
+          </p>
+        </div>
+        <div class="dm-cmp-callout">
+          <span class="dm-cmp-callout-ico" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg>
+          </span>
+          <div>
+            <b>Blogo pasirinkimo nėra</b>
+            <span>Skiriasi tik patogumas ir galimybės ateičiai — ne tai, ar išmoksi.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dm-cmp" id="dm-cmp"><!-- lentelė iš PULTAI --></div>
+
+      <div class="dm-cmp-juosta">
+        <div class="dm-cmp-juosta-txt">
+          <b>Visi trys — geras pasirinkimas pradedantiesiems</b>
+          <span>Rinkis pagal tai, ko nori: paprastumo, kompaktiškumo ar galimybių ateičiai.</span>
+        </div>
+        <ul class="dm-cmp-juosta-zymos">
+          <li>Tinka simuliatoriui</li>
+          <li>Tinka tikriems dronams</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -523,11 +760,23 @@ button.smulki{width:100%;text-align:left}
   };
   var PULTAI = [
     { raktas:"lite", role:"Pradžiai", pav:"BETAFPV LiteRadio 2 SE",
-      nuotr:"/img/whoop/pultas-literadio.webp" },
+      trum:"LiteRadio 2 SE", nuotr:"/img/whoop/pultas-literadio.webp",
+      sp:{ ekranas:["Nėra","nera"], kanalai:["8","vidut"],
+           baterija:["Įmontuota 1000 mAh, iki 8 val.","gerai"],
+           svoris:"179 g", dydis:"Žaidimų pulto formos",
+           programine:"BETAFPV LiteRadio", modulis:["Nėra","nera"] } },
     { raktas:"pocket", role:"Universalus", pav:"RadioMaster Pocket Crush",
-      zyma:"Populiariausias", nuotr:"/img/whoop/pultas-pocket.webp" },
+      zyma:"Populiariausias", trum:"Pocket", nuotr:"/img/whoop/pultas-pocket.webp",
+      sp:{ ekranas:["128 × 64 monochrominis","gerai"], kanalai:["iki 16","gerai"],
+           baterija:["2 × 18650 — pridedame","gerai"],
+           svoris:"288 g", dydis:"Kišeninis",
+           programine:"EdgeTX", modulis:["Nano dydžio","gerai"] } },
     { raktas:"tx15", role:"Pro", pav:"RadioMaster TX15",
-      nuotr:"/img/whoop/pultas-tx15.webp" }
+      trum:"TX15", nuotr:"/img/whoop/pultas-tx15.webp",
+      sp:{ ekranas:["3,5\" spalvotas jutiklinis","gerai"], kanalai:["iki 16","gerai"],
+           baterija:["2 × 18650 — pridedame","gerai"],
+           svoris:"605 g (be baterijos)", dydis:"Pilno dydžio",
+           programine:"EdgeTX", modulis:["JR suderinamas","gerai"] } }
   ];
   var DRONAI = [
     { raktas:"air65", pav:"Air65", apr:"Ramesnis — saugesnis patalpose",
@@ -624,6 +873,213 @@ button.smulki{width:100%;text-align:left}
   }
   document.getElementById("ats-ne").addEventListener("click", function(){ b.turiPulta=false; piesti(); });
   document.getElementById("ats-taip").addEventListener("click", function(){ b.turiPulta=true; piesti(); });
+
+  /* ===== PULTU PALYGINIMO LENTELE =====
+     Perkelta is pradziamokslio. Telefone lentele lieka ta pati, tik eiluciu
+     pavadinimai trumpesni (CSS keicia .dm-cmp-ilgas / .dm-cmp-trumpas), ir
+     visa lentele suskleidziama. Kainos eilutes cia nera: rinkinio kaina
+     priklauso ir nuo drono su akiniais, tad rodoma tik prie mygtuko. */
+  var CMP_IKONOS = {
+    signalas: "M2 8.8a12 12 0 0 1 16 0M5 12a8 8 0 0 1 10 0M8 15.2a4 4 0 0 1 4 0",
+    zaidimas: "M6 12h4M8 10v4M15 11h.01M17.5 13h.01M4 8h14a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3z",
+    ekranas:  "M3 5h18v11H3zM9 20h6M12 16v4",
+    kanalai:  "M4 7h16M4 12h16M4 17h16M8 5v4M15 10v4M10 15v4",
+    baterija: "M4 8h13v8H4zM19 11v2M8 11v2M11 11v2",
+    svoris:   "M12 4v3M7 7h10l3 12H4zM12 11v4",
+    dydis:    "M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5",
+    programa: "M9 8l-4 4 4 4M15 8l4 4-4 4",
+    modulis:  "M9 3v4M15 3v4M6 7h12v7a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4zM12 18v3"
+  };
+  var CMP_ZENKLAI = {
+    gerai: { kelias: "M5 10.5l3.2 3.2L15 7", etikete: "taip" },
+    vidut: { kelias: "M6 10h8", etikete: "iš dalies" },
+    nera:  { kelias: "M6.5 6.5l7 7M13.5 6.5l-7 7", etikete: "ne" }
+  };
+  var CMP_EILUTES = [
+    { pav: "Suderinamas su ELRS",      trum: "ELRS",          ikona: "signalas", taip: true },
+    { pav: "Veikia su simuliatoriumi", trum: "Simuliatorius", ikona: "zaidimas", taip: true },
+    { pav: "Ekranas",                  trum: "Ekranas",  ikona: "ekranas",  laukas: "ekranas",  zenklas: true },
+    { pav: "Kanalai",                  trum: "Kanalai",  ikona: "kanalai",  laukas: "kanalai",  zenklas: true },
+    { pav: "Baterija",                 trum: "Baterija", ikona: "baterija", laukas: "baterija", zenklas: true },
+    { pav: "Svoris",                   trum: "Svoris",   ikona: "svoris",   laukas: "svoris" },
+    { pav: "Dydis",                    trum: "Dydis",    ikona: "dydis",    laukas: "dydis" },
+    { pav: "Programinė įranga",        trum: "Programa", ikona: "programa", laukas: "programine" },
+    { pav: "Išorinio modulio lizdas",  trum: "Modulis",  ikona: "modulis",  laukas: "modulis",  zenklas: true }
+  ];
+
+  function svgKelias(viewBox, d, storis) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", viewBox);
+    s.setAttribute("fill", "none");
+    s.setAttribute("aria-hidden", "true");
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("d", d);
+    p.setAttribute("stroke", "currentColor");
+    p.setAttribute("stroke-width", storis);
+    p.setAttribute("stroke-linecap", "round");
+    p.setAttribute("stroke-linejoin", "round");
+    s.appendChild(p);
+    return s;
+  }
+  function cmpIkona(v) { return svgKelias("0 0 24 24", CMP_IKONOS[v] || "", "1.7"); }
+  function cmpZenklas(busena) {
+    var cfg = CMP_ZENKLAI[busena] || CMP_ZENKLAI.vidut;
+    var sp = document.createElement("span");
+    sp.className = "dm-cmp-z dm-cmp-z--" + busena;
+    sp.setAttribute("role", "img");
+    sp.setAttribute("aria-label", cfg.etikete);
+    sp.appendChild(svgKelias("0 0 20 20", cfg.kelias, "2.4"));
+    return sp;
+  }
+  /* Du tekstai viename langelyje: ilgas kompiuteryje, trumpas telefone.
+     Perjungia CSS — be JS ir be resize klausymosi. */
+  function cmpTekstas(ilgas, trumpas) {
+    var f = document.createDocumentFragment();
+    var a = document.createElement("span");
+    a.className = "dm-cmp-ilgas"; a.textContent = ilgas; f.appendChild(a);
+    var b = document.createElement("span");
+    b.className = "dm-cmp-trumpas";
+    b.textContent = (trumpas == null) ? ilgas : trumpas;
+    f.appendChild(b);
+    return f;
+  }
+
+  function piestiLentele() {
+    var dez = document.getElementById("dm-cmp");
+    if (!dez) return;
+    dez.innerHTML = "";
+    var lent = document.createElement("table");
+
+    var thead = document.createElement("thead");
+    var trh = document.createElement("tr");
+    trh.appendChild(document.createElement("th"));
+    PULTAI.forEach(function (p) {
+      var th = document.createElement("th");
+
+      var role = document.createElement("span");
+      role.className = "dm-cmp-role";
+      role.textContent = p.role;
+      th.appendChild(role);
+
+      /* Zymos vieta rezervuojama visada — kitaip stulpelis be zymos
+         issilygiuotu kitaip nei stulpelis su zyma. */
+      var z = document.createElement("span");
+      z.className = "dm-cmp-zenklas" + (p.zyma ? "" : " dm-cmp-zenklas--tuscia");
+      z.textContent = p.zyma || " ";
+      if (!p.zyma) z.setAttribute("aria-hidden", "true");
+      th.appendChild(z);
+
+      var box = document.createElement("span");
+      box.className = "dm-cmp-foto";
+      var img = document.createElement("img");
+      img.src = p.nuotr; img.alt = p.pav; img.loading = "lazy";
+      img.width = 112; img.height = 112;
+      box.appendChild(img);
+      th.appendChild(box);
+
+      var pav = document.createElement("span");
+      pav.className = "dm-cmp-pav";
+      pav.appendChild(cmpTekstas(p.pav, p.trum));
+      th.appendChild(pav);
+
+      var chip = document.createElement("span");
+      chip.className = "dm-cmp-chip";
+      chip.textContent = "ELRS";
+      th.appendChild(chip);
+
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh);
+    lent.appendChild(thead);
+
+    var tbody = document.createElement("tbody");
+    CMP_EILUTES.forEach(function (eil) {
+      var tr = document.createElement("tr");
+      var th = document.createElement("th");
+      th.scope = "row";
+      var ik = document.createElement("span");
+      ik.className = "dm-cmp-ikona";
+      ik.appendChild(cmpIkona(eil.ikona));
+      th.appendChild(ik);
+      th.appendChild(cmpTekstas(eil.pav, eil.trum));
+      tr.appendChild(th);
+
+      PULTAI.forEach(function (p) {
+        var td = document.createElement("td");
+        if (eil.taip) {
+          td.className = "dm-cmp-c";
+          td.appendChild(cmpZenklas("gerai"));
+        } else if (eil.zenklas) {
+          var apv = document.createElement("span");
+          apv.className = "dm-cmp-su-zenklu";
+          var r = p.sp[eil.laukas];
+          apv.appendChild(cmpZenklas(r[1]));
+          var txt = document.createElement("span");
+          txt.textContent = r[0];
+          apv.appendChild(txt);
+          td.appendChild(apv);
+        } else {
+          td.textContent = p.sp[eil.laukas] || "–";
+        }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    lent.appendChild(tbody);
+    dez.appendChild(lent);
+  }
+  piestiLentele();
+
+  /* Telefone lentele uzima kelis ekranus, tad pradzioje ji suskleista.
+     Mygtuka kuria JS — be JS lentele lieka matoma, kaip ir anksciau. */
+  (function () {
+    var blokas = document.getElementById("dm-palyginimas");
+    var intro = blokas && blokas.querySelector(".dm-cmp-intro");
+    if (!blokas || !intro) return;
+
+    var m = document.createElement("button");
+    m.type = "button";
+    m.className = "dm-cmp-jungiklis";
+    m.setAttribute("aria-controls", "dm-cmp");
+    var et = document.createElement("span");
+    var rod = document.createElement("span");
+    rod.className = "dm-cmp-jungiklis-rodykle";
+    rod.setAttribute("aria-hidden", "true");
+    rod.textContent = "▼";
+    m.appendChild(et);
+    m.appendChild(rod);
+    intro.appendChild(m);
+
+    var siauras = window.matchMedia("(max-width:620px)");
+    var svelniai = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function nustatyti(atidaryta) {
+      blokas.classList.toggle("dm-cmp-uzdaryta", !atidaryta);
+      m.setAttribute("aria-expanded", atidaryta ? "true" : "false");
+      et.textContent = atidaryta ? "Suskleisti palyginimą" : "Palyginti visus tris";
+    }
+    nustatyti(!siauras.matches);
+
+    m.addEventListener("click", function () {
+      var buvo = m.getAttribute("aria-expanded") === "true";
+      nustatyti(!buvo);
+      if (buvo) {
+        blokas.scrollIntoView({ behavior: svelniai ? "smooth" : "auto", block: "start" });
+      }
+    });
+
+    var perjungti = function () { if (!siauras.matches) nustatyti(true); };
+    if (siauras.addEventListener) siauras.addEventListener("change", perjungti);
+    else if (siauras.addListener) siauras.addListener(perjungti);
+
+    /* Nuoroda „Palyginti visus tris" isskleidzia lentele. */
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest
+        ? e.target.closest('a[href="#dm-palyginimas"]') : null;
+      if (a) nustatyti(true);
+    });
+  })();
+
   piesti();
 })();
 </script>
