@@ -393,25 +393,12 @@
 #dm .dm-cmp-intro{padding:clamp(22px,3vw,34px);}
 @media (min-width:900px){
   /* Plaèiame ekrane iztraukiam tekstą į kairę, kaip makete. */
-  #dm .dm-cmp-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-    gap:28px;align-items:start;}
-  #dm .dm-cmp-intro .dm-cmp-callout{margin-top:0;}
+  #dm .dm-cmp-intro{max-width:62ch;}
 }
 #dm .dm-cmp-h{font-size:clamp(1.4rem,2.6vw,1.875rem);}
 #dm .dm-cmp-lead{margin-top:10px;color:var(--dm-muted);font-size:1rem;line-height:1.55;
   max-width:46ch;}
-#dm .dm-cmp-callout{display:flex;gap:12px;align-items:flex-start;margin-top:18px;
-  background:#E6F6EC;border-radius:14px;padding:14px 16px;max-width:520px;}
-#dm .dm-cmp-callout-ico{flex:0 0 auto;width:24px;height:24px;border-radius:50%;
-  background:#16A34A;color:#fff;display:flex;align-items:center;
-  justify-content:center;}
-#dm .dm-cmp-callout-ico svg{width:14px;height:14px;}
-#dm .dm-cmp-callout b{display:block;font-size:0.9375rem;font-weight:800;}
-#dm .dm-cmp-callout > div span{display:block;font-size:0.875rem;
-  color:var(--dm-muted);line-height:1.5;margin-top:2px;}
 /* Ikonos varnelė turi likti balta — bendra span taisyklė ją nudažydavo pilkai. */
-#dm .dm-cmp-callout .dm-cmp-callout-ico{color:#fff;}
-#dm .dm-cmp-callout .dm-cmp-callout-ico svg{fill:#fff;}
 
 #dm .dm-cmp{overflow-x:auto;-webkit-overflow-scrolling:touch;
   border-top:1px solid var(--dm-line);}
@@ -871,15 +858,6 @@
           Visi trys tinka pradedantiesiems ir veikia tiek simuliatoriuje,
           tiek valdant tikrą FPV droną.
         </p>
-        <div class="dm-cmp-callout">
-          <span class="dm-cmp-callout-ico" aria-hidden="true">
-            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M8.3 14.3L4 10l1.4-1.4 2.9 2.9 6.3-6.3L16 6.6z"/></svg>
-          </span>
-          <div>
-            <b>Blogo pasirinkimo nėra</b>
-            <span>Skiriasi tik patogumas ir galimybės ateičiai — ne tai, ar išmoksi.</span>
-          </div>
-        </div>
       </div>
 
       <div class="dm-cmp" id="dm-cmp">
