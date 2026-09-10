@@ -63,10 +63,10 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none}
 /* 761-900 px: telefono isdestymas jau nebegalioja, bet krūva dar netelpa,
    todel cia ji sumazinama labiausiai. */
 @media (min-width:761px)  and (max-width:900px) { :root{--kruvos-mastelis:.47} }
-@media (min-width:901px)  and (max-width:1100px){ :root{--kruvos-mastelis:.58} }
-@media (min-width:1101px) and (max-width:1279px){ :root{--kruvos-mastelis:.70} }
-@media (min-width:1280px) and (max-width:1439px){ :root{--kruvos-mastelis:.82} }
-@media (min-width:1440px) and (max-width:1599px){ :root{--kruvos-mastelis:.93} }
+@media (min-width:901px)  and (max-width:1100px){ :root{--kruvos-mastelis:.57} }
+@media (min-width:1101px) and (max-width:1279px){ :root{--kruvos-mastelis:.69} }
+@media (min-width:1280px) and (max-width:1439px){ :root{--kruvos-mastelis:.81} }
+@media (min-width:1440px) and (max-width:1599px){ :root{--kruvos-mastelis:.92} }
 /* Nuo 1600 px prisideda seši kraštiniai akumuliatoriai, todel bendras
    plotis suoktelėja — mastelis atitinkamai mazesnis. */
 @media (min-width:1600px) and (max-width:1799px){ :root{--kruvos-mastelis:.88} }
@@ -110,25 +110,25 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 /* Akumuliatoriai isbarstyti po vienaslink krūvos: jie ploni, tad uzpildo
    tarpus tarp stambiu daiktu ir nieko neuzstoja. --sukti keicia pasukima,
    kad greta esantys nesigulotu lygiagreciai. */
-#kruva .p-ak1{--w:132px;--x:-662;--y:-18;--sukti:.8}
-#kruva .p-ak2{--w:124px;--x:-700;--y:-214;--sukti:1.15}
-#kruva .p-ak3{--w:132px;--x:-522;--y:-320;--sukti:-.75}
-#kruva .p-ak4{--w:126px;--x:690;--y:-204;--sukti:1.05}
-#kruva .p-ak5{--w:130px;--x:520;--y:-314;--sukti:-.8}
-#kruva .p-ak6{--w:122px;--x:656;--y:-42;--sukti:.9}
+#kruva .p-ak1{--w:132px;--x:-700;--y:-120;--sukti:.85}
+#kruva .p-ak2{--w:124px;--x:-690;--y:-390;--sukti:-.8}
+#kruva .p-ak3{--w:132px;--x:-560;--y:-290;--sukti:1.25}
+#kruva .p-ak4{--w:126px;--x:685;--y:-385;--sukti:-.75}
+#kruva .p-ak5{--w:130px;--x:548;--y:-288;--sukti:-1.2}
+#kruva .p-ak6{--w:122px;--x:695;--y:-115;--sukti:.9}
 /* Sitie du kabo auksciau uz visus, antrastes lygyje — uzpildo tuscia juoda
    plota kaireje ir desineje. Telefone nerodomi. */
-#kruva .p-ak7{--w:128px;--x:-600;--y:-398;--sukti:1.1}
-#kruva .p-ak8{--w:122px;--x:562;--y:-378;--sukti:.7}
+#kruva .p-ak7{--w:128px;--x:-470;--y:-455;--sukti:1.1}
+#kruva .p-ak8{--w:122px;--x:460;--y:-448;--sukti:.8}
 /* Dar po tris i kiekviena krašta. Jiems vietos yra tik nuo 1600 px —
    siauresniuose ekranuose kruva jau ir taip liecia abu kraštus, tad ten
    jie paslepti (zr. media query zemiau). */
-#kruva .p-ak9 {--w:118px;--x:-742;--y:-96;--sukti:.9}
-#kruva .p-ak10{--w:112px;--x:-806;--y:-300;--sukti:-.7}
-#kruva .p-ak11{--w:122px;--x:-820;--y:-186;--sukti:1.2}
-#kruva .p-ak12{--w:118px;--x:738;--y:-104;--sukti:-.85}
-#kruva .p-ak13{--w:112px;--x:800;--y:-306;--sukti:.75}
-#kruva .p-ak14{--w:122px;--x:816;--y:-196;--sukti:-1.15}
+#kruva .p-ak9{--w:118px;--x:-790;--y:110;--sukti:-.9}
+#kruva .p-ak10{--w:112px;--x:-820;--y:-330;--sukti:-.65}
+#kruva .p-ak11{--w:122px;--x:-800;--y:-110;--sukti:1.15}
+#kruva .p-ak12{--w:118px;--x:785;--y:115;--sukti:.95}
+#kruva .p-ak13{--w:112px;--x:818;--y:-325;--sukti:.7}
+#kruva .p-ak14{--w:122px;--x:795;--y:-105;--sukti:-1.1}
 #kruva .p-batm{display:none}   /* tik telefonui */
 .kruva img{
   position:absolute;left:0;top:0;width:var(--w);max-width:none;
