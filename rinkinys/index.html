@@ -169,7 +169,7 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 }
 .dm-cmp-intro{padding:clamp(22px,3vw,34px);}
 @media (min-width:900px){
-  /* Plaèiame ekrane iztraukiam tekstą į kairę, kaip makete. */
+  /* Plačiame ekrane iztraukiam tekstą į kairę, kaip makete. */
   .dm-cmp-intro{max-width:62ch;}
 }
 .dm-cmp-h{font-size:clamp(1.4rem,2.6vw,1.875rem);}
@@ -376,9 +376,12 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 .seg[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .dezute{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:1.5px solid #C9C9D4;
   background:#fff;position:relative}
-.smulki[aria-pressed="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
-.smulki[aria-pressed="true"] .dezute{background:var(--blue);border-color:var(--blue)}
-.smulki[aria-pressed="true"] .dezute::after{content:"";position:absolute;left:7px;top:3px;
+.smulki[aria-pressed="true"],
+.priedas[aria-pressed="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.smulki[aria-pressed="true"] .dezute,
+.priedas[aria-pressed="true"] .dezute{background:var(--blue);border-color:var(--blue)}
+.smulki[aria-pressed="true"] .dezute::after,
+.priedas[aria-pressed="true"] .dezute::after{content:"";position:absolute;left:7px;top:3px;
   width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 button.smulki{width:100%;text-align:left}
 .smulki-kaina{font-weight:800;font-size:.9375rem;white-space:nowrap}
@@ -429,6 +432,132 @@ button.smulki{width:100%;text-align:left}
   border-top:1px solid var(--line);font-size:.875rem !important}
 .skiriasi-bat img{width:52px;height:40px;object-fit:contain;flex:0 0 auto}
 .skiriasi-bat b{display:inline;margin:0;font-size:.875rem;color:var(--ink)}
+
+/* ===== PRIEDAI PRIE KREPSELIO =====
+   Kainos ir prieinamumas imami is Shopify realiu laiku (/products/x.js),
+   kad puslapyje niekada nesiulytume to, ko nebera sandelyje. */
+.priedai{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.priedai-antraste{font-size:.8125rem;font-weight:800;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.priedas{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;
+  padding:10px;border:1.5px solid var(--line);border-radius:14px;background:#fff;
+  cursor:pointer;font:inherit;margin-bottom:8px;-webkit-appearance:none;appearance:none}
+.priedas:hover{border-color:#C9C9D4}
+.priedas[aria-pressed="true"]{border-color:var(--blue);background:#F5F5FF}
+.priedas .dezute{margin-top:2px}
+.priedas img{width:38px;height:34px;object-fit:contain;flex:0 0 auto;border-radius:6px}
+.priedas-tekstas{flex:1 1 auto;min-width:0}
+.priedas-pav{display:block;font-weight:700;font-size:.8125rem;line-height:1.3}
+.priedas-apr{display:block;font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.4}
+.priedas-kaina{flex:0 0 auto;font-weight:800;font-size:.8125rem;white-space:nowrap}
+.priedas[aria-pressed="true"] .priedas-kaina{color:var(--blue)}
+.priedas-bukle{display:none;font-size:.75rem;font-weight:700;color:var(--blue);
+  margin-top:3px}
+.priedas[aria-pressed="true"] .priedas-bukle{display:block}
+/* Pasirinktas priedas atsiranda ir „Kas dezeje" sarase — tai vienintelis
+   vienareiksmis patvirtinimas, kad jis tikrai bus dezeje. */
+.deze-sarasas li.deze-priedas{background:#F0F0FF;
+  box-shadow:inset 0 0 0 1.5px rgba(25,25,255,.18)}
+.deze-sarasas li.deze-priedas span{color:var(--blue);font-weight:700}
+
+/* ===== PASITIKEJIMO JUOSTA PRIE MYGTUKO ===== */
+.smulkiai a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.smulkiai a:hover{color:var(--ink)}
+.saugu{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  text-align:center;font-size:.75rem;color:var(--muted);line-height:1.5}
+.saugu b{display:block;font-size:.8125rem;color:var(--ink);margin-bottom:8px}
+.saugu-ikonos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:8px}
+.saugu-ikonos .mk{height:22px;width:auto;display:block;border-radius:3px}
+.klausk{margin-top:10px;font-size:.75rem;text-align:center;color:var(--muted)}
+.klausk a{color:var(--blue);font-weight:700;text-decoration:none}
+.klausk a:hover{text-decoration:underline}
+
+/* ===== WHOOP VS 5 COLIU ===== */
+.vs{background:var(--sviesus);padding:80px 20px}
+.vs h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center}
+.vs-intro{max-width:60ch;margin:12px auto 28px;text-align:center;color:var(--muted);
+  line-height:1.6}
+.vs-lentele{background:#fff;border:1px solid var(--line);border-radius:20px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+.vs table{width:100%;border-collapse:collapse;min-width:640px}
+.vs th,.vs td{padding:14px 16px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line);font-size:.9375rem;line-height:1.5}
+.vs tr:last-child th,.vs tr:last-child td{border-bottom:0}
+.vs thead th{font-size:.8125rem;font-weight:800;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.vs tbody th{font-weight:700;width:22%;color:var(--ink)}
+.vs .vs-mes{background:#F5F5FF;width:39%}
+.vs .vs-kitas{color:var(--muted);width:39%}
+.vs-isvada{margin-top:22px;max-width:70ch;margin-left:auto;margin-right:auto;
+  text-align:center;color:var(--muted);line-height:1.65}
+.vs-isvada b{color:var(--ink)}
+
+/* ===== ATSILIEPIMAI ===== */
+.atsil{background:#fff;padding:80px 20px}
+.atsil-virsus{text-align:center;margin-bottom:30px}
+.atsil h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em}
+.atsil-balas{display:inline-flex;align-items:center;gap:8px;font-size:1rem;
+  margin-bottom:10px}
+.atsil-zv{position:relative;display:inline-block;line-height:1;white-space:nowrap;
+  font-size:1.125rem;letter-spacing:2px}
+.atsil-zv-tusti{color:#C9C9DB}
+.atsil-zv-pilni{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;
+  color:#F5A623}
+.atsil-po{color:var(--muted);font-size:.875rem;margin-top:8px;line-height:1.55}
+.atsil-tinklas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.atsil-k{background:var(--sviesus);border-radius:18px;padding:20px;margin:0}
+.atsil-k p{margin:0;font-size:.9375rem;line-height:1.6}
+.atsil-k-zv{color:#F5A623;letter-spacing:2px;font-size:.9375rem;margin-bottom:10px}
+.atsil-k img{width:100%;height:150px;object-fit:cover;border-radius:12px;margin-top:14px}
+.atsil-k-apacia{display:flex;align-items:center;gap:8px;margin-top:12px;
+  font-size:.8125rem}
+.atsil-k cite{font-style:normal;font-weight:700}
+.atsil-ok{display:inline-flex;align-items:center;gap:4px;color:var(--zalia);
+  font-weight:600}
+.atsil-ok svg{width:14px;height:14px;flex:0 0 auto}
+@media (max-width:900px){ .atsil-tinklas{grid-template-columns:1fr} }
+
+/* ===== DUK =====
+   details/summary — veikia ir be JS, ir su klaviatura. */
+.duk{background:var(--sviesus);padding:80px 20px}
+.duk h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin-bottom:28px}
+.duk-sarasas{max-width:820px;margin:0 auto;display:grid;gap:10px}
+.duk details{background:#fff;border:1px solid var(--line);border-radius:16px;
+  overflow:hidden}
+.duk summary{list-style:none;cursor:pointer;padding:18px 52px 18px 20px;
+  font-weight:700;font-size:1rem;position:relative}
+.duk summary::-webkit-details-marker{display:none}
+.duk summary::after{content:"";position:absolute;right:22px;top:24px;width:9px;
+  height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);transition:transform .18s}
+.duk details[open] summary::after{transform:rotate(-135deg);top:27px}
+.duk-a{padding:0 20px 18px;color:var(--muted);font-size:.9375rem;line-height:1.65}
+.duk-a a{color:var(--blue);font-weight:600}
+.duk-po{max-width:820px;margin:22px auto 0;text-align:center;color:var(--muted);
+  font-size:.9375rem}
+.duk-po a{color:var(--blue);font-weight:700}
+
+/* ===== GARANTIJU JUOSTA — ta pati kaip parduotuveje ===== */
+.garantijos{background:var(--blue);color:#fff;padding:44px 20px}
+.garantijos-in{max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:28px}
+.garantijos-in > div{display:flex;gap:12px;align-items:flex-start}
+.garantijos svg{width:26px;height:26px;flex:0 0 auto;margin-top:1px;opacity:.9}
+.garantijos b{display:block;font-size:.9375rem;font-weight:800;margin-bottom:5px}
+.garantijos span{display:block;font-size:.8125rem;line-height:1.5;opacity:.85}
+@media (max-width:980px){ .garantijos-in{grid-template-columns:repeat(2,1fr);gap:22px} }
+@media (max-width:560px){ .garantijos-in{grid-template-columns:1fr} }
+
+/* ===== PORASTE ===== */
+.poraste{background:var(--ink);color:#fff;padding:44px 20px 52px;font-size:.8125rem}
+.poraste-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;
+  justify-content:space-between;align-items:flex-start}
+.poraste a{color:#fff;text-decoration:none;opacity:.75}
+.poraste a:hover{opacity:1;text-decoration:underline}
+.poraste ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
+.poraste-rekv{opacity:.55;line-height:1.6;max-width:44ch}
 
 .kodel{background:#fff;padding:88px 20px;text-align:center}
 .kodel h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.03em}
@@ -513,7 +642,7 @@ button.smulki{width:100%;text-align:left}
     <span class="chip">FPV whoop drono rinkinys</span>
     <h1>Viskas, ko reikia<br>pirmam skrydžiui</h1>
     <a class="cta" href="#rinktis">Rinktis komplektą <span aria-hidden="true">→</span></a>
-    <div class="kaina">nuo €189,99 · nemokamas pristatymas</div>
+    <div class="kaina">pilnas komplektas nuo €319,99 · jau turi pultą? nuo €189,99</div>
   </div>
 
   <!-- Krūva. --x / --y = atstumas nuo centro; sukimas skaičiuojamas iš --x.
@@ -595,8 +724,31 @@ button.smulki{width:100%;text-align:left}
         <div class="deze-po">Atsinaujina pagal tavo pasirinkimą</div>
         <ul class="deze-sarasas" id="deze-sarasas"></ul>
         <div class="suma"><span class="suma-kaina" id="kaina">€374,99</span></div>
+        <div class="priedai" id="priedai" hidden>
+          <div class="priedai-antraste">Dažniausiai pridedama</div>
+          <div id="priedu-sarasas"></div>
+        </div>
         <a class="pirkti" id="pirkti" href="#">Pereiti prie apmokėjimo <span aria-hidden="true">→</span></a>
-        <div class="smulkiai">Nemokamas pristatymas · 14 dienų grąžinimas</div>
+        <div class="smulkiai">
+          Nemokamas pristatymas ·
+          <a href="https://dronumokykla.lt/policies/shipping-policy" target="_blank" rel="noopener">1–3 d. d.</a> ·
+          <a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">14 dienų grąžinimas</a> ·
+          <a href="https://dronumokykla.lt/policies/legal-notice" target="_blank" rel="noopener">24 mėn. garantija</a>
+        </div>
+        <div class="saugu">
+          <b>Saugūs 256-bit atsiskaitymai</b>
+          <div class="saugu-ikonos">
+            <svg class="mk" version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0" width="38" height="24" viewBox="0 0 165.521 105.965" xml:space="preserve" aria-labelledby="pi-apple_pay"><title id="pi-apple_pay">Apple Pay</title><path fill="#000" d="M150.698 0H14.823c-.566 0-1.133 0-1.698.003-.477.004-.953.009-1.43.022-1.039.028-2.087.09-3.113.274a10.51 10.51 0 0 0-2.958.975 9.932 9.932 0 0 0-4.35 4.35 10.463 10.463 0 0 0-.975 2.96C.113 9.611.052 10.658.024 11.696a70.22 70.22 0 0 0-.022 1.43C0 13.69 0 14.256 0 14.823v76.318c0 .567 0 1.132.002 1.699.003.476.009.953.022 1.43.028 1.036.09 2.084.275 3.11a10.46 10.46 0 0 0 .974 2.96 9.897 9.897 0 0 0 1.83 2.52 9.874 9.874 0 0 0 2.52 1.83c.947.483 1.917.79 2.96.977 1.025.183 2.073.245 3.112.273.477.011.953.017 1.43.02.565.004 1.132.004 1.698.004h135.875c.565 0 1.132 0 1.697-.004.476-.002.952-.009 1.431-.02 1.037-.028 2.085-.09 3.113-.273a10.478 10.478 0 0 0 2.958-.977 9.955 9.955 0 0 0 4.35-4.35c.483-.947.789-1.917.974-2.96.186-1.026.246-2.074.274-3.11.013-.477.02-.954.022-1.43.004-.567.004-1.132.004-1.699V14.824c0-.567 0-1.133-.004-1.699a63.067 63.067 0 0 0-.022-1.429c-.028-1.038-.088-2.085-.274-3.112a10.4 10.4 0 0 0-.974-2.96 9.94 9.94 0 0 0-4.35-4.35A10.52 10.52 0 0 0 156.939.3c-1.028-.185-2.076-.246-3.113-.274a71.417 71.417 0 0 0-1.431-.022C151.83 0 151.263 0 150.698 0z" /><path fill="#FFF" d="M150.698 3.532l1.672.003c.452.003.905.008 1.36.02.793.022 1.719.065 2.583.22.75.135 1.38.34 1.984.648a6.392 6.392 0 0 1 2.804 2.807c.306.6.51 1.226.645 1.983.154.854.197 1.783.218 2.58.013.45.019.9.02 1.36.005.557.005 1.113.005 1.671v76.318c0 .558 0 1.114-.004 1.682-.002.45-.008.9-.02 1.35-.022.796-.065 1.725-.221 2.589a6.855 6.855 0 0 1-.645 1.975 6.397 6.397 0 0 1-2.808 2.807c-.6.306-1.228.511-1.971.645-.881.157-1.847.2-2.574.22-.457.01-.912.017-1.379.019-.555.004-1.113.004-1.669.004H14.801c-.55 0-1.1 0-1.66-.004a74.993 74.993 0 0 1-1.35-.018c-.744-.02-1.71-.064-2.584-.22a6.938 6.938 0 0 1-1.986-.65 6.337 6.337 0 0 1-1.622-1.18 6.355 6.355 0 0 1-1.178-1.623 6.935 6.935 0 0 1-.646-1.985c-.156-.863-.2-1.788-.22-2.578a66.088 66.088 0 0 1-.02-1.355l-.003-1.327V14.474l.002-1.325a66.7 66.7 0 0 1 .02-1.357c.022-.792.065-1.717.222-2.587a6.924 6.924 0 0 1 .646-1.981c.304-.598.7-1.144 1.18-1.623a6.386 6.386 0 0 1 1.624-1.18 6.96 6.96 0 0 1 1.98-.646c.865-.155 1.792-.198 2.586-.22.452-.012.905-.017 1.354-.02l1.677-.003h135.875" /><g><g><path fill="#000" d="M43.508 35.77c1.404-1.755 2.356-4.112 2.105-6.52-2.054.102-4.56 1.355-6.012 3.112-1.303 1.504-2.456 3.959-2.156 6.266 2.306.2 4.61-1.152 6.063-2.858" /><path fill="#000" d="M45.587 39.079c-3.35-.2-6.196 1.9-7.795 1.9-1.6 0-4.049-1.8-6.698-1.751-3.447.05-6.645 2-8.395 5.1-3.598 6.2-.95 15.4 2.55 20.45 1.699 2.5 3.747 5.25 6.445 5.151 2.55-.1 3.549-1.65 6.647-1.65 3.097 0 3.997 1.65 6.696 1.6 2.798-.05 4.548-2.5 6.247-5 1.95-2.85 2.747-5.6 2.797-5.75-.05-.05-5.396-2.101-5.446-8.251-.05-5.15 4.198-7.6 4.398-7.751-2.399-3.548-6.147-3.948-7.447-4.048" /></g><g><path fill="#000" d="M78.973 32.11c7.278 0 12.347 5.017 12.347 12.321 0 7.33-5.173 12.373-12.529 12.373h-8.058V69.62h-5.822V32.11h14.062zm-8.24 19.807h6.68c5.07 0 7.954-2.729 7.954-7.46 0-4.73-2.885-7.434-7.928-7.434h-6.706v14.894z" /><path fill="#000" d="M92.764 61.847c0-4.809 3.665-7.564 10.423-7.98l7.252-.442v-2.08c0-3.04-2.001-4.704-5.562-4.704-2.938 0-5.07 1.507-5.51 3.82h-5.252c.157-4.86 4.731-8.395 10.918-8.395 6.654 0 10.995 3.483 10.995 8.89v18.663h-5.38v-4.497h-.13c-1.534 2.937-4.914 4.782-8.579 4.782-5.406 0-9.175-3.222-9.175-8.057zm17.675-2.417v-2.106l-6.472.416c-3.64.234-5.536 1.585-5.536 3.95 0 2.288 1.975 3.77 5.068 3.77 3.95 0 6.94-2.522 6.94-6.03z" /><path fill="#000" d="M120.975 79.652v-4.496c.364.051 1.247.103 1.715.103 2.573 0 4.029-1.09 4.913-3.899l.52-1.663-9.852-27.293h6.082l6.863 22.146h.13l6.862-22.146h5.927l-10.216 28.67c-2.34 6.577-5.017 8.735-10.683 8.735-.442 0-1.872-.052-2.261-.157z" /></g></g></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" aria-labelledby="pi-google_pay"><title id="pi-google_pay">Google Pay</title><path d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z" fill="#000" opacity=".07"/><path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32" fill="#FFF"/><path d="M18.093 11.976v3.2h-1.018v-7.9h2.691a2.447 2.447 0 0 1 1.747.692 2.28 2.28 0 0 1 .11 3.224l-.11.116c-.47.447-1.098.69-1.747.674l-1.673-.006zm0-3.732v2.788h1.698c.377.012.741-.135 1.005-.404a1.391 1.391 0 0 0-1.005-2.354l-1.698-.03zm6.484 1.348c.65-.03 1.286.188 1.778.613.445.43.682 1.03.65 1.649v3.334h-.969v-.766h-.049a1.93 1.93 0 0 1-1.673.931 2.17 2.17 0 0 1-1.496-.533 1.667 1.667 0 0 1-.613-1.324 1.606 1.606 0 0 1 .613-1.336 2.746 2.746 0 0 1 1.698-.515c.517-.02 1.03.093 1.49.331v-.208a1.134 1.134 0 0 0-.417-.901 1.416 1.416 0 0 0-.98-.368 1.545 1.545 0 0 0-1.319.717l-.895-.564a2.488 2.488 0 0 1 2.182-1.06zM23.29 13.52a.79.79 0 0 0 .337.662c.223.176.5.269.785.263.429-.001.84-.17 1.146-.472.305-.286.478-.685.478-1.103a2.047 2.047 0 0 0-1.324-.374 1.716 1.716 0 0 0-1.03.294.883.883 0 0 0-.392.73zm9.286-3.75l-3.39 7.79h-1.048l1.281-2.728-2.224-5.062h1.103l1.612 3.885 1.569-3.885h1.097z" fill="#5F6368"/><path d="M13.986 11.284c0-.308-.024-.616-.073-.92h-4.29v1.747h2.451a2.096 2.096 0 0 1-.9 1.373v1.134h1.464a4.433 4.433 0 0 0 1.348-3.334z" fill="#4285F4"/><path d="M9.629 15.721a4.352 4.352 0 0 0 3.01-1.097l-1.466-1.14a2.752 2.752 0 0 1-4.094-1.44H5.577v1.17a4.53 4.53 0 0 0 4.052 2.507z" fill="#34A853"/><path d="M7.079 12.05a2.709 2.709 0 0 1 0-1.735v-1.17H5.577a4.505 4.505 0 0 0 0 4.075l1.502-1.17z" fill="#FBBC04"/><path d="M9.629 8.44a2.452 2.452 0 0 1 1.74.68l1.3-1.293a4.37 4.37 0 0 0-3.065-1.183 4.53 4.53 0 0 0-4.027 2.5l1.502 1.171a2.715 2.715 0 0 1 2.55-1.875z" fill="#EA4335"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-american_express"><title id="pi-american_express">American Express</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#0071CE" style="fill:#0071CE;fill:color(display-p3 0.0000 0.4431 0.8078);fill-opacity:1;"/><path d="M3 0.5H35C36.3348 0.5 37.5 1.58692 37.5 3V21C37.5 22.4239 36.4239 23.5 35 23.5H3C1.66524 23.5 0.5 22.4131 0.5 21V3C0.5 1.57614 1.57614 0.5 3 0.5Z" stroke="black" stroke-opacity="0.07" style="stroke:black;stroke-opacity:0.07;"/><path d="M25.8662 6.33203V3H31L31.8662 5.5332L32.7334 3H37V14.2002H36.7998L34.8672 16.2656L36.7998 18.3594H37V21.2666H33.5996L31.9336 19.3994L30.2002 21.2666H19.4668V12.666H16L20.2666 3H24.4004L25.8662 6.33203ZM20.5996 20.2656H27V18.5322H22.666V17.3994H26.8662V15.666H22.666V14.5322H27V12.7988H20.5996V20.2656ZM30.5332 16.5322L27 20.2656H29.5996L31.8662 17.8662L34.0664 20.2656H36.7324L33.1992 16.4658L36.7324 12.7988H34.1328L31.8662 15.1992L29.7324 12.7988H27L30.5332 16.5322ZM17.666 11.7324H19.9326L20.5332 10.1992H23.999L24.666 11.7324H26.999L23.666 4.19922H20.999L17.666 11.7324ZM33.5996 4.19922L31.9326 8.86621L30.1992 4.19922H27V11.666H29.0664V6.39941L31 11.666H32.7998L34.7324 6.39941V11.666H36.7324V4.13281L33.5996 4.19922ZM23.2656 8.46582H21.2656L22.2656 5.99902L23.2656 8.46582Z" fill="white" style="fill:white;fill-opacity:1;"/></svg>
+            <svg class="mk" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-maestro"><title id="pi-maestro">Maestro</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><circle fill="#EB001B" cx="15" cy="12" r="7"/><circle fill="#00A2E5" cx="23" cy="12" r="7"/><path fill="#7375CF" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-master"><title id="pi-master">Mastercard</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#1C1C1C" style="fill:#1C1C1C;fill:color(display-p3 0.1098 0.1098 0.1098);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#232323" style="fill:#232323;fill:color(display-p3 0.1373 0.1373 0.1373);fill-opacity:1;"/><path d="M14.6364 19.2727C18.8538 19.2727 22.2727 15.8538 22.2727 11.6364C22.2727 7.41892 18.8538 4 14.6364 4C10.4189 4 7 7.41892 7 11.6364C7 15.8538 10.4189 19.2727 14.6364 19.2727Z" fill="#EB001B" style="fill:#EB001B;fill:color(display-p3 0.9216 0.0000 0.1059);fill-opacity:1;"/><path d="M23.3637 19.2727C27.5811 19.2727 31 15.8538 31 11.6364C31 7.41892 27.5811 4 23.3637 4C19.1462 4 15.7273 7.41892 15.7273 11.6364C15.7273 15.8538 19.1462 19.2727 23.3637 19.2727Z" fill="#F79E1B" style="fill:#F79E1B;fill:color(display-p3 0.9686 0.6196 0.1059);fill-opacity:1;"/><path d="M22.2727 11.6362C22.2727 9.01797 20.9637 6.72706 19 5.41797C17.0364 6.83615 15.7273 9.12706 15.7273 11.6362C15.7273 14.1452 17.0364 16.5452 19 17.8543C20.9637 16.5452 22.2727 14.2543 22.2727 11.6362Z" fill="#FF5F00" style="fill:#FF5F00;fill:color(display-p3 1.0000 0.3725 0.0000);fill-opacity:1;"/></svg>
+            <svg class="mk" viewBox="-36 25 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-unionpay"><title id="pi-unionpay">Union Pay</title><path fill="#005B9A" d="M-36 46.8v.7-.7zM-18.3 25v24h-7.2c-1.3 0-2.1-1-1.8-2.3l4.4-19.4c.3-1.3 1.9-2.3 3.2-2.3h1.4zm12.6 0c-1.3 0-2.9 1-3.2 2.3l-4.5 19.4c-.3 1.3.5 2.3 1.8 2.3h-4.9V25h10.8z"/><path fill="#E9292D" d="M-19.7 25c-1.3 0-2.9 1.1-3.2 2.3l-4.4 19.4c-.3 1.3.5 2.3 1.8 2.3h-8.9c-.8 0-1.5-.6-1.5-1.4v-21c0-.8.7-1.6 1.5-1.6h14.7z"/><path fill="#0E73B9" d="M-5.7 25c-1.3 0-2.9 1.1-3.2 2.3l-4.4 19.4c-.3 1.3.5 2.3 1.8 2.3H-26h.5c-1.3 0-2.1-1-1.8-2.3l4.4-19.4c.3-1.3 1.9-2.3 3.2-2.3h14z"/><path fill="#059DA4" d="M2 26.6v21c0 .8-.6 1.4-1.5 1.4h-12.1c-1.3 0-2.1-1.1-1.8-2.3l4.5-19.4C-8.6 26-7 25-5.7 25H.5c.9 0 1.5.7 1.5 1.6z"/><path fill="#fff" d="M-21.122 38.645h.14c.14 0 .28-.07.28-.14l.42-.63h1.19l-.21.35h1.4l-.21.63h-1.68c-.21.28-.42.42-.7.42h-.84l.21-.63m-.21.91h3.01l-.21.7h-1.19l-.21.7h1.19l-.21.7h-1.19l-.28 1.05c-.07.14 0 .28.28.21h.98l-.21.7h-1.89c-.35 0-.49-.21-.35-.63l.35-1.33h-.77l.21-.7h.77l.21-.7h-.7l.21-.7zm4.83-1.75v.42s.56-.42 1.12-.42h1.96l-.77 2.66c-.07.28-.35.49-.77.49h-2.24l-.49 1.89c0 .07 0 .14.14.14h.42l-.14.56h-1.12c-.42 0-.56-.14-.49-.35l1.47-5.39h.91zm1.68.77h-1.75l-.21.7s.28-.21.77-.21h1.05l.14-.49zm-.63 1.68c.14 0 .21 0 .21-.14l.14-.35h-1.75l-.14.56 1.54-.07zm-1.19.84h.98v.42h.28c.14 0 .21-.07.21-.14l.07-.28h.84l-.14.49c-.07.35-.35.49-.77.56h-.56v.77c0 .14.07.21.35.21h.49l-.14.56h-1.19c-.35 0-.49-.14-.49-.49l.07-2.1zm4.2-2.45l.21-.84h1.19l-.07.28s.56-.28 1.05-.28h1.47l-.21.84h-.21l-1.12 3.85h.21l-.21.77h-.21l-.07.35h-1.19l.07-.35h-2.17l.21-.77h.21l1.12-3.85h-.28m1.26 0l-.28 1.05s.49-.21.91-.28c.07-.35.21-.77.21-.77h-.84zm-.49 1.54l-.28 1.12s.56-.28.98-.28c.14-.42.21-.77.21-.77l-.91-.07zm.21 2.31l.21-.77h-.84l-.21.77h.84zm2.87-4.69h1.12l.07.42c0 .07.07.14.21.14h.21l-.21.7h-.77c-.28 0-.49-.07-.49-.35l-.14-.91zm-.35 1.47h3.57l-.21.77h-1.19l-.21.7h1.12l-.21.77h-1.26l-.28.42h.63l.14.84c0 .07.07.14.21.14h.21l-.21.7h-.7c-.35 0-.56-.07-.56-.35l-.14-.77-.56.84c-.14.21-.35.35-.63.35h-1.05l.21-.7h.35c.14 0 .21-.07.35-.21l.84-1.26h-1.05l.21-.77h1.19l.21-.7h-1.19l.21-.77zm-19.74-5.04c-.14.7-.42 1.19-.91 1.54-.49.35-1.12.56-1.89.56-.7 0-1.26-.21-1.54-.56-.21-.28-.35-.56-.35-.98 0-.14 0-.35.07-.56l.84-3.92h1.19l-.77 3.92v.28c0 .21.07.35.14.49.14.21.35.28.7.28s.7-.07.91-.28c.21-.21.42-.42.49-.77l.77-3.92h1.19l-.84 3.92m1.12-1.54h.84l-.07.49.14-.14c.28-.28.63-.42 1.05-.42.35 0 .63.14.77.35.14.21.21.49.14.91l-.49 2.38h-.91l.42-2.17c.07-.28.07-.49 0-.56-.07-.14-.21-.14-.35-.14-.21 0-.42.07-.56.21-.14.14-.28.35-.28.63l-.42 2.03h-.91l.63-3.57m9.8 0h.84l-.07.49.14-.14c.28-.28.63-.42 1.05-.42.35 0 .63.14.77.35s.21.49.14.91l-.49 2.38h-.91l.42-2.24c.07-.21 0-.42-.07-.49-.07-.14-.21-.14-.35-.14-.21 0-.42.07-.56.21-.14.14-.28.35-.28.63l-.42 2.03h-.91l.7-3.57m-5.81 0h.98l-.77 3.5h-.98l.77-3.5m.35-1.33h.98l-.21.84h-.98l.21-.84zm1.4 4.55c-.21-.21-.35-.56-.35-.98v-.21c0-.07 0-.21.07-.28.14-.56.35-1.05.7-1.33.35-.35.84-.49 1.33-.49.42 0 .77.14 1.05.35.21.21.35.56.35.98v.21c0 .07 0 .21-.07.28-.14.56-.35.98-.7 1.33-.35.35-.84.49-1.33.49-.35 0-.7-.14-1.05-.35m1.89-.7c.14-.21.28-.49.35-.84v-.35c0-.21-.07-.35-.14-.49a.635.635 0 0 0-.49-.21c-.28 0-.49.07-.63.28-.14.21-.28.49-.35.84v.28c0 .21.07.35.14.49.14.14.28.21.49.21.28.07.42 0 .63-.21m6.51-4.69h2.52c.49 0 .84.14 1.12.35.28.21.35.56.35.91v.28c0 .07 0 .21-.07.28-.07.49-.35.98-.7 1.26-.42.35-.84.49-1.4.49h-1.4l-.42 2.03h-1.19l1.19-5.6m.56 2.59h1.12c.28 0 .49-.07.7-.21.14-.14.28-.35.35-.63v-.28c0-.21-.07-.35-.21-.42-.14-.07-.35-.14-.7-.14h-.91l-.35 1.68zm8.68 3.71c-.35.77-.7 1.26-.91 1.47-.21.21-.63.7-1.61.7l.07-.63c.84-.28 1.26-1.4 1.54-1.96l-.28-3.78h1.19l.07 2.38.91-2.31h1.05l-2.03 4.13m-2.94-3.85l-.42.28c-.42-.35-.84-.56-1.54-.21-.98.49-1.89 4.13.91 2.94l.14.21h1.12l.7-3.29-.91.07m-.56 1.82c-.21.56-.56.84-.91.77-.28-.14-.35-.63-.21-1.19.21-.56.56-.84.91-.77.28.14.35.63.21 1.19"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-visa"><title id="pi-visa">Visa</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#142FBD" style="fill:#142FBD;fill:color(display-p3 0.0784 0.1843 0.7412);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#1532CB" style="fill:#1532CB;fill:color(display-p3 0.0824 0.1961 0.7961);fill-opacity:1;"/><path d="M29.5944 10.2167H29.2778C28.8556 11.2722 28.5389 11.8 28.2222 13.3833H30.2278C29.9111 11.8 29.9111 11.0611 29.5944 10.2167V10.2167ZM32.6556 16.4444H30.8611C30.7556 16.4444 30.7556 16.4444 30.65 16.3389L30.4389 15.3889L30.3333 15.1778H27.8C27.6944 15.1778 27.5889 15.1778 27.5889 15.3889L27.2722 16.3389C27.2722 16.4444 27.1667 16.4444 27.1667 16.4444H24.95L25.1611 15.9167L28.2222 8.73889C28.2222 8.21111 28.5389 8 29.0667 8H30.65C30.7556 8 30.8611 8 30.8611 8.21111L32.3389 15.0722C32.4444 15.4944 32.55 15.8111 32.55 16.2333C32.6556 16.3389 32.6556 16.3389 32.6556 16.4444V16.4444ZM18.5111 16.1278L18.9333 14.2278C19.0389 14.2278 19.1444 14.3333 19.1444 14.3333C19.8833 14.65 20.6222 14.8611 21.3611 14.7556C21.5722 14.7556 21.8889 14.65 22.1 14.5444C22.6278 14.3333 22.6278 13.8056 22.2056 13.3833C21.9944 13.1722 21.6778 13.0667 21.3611 12.8556C20.9389 12.6444 20.5167 12.4333 20.2 12.1167C18.9333 11.0611 19.3556 9.58333 20.0944 8.84444C20.7278 8.42222 21.0444 8 21.8889 8C23.1556 8 24.5278 8 25.1611 8.21111H25.2667C25.1611 8.84444 25.0556 9.37222 24.8444 10.0056C24.3167 9.79444 23.7889 9.58333 23.2611 9.58333C22.9444 9.58333 22.6278 9.58333 22.3111 9.68889C22.1 9.68889 21.9944 9.79444 21.8889 9.9C21.6778 10.1111 21.6778 10.4278 21.8889 10.6389L22.4167 11.0611C22.8389 11.2722 23.2611 11.4833 23.5778 11.6944C24.1056 12.0111 24.6333 12.5389 24.7389 13.1722C24.95 14.1222 24.6333 14.9667 23.7889 15.6C23.2611 16.0222 23.05 16.2333 22.3111 16.2333C20.8333 16.2333 19.6722 16.3389 18.7222 16.0222C18.6167 16.2333 18.6167 16.2333 18.5111 16.1278V16.1278ZM14.8167 16.4444C14.9222 15.7056 14.9222 15.7056 15.0278 15.3889C15.5556 13.0667 16.0833 10.6389 16.5056 8.31667C16.6111 8.10556 16.6111 8 16.8222 8H18.7222C18.5111 9.26667 18.3 10.2167 17.9833 11.3778C17.6667 12.9611 17.35 14.5444 16.9278 16.1278C16.9278 16.3389 16.8222 16.3389 16.6111 16.3389L14.8167 16.4444ZM5 8.21111C5 8.10556 5.21111 8 5.31667 8H8.90556C9.43333 8 9.85556 8.31667 9.96111 8.84444L10.9111 13.4889C10.9111 13.5944 10.9111 13.5944 11.0167 13.7C11.0167 13.5944 11.1222 13.5944 11.1222 13.5944L13.3389 8.21111C13.2333 8.10556 13.3389 8 13.4444 8H15.6611C15.6611 8.10556 15.6611 8.10556 15.5556 8.21111L12.2833 15.9167C12.1778 16.1278 12.1778 16.2333 12.0722 16.3389C11.9667 16.4444 11.7556 16.3389 11.5444 16.3389H9.96111C9.85556 16.3389 9.75 16.3389 9.75 16.1278L8.06111 9.58333C7.85 9.37222 7.53333 9.05556 7.11111 8.95C6.47778 8.63333 5.31667 8.42222 5.10556 8.42222L5 8.21111Z" fill="white" style="fill:white;fill-opacity:1;"/></svg>
+          </div>
+          <span>Apmokėti gali atsiėmimo metu, elektronine bankininkyste arba kortele.</span>
+        </div>
+        <div class="klausk">Kyla klausimų? <a href="https://dronumokykla.lt/pages/contact">Parašyk mums — atsakysime</a></div>
       </aside>
     </div>
 
@@ -683,6 +835,165 @@ button.smulki{width:100%;text-align:left}
     <div><b>Nieko nereikia rinkti</b><span>Dronas jau surištas su pultu. Įkrauni bateriją ir kyli.</span></div>
     <div><b>Auga kartu</b><span>Tas pats pultas ir akiniai tiks ir didesniam dronui.</span></div>
     <div><b>Pigios klaidos</b><span>Sudaužei propelerį — kainuoja centus, ne šimtus.</span></div>
+  </div>
+</section>
+
+<section class="vs" id="kodel-whoop">
+  <div class="wrap">
+    <h2>Kodėl pradėti nuo whoop, o ne iš karto nuo 5 colių drono</h2>
+    <p class="vs-intro">Dažniausias klausimas prieš pirmą droną. Trumpas atsakymas:
+      whoop leidžia klysti tiek kartų, kiek reikia išmokti — ir tos klaidos
+      kainuoja centus, ne šimtus eurų.</p>
+
+    <div class="vs-lentele">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="vs-mes">Whoop (Air65 / Air75)</th>
+            <th class="vs-kitas">5 colių freestyle dronas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Kai sudauži</th>
+            <td class="vs-mes">Propeleriai — nuo €3,99, visas rėmas — €6,99.
+              Dažniausiai atsikeli ir skrendi toliau.</td>
+            <td class="vs-kitas">Anglies pluošto rėmo dalys, varikliai, ESC —
+              skaičiuojama dešimtimis eurų už vienetą.</td>
+          </tr>
+          <tr>
+            <th scope="row">Namuose</th>
+            <td class="vs-mes">Taip. Propelerių apsaugos ir ~20 g svoris —
+              atsitrenkęs į sieną ar baldą nieko nesudaužia.</td>
+            <td class="vs-kitas">Ne. Atviri propeleriai, kelis kartus didesnė masė
+              ir greitis — namuose tam ne vieta.</td>
+          </tr>
+          <tr>
+            <th scope="row">Rizika susižeisti</th>
+            <td class="vs-mes">Minimali — propeleriai uždengti apsaugomis.</td>
+            <td class="vs-kitas">Reali — atviri propeleriai gali rimtai sužaloti.</td>
+          </tr>
+          <tr>
+            <th scope="row">Kiek gali praktikuotis</th>
+            <td class="vs-mes">Kada nori. Nereikia laukti gero oro, važiuoti į lauką
+              ar ieškoti saugios vietos.</td>
+            <td class="vs-kitas">Tik lauke, saugioje atviroje vietoje ir ramesniu oru.</td>
+          </tr>
+          <tr>
+            <th scope="row">Triukšmas</th>
+            <td class="vs-mes">Tylus — netrukdo namiškiams.</td>
+            <td class="vs-kitas">Garsus — kieme ar bute realiai neskraidysi.</td>
+          </tr>
+          <tr>
+            <th scope="row">Kam tinka</th>
+            <td class="vs-mes">Pirmiems šimtams skrydžių ir valdymo pagrindams.</td>
+            <td class="vs-kitas">Kai jau moki valdyti ir nori greičio bei nuotolio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="vs-isvada">Praktika — vienintelis būdas išmokti valdyti FPV droną,
+      o praktikuotis gali tik ten, kur klysti nebrangu ir nebaisu.
+      <b>Kai jausies tvirtai, tas pats pultas ir akiniai tiks ir didesniam dronui</b> —
+      iš naujo pirkti nereikės.</p>
+  </div>
+</section>
+
+<section class="atsil" id="atsiliepimai">
+  <div class="wrap">
+    <div class="atsil-virsus">
+      <div class="atsil-balas">
+        <b>5,00</b>
+        <span class="atsil-zv" role="img" aria-label="5,00 iš 5">
+          <span class="atsil-zv-tusti" aria-hidden="true">★★★★★</span>
+          <span class="atsil-zv-pilni" aria-hidden="true" style="width:100%">★★★★★</span>
+        </span>
+        <span style="color:var(--muted)">(3 atsiliepimai)</span>
+      </div>
+      <h2>Ką sako pirkę šį rinkinį</h2>
+      <p class="atsil-po">Patvirtinti atsiliepimai iš parduotuvės — rašė tik tie,
+        kas iš tikrųjų pirko šį rinkinį.</p>
+    </div>
+
+    <div class="atsil-tinklas">
+      <blockquote class="atsil-k">
+        <div class="atsil-k-zv" aria-hidden="true">★★★★★</div>
+        <p>„Apart baterijos laiko, viskas tiesiog idealu, džiaugiuosi jog pasirinkau būtent šį rinkinį. 🔥“</p>
+        <div class="atsil-k-apacia">
+          <cite>Airidas Š.</cite>
+          <span class="atsil-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+          <span style="margin-left:auto;color:var(--muted)">2026-08-18</span>
+        </div>
+      </blockquote>
+      <blockquote class="atsil-k">
+        <div class="atsil-k-zv" aria-hidden="true">★★★★★</div>
+        <p>„Drona atsiunte labai greitai viskas veikia rekomenduoju !“</p>
+        <div class="atsil-k-apacia">
+          <cite>Edvinas B.</cite>
+          <span class="atsil-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+          <span style="margin-left:auto;color:var(--muted)">2026-03-16</span>
+        </div>
+      </blockquote>
+      <blockquote class="atsil-k">
+        <div class="atsil-k-zv" aria-hidden="true">★★★★★</div>
+        <p>„Reikia baterija 550 kad ilgiau galėtumėm skraidyti. Reiktu iš viršaus dronui taipogi apsaugos nes sparniukai nusidažo.“</p>
+        <div class="atsil-k-apacia">
+          <cite>Danielius D.</cite>
+          <span class="atsil-ok"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 0a10 10 0 100 20 10 10 0 000-20zm4.7 7.7l-5.4 5.4a1 1 0 01-1.4 0L5.3 10.5a1 1 0 011.4-1.4l1.9 1.9 4.7-4.7a1 1 0 011.4 1.4z"/></svg>Patvirtinta</span>
+          <span style="margin-left:auto;color:var(--muted)">2026-01-02</span>
+        </div>
+      </blockquote>
+    </div>
+
+    <p class="duk-po" style="margin-top:24px">
+      Baterijos laikas — dažniausia pastaba, ir ji teisinga: vienos baterijos
+      užtenka kelioms minutėms. Todėl komplekte jų yra ne viena, o prie užsakymo
+      gali pridėti dar. <a href="#rinktis">Žiūrėti komplektą</a>
+    </p>
+  </div>
+</section>
+
+<section class="duk" id="duk">
+  <div class="wrap">
+    <h2>Klausimai, atsakymai</h2>
+    <div class="duk-sarasas">
+      <details open>
+        <summary>Ar sunku išmokti skraidyti? Kiek užtruks?</summary>
+        <div class="duk-a">Pirmą kartą pakilsi tuoj pat — dronas ateina jau surištas su pultu. Valdyti pasitikint išmoksta per kelias savaites tie, kas skiria bent pusvalandį per dieną. Greičiausiai einasi tiems, kas pirma pasimoko simuliatoriuje: ten klaidos nieko nekainuoja. Todėl prie komplekto gali pridėti mūsų <a href="#rinktis">FPV valdymo pradžiamokslį</a>.</div>
+      </details>
+      <details>
+        <summary>Ar droną reikia registruoti? Ar reikia pažymėjimo?</summary>
+        <div class="duk-a">Lietuvoje dronų su kamera naudotojai registruojasi Transporto kompetencijų agentūroje — registracija vienkartinė, nesvarbu, kiek dronų turi. Abu šio rinkinio dronai sveria mažiau nei 250 g, tad patenka į lengviausią A1 kategoriją. Aktualius reikalavimus visada rasi <a href="https://tka.lt" target="_blank" rel="noopener">tka.lt</a>.</div>
+      </details>
+      <details>
+        <summary>Ar tinka vaikui?</summary>
+        <div class="duk-a">Rekomenduojame nuo 14 metų — tiek dėl valdymo, tiek dėl to, kad su dronu reikia elgtis atsakingai. Jaunesniems puikiai tinka skraidyti kartu su suaugusiuoju.</div>
+      </details>
+      <details>
+        <summary>Ar reikia kompiuterio, telefono ar programėlės?</summary>
+        <div class="duk-a">Skraidyti — ne. Dronas, pultas ir akiniai veikia atskirai, nieko jungti prie telefono nereikia. Kompiuterio prireiktų tik tada, jei norėtum treniruotis simuliatoriuje arba keisti drono nustatymus.</div>
+      </details>
+      <details>
+        <summary>Kiek trunka vienas skrydis?</summary>
+        <div class="duk-a">Su viena baterija — kelios minutės. Todėl komplekte jų yra ne viena: su Air65 gauni 5 vnt., su Air75 — 4 vnt. Pakeitimas trunka sekundes, tad skraidai tol, kol pasibaigia visos, o tada visas kartu įkrauni.</div>
+      </details>
+      <details>
+        <summary>Ką daryti, jei sudaužiu?</summary>
+        <div class="duk-a">Whoop tam ir sukurtas — propelerių apsaugos priima smūgį. Dažniausiai keičiamos dalys yra propeleriai (nuo €3,99) ir rėmas (€6,99), abi turime sandėlyje. Jei nulūžtų kas rimtesnio — parašyk, padedame išsiaiškinti ir suremontuoti.</div>
+      </details>
+      <details>
+        <summary>Ar veikia lauke? O vėjyje?</summary>
+        <div class="duk-a">Veikia abu, bet skirtingai. Air65 lauke geriausiai skrenda ramų vakarą — vėjyje jį neša. Air75 turi platesnį rėmą ir stipresnius variklius, tad su vėju kovoja geriau. Plačiau — <a href="#skiriasi-dronai">„Kuo skiriasi dronai“</a>.</div>
+      </details>
+      <details>
+        <summary>Kada gausiu ir kiek kainuoja pristatymas?</summary>
+        <div class="duk-a">Rinkinys kainuoja daugiau nei €99, tad pristatymas nemokamas. Užsakymus, pateiktus iki 12 val., išsiunčiame tą pačią arba kitą darbo dieną, o Omniva paštomatą jie pasiekia per 1–3 darbo dienas. Gali atsiimti ir pas mus Vilniuje. Nepatiko — grąžinti gali per 14 dienų (grąžinimo siuntos išlaidas apmoka pirkėjas), o prekėms galioja <a href="https://dronumokykla.lt/policies/legal-notice" target="_blank" rel="noopener">24 mėnesių garantija</a>.</div>
+      </details>
+    </div>
+    <p class="duk-po">Neradai atsakymo? <a href="https://dronumokykla.lt/pages/contact">Parašyk mums</a> —
+      atsakome ir prieš pirkimą.</p>
   </div>
 </section>
 
@@ -882,7 +1193,12 @@ button.smulki{width:100%;text-align:left}
       el.appendChild(kortele(
         { role:d.pav, pav:d.apr, nuotr:d.nuotr },
         b.dronas === d.raktas,
-        function(){ b.dronas = d.raktas; piesti(); }));
+        function(){
+          if (b.dronas === d.raktas) return;
+          b.dronas = d.raktas;
+          piesti();
+          ikeltiPriedus();   /* baterijos ir remas priklauso nuo drono */
+        }));
     });
   }
 
@@ -910,14 +1226,177 @@ button.smulki{width:100%;text-align:left}
     eil.push({ n:dr.bat.n, t:"Baterijos", p:dr.bat.p });
     eil.push({ n:"/img/whoop/kroviklis.webp", t:"Įkroviklis", p:"" });
 
+    /* Pasirinkti priedai — tame paciame sarase. Be sito zmogus mato tik
+       pasikeitusia kaina ir nera tikras, ar priedas tikrai prisidejo. */
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (priedaiPazymeti[p.raktas] && d) {
+        eil.push({ n:d.nuotr, t:p.pav, p:"Pridėta prie užsakymo", priedas:true });
+      }
+    });
+
     var ul = document.getElementById("deze-sarasas"); ul.innerHTML = "";
     eil.forEach(function (e) {
       var li = document.createElement("li");
+      if (e.priedas) li.className = "deze-priedas";
       li.innerHTML = '<img src="'+e.n+'" alt="">' +
         "<div>" + e.t + (e.p ? "<span>"+e.p+"</span>" : "") + "</div>";
       ul.appendChild(li);
     });
   }
+
+  /* ============ PRIEDAI PRIE KREPSELIO ============
+     Kainos ir prieinamumas imami tiesiai is Shopify (/products/<handle>.js).
+     Taip puslapyje niekada nesiulom to, ko nebera sandelyje, ir nereikia
+     ranka atnaujinti kainu dviejose vietose. Jei uzklausa nepavyksta —
+     bloka tiesiog nerodom: geriau jokio priedo, nei klaidinga kaina. */
+  var PRIEDAI = [
+    { raktas:"kursas", handle:"fpv", variantas:"Be pultelio",
+      pav:"FPV valdymo pradžiamokslis",
+      apr:"Vaizdo pamokos ir simuliatorius — valdyti išmoksi nedaužydamas drono." },
+    { raktas:"baterijos",
+      handle:{ air65:"lava-ii-1s-320mah-95c-lihv-baterijos-5-vnt",
+               air75:"betafpv-lava-series-1s-baterijos-ii-580mah-95c-4-vnt" },
+      pav:"Papildomos baterijos",
+      apr:"Ilgesnė sesija — nereikės laukti, kol įsikraus." },
+    { raktas:"remas",
+      handle:{ air65:"betafpv-air65-whoop-remas",
+               air75:"betafpv-air75-ii-whoop-remas-1" },
+      pav:"Atsarginis rėmas",
+      apr:"Dažniausiai keičiama dalis po stipresnio smūgio." }
+  ];
+
+  var priedaiDuomenys = {};   /* raktas -> { id, kaina, nuotr, pav } arba null */
+  var priedaiPazymeti = {};   /* raktas -> true */
+
+  function priedoHandle(p) {
+    return typeof p.handle === "string" ? p.handle : p.handle[b.dronas];
+  }
+
+  /* Shopify paveiksleliu adresai buna be protokolo (//cdn...). */
+  function pilnasAdresas(u) {
+    if (!u) return "";
+    if (u.indexOf("//") === 0) u = "https:" + u;
+    /* Per cdn.shopify.com originalas buna ~1 MB, o cia jis rodomas 38 px
+       langelyje. Imam pro parduotuves domena ir prasom siauro varianto. */
+    u = u.replace("https://cdn.shopify.com/s/files/1/0983/9879/8169/files/",
+                  "https://dronumokykla.lt/cdn/shop/files/");
+    return u + (u.indexOf("?") >= 0 ? "&" : "?") + "width=120";
+  }
+
+  function gautiPreke(handle) {
+    return fetch(PARDUOTUVE + "/products/" + handle + ".js", { credentials:"omit" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
+  /* Is prekes parenkam varianta: jei nurodytas pavadinimas — ji, kitaip
+     pirma turima. Jei nera nei vieno turimo, grazinam null ir prieso
+     nerodom. */
+  function parinktiVarianta(prek, norimas) {
+    if (!prek || !prek.variants) return null;
+    var tinka = prek.variants.filter(function (v) { return v.available; });
+    if (!tinka.length) return null;
+    if (norimas) {
+      var rastas = tinka.filter(function (v) { return v.title === norimas; })[0];
+      if (rastas) return rastas;
+      return null;   /* konkretaus varianto nera -> nesiulom kito */
+    }
+    return tinka[0];
+  }
+
+  function ikeltiPriedus() {
+    var reikia = PRIEDAI.map(priedoHandle);
+    return Promise.all(reikia.map(gautiPreke)).then(function (prekes) {
+      PRIEDAI.forEach(function (p, i) {
+        var v = parinktiVarianta(prekes[i], p.variantas);
+        priedaiDuomenys[p.raktas] = v ? {
+          id: v.id,
+          kaina: v.price / 100,
+          nuotr: pilnasAdresas((v.featured_image && v.featured_image.url) ||
+                               prekes[i].featured_image || ""),
+          pilnas: prekes[i].title
+        } : null;
+      });
+      piestiPriedus();
+    });
+  }
+
+  function piestiPriedus() {
+    var dez = document.getElementById("priedai");
+    var sar = document.getElementById("priedu-sarasas");
+    sar.innerHTML = "";
+    var kiek = 0;
+
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (!d) { delete priedaiPazymeti[p.raktas]; return; }
+      kiek++;
+
+      var m = document.createElement("button");
+      m.type = "button";
+      m.className = "priedas";
+      m.setAttribute("aria-pressed", priedaiPazymeti[p.raktas] ? "true" : "false");
+
+      var dez2 = document.createElement("span");
+      dez2.className = "dezute";
+      m.appendChild(dez2);
+
+      if (d.nuotr) {
+        var img = document.createElement("img");
+        img.src = d.nuotr; img.alt = ""; img.loading = "lazy";
+        m.appendChild(img);
+      }
+
+      var tx = document.createElement("span");
+      tx.className = "priedas-tekstas";
+      var pav = document.createElement("b");
+      pav.className = "priedas-pav"; pav.textContent = p.pav;
+      var apr = document.createElement("span");
+      apr.className = "priedas-apr"; apr.textContent = p.apr;
+      tx.appendChild(pav); tx.appendChild(apr);
+      m.appendChild(tx);
+
+      var bukle = document.createElement("span");
+      bukle.className = "priedas-bukle";
+      bukle.textContent = "✓ Pridėta prie užsakymo";
+      tx.appendChild(bukle);
+
+      var kn = document.createElement("span");
+      kn.className = "priedas-kaina"; kn.textContent = "+" + eur(d.kaina);
+      m.appendChild(kn);
+
+      m.addEventListener("click", function () {
+        var imam = !priedaiPazymeti[p.raktas];
+        if (imam) priedaiPazymeti[p.raktas] = true;
+        else delete priedaiPazymeti[p.raktas];
+        /* Mygtuko busena keiciama cia pat. piesti() perpiesia kaina ir
+           „Kas dezeje", bet priedu mygtuku neliecia, tad be sitos eilutes
+           varnele niekada neatsirasdavo. */
+        m.setAttribute("aria-pressed", imam ? "true" : "false");
+        piesti();
+      });
+      sar.appendChild(m);
+    });
+
+    dez.hidden = kiek === 0;
+  }
+
+  /* Pazymeti priedai prikabinami prie to paties Shopify krepselio adreso:
+     /cart/<rinkinys>:1,<priedas>:1 */
+  function priedaiNuorodai() {
+    return PRIEDAI.filter(function (p) {
+      return priedaiPazymeti[p.raktas] && priedaiDuomenys[p.raktas];
+    }).map(function (p) { return "," + priedaiDuomenys[p.raktas].id + ":1"; }).join("");
+  }
+
+  function priedaiSuma() {
+    return PRIEDAI.reduce(function (s, p) {
+      var d = priedaiDuomenys[p.raktas];
+      return s + (priedaiPazymeti[p.raktas] && d ? d.kaina : 0);
+    }, 0);
+  }
+
   function piesti() {
     document.getElementById("ats-ne").setAttribute("aria-pressed", b.turiPulta?"false":"true");
     document.getElementById("ats-taip").setAttribute("aria-pressed", b.turiPulta?"true":"false");
@@ -927,8 +1406,9 @@ button.smulki{width:100%;text-align:left}
     piestiAkinius();
     piestiDeze();
     var v = kaina(b.dronas, puRaktas(), akRaktas());
-    document.getElementById("kaina").textContent = eur(v.kaina);
-    document.getElementById("pirkti").href = PARDUOTUVE + "/cart/" + v.id + ":1";
+    document.getElementById("kaina").textContent = eur(v.kaina + priedaiSuma());
+    document.getElementById("pirkti").href =
+      PARDUOTUVE + "/cart/" + v.id + ":1" + priedaiNuorodai();
   }
   document.getElementById("ats-ne").addEventListener("click", function(){ b.turiPulta=false; piesti(); });
   document.getElementById("ats-taip").addEventListener("click", function(){ b.turiPulta=true; piesti(); });
@@ -1140,8 +1620,50 @@ button.smulki{width:100%;text-align:left}
   })();
 
   piesti();
+  ikeltiPriedus();
 })();
 </script>
+
+
+<section class="garantijos">
+  <div class="garantijos-in">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v10"/></svg>
+      <div><b>Nemokamas pristatymas</b><span>Perkant prekių virš €99 suteikiame nemokamą pristatymą</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h13a5 5 0 010 10h-6"/><path d="M7 5L3 9l4 4"/></svg>
+      <div><b>14 dienų grąžinimas</b><span>Suteikiame 14 dienų pinigų grąžinimo garantiją</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5 5 0 00-7.1 0L12 7.3l-1.7-1.7a5 5 0 10-7.1 7.1L12 21.4l8.8-8.7a5 5 0 000-7.1z"/></svg>
+      <div><b>2 metų kokybės garantija</b><span>Visoms prekėms teikiame dvejų metų garantiją</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9a4 4 0 100 6M8 11h5M8 13h5"/></svg>
+      <div><b>Saugūs atsiskaitymai</b><span>Mokėkite kortele, el. bankininkyste arba prekių atsiėmimo metu</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="poraste">
+  <div class="poraste-in">
+    <div class="poraste-rekv">
+      <b>Dronų Mokykla</b> · DroneFix.lt<br>
+      Dronefix, UAB, juridinio asmens kodas 306171324<br>
+      Iešmininkų g. 17A, Vilnius, 02151 Vilniaus m. sav.<br>
+      <a href="mailto:info@dronefix.lt">info@dronefix.lt</a> ·
+      <a href="tel:+37061930080">+370 619 30080</a>
+    </div>
+    <ul>
+      <li><a href="https://dronumokykla.lt/policies/privacy-policy" target="_blank" rel="noopener">Privatumo politika</a></li>
+      <li><a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">Grąžinimo sąlygos</a></li>
+      <li><a href="https://dronumokykla.lt/policies/shipping-policy" target="_blank" rel="noopener">Pristatymo sąlygos</a></li>
+      <li><a href="https://dronumokykla.lt/policies/terms-of-service" target="_blank" rel="noopener">Pirkimo sąlygos</a></li>
+      <li><a href="https://dronumokykla.lt" target="_blank" rel="noopener">dronumokykla.lt</a></li>
+    </ul>
+  </div>
+</footer>
 
 <!-- ===================== ANALITIKA + SUTIKIMAS =====================
      Bendras abiem landingams. Keitimus daryk TIK cia — build.py ir
