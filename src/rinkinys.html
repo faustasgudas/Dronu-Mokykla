@@ -720,7 +720,7 @@ button.smulki{width:100%;text-align:left}
         <h3>Kas dėžėje</h3>
         <div class="deze-po">Atsinaujina pagal tavo pasirinkimą</div>
         <ul class="deze-sarasas" id="deze-sarasas"></ul>
-        <div class="suma"><span class="suma-kaina" id="kaina">€319,99</span></div>
+        <div class="suma"><span class="suma-kaina" id="kaina">€189,99</span></div>
         <div class="priedai" id="priedai" hidden>
           <div class="priedai-antraste">Dažniausiai pridedama</div>
           <div id="priedu-sarasas"></div>
@@ -1154,9 +1154,10 @@ button.smulki{width:100%;text-align:left}
       bat:{ n:"/img/whoop/baterijos-4.webp", p:"4 vnt. · 580 mAh" } }
   ];
 
-  /* Numatytas — pigiausias pilnas komplektas (€319,99), kad kaina atsidarius
-     sutaptu su hero pazadu „pilnas komplektas nuo €319,99". */
-  var b = { turiPulta:false, pultas:"lite", dronas:"air65", turiAkinius:false };
+  /* Numatytas — pigiausias variantas: pultas ir akiniai jau turimi (€189,99),
+     kad kaina atsidarius sutaptu su hero „nuo €189,99". pultas:"lite" lieka —
+     paspaudus „Reikia pulto" is karto pazymimas pigiausias (€319,99 kelias). */
+  var b = { turiPulta:true, pultas:"lite", dronas:"air65", turiAkinius:true };
   function kaina(dr,pu,ak){ return VARIANTAI[dr+"|"+pu+"|"+ak]; }
   function puRaktas(){ return b.turiPulta ? "nera" : b.pultas; }
   function akRaktas(){ return b.turiAkinius ? "ne" : "taip"; }
