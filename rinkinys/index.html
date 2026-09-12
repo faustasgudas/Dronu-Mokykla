@@ -451,9 +451,6 @@ button.smulki{width:100%;text-align:left}
 .priedas-apr{display:block;font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.4}
 .priedas-kaina{flex:0 0 auto;font-weight:800;font-size:.8125rem;white-space:nowrap}
 .priedas[aria-pressed="true"] .priedas-kaina{color:var(--blue)}
-.priedas-bukle{display:none;font-size:.75rem;font-weight:700;color:var(--blue);
-  margin-top:3px}
-.priedas[aria-pressed="true"] .priedas-bukle{display:block}
 /* Pasirinktas priedas atsiranda ir „Kas dezeje" sarase — tai vienintelis
    vienareiksmis patvirtinimas, kad jis tikrai bus dezeje. */
 .deze-sarasas li.deze-priedas{background:#F0F0FF;
@@ -1356,11 +1353,6 @@ button.smulki{width:100%;text-align:left}
       apr.className = "priedas-apr"; apr.textContent = p.apr;
       tx.appendChild(pav); tx.appendChild(apr);
       m.appendChild(tx);
-
-      var bukle = document.createElement("span");
-      bukle.className = "priedas-bukle";
-      bukle.textContent = "✓ Pridėta prie užsakymo";
-      tx.appendChild(bukle);
 
       var kn = document.createElement("span");
       kn.className = "priedas-kaina"; kn.textContent = "+" + eur(d.kaina);
