@@ -87,7 +87,13 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 .hero .cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;
   padding:17px 34px;border-radius:999px;text-decoration:none;font-weight:800;font-size:1.0625rem;
   background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.kaina{margin-top:14px;font-size:.9375rem;font-weight:600;opacity:.68}
+.kaina{margin-top:16px;display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:6px 16px;font-size:.9375rem;font-weight:500;line-height:1.2}
+.kaina-nuo{color:rgba(255,255,255,.72)}
+.kaina-nuo b{color:#fff;font-weight:800;font-size:1.1875rem;letter-spacing:-.01em;
+  margin-left:2px}
+.kaina-siunt{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72)}
+.kaina-siunt svg{width:18px;height:18px;flex:0 0 auto}
 
 /* ---- PRODUKTŲ KRŪVA ----
    Konteineris yra 0x0 taškas — krūvos centras. Kiekvienas produktas
@@ -609,7 +615,9 @@ button.smulki{width:100%;text-align:left}
   .chip{padding:7px 14px;font-size:.75rem}
   h1{margin-top:16px;font-size:2rem;line-height:1.08}
   .hero .cta{margin-top:20px;padding:15px 26px;font-size:.9375rem}
-  .kaina{margin-top:10px;font-size:.8125rem}
+  .kaina{margin-top:12px;font-size:.8125rem;gap:4px 12px}
+  .kaina-nuo b{font-size:1rem}
+  .kaina-siunt svg{width:16px;height:16px}
   .kruva{top:384px}
   .rinkimas{padding:6px 16px 60px}
   .skiriasi{padding:52px 16px}
@@ -639,7 +647,17 @@ button.smulki{width:100%;text-align:left}
     <span class="chip">FPV whoop drono rinkinys</span>
     <h1>Viskas, ko reikia<br>pirmam skrydžiui</h1>
     <a class="cta" href="#rinktis">Rinktis komplektą <span aria-hidden="true">→</span></a>
-    <div class="kaina">nuo €189,99 · nemokamas siuntimas</div>
+    <div class="kaina">
+      <span class="kaina-nuo">Nuo <b>€189,99</b></span>
+      <span class="kaina-siunt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M2.5 6.5h11v10h-11zM13.5 10h4l3.5 3.5v3h-7.5"/>
+          <circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>
+        </svg>
+        Nemokamas siuntimas
+      </span>
+    </div>
   </div>
 
   <!-- Krūva. --x / --y = atstumas nuo centro; sukimas skaičiuojamas iš --x.
@@ -941,11 +959,6 @@ button.smulki{width:100%;text-align:left}
       </blockquote>
     </div>
 
-    <p class="duk-po" style="margin-top:24px">
-      Baterijos laikas — dažniausia pastaba, ir ji teisinga: vienos baterijos
-      užtenka kelioms minutėms. Todėl komplekte jų yra ne viena, o prie užsakymo
-      gali pridėti dar. <a href="#rinktis">Žiūrėti komplektą</a>
-    </p>
   </div>
 </section>
 
