@@ -503,6 +503,9 @@ button.smulki{width:100%;text-align:left}
   text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .vs tbody th{font-weight:700;width:22%;color:var(--ink)}
 .vs .vs-mes{background:#F5F5FF;width:39%}
+.vs-foto{display:flex;align-items:flex-end;height:140px;margin:4px 0 14px}
+/* 5 coliu nuotrauka — su baltu fonu; multiply ji sulieja su langelio spalva */
+.vs-foto img{display:block;width:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
 .vs .vs-kitas{color:var(--muted);width:39%}
 .vs-isvada{margin-top:22px;max-width:70ch;margin-left:auto;margin-right:auto;
   text-align:center;color:var(--muted);line-height:1.65}
@@ -772,7 +775,7 @@ button.smulki{width:100%;text-align:left}
         <div class="kelias-k">
           <span class="kelias-lygis">Level 1</span>
           <b>Simuliatorius</b>
-          <p>Išmoksti skraidyti kompiuteryje. Kiekvienas smūgis nieko nekainuoja.</p>
+          <p>Išmok skraidyti kompiuteryje. Kiekvienas smūgis nieko nekainuoja.</p>
           <a class="kelias-nuor" href="https://shop.dronumokykla.lt/pradziamokslis/">FPV valdymo pradžiamokslis <span aria-hidden="true">→</span></a>
         </div>
       </li>
@@ -781,7 +784,7 @@ button.smulki{width:100%;text-align:left}
         <div class="kelias-k">
           <span class="kelias-lygis">Level 2 <em>Tu esi čia</em></span>
           <b>Whoop dronas</b>
-          <p>Skraidai net namuose. Atlaiko smūgius ir nepadaro žalos nei aplinkiniams, nei aplinkai — sveria vos 20 g.</p>
+          <p>Skraidyk net namuose! Dronas atlaiko smūgius, nepadaro žalos aplinkiniams ar aplinkai ir sveria vos 20 g.</p>
         </div>
       </li>
       <li class="kelias-z">
@@ -963,8 +966,8 @@ button.smulki{width:100%;text-align:left}
         <thead>
           <tr>
             <th></th>
-            <th class="vs-mes">Whoop (Air65 II / Air75 II)</th>
-            <th class="vs-kitas">5 colių freestyle dronas</th>
+            <th class="vs-mes"><span class="vs-foto"><img src="/img/whoop/dronas-air65.webp" alt="Air65 II whoop dronas" width="700" height="546" loading="lazy" style="height:96px"></span>Whoop (Air65 II / Air75 II)</th>
+            <th class="vs-kitas"><span class="vs-foto"><img src="/img/whoop/dronas-5col.webp" alt="5 colių FPV dronas" width="720" height="499" loading="lazy" style="height:132px"></span>5 colių freestyle dronas</th>
           </tr>
         </thead>
         <tbody>
