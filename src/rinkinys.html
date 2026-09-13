@@ -506,6 +506,34 @@ button.smulki{width:100%;text-align:left}
 .vs-foto{display:flex;align-items:flex-end;height:140px;margin:4px 0 14px}
 /* 5 coliu nuotrauka — su baltu fonu; multiply ji sulieja su langelio spalva */
 .vs-foto img{display:block;width:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
+.vs-foto--whoop img{height:96px}
+.vs-foto--5 img{height:132px}
+
+/* Telefone lentele nebeslenka i sona: kiekviena eilute — antraste per visa
+   ploti, po ja du stulpeliai greta su mazomis zymomis „Whoop" / „5 colių". */
+@media (max-width:760px){
+  .vs{padding:56px 14px}
+  .vs table{min-width:0}
+  /* lentelės algoritmas kitaip pats dalina stulpelius — telefone tai blokai */
+  .vs table,.vs thead,.vs tbody{display:block;width:100%}
+  .vs-lentele{overflow:hidden}
+  .vs thead tr,.vs tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .vs thead th:first-child{display:none}
+  .vs thead th{white-space:normal;padding:14px 12px 12px;font-size:.6875rem;line-height:1.35}
+  .vs th,.vs td{border-bottom:0}
+  .vs tbody tr{border-top:1px solid var(--line)}
+  .vs tbody th{grid-column:1 / -1;width:auto;padding:14px 14px 2px;font-size:.9375rem;background:#fff}
+  .vs td{width:auto;padding:8px 12px 14px;font-size:.8125rem;line-height:1.45}
+  .vs th.vs-mes,.vs th.vs-kitas,.vs td.vs-mes,.vs td.vs-kitas{width:auto}
+  .vs td.vs-mes::before,.vs td.vs-kitas::before{display:block;margin-bottom:3px;
+    font-size:.625rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .vs td.vs-mes::before{content:"Whoop";color:var(--blue)}
+  .vs td.vs-kitas::before{content:"5 colių";color:var(--muted)}
+  .vs-foto{height:84px;margin:0 0 10px;justify-content:center}
+  .vs-foto--whoop img{height:62px}
+  .vs-foto--5 img{height:84px}
+  .vs thead th{text-align:center}
+}
 .vs .vs-kitas{color:var(--muted);width:39%}
 .vs-isvada{margin-top:22px;max-width:70ch;margin-left:auto;margin-right:auto;
   text-align:center;color:var(--muted);line-height:1.65}
@@ -966,8 +994,8 @@ button.smulki{width:100%;text-align:left}
         <thead>
           <tr>
             <th></th>
-            <th class="vs-mes"><span class="vs-foto"><img src="/img/whoop/dronas-air65.webp" alt="Air65 II whoop dronas" width="700" height="546" loading="lazy" style="height:96px"></span>Whoop (Air65 II / Air75 II)</th>
-            <th class="vs-kitas"><span class="vs-foto"><img src="/img/whoop/dronas-5col.webp" alt="5 colių FPV dronas" width="720" height="499" loading="lazy" style="height:132px"></span>5 colių freestyle dronas</th>
+            <th class="vs-mes"><span class="vs-foto vs-foto--whoop"><img src="/img/whoop/dronas-air65.webp" alt="Air65 II whoop dronas" width="700" height="546" loading="lazy"></span>Whoop (Air65 II / Air75 II)</th>
+            <th class="vs-kitas"><span class="vs-foto vs-foto--5"><img src="/img/whoop/dronas-5col.webp" alt="5 colių FPV dronas" width="720" height="499" loading="lazy"></span>5 colių freestyle dronas</th>
           </tr>
         </thead>
         <tbody>
