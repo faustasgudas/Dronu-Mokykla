@@ -77,6 +77,18 @@ button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none}
 }
 
 /* =================== HERO =================== */
+/* ===== VIRSUTINE JUOSTA — kaip pradziamokslyje ===== */
+.virsus{background:var(--blue)}
+.virsus-in{max-width:1180px;margin:0 auto;padding:16px 20px;display:flex;align-items:center}
+.virsus-logo{display:inline-flex;align-items:center;min-height:44px}
+/* Aiskus aukstis — kitaip narsykle laukia nuotraukos ir turinys pasoka. */
+.virsus-logo img{display:block;width:132px;height:38px;object-fit:contain}
+.virsus-logo:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:6px}
+@media (max-width:760px){
+  .virsus-in{padding:14px 16px}
+  .virsus-logo img{width:112px;height:32px}
+}
+
 .hero{position:relative;overflow:hidden;height:880px;background:var(--ink);color:#fff;
   padding:0 20px;text-align:center}
 .hero-in{position:relative;z-index:1;padding-top:72px;max-width:900px;margin:0 auto}
@@ -641,6 +653,14 @@ button.smulki{width:100%;text-align:left}
 </style>
 </head>
 <body>
+
+<header class="virsus">
+  <div class="virsus-in">
+    <a class="virsus-logo" href="https://dronumokykla.lt" aria-label="Dronų Mokykla">
+      <img src="/img/logo.webp" alt="Dronų Mokykla" width="132" height="38">
+    </a>
+  </div>
+</header>
 
 <section class="hero" id="hero">
   <div class="hero-in">
