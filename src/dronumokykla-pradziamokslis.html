@@ -100,11 +100,14 @@
 #dm .dm-zv{position:relative;display:inline-block;line-height:1;white-space:nowrap;}
 #dm .dm-zv-tusti{color:#C9C9DB;}
 #dm .dm-zv-pilni{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;
-  color:var(--dm-blue);}
+  color:#F5A623;}
 /* Hero juostoje: skaicius, zvaigzdutes, kiekis skliaustuose. Zvaigzdutes
    didesnes ir su tarpais, kitaip dalinio uzpildymo (4,83) nesimato. */
 #dm .dm-trust .dm-zv{font-size:1.125rem;letter-spacing:2px;vertical-align:-3px;}
 #dm .dm-zv-suma{font-size:1.0625rem;margin-right:4px;}
+#dm .dm-balas-nuor{color:inherit;text-decoration:none;}
+#dm .dm-balas-kiek{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(91,91,102,.4);}
+#dm .dm-balas-nuor:hover .dm-balas-kiek{color:var(--dm-ink);text-decoration-color:currentColor;}
 #dm .dm-revstars{
   color:var(--dm-blue);font-size:1.75rem;letter-spacing:4px;line-height:1;
 }
@@ -132,7 +135,7 @@
   padding:0;overflow:hidden;margin:0 0 20px;
 }
 #dm .dm-rev-top{padding:22px 22px 0;}
-#dm .dm-rev-stars{color:var(--dm-blue);font-size:1.125rem;letter-spacing:3px;line-height:1;}
+#dm .dm-rev-stars{color:#F5A623;font-size:1.125rem;letter-spacing:3px;line-height:1;}
 #dm .dm-revwall .dm-rev p{padding:14px 22px 0;font-size:0.9375rem;line-height:1.6;}
 #dm .dm-revwall .dm-rev-img{
   width:100%;aspect-ratio:4/3;object-fit:cover;margin:18px 0 0;border-radius:0;
@@ -256,7 +259,7 @@
 #dm .dm-hero-rev img{
   width:clamp(96px,14vw,168px);aspect-ratio:1/1;object-fit:cover;border-radius:14px;
 }
-#dm .dm-hero-rev-stars{color:var(--dm-blue);font-size:1.0625rem;letter-spacing:3px;line-height:1;}
+#dm .dm-hero-rev-stars{color:#F5A623;font-size:1.0625rem;letter-spacing:3px;line-height:1;}
 #dm .dm-hero-rev p{
   font-size:clamp(1.0625rem,1.9vw,1.375rem);font-weight:700;line-height:1.4;
   letter-spacing:-0.01em;margin-top:12px;
@@ -746,7 +749,7 @@
       <a class="dm-btn" href="#dm-pirkti">Pradėti mokymus <span class="dm-arrow" aria-hidden="true">→</span></a>
 
       <ul class="dm-trust">
-        <li><b class="dm-num dm-zv-suma" id="dm-hero-rating">4,83</b> <span class="dm-stars dm-zv" id="dm-hero-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></span> <span class="dm-muted">(<span class="dm-num" id="dm-hero-count">48</span> atsiliepimai)</span></li>
+        <li><a class="dm-balas-nuor" href="#dm-atsiliepimai"><b class="dm-num dm-zv-suma" id="dm-hero-rating">4,83</b> <span class="dm-stars dm-zv" id="dm-hero-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></span> <span class="dm-muted dm-balas-kiek">(<span class="dm-num" id="dm-hero-count">48</span> atsiliepimai)</span></a></li>
         <li><b class="dm-num">1 000+</b> apmokytų mokinių</li>
         <li><b class="dm-num">14</b> dienų pinigų grąžinimo garantija</li>
       </ul>
@@ -1240,7 +1243,7 @@
 
 
 <!-- ============ 9. ATSILIEPIMAI ============ -->
-<section class="dm-sec dm-grey">
+<section class="dm-sec dm-grey" id="dm-atsiliepimai">
   <div class="dm-wrap">
     <div class="dm-revhead">
       <div class="dm-revstars dm-zv" id="dm-rev-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></div>
