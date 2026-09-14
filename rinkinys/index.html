@@ -99,6 +99,14 @@ h1{margin-top:22px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
 .hero .cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;
   padding:17px 34px;border-radius:999px;text-decoration:none;font-weight:800;font-size:1.0625rem;
   background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.hero-balas{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:6px 10px;
+  border-radius:999px;color:#fff;text-decoration:none;font-size:.9375rem;line-height:1}
+.hero-balas b{font-weight:800}
+.hero-balas-zv{color:#F5A623;letter-spacing:2px;font-size:1rem}
+.hero-balas-kiek{color:rgba(255,255,255,.72);text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+.hero-balas:hover .hero-balas-kiek{color:#fff;text-decoration-color:#fff}
+.hero-balas:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .kaina{margin-top:16px;display:flex;align-items:center;justify-content:center;
   flex-wrap:wrap;gap:6px 16px;font-size:.9375rem;font-weight:500;line-height:1.2}
 .kaina-nuo{color:rgba(255,255,255,.72)}
@@ -731,6 +739,8 @@ button.smulki{width:100%;text-align:left}
   h1{margin-top:16px;font-size:2rem;line-height:1.08}
   .hero .cta{margin-top:20px;padding:15px 26px;font-size:.9375rem}
   .kaina{margin-top:12px;font-size:.8125rem;gap:4px 12px}
+  .hero-balas{margin-top:6px;font-size:.8125rem;padding:4px 8px}
+  .hero-balas-zv{font-size:.875rem}
   .kaina-nuo b{font-size:1rem}
   .kaina-siunt svg{width:16px;height:16px}
   .kruva{top:384px}
@@ -781,6 +791,13 @@ button.smulki{width:100%;text-align:left}
         Nemokamas siuntimas
       </span>
     </div>
+    <!-- Reitingas — sio rinkinio atsiliepimai (tie patys kaip skiltyje
+         „Ką sako pirkę šį rinkinį"). Paspaudus nuveda zemyn prie ju. -->
+    <a class="hero-balas" href="#atsiliepimai" aria-label="5,00 iš 5 — 3 atsiliepimai. Skaityti atsiliepimus">
+      <b>5,00</b>
+      <span class="hero-balas-zv" aria-hidden="true">★★★★★</span>
+      <span class="hero-balas-kiek">(3 atsiliepimai)</span>
+    </a>
   </div>
 
   <!-- Krūva. --x / --y = atstumas nuo centro; sukimas skaičiuojamas iš --x.

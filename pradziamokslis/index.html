@@ -47,7 +47,7 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-blue .dm-btn{background:#fff;color:var(--dm-blue);}
 #dm .dm-blue .dm-btn:hover{background:#E8E8FF;}
 #dm .dm-blue .dm-lead{color:#E8E8FF;}
-#dm .dm-blue .dm-muted{color:#C7C7FF;}#dm .dm-shot{position:relative;border-radius:18px;overflow:hidden;background:var(--dm-ink)}#dm .dm-shot img{width:100%;aspect-ratio:16/9;object-fit:cover}#dm .dm-shot .dm-ph{aspect-ratio:16/9;min-height:0;border-radius:0;border:0}#dm .dm-shot-cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,4vw,40px);font-size:clamp(1.25rem,2.6vw,2rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.35)55%,rgba(0,0,0,0))}#dm .dm-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}#dm .dm-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}#dm .dm-chip{border:1px solid var(--dm-line);border-radius:999px;padding:7px 14px;font-size:0.875rem;font-weight:600;line-height:1}#dm .dm-hero-buy{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:28px 0 22px}#dm .dm-hero-from{font-size:0.9375rem;color:var(--dm-muted);font-weight:500}#dm .dm-trust{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;padding-top:24px;border-top:1px solid var(--dm-line)}#dm .dm-trust li{font-size:0.9375rem;font-weight:500}#dm .dm-trust b{font-weight:800}#dm .dm-stars{letter-spacing:1px}#dm .dm-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#dm .dm-blue .dm-muted{color:#C7C7FF;}#dm .dm-shot{position:relative;border-radius:18px;overflow:hidden;background:var(--dm-ink)}#dm .dm-shot img{width:100%;aspect-ratio:16/9;object-fit:cover}#dm .dm-shot .dm-ph{aspect-ratio:16/9;min-height:0;border-radius:0;border:0}#dm .dm-shot-cap{position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,4vw,40px);font-size:clamp(1.25rem,2.6vw,2rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.35)55%,rgba(0,0,0,0))}#dm .dm-hero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}#dm .dm-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}#dm .dm-chip{border:1px solid var(--dm-line);border-radius:999px;padding:7px 14px;font-size:0.875rem;font-weight:600;line-height:1}#dm .dm-chip-e{margin-right:6px;font-size:1rem;line-height:1;vertical-align:-1px}#dm .dm-hero-buy{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:28px 0 22px}#dm .dm-hero-from{font-size:0.9375rem;color:var(--dm-muted);font-weight:500}#dm .dm-trust{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:26px;padding-top:24px;border-top:1px solid var(--dm-line)}#dm .dm-trust li{font-size:0.9375rem;font-weight:500}#dm .dm-trust b{font-weight:800}#dm .dm-stars{letter-spacing:1px}#dm .dm-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 /* Juosta placiau uz likusi turini (1040 -> 1320). Kvadratai buvo 251 px ir
    salia 1040 px pločio bannerio atrodė kaip smulkmena — nesimatė, kas juose. */
 #dm .dm-wrap--wide{max-width:1800px}
@@ -778,9 +778,9 @@ html,body{margin:0;padding:0;background:#fff;}
   <div class="dm-wrap dm-hero">
     <div>
       <ul class="dm-chips">
-        <li class="dm-chip">Pradedantiesiems</li>
-        <li class="dm-chip">Mokykis iš namų</li>
-        <li class="dm-chip">Lietuviškai</li>
+        <li class="dm-chip"><span class="dm-chip-e" aria-hidden="true">🐣</span>Pradedantiesiems</li>
+        <li class="dm-chip"><span class="dm-chip-e" aria-hidden="true">🏠</span>Mokykis iš namų</li>
+        <li class="dm-chip"><span class="dm-chip-e" aria-hidden="true">🇱🇹</span>Lietuviškai</li>
       </ul>
 
       <h1 class="dm-h1">Per dvi savaites išmoksi pilotuoti FPV droną</h1>
