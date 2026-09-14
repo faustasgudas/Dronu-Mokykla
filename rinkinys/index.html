@@ -1955,6 +1955,8 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   var PIKSELIS = "2126706211407809";
+  /* Omnisend paskyros ID — tas pats, kuris naudojamas Shopify parduotuveje. */
+  var OMNISEND = "6a3e5a97813d927fc4a6934e";
   var PRODUKTAS = "fpv-drono-rinkinys";
   var RAKTAS = "dm-sutikimas";
   var GALIOJA = 1000 * 60 * 60 * 24 * 182;   /* 6 menesiai */
@@ -2003,20 +2005,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /* --- Omnisend: formos (pvz., „wheel of fortune") ir lankytoju sekimas. ---
+     Shopify parduotuveje ji iterpia programele; siuose landinguose jos nera,
+     todel be sito zmogus is reklamos, kuris nenupirko, niekur nepalieka
+     el. pasto. Kaip ir pikselis, kraunamas TIK gavus sutikima, nes deda
+     sekimo slapukus. Kurios formos ir kur rodomos — valdoma Omnisend'e. */
+  var omnisendPakrautas = false;
+  function omnisendas() {
+    if (omnisendPakrautas) return;
+    omnisendPakrautas = true;
+    window.omnisend = window.omnisend || [];
+    window.omnisend.push(["brandID", OMNISEND]);
+    window.omnisend.push(["track", "$pageViewed"]);
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://omnisnippet1.com/inshop/launcher-v2.js";
+    document.head.appendChild(s);
+  }
+
   /* --- Juosta --- */
   var juosta = document.getElementById("dm-sutikimas");
 
   function atsakyti(sutinka) {
     irasyti(sutinka ? "taip" : "ne");
     juosta.classList.remove("dm-rodom");
-    if (sutinka) pikselis();
+    if (sutinka) { pikselis(); omnisendas(); }
   }
 
   document.getElementById("dm-sut-taip").addEventListener("click", function () { atsakyti(true); });
   document.getElementById("dm-sut-ne").addEventListener("click", function () { atsakyti(false); });
 
   var buves = skaityti();
-  if (buves === "taip") pikselis();
+  if (buves === "taip") { pikselis(); omnisendas(); }
   else if (buves !== "ne") juosta.classList.add("dm-rodom");
 })();
 </script>
