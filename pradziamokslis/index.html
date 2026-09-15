@@ -2936,11 +2936,39 @@ html,body{margin:0;padding:0;background:#fff;}
     document.head.appendChild(s);
   }
 
+  /* --- Sutikimas bendras su Shopify. ---
+     Apmokejimas vyksta dronumokykla.lt, o ten Shopify Meta pikseli (Purchase,
+     InitiateCheckout) ijungia TIK jei turi savo sutikima. Is landingo atejes
+     zmogus Shopify juostos niekada nemato, todel be sito jo pirkimas Meta
+     nepasiekia ir reklama optimizuojasi aklai. Slapuko formatas — toks pat,
+     kokį sukuria oficialus Shopify Customer Privacy API; domenas — visas
+     dronumokykla.lt, kad ji matytu ir parduotuve, ir apmokejimas. */
+  var SHOPIFY_SLAPUKAS = "_tracking_consent";
+  function shopifyISutikima(sutinka) {
+    if (!/(^|\.)dronumokykla\.lt$/.test(location.hostname)) return;
+    var t = sutinka ? "1" : "0";
+    var reiksme = JSON.stringify({ v: "2.1", reg: "", con: { CMP: { a: t, m: t, p: t, s: t } } });
+    document.cookie = SHOPIFY_SLAPUKAS + "=" + encodeURIComponent(reiksme) +
+      "; domain=.dronumokykla.lt; path=/; max-age=31536000; SameSite=Lax; Secure";
+  }
+  /* Jei zmogus jau atsake Shopify juostai parduotuveje — antra karta neklausiam. */
+  function shopifySutikimas() {
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_tracking_consent=([^;]+)/);
+      var cmp = m && JSON.parse(decodeURIComponent(m[1])).con.CMP;
+      if (!cmp) return null;
+      if (cmp.m === "1") return "taip";
+      if (cmp.m === "0") return "ne";
+    } catch (e) { /* kitoks formatas — ignoruojam */ }
+    return null;
+  }
+
   /* --- Juosta --- */
   var juosta = document.getElementById("dm-sutikimas");
 
   function atsakyti(sutinka) {
     irasyti(sutinka ? "taip" : "ne");
+    shopifyISutikima(sutinka);
     juosta.classList.remove("dm-rodom");
     if (sutinka) { pikselis(); omnisendas(); }
   }
@@ -2949,6 +2977,12 @@ html,body{margin:0;padding:0;background:#fff;}
   document.getElementById("dm-sut-ne").addEventListener("click", function () { atsakyti(false); });
 
   var buves = skaityti();
+  if (!buves) {
+    buves = shopifySutikimas();
+    if (buves) irasyti(buves);
+  } else if (buves === "taip" && shopifySutikimas() === null) {
+    shopifyISutikima(true);   /* anksciau sutikusiems — perduodam ir Shopify */
+  }
   if (buves === "taip") { pikselis(); omnisendas(); }
   else if (buves !== "ne") juosta.classList.add("dm-rodom");
 })();
