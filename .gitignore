@@ -24,3 +24,12 @@ desktop.ini
 
 # Vietinis Claude Code paleidimo nustatymas (tik perziurai)
 .claude/
+
+# Shopify temos kopija (tik landingo generavimui)
+tema/
+
+# Pelno suvestine: raktai ir verslo duomenys — NIEKADA i repo.
+# Bruksnys priekyje svarbus: be jo isfiltruotu ir src/pelnas/ (pati koda).
+.env
+/pelnas/
+__pycache__/

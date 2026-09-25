@@ -330,6 +330,15 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-foot a{color:#B4B4BE;font-size:0.9375rem;text-decoration:none;}
 #dm .dm-foot a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px;}
 #dm .dm-foot a:focus-visible{outline-color:#fff;}
+#dm .dm-foot-teise{
+  margin-top:clamp(28px,3.5vw,38px);padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.18);
+  color:#B4B4BE;font-size:0.8125rem;line-height:1.65;max-width:78ch;
+}
+#dm .dm-foot-teise p{color:inherit;font-size:inherit;max-width:none;margin-bottom:9px;}
+#dm .dm-foot-teise p:last-child{margin-bottom:0;}
+#dm .dm-foot-teise a{font-size:inherit;text-decoration:underline;text-underline-offset:2px;}
+#dm .dm-foot-teise b{color:#fff;}
 #dm .dm-foot-bottom{
   margin-top:clamp(32px,4vw,44px);padding-top:24px;
   border-top:1px solid rgba(255,255,255,.18);
@@ -554,7 +563,7 @@ html,body{margin:0;padding:0;background:#fff;}
   /* Žyma per visą stulpelio plotį — taip ji fiziškai negali kyšoti,
      nesvarbu, koks ilgas žodis. */
   #dm .dm-cmp-zenklas{display:block;width:100%;box-sizing:border-box;
-    font-size:0.5rem;padding:3px 1px;margin:0 0 6px;text-align:center;
+    font-size:0.625rem;padding:3px 1px;margin:0 0 6px;text-align:center;
     white-space:nowrap;overflow-wrap:normal;word-break:normal;
     letter-spacing:0;}
   #dm .dm-cmp-chip{display:none;}
@@ -1519,17 +1528,39 @@ html,body{margin:0;padding:0;background:#fff;}
           <li><a href="https://dronumokykla.lt/policies/refund-policy">Prekių grąžinimas</a></li>
           <li><a href="https://dronumokykla.lt/policies/legal-notice">Garantinis aptarnavimas</a></li>
           <li><a href="https://dronumokykla.lt/policies/privacy-policy">Privatumo politika</a></li>
+          <!-- Privaloma sutarties atsisakymo funkcija (CK 6.228-10 str. 11-15 d.,
+               galioja nuo 2026-06-19). Formuluote turi buti butent tokia. -->
+          <li><a href="https://dronumokykla.lt/pages/atsisakymo-forma">Atsisakyti sutarties čia</a></li>
         </ul>
       </div>
       <div>
         <h3>Pagalba</h3>
         <ul>
-          <li>Iešmininkų g. 17A, Vilnius, 02151</li>
+          <li>Dronefix, UAB, j. a. k. 306171324</li>
+          <li>J. Jasinskio g. 16, Vilnius</li>
           <li><a href="mailto:info@dronefix.lt">info@dronefix.lt</a></li>
           <li><a href="tel:+37061930080">+370 619 30080</a></li>
           <li><a href="https://dronumokykla.lt">dronumokykla.lt</a></li>
         </ul>
       </div>
+    </div>
+
+    <!-- Privaloma ikisutartine informacija (CK 6.228-7 str.) ir vartojimo gincu
+         neteisminio sprendimo subjektas (VTAI 21 str. 3 d.). VVTAT rastas
+         4E-2616 atskirai nurode, kad sios informacijos truko. -->
+    <div class="dm-foot-teise">
+      <p>Visos kainos nurodytos su PVM. Pristatymo kaina parodoma prieš
+         patvirtinant užsakymą.</p>
+      <p>Prekėms taikoma <b>2 metų garantija pagal įstatymą</b>. Per 14 dienų
+         galite atsisakyti sutarties nenurodydami priežasties —
+         <a href="https://dronumokykla.lt/pages/atsisakymo-forma">atsisakyti sutarties čia</a>.</p>
+      <p>Prašymą ar skundą dėl įsigytos prekės galite pateikti Valstybinei
+         vartotojų teisių apsaugos tarnybai (A. Goštauto g. 12, 01108 Vilnius,
+         el. pristatymo dėžutės adresas 188770044,
+         <a href="mailto:tarnyba@vvtat.lt">tarnyba@vvtat.lt</a>, tel. +370 5 262 6760,
+         <a href="https://vvtat.lrv.lt/" target="_blank" rel="noopener">vvtat.lrv.lt</a>),
+         jos teritoriniams padaliniams apskrityse arba per Vartotojų teisių
+         informacinę sistemą (VTIS).</p>
     </div>
 
     <div class="dm-foot-bottom">
