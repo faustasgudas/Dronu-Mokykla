@@ -625,18 +625,35 @@ button.smulki{width:100%;text-align:left}
   .poraste{padding-bottom:110px}
 }
 @media (prefers-reduced-motion:reduce){ .lipnus{transition:none} }
-.poraste-in{max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:20px;
-  justify-content:space-between;align-items:flex-start}
+.poraste-in{max-width:1180px;margin:0 auto;display:grid;gap:28px 24px;
+  grid-template-columns:1.6fr 1fr 1.2fr 1.2fr;align-items:start}
+.poraste-apie p{opacity:.55;line-height:1.6;max-width:38ch;margin-top:10px}
+.poraste h3{font-size:.8125rem;font-weight:800;margin-bottom:12px;letter-spacing:.02em}
+.poraste ul{list-style:none;margin:0;padding:0}
+.poraste li{margin-bottom:7px;line-height:1.5;opacity:.75}
+.poraste li a{opacity:1}
+.poraste-apacia{max-width:1180px;margin:30px auto 0;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;opacity:.65}
+@media (max-width:760px){
+  .poraste-in{grid-template-columns:1fr 1fr}
+  .poraste-apie{grid-column:1 / -1}
+}
+@media (max-width:460px){ .poraste-in{grid-template-columns:1fr} }
+.poraste-apie p{opacity:.55;line-height:1.6;max-width:38ch;margin-top:10px}
+.poraste h3{font-size:.8125rem;font-weight:800;margin-bottom:12px;letter-spacing:.02em}
+.poraste li{margin-bottom:7px;line-height:1.5;opacity:.75}
+.poraste li a{opacity:1}
+.poraste-apacia{max-width:1180px;margin:30px auto 0;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;opacity:.65}
+@media (max-width:760px){
+  .poraste-in{grid-template-columns:1fr 1fr}
+  .poraste-apie{grid-column:1 / -1}
+}
+@media (max-width:460px){ .poraste-in{grid-template-columns:1fr} }
 .poraste a{color:#fff;text-decoration:none;opacity:.75}
 .poraste a:hover{opacity:1;text-decoration:underline}
-.poraste ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px}
-.poraste-rekv{opacity:.55;line-height:1.6;max-width:44ch}
-.poraste-teise{max-width:1180px;margin:26px auto 0;padding-top:22px;
-  border-top:1px solid rgba(255,255,255,.18);opacity:.6;line-height:1.65;max-width:78ch}
-.poraste-teise p{margin-bottom:9px}
-.poraste-teise p:last-child{margin-bottom:0}
-.poraste-teise a{text-decoration:underline;text-underline-offset:2px;opacity:1}
-.poraste-teise b{opacity:1}
 
 .kelias{background:#fff;padding:48px 20px 64px}
 .kelias h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
@@ -1851,11 +1868,11 @@ button.smulki{width:100%;text-align:left}
     </div>
     <div>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h13a5 5 0 010 10h-6"/><path d="M7 5L3 9l4 4"/></svg>
-      <div><b>14 dienų grąžinimas</b><span>Suteikiame 14 dienų pinigų grąžinimo garantiją</span></div>
+      <div><b>Nemokamas atsiėmimas Vilniuje</b><span>Atsiimkite Vilniuje nemokamai, iš anksto susitarus</span></div>
     </div>
     <div>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5 5 0 00-7.1 0L12 7.3l-1.7-1.7a5 5 0 10-7.1 7.1L12 21.4l8.8-8.7a5 5 0 000-7.1z"/></svg>
-      <div><b>2 metų kokybės garantija</b><span>Visoms prekėms teikiame dvejų metų garantiją</span></div>
+      <div><b>Servisas Vilniuje</b><span>Patys taisome FPV dronus ir įrangą</span></div>
     </div>
     <div>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9a4 4 0 100 6M8 11h5M8 13h5"/></svg>
@@ -1875,41 +1892,50 @@ button.smulki{width:100%;text-align:left}
 
 <footer class="poraste">
   <div class="poraste-in">
-    <div class="poraste-rekv">
-      <b>Dronų Mokykla</b> · DroneFix.lt<br>
-      Dronefix, UAB, juridinio asmens kodas 306171324<br>
-      J. Jasinskio g. 16, Vilnius<br>
-      <a href="mailto:info@dronefix.lt">info@dronefix.lt</a> ·
-      <a href="tel:+37061930080">+370 619 30080</a>
+    <div class="poraste-apie">
+      <b>Dronų Mokykla</b> · DroneFix.lt
+      <p>Esame pirmasis FPV servisas Lietuvoje, užsiimantis FPV dronų prekyba,
+         dalių prekyba, mokymais ir serviso paslaugomis.</p>
     </div>
-    <ul>
-      <li><a href="https://dronumokykla.lt/policies/privacy-policy" target="_blank" rel="noopener">Privatumo politika</a></li>
-      <li><a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">Grąžinimo sąlygos</a></li>
-      <li><a href="https://dronumokykla.lt/policies/shipping-policy" target="_blank" rel="noopener">Pristatymo sąlygos</a></li>
-      <li><a href="https://dronumokykla.lt/policies/terms-of-service" target="_blank" rel="noopener">Pirkimo sąlygos</a></li>
-      <!-- Privaloma sutarties atsisakymo funkcija (CK 6.228-10 str. 11-15 d.,
-           galioja nuo 2026-06-19). Formuluote turi buti butent tokia. -->
-      <li><a href="https://dronumokykla.lt/pages/atsisakymo-forma" target="_blank" rel="noopener">Atsisakyti sutarties čia</a></li>
-      <li><a href="https://dronumokykla.lt" target="_blank" rel="noopener">dronumokykla.lt</a></li>
-    </ul>
+    <div>
+      <h3>Meniu</h3>
+      <ul>
+        <li><a href="https://dronumokykla.lt/">Pagrindinis</a></li>
+        <li><a href="https://dronumokykla.lt/collections">Parduotuvė</a></li>
+        <li><a href="https://dronumokykla.lt/pages/contact">Kontaktai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Informacija</h3>
+      <ul>
+        <li><a href="https://dronumokykla.lt/policies/terms-of-service">Pirkimo taisyklės</a></li>
+        <li><a href="https://dronumokykla.lt/policies/shipping-policy">Pristatymo sąlygos</a></li>
+        <li><a href="https://dronumokykla.lt/policies/refund-policy">Prekių grąžinimas</a></li>
+        <li><a href="https://dronumokykla.lt/policies/legal-notice">Garantinis aptarnavimas</a></li>
+        <li><a href="https://dronumokykla.lt/policies/privacy-policy">Privatumo politika</a></li>
+        <!-- Privaloma sutarties atsisakymo funkcija (CK 6.228-10 str. 11-15 d.,
+             galioja nuo 2026-06-19). Formuluote turi buti butent tokia. -->
+        <li><a href="https://dronumokykla.lt/pages/atsisakymo-forma">Atsisakyti sutarties čia</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pagalba</h3>
+      <ul>
+        <li>Dronefix, UAB, įmonės kodas 306171324</li>
+        <li>J. Jasinskio g. 16, Vilnius, 03163 Vilniaus m. sav.</li>
+        <li><a href="mailto:info@dronefix.lt">info@dronefix.lt</a></li>
+        <li><a href="tel:+37061930080">+370 619 30080</a></li>
+      </ul>
+    </div>
   </div>
 
-  <!-- Privaloma ikisutartine informacija (CK 6.228-7 str.) ir vartojimo gincu
-       neteisminio sprendimo subjektas (VTAI 21 str. 3 d.). VVTAT rastas
-       4E-2616 atskirai nurode, kad sios informacijos truko. -->
-  <div class="poraste-teise">
-    <p>Visos kainos nurodytos su PVM. Pristatymo kaina parodoma prieš
-       patvirtinant užsakymą.</p>
-    <p>Prekėms taikoma <b>2 metų garantija pagal įstatymą</b>. Per 14 dienų
-       galite atsisakyti sutarties nenurodydami priežasties —
-       <a href="https://dronumokykla.lt/pages/atsisakymo-forma" target="_blank" rel="noopener">atsisakyti sutarties čia</a>.</p>
-    <p>Prašymą ar skundą dėl įsigytos prekės galite pateikti Valstybinei
-       vartotojų teisių apsaugos tarnybai (A. Goštauto g. 12, 01108 Vilnius,
-       el. pristatymo dėžutės adresas 188770044,
-       <a href="mailto:tarnyba@vvtat.lt">tarnyba@vvtat.lt</a>, tel. +370 5 262 6760,
-       <a href="https://vvtat.lrv.lt/" target="_blank" rel="noopener">vvtat.lrv.lt</a>),
-       jos teritoriniams padaliniams apskrityse arba per Vartotojų teisių
-       informacinę sistemą (VTIS).</p>
+  <div class="poraste-apacia">
+    <span>© 2026 Dronų Mokykla</span>
+    <span>
+      <a href="https://www.facebook.com/people/DroneFixlt/100089861933596/" target="_blank" rel="noopener">Facebook</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/dronefix.lt/" target="_blank" rel="noopener">Instagram</a>
+    </span>
   </div>
 </footer>
 
