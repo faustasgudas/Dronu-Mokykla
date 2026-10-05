@@ -59,6 +59,28 @@ html,body{margin:0;padding:0;background:#fff;}
 
 /* ===== PAPILDOMI BLOKAI ===== */
 
+/* Sutikimas del skaitmeninio turinio. Tekstas tamsus, ne blyskiai pilkas —
+   tai teisiskai reiksmingas sutikimas, ne smulkus srifcio prierasas. */
+#dm .dm-sutik{margin-top:28px;padding:16px 18px;border:1.5px solid var(--dm-line);
+  border-radius:14px;background:#fff;}
+#dm .dm-sutik-eil{display:flex;gap:12px;align-items:flex-start;cursor:pointer;}
+#dm .dm-sutik-dez{flex:0 0 auto;width:22px;height:22px;margin:1px 0 0;
+  accent-color:var(--dm-blue);cursor:pointer;}
+#dm .dm-sutik-eil span{font-size:0.9375rem;line-height:1.5;color:var(--dm-ink);}
+#dm .dm-sutik-eil a{text-decoration:underline;text-underline-offset:2px;}
+#dm .dm-sutik-klaida{margin:10px 0 0 34px;font-size:0.9375rem;font-weight:700;
+  color:var(--dm-sale);line-height:1.45;}
+#dm .dm-sutik-klaida[hidden]{display:none;}
+#dm .dm-sutik-smulk{margin:10px 0 0 34px;font-size:0.8125rem;line-height:1.5;
+  color:var(--dm-muted);}
+/* Nepazymejus mygtukas atrodo neaktyvus, bet lieka spaudziamas — paspaudus
+   parodom, kodel nepraleidzia. Disabled mygtukas to paaiskinti negaletu. */
+#dm .dm-sutik-laukia{opacity:.55;}
+@media (max-width:620px){
+  #dm .dm-sutik{margin-top:18px;padding:14px;}
+  #dm .dm-sutik-klaida,#dm .dm-sutik-smulk{margin-left:0;}
+}
+
 /* Kodėl verta — kortelės su antrašte po nuotrauka */
 #dm .dm-why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
 #dm .dm-why figure{background:var(--dm-card);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;}
@@ -975,6 +997,27 @@ html,body{margin:0;padding:0;background:#fff;}
       </a>
     </p>
 
+    <!-- Sutikimas del skaitmeninio turinio (CK 6.228-10 str. 2 d. 13 p.).
+         Pirkejas praranda 14 dienu teise atsisakyti sutarties TIK tada, kai
+         pries pirkima aiskiai sutinka gauti prieiga is karto IR patvirtina
+         supratęs, kad del to tos teises netenka. Be sio sutikimo teise
+         islieka, net jei visus mokymus jau perziurejo. Todel mygtukas
+         neveikia, kol varnele nepazymeta. -->
+    <div class="dm-sutik">
+      <label class="dm-sutik-eil" for="dm-sutik-dez">
+        <input type="checkbox" id="dm-sutik-dez" class="dm-sutik-dez">
+        <span>Noriu pradėti mokytis dabar ir gauti prieigą prie viso kurso iš
+          karto. Suprantu, kad pradėjus kursą 14 dienų grąžinimo teisė
+          nebegalioja.</span>
+      </label>
+      <p class="dm-sutik-klaida" id="dm-sutik-klaida" role="alert" hidden>
+        Norėdami tęsti, pažymėkite sutikimą.</p>
+      <p class="dm-sutik-smulk">Jei per 14 dienų kursą peržiūrėsiu ne daugiau
+        nei 50 %, galiu susigrąžinti pinigus.</p>
+      <p class="dm-sutik-smulk">Pirkdami sutinkate su
+        <a href="https://dronumokykla.lt/policies/terms-of-service" target="_blank" rel="noopener">pirkimo taisyklėmis</a>.</p>
+    </div>
+
     <div class="dm-buybar">
       <div class="dm-buybar-price">
         <span class="dm-price dm-num" id="dm-price">€69,00</span>
@@ -988,7 +1031,7 @@ html,body{margin:0;padding:0;background:#fff;}
       <p class="dm-ship">
         Nemokamas pristatymas virš €99 ·
         <a href="https://dronumokykla.lt/policies/shipping-policy" target="_blank" rel="noopener">1–3 d. d.</a> ·
-        <a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">14 dienų grąžinimas</a> ·
+        <a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">Grąžinimo sąlygos</a> ·
         <a href="https://dronumokykla.lt/policies/legal-notice" target="_blank" rel="noopener">24 mėn. garantija</a>
       </p>
       <div class="dm-saugu-blokas">
@@ -1930,6 +1973,57 @@ html,body{margin:0;padding:0;background:#fff;}
   var stCta    = document.getElementById("dm-sticky-cta");
   var buyBlock = document.getElementById("dm-pirkti");
   var heroSec  = document.getElementById("dm-hero");
+
+  /* =========================================================
+     SUTIKIMAS DEL SKAITMENINIO TURINIO
+     =========================================================
+     CK 6.228-10 str. 2 d. 13 p.: 14 dienu teise atsisakyti sutarties
+     dingsta tik tada, kai pirkejas PRIES pirkima aiskiai sutinka gauti
+     prieiga is karto ir patvirtina supratęs pasekmes.
+
+     Sutikimas keliauja i uzsakyma kaip krepselio atributas — Shopify ji
+     parodo administracijoje prie uzsakymo, skiltyje „Papildoma
+     informacija". Checkout puslapio nereikia liesti, tad veikia ir be
+     Shopify Plus. */
+  var SUTIK_ATR = "Sutikimas dėl skaitmeninio turinio";
+
+  function dmLaikas() {
+    var d = new Date();
+    function du(n) { return (n < 10 ? "0" : "") + n; }
+    return d.getFullYear() + "-" + du(d.getMonth() + 1) + "-" + du(d.getDate()) +
+           " " + du(d.getHours()) + ":" + du(d.getMinutes());
+  }
+
+  (function sutikimoVarnele() {
+    var dez = document.getElementById("dm-sutik-dez");
+    var klaida = document.getElementById("dm-sutik-klaida");
+    if (!dez || !klaida || !elCta) return;
+
+    function atnaujintiMygtuka() {
+      elCta.classList.toggle("dm-sutik-laukia", !dez.checked);
+      if (dez.checked) klaida.hidden = true;
+    }
+    dez.addEventListener("change", atnaujintiMygtuka);
+    atnaujintiMygtuka();
+
+    elCta.addEventListener("click", function (e) {
+      if (!dez.checked) {
+        e.preventDefault();
+        klaida.hidden = false;
+        dez.focus({ preventScroll: true });
+        klaida.scrollIntoView({ block: "nearest" });
+        return;
+      }
+      /* Atributa prikabinam tik paspaudus: varianto pakeitimas perrašo
+         href, tad anksciau idetas parametras butu dinges. */
+      var h = elCta.getAttribute("href") || "";
+      if (h.indexOf("attributes%5B") === -1 && h.indexOf("attributes[") === -1) {
+        var p = "attributes[" + encodeURIComponent(SUTIK_ATR) + "]=" +
+                encodeURIComponent("Taip, " + dmLaikas());
+        elCta.setAttribute("href", h + (h.indexOf("?") === -1 ? "?" : "&") + p);
+      }
+    });
+  })();
 
   function eur(n) {
     return "€" + n.toFixed(2).replace(".", ",");
