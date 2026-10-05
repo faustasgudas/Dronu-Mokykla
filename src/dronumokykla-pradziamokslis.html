@@ -1418,7 +1418,7 @@
           <img src="https://dronumokykla.lt/cdn/shop/files/Air65_II_Brushless_Whoop_Quadcopter_Freestyle_1080x-Photoroom.png?v=1782385191&width=600" alt="" width="600" height="600" loading="lazy">
         </span>
         <span class="dm-card-name">BETAFPV Air65 II Whoop FPV dronas</span>
-        <span class="dm-card-price dm-num">€129,99 <span class="dm-was">€134,99</span></span>
+        <span class="dm-card-price dm-num">€129,99</span>
         <span class="dm-card-go">Žiūrėti</span>
       </a>
 
@@ -1427,7 +1427,7 @@
           <img src="https://dronumokykla.lt/cdn/shop/files/photo-0865-Photoroom_389d8999-13a7-4d4e-bfae-03c0408c8622.png?v=1785234582&width=600" alt="" width="600" height="600" loading="lazy">
         </span>
         <span class="dm-card-name">EMAX Transporter FPV akiniai</span>
-        <span class="dm-card-price dm-num">€99,99 <span class="dm-was">€129,99</span></span>
+        <span class="dm-card-price dm-num">€99,99</span>
         <span class="dm-card-go">Žiūrėti</span>
       </a>
     </div>
@@ -1840,14 +1840,25 @@
 
   /* ========================================================= */
 
-  var root = document.getElementById("dm");
-  if (!root) {
+  var dmBlokas = document.getElementById("dm");
+  if (!dmBlokas) {
     // Turinio sekcija dar neįkelta — palaukiam, kol naršyklė baigs skaityti puslapį.
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", dmInit, { once: true });
     }
     return;
   }
+
+  /* Elementu ieskom visame dokumente, o ne po pirmu #dm.
+     Shopify temoje build_tema.py perskelia landinga pusiau ir tarp daliu
+     ideda Judge.me atsiliepimu valdikli — o abi dalys turi ta pati
+     id="dm" (jo reikia, nes visas CSS yra "#dm ..."). getElementById
+     grazina tik pirmaja, todel viskas, kas yra zemiau atsiliepimu
+     (korteliu kainos, nuotraukos, video plakatai, vidines nuorodos),
+     likdavo be JS. Visi selektoriai zemiau yra "dm-" klases ar
+     "data-dm-" atributai, tad dokumento lygio paieska nieko svetimo
+     nepagauna. */
+  var root = document;
 
   /* --- Video plakatas (poster) iš tos pačios konfigūracijos --- */
   root.querySelectorAll("[data-dm-poster]").forEach(function (v) {
