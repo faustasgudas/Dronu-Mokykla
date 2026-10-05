@@ -1,0 +1,60 @@
+/* Sutikimas del skaitmeninio turinio. Tekstas tamsus, ne blyskiai pilkas —
+   tai teisiskai reiksmingas sutikimas, ne smulkus prierasas. */
+.dm-sutik {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(var(--color-foreground, 0 0 0), .18);
+  border-radius: 12px;
+  background: rgb(var(--color-background, 255 255 255));
+  text-align: left;
+}
+.dm-sutik-eil {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  cursor: pointer;
+  margin: 0;
+}
+.dm-sutik-dez {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 1px 0 0;
+  cursor: pointer;
+}
+.dm-sutik-eil span {
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: rgb(var(--color-foreground, 0 0 0));
+}
+.dm-sutik-klaida {
+  margin: 10px 0 0 34px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #cb321e;
+}
+.dm-sutik-klaida[hidden] { display: none; }
+.dm-sutik-smulk {
+  margin: 8px 0 0 34px;
+  font-size: 1.25rem;
+  line-height: 1.45;
+  opacity: .75;
+}
+.dm-sutik-smulk a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .dm-sutik { padding: 12px 14px; }
+  .dm-sutik-klaida,
+  .dm-sutik-smulk { margin-left: 0; }
+}
+
+/* Greito apmokejimo mygtukai (Shop Pay, Apple Pay, Google Pay, PayPal)
+   apeitu varnele — mokymams juos slepiam. Klase uzdedam is Liquid tik tada,
+   kai krepselyje yra skaitmeninis produktas. */
+.dm-be-greito .additional-checkout-buttons,
+.dm-be-greito .shopify-payment-button,
+.dm-be-greito .dynamic-checkout__content { display: none !important; }

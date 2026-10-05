@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelno suvestine</title>
+<style>
+  :root{
+    color-scheme: light;
+    --plane:#f9f9f7; --surface:#fcfcfb;
+    --ink:#0b0b0b; --ink-2:#52514e; --ink-3:#898781;
+    --grid:#e1e0d9; --asis:#c3c2b7; --ziedas:rgba(11,11,11,.10);
+    --teigiamas:#2a78d6; --neigiamas:#e34948; --neutralus:#f0efec;
+    --gerai:#0ca30c; --demesio:#fab219;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:where(:not([data-theme="light"])){
+      color-scheme: dark;
+      --plane:#0d0d0d; --surface:#1a1a19;
+      --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#898781;
+      --grid:#2c2c2a; --asis:#383835; --ziedas:rgba(255,255,255,.10);
+      --teigiamas:#3987e5; --neigiamas:#e66767; --neutralus:#383835;
+      --gerai:#0ca30c; --demesio:#fab219;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme: dark;
+    --plane:#0d0d0d; --surface:#1a1a19;
+    --ink:#ffffff; --ink-2:#c3c2b7; --ink-3:#898781;
+    --grid:#2c2c2a; --asis:#383835; --ziedas:rgba(255,255,255,.10);
+    --teigiamas:#3987e5; --neigiamas:#e66767; --neutralus:#383835;
+    --gerai:#0ca30c; --demesio:#fab219;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--plane); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;
+    padding:24px 16px 64px;
+  }
+  .vidus{max-width:1120px;margin:0 auto}
+  header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+  h1{font-size:22px;margin:0;letter-spacing:-.01em}
+  .antraste-info{color:var(--ink-3);font-size:13px}
+  .tema{margin-left:auto;background:none;border:1px solid var(--ziedas);
+    color:var(--ink-2);border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit;font-size:13px}
+  .valdymas{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 18px}
+  .grupe{display:flex;background:var(--surface);border:1px solid var(--ziedas);
+    border-radius:10px;padding:3px;gap:2px}
+  .grupe button{background:none;border:0;color:var(--ink-2);font:inherit;font-size:13px;
+    padding:6px 14px;border-radius:7px;cursor:pointer;white-space:nowrap}
+  .grupe button[aria-pressed="true"]{background:var(--plane);color:var(--ink);font-weight:600}
+  .korteles{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:22px}
+  .kortele{background:var(--surface);border:1px solid var(--ziedas);border-radius:12px;padding:14px 16px}
+  .kortele .etikete{font-size:12px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.04em}
+  .kortele .reiksme{font-size:26px;font-weight:650;margin-top:6px;letter-spacing:-.02em}
+  .kortele .po{font-size:12px;color:var(--ink-2);margin-top:2px}
+  .teig{color:var(--gerai)} .neig{color:var(--neigiamas)}
+  .blokas{background:var(--surface);border:1px solid var(--ziedas);border-radius:12px;
+    padding:18px 18px 10px;margin-bottom:18px}
+  .blokas h2{font-size:15px;margin:0 0 2px;font-weight:600}
+  .blokas .paaiskinimas{font-size:12.5px;color:var(--ink-3);margin:0 0 14px}
+  .raktas{display:flex;gap:16px;font-size:12.5px;color:var(--ink-2);margin:0 0 10px}
+  .raktas i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px}
+  .grafikas{width:100%;display:block;overflow:visible}
+  .grafikas text{font:11px system-ui,-apple-system,"Segoe UI",sans-serif}
+  .zinute{color:var(--ink-3);font-size:13px;padding:18px 0}
+  table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+  th,td{padding:7px 8px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--ink-3);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+  tbody tr:hover{background:var(--plane)}
+  tfoot td{font-weight:650;border-top:2px solid var(--asis);border-bottom:0}
+  .lentele-rem{overflow-x:auto}
+  .ispejimai{background:var(--surface);border:1px solid var(--ziedas);border-left:3px solid var(--demesio);
+    border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:13.5px}
+  .ispejimai h2{font-size:14px;margin:0 0 8px}
+  .ispejimai ul{margin:0;padding-left:20px}
+  .ispejimai li{margin:4px 0;color:var(--ink-2)}
+  #uzuomina{position:fixed;pointer-events:none;opacity:0;transition:opacity .08s;
+    background:var(--surface);border:1px solid var(--ziedas);border-radius:9px;
+    padding:9px 11px;font-size:12.5px;box-shadow:0 6px 24px rgba(0,0,0,.14);z-index:9;
+    font-variant-numeric:tabular-nums;min-width:170px}
+  #uzuomina b{display:block;margin-bottom:5px;font-size:13px}
+  #uzuomina .eil{display:flex;justify-content:space-between;gap:18px;color:var(--ink-2)}
+  #uzuomina .eil.suma{color:var(--ink);font-weight:650;margin-top:5px;
+    border-top:1px solid var(--grid);padding-top:5px}
+  @media (max-width:640px){
+    body{padding:16px 12px 48px}
+    .kortele .reiksme{font-size:22px}
+  }
+</style>
+</head>
+<body>
+<div class="vidus">
+
+  <header>
+    <h1>Pelno suvestine</h1>
+    <span class="antraste-info" id="info"></span>
+    <button class="tema" id="tema">Tema</button>
+  </header>
+
+  <div class="valdymas">
+    <div class="grupe" id="periodas">
+      <button data-v="diena" aria-pressed="false">Diena</button>
+      <button data-v="savaite" aria-pressed="true">Savaite</button>
+      <button data-v="menuo" aria-pressed="false">Menuo</button>
+    </div>
+    <div class="grupe" id="ruozas">
+      <button data-v="30" aria-pressed="false">30 d.</button>
+      <button data-v="90" aria-pressed="true">90 d.</button>
+      <button data-v="365" aria-pressed="false">12 men.</button>
+      <button data-v="0" aria-pressed="false">Viskas</button>
+    </div>
+  </div>
+
+  <div class="korteles" id="korteles"></div>
+
+  <div class="ispejimai" id="ispejimai" hidden></div>
+
+  <div class="blokas">
+    <h2>Pelnas laike</h2>
+    <p class="paaiskinimas" id="pelno-paaiskinimas"></p>
+    <div class="raktas">
+      <span><i style="background:var(--teigiamas)"></i>Pelnas</span>
+      <span><i style="background:var(--neigiamas)"></i>Nuostolis</span>
+    </div>
+    <svg class="grafikas" id="pelno-grafikas" height="300" role="img"
+         aria-label="Pelnas pagal laikotarpi"></svg>
+  </div>
+
+  <div class="blokas">
+    <h2>Kur dingsta pinigai</h2>
+    <p class="paaiskinimas" id="krioklio-paaiskinimas"></p>
+    <svg class="grafikas" id="krioklys" height="300" role="img"
+         aria-label="Pajamu skaidymas iki pelno"></svg>
+  </div>
+
+  <div class="blokas">
+    <h2>Lentele</h2>
+    <p class="paaiskinimas">Visi skaiciai be PVM. Neigiamos reiksmes — islaidos.</p>
+    <div class="lentele-rem"><table id="lentele"></table></div>
+  </div>
+
+</div>
+<div id="uzuomina" role="status" aria-live="polite"></div>
+
+<script>
+const DUOMENYS = /*DUOMENYS*/[]/*DUOMENYS*/;
+const ISPEJIMAI = /*ISPEJIMAI*/{}/*ISPEJIMAI*/;
+const ATNAUJINTA = "/*ATNAUJINTA*/";
+
+const eur = n => (n<0?"-":"") + Math.abs(n).toLocaleString("lt-LT",
+  {minimumFractionDigits:2, maximumFractionDigits:2}) + " €";
+const eur0 = n => (n<0?"-":"") + Math.abs(Math.round(n)).toLocaleString("lt-LT") + " €";
+const proc = n => n.toLocaleString("lt-LT",{minimumFractionDigits:1,maximumFractionDigits:1}) + " %";
+
+let periodas = "savaite", ruozas = 90;
+
+/* ---------- duomenu paruosimas ---------- */
+function filtruoti(){
+  if(!ruozas) return DUOMENYS.slice();
+  const pab = DUOMENYS.length ? new Date(DUOMENYS[DUOMENYS.length-1].data) : new Date();
+  const prad = new Date(pab); prad.setDate(prad.getDate() - ruozas + 1);
+  const riba = prad.toISOString().slice(0,10);
+  return DUOMENYS.filter(e => e.data >= riba);
+}
+
+function savaitesRaktas(iso){
+  const d = new Date(iso + "T00:00:00Z");
+  const sav = (d.getUTCDay() + 6) % 7;            // pirmadienis = 0
+  d.setUTCDate(d.getUTCDate() - sav);
+  return d.toISOString().slice(0,10);
+}
+
+const LAUKAI = ["neto","siuntimo_pajamos","pajamos","cogs","reklama",
+                "siuntimas","mokesciai","fiksuotos","islaidos","pelnas",
+                "bruto_pelnas","po_reklamos","be_savikainos"];
+
+// null reiskia „nezinoma". Jis uzkrecia visa suma: nezinoma + 5 = nezinoma.
+// Geriau bruksnys nei skaicius, kuris atrodo tikras, bet nera.
+function suma(eilutes, laukas){
+  let a = 0;
+  for(const e of eilutes){
+    if(e[laukas] == null) return null;
+    a += e[laukas];
+  }
+  return a;
+}
+
+function agreguoti(eilutes){
+  if(periodas === "diena") return eilutes.map(e => Object.assign({raktas:e.data}, e));
+  const grupes = new Map();
+  for(const e of eilutes){
+    const r = periodas === "menuo" ? e.data.slice(0,7) : savaitesRaktas(e.data);
+    let g = grupes.get(r);
+    if(!g){ g = {raktas:r, uzsakymu:0}; LAUKAI.forEach(l => g[l]=0); grupes.set(r,g); }
+    LAUKAI.forEach(l => {
+      if(g[l] === null || e[l] == null) g[l] = null;
+      else g[l] += e[l];
+    });
+    // Uzsakymu skaicius uzkreciamas taip pat: jei nors viena diena nezinoma,
+    // nezinomas ir viso laikotarpio skaicius (kitaip vidutinis uzsakymas melas).
+    if(g.uzsakymu === null || e.uzsakymu == null) g.uzsakymu = null;
+    else g.uzsakymu += e.uzsakymu;
+  }
+  return [...grupes.values()].sort((a,b) => a.raktas < b.raktas ? -1 : 1);
+}
+
+function etikete(raktas){
+  if(periodas === "menuo"){
+    const [m,d] = raktas.split("-");
+    return ["saus","vas","kov","bal","geg","birz","liep","rugp","rugs","spal","lapkr","gruod"][+d-1] + " " + m.slice(2);
+  }
+  const [,m,d] = raktas.split("-");
+  return d + "." + m;
+}
+
+/* ---------- korteles ---------- */
+function piestiKorteles(gr, dienos){
+  const s = l => suma(gr, l);
+  const pelnas = s("pelnas"), pajamos = s("pajamos"), reklama = s("reklama");
+  const uzs = gr.some(e => e.uzsakymu != null) ? s("uzsakymu") : null;
+  const marza = (pajamos && pelnas != null) ? pelnas / pajamos * 100 : 0;
+  const bruto = s("bruto_pelnas");
+
+  // Kiek prekybos dienu turi reklamos duomenis. Be sito ROAS ir pelnas
+  // atrodo fantastiski — geriau parodyti bruksni nei melaginga skaiciu.
+  const beUzsakymu = dienos.filter(e => e.uzsakymu == null).length;
+  const prekybos = dienos.filter(e => e.neto > 0);
+  const suReklama = prekybos.filter(e => e.reklama > 0).length;
+  const danga = prekybos.length ? suReklama / prekybos.length : 0;
+  const patikima = danga >= 0.8;
+  const roas = (patikima && reklama) ? pajamos / reklama : null;
+  const dangosZyme = prekybos.length
+    ? "reklamos duomenu " + proc(danga*100) + " dienu" : "";
+
+  const poRekl = s("po_reklamos");
+  const k = [
+    pelnas != null
+      ? {e:"Grynas pelnas", v:eur0(pelnas), c: pelnas>=0?"teig":"neig",
+         p: pajamos ? proc(marza) + " marza" : ""}
+      : {e:"Pelnas po reklamos", v:eur0(poRekl), c: poRekl>=0?"teig":"neig",
+         p: pajamos ? proc(poRekl/pajamos*100) + " marza" : ""},
+    {e:"Pajamos", v:eur0(pajamos), p:"be PVM"},
+    {e:"Bruto pelnas", v:eur0(bruto),
+     p: pajamos ? proc(bruto/pajamos*100) + " po savikainos" : ""},
+    {e:"Reklama", v:eur0(reklama),
+     p: patikima ? (pajamos ? proc(reklama/pajamos*100) + " nuo pajamu" : "")
+        : dangosZyme},
+    {e:"ROAS", v: roas ? roas.toFixed(2) + "×" : "—",
+     p: roas ? "pajamos / reklama" : (reklama ? "per mazai duomenu" : "nera reklamos")},
+    {e:"Uzsakymu", v: uzs != null ? uzs.toLocaleString("lt-LT") : "—",
+     p: uzs ? eur0(pajamos/uzs) + " vidutinis"
+        : (beUzsakymu ? beUzsakymu + " d. be duomenu" : "duomenu nera")}
+  ];
+  document.getElementById("korteles").innerHTML = k.map(x => `
+    <div class="kortele">
+      <div class="etikete">${x.e}</div>
+      <div class="reiksme ${x.c||""}">${x.v}</div>
+      <div class="po">${x.p||""}</div>
+    </div>`).join("");
+}
+
+/* ---------- uzuomina ---------- */
+const uzuomina = document.getElementById("uzuomina");
+function rodyti(evt, html){
+  uzuomina.innerHTML = html;
+  uzuomina.style.opacity = 1;
+  const r = uzuomina.getBoundingClientRect();
+  let x = evt.clientX + 14, y = evt.clientY - 10;
+  if(x + r.width > innerWidth - 8) x = evt.clientX - r.width - 14;
+  if(y + r.height > innerHeight - 8) y = innerHeight - r.height - 8;
+  uzuomina.style.left = Math.max(8,x) + "px";
+  uzuomina.style.top = Math.max(8,y) + "px";
+}
+function slepti(){ uzuomina.style.opacity = 0; }
+
+/* ---------- stulpeliu grafikas ---------- */
+function piestiPelna(gr){
+  const svg = document.getElementById("pelno-grafikas");
+  const P = {v:14, d:26, k:52, de:34};
+  const W = svg.clientWidth || svg.parentNode.clientWidth || 900;
+  const H = 300;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("width", W);
+  if(!gr.length){ svg.innerHTML = ""; return; }
+
+  const laukas = gr.every(e => e.pelnas != null) ? "pelnas"
+               : gr.every(e => e.po_reklamos != null) ? "po_reklamos" : "bruto_pelnas";
+  const pl = gr.map(e => e[laukas]);
+  const max = Math.max(0, ...pl), min = Math.min(0, ...pl);
+  const tarpas = (max - min) || 1;
+  const grPlotis = W - P.k - P.de, grAukstis = H - P.v - P.d;
+  const y = v => P.v + (max - v) / tarpas * grAukstis;
+  const nulis = y(0);
+
+  const zingsnis = grPlotis / gr.length;
+  const tarpelis = zingsnis > 6 ? 2 : 0;
+  const plotis = Math.max(1, zingsnis - tarpelis);
+  const apvalinimas = plotis >= 8 ? 4 : 0;
+
+  // tinklelis
+  const zymos = [max, max/2 + min/2, min].filter((v,i,a) => a.indexOf(v) === i);
+  let html = "";
+  for(const v of zymos){
+    html += `<line x1="${P.k}" y1="${y(v)}" x2="${W-P.de}" y2="${y(v)}"
+             stroke="var(--grid)" stroke-width="1"/>
+             <text x="${P.k-8}" y="${y(v)+4}" text-anchor="end"
+             fill="var(--ink-3)">${eur0(v)}</text>`;
+  }
+  html += `<line x1="${P.k}" y1="${nulis}" x2="${W-P.de}" y2="${nulis}"
+           stroke="var(--asis)" stroke-width="1.5"/>`;
+
+  gr.forEach((e,i) => {
+    const x = P.k + i*zingsnis + tarpelis/2;
+    const v = e[laukas];
+    const vir = v >= 0;
+    const auk = Math.max(1, Math.abs(y(v) - nulis));
+    const vy = vir ? nulis - auk : nulis;
+    const sp = vir ? "var(--teigiamas)" : "var(--neigiamas)";
+    const r = Math.min(apvalinimas, auk);
+    // apvalus tik nuo baziniu linijos nutoles galas
+    const d = vir
+      ? `M${x},${nulis} v${-(auk-r)} q0,${-r} ${r},${-r} h${plotis-2*r} q${r},0 ${r},${r} v${auk-r} z`
+      : `M${x},${nulis} v${auk-r} q0,${r} ${r},${r} h${plotis-2*r} q${r},0 ${r},${-r} v${-(auk-r)} z`;
+    html += `<path d="${r>0 ? d : `M${x},${vy}h${plotis}v${auk}h${-plotis}z`}"
+             fill="${sp}" data-i="${i}"/>`;
+  });
+
+  // asies etiketes — tik tiek, kiek telpa
+  const kas = Math.max(1, Math.ceil(gr.length / Math.floor(grPlotis/62)));
+  gr.forEach((e,i) => {
+    if(i % kas) return;
+    html += `<text x="${P.k + i*zingsnis + plotis/2}" y="${H-8}"
+             text-anchor="middle" fill="var(--ink-3)">${etikete(e.raktas)}</text>`;
+  });
+
+  // permatoma juosta pelei — patogiau taikytis
+  gr.forEach((e,i) => {
+    html += `<rect x="${P.k + i*zingsnis}" y="${P.v}" width="${zingsnis}"
+             height="${grAukstis}" fill="transparent" data-h="${i}"/>`;
+  });
+  svg.innerHTML = html;
+
+  const neig = v => v == null ? "—" : "-" + eur(v);
+  svg.onmousemove = evt => {
+    const t = evt.target.getAttribute("data-h") ?? evt.target.getAttribute("data-i");
+    if(t == null){ slepti(); return; }
+    const e = gr[+t];
+    rodyti(evt, `<b>${pilnaEtikete(e.raktas)}</b>
+      <div class="eil"><span>Pajamos</span><span>${eur(e.pajamos)}</span></div>
+      <div class="eil"><span>Savikaina</span><span>${neig(e.cogs)}</span></div>
+      <div class="eil"><span>Reklama</span><span>${neig(e.reklama)}</span></div>
+      <div class="eil"><span>Siuntimas</span><span>${neig(e.siuntimas)}</span></div>
+      <div class="eil"><span>Mokesciai</span><span>${neig(e.mokesciai)}</span></div>
+      <div class="eil"><span>Fiksuotos</span><span>${neig(e.fiksuotos)}</span></div>
+      <div class="eil suma"><span>${{pelnas:"Pelnas", po_reklamos:"Po reklamos",
+          bruto_pelnas:"Bruto pelnas"}[laukas]}</span>
+        <span>${eur(e[laukas])}</span></div>`);
+  };
+  svg.onmouseleave = slepti;
+}
+
+function pilnaEtikete(raktas){
+  if(periodas === "menuo") return raktas;
+  if(periodas === "savaite") return "Savaite nuo " + raktas;
+  return raktas;
+}
+
+/* ---------- krioklys ---------- */
+function piestiKriokli(gr){
+  const svg = document.getElementById("krioklys");
+  const s = l => suma(gr, l);
+  const n = l => { const v = s(l); return v == null ? null : -v; };
+  const pelnasZinomas = s("pelnas") != null;
+  const zingsniai = [
+    {e:"Pajamos",   v: s("pajamos"),   tipas:"suma"},
+    {e:"Savikaina", v: n("cogs"),      tipas:"kaita"},
+    {e:"Reklama",   v: n("reklama"),   tipas:"kaita"},
+    {e:"Siuntimas", v: n("siuntimas"), tipas:"kaita"},
+    {e:"Mokesciai", v: n("mokesciai"), tipas:"kaita"},
+    {e:"Fiksuotos", v: n("fiksuotos"), tipas:"kaita"},
+    pelnasZinomas
+      ? {e:"Pelnas", v: s("pelnas"), tipas:"suma"}
+      : {e:"Po reklamos", v: s("po_reklamos"), tipas:"suma"}
+  ];
+  const P = {v:18, d:38, k:58, de:18};
+  const W = svg.clientWidth || svg.parentNode.clientWidth || 900;
+  const H = 300;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("width", W);
+
+  let einamas = 0;
+  const ribos = [0];
+  for(const z of zingsniai){
+    if(z.v == null) continue;                 // nezinoma — praleidziam
+    if(z.tipas === "suma"){ ribos.push(z.v); einamas = z.v; }
+    else { ribos.push(einamas); einamas += z.v; ribos.push(einamas); }
+  }
+  const max = Math.max(...ribos, 0), min = Math.min(...ribos, 0);
+  const tarpas = (max - min) || 1;
+  const grPlotis = W - P.k - P.de, grAukstis = H - P.v - P.d;
+  const y = v => P.v + (max - v) / tarpas * grAukstis;
+
+  const zingsnis = grPlotis / zingsniai.length;
+  const plotis = Math.min(78, zingsnis - 12);
+  let html = `<line x1="${P.k}" y1="${y(0)}" x2="${W-P.de}" y2="${y(0)}"
+              stroke="var(--asis)" stroke-width="1.5"/>`;
+
+  einamas = 0;
+  zingsniai.forEach((z,i) => {
+    const x = P.k + i*zingsnis + (zingsnis - plotis)/2;
+    if(z.v == null){
+      // Nezinoma eilute: stulpelio nepiesiam, bet paliekam vieta ir bruksni,
+      // kad butu aisku, jog tokia islaida yra, tik kol kas be duomenu.
+      html += `<text x="${x + plotis/2}" y="${y(0) - 7}" text-anchor="middle"
+               fill="var(--ink-3)">—</text>`;
+      html += `<text x="${x + plotis/2}" y="${H-14}" text-anchor="middle"
+               fill="var(--ink-3)">${z.e}</text>`;
+      return;
+    }
+    let nuo, iki, sp;
+    if(z.tipas === "suma"){
+      // Sumos stulpelis stovi ant nulio IR nustato nauja einamaja suma —
+      // be sito kitas stulpelis butu piesiamas nuo nulio, ne nuo pajamu.
+      nuo = 0; iki = z.v; einamas = z.v;
+      sp = z.v >= 0 ? "var(--teigiamas)" : "var(--neigiamas)";
+    }
+    else { nuo = einamas; iki = einamas + z.v; einamas = iki; sp = "var(--neigiamas)"; }
+    const vir = Math.min(y(nuo), y(iki)), auk = Math.max(2, Math.abs(y(iki) - y(nuo)));
+    const r = Math.min(4, auk/2);
+    html += `<rect x="${x}" y="${vir}" width="${plotis}" height="${auk}"
+             rx="${r}" fill="${sp}" data-i="${i}"/>`;
+    html += `<text x="${x + plotis/2}" y="${vir - 7}" text-anchor="middle"
+             fill="var(--ink-2)" font-weight="600">${eur0(z.v)}</text>`;
+    html += `<text x="${x + plotis/2}" y="${H-14}" text-anchor="middle"
+             fill="var(--ink-3)">${z.e}</text>`;
+    if(i < zingsniai.length-1 && z.tipas !== "suma" || i === 0){
+      const jungtis = y(z.tipas === "suma" ? z.v : einamas);
+      html += `<line x1="${x+plotis}" y1="${jungtis}" x2="${x+zingsnis}" y2="${jungtis}"
+               stroke="var(--asis)" stroke-width="1" stroke-dasharray="2 2"/>`;
+    }
+  });
+  svg.innerHTML = html;
+
+  const viso = s("pajamos");
+  svg.onmousemove = evt => {
+    const t = evt.target.getAttribute("data-i");
+    if(t == null){ slepti(); return; }
+    const z = zingsniai[+t];
+    const dalis = viso ? Math.abs(z.v)/viso*100 : 0;
+    rodyti(evt, `<b>${z.e}</b>
+      <div class="eil"><span>Suma</span><span>${eur(z.v)}</span></div>
+      <div class="eil"><span>Nuo pajamu</span><span>${proc(dalis)}</span></div>`);
+  };
+  svg.onmouseleave = slepti;
+}
+
+/* ---------- lentele ---------- */
+function piestiLentele(gr){
+  const st = ["Laikotarpis","Pajamos","Savikaina","Bruto pelnas","Bruto %",
+              "Reklama","Po reklamos","Po rekl. %",
+              "Siuntimas","Mokesciai","Fiksuotos","Pelnas","Marza"];
+  const BR = "—";
+  const ne = v => v == null ? BR : eur(-v);
+  const pl = v => v == null ? `<td>${BR}</td>`
+    : `<td class="${v>=0?'teig':'neig'}">${eur(v)}</td>`;
+  const eil = [...gr].reverse().map(e => `<tr>
+      <td>${pilnaEtikete(e.raktas)}</td>
+      <td>${eur(e.pajamos)}</td>
+      <td>${ne(e.cogs)}</td>
+      <td>${eur(e.bruto_pelnas)}</td>
+      <td>${e.pajamos ? proc(e.bruto_pelnas/e.pajamos*100) : BR}</td>
+      <td>${ne(e.reklama)}</td>
+      ${pl(e.po_reklamos)}
+      <td>${e.pajamos ? proc(e.po_reklamos/e.pajamos*100) : BR}</td>
+      <td>${ne(e.siuntimas)}</td>
+      <td>${ne(e.mokesciai)}</td>
+      <td>${ne(e.fiksuotos)}</td>
+      ${pl(e.pelnas)}
+      <td>${(e.pajamos && e.pelnas != null) ? proc(e.pelnas/e.pajamos*100) : BR}</td>
+    </tr>`).join("");
+  const s = l => suma(gr, l);
+  document.getElementById("lentele").innerHTML =
+    `<thead><tr>${st.map(x => `<th>${x}</th>`).join("")}</tr></thead>
+     <tbody>${eil}</tbody>
+     <tfoot><tr>
+       <td>Viso</td><td>${eur(s("pajamos"))}</td><td>${ne(s("cogs"))}</td>
+       <td>${eur(s("bruto_pelnas"))}</td>
+       <td>${s("pajamos") ? proc(s("bruto_pelnas")/s("pajamos")*100) : BR}</td>
+       <td>${ne(s("reklama"))}</td>
+       ${pl(s("po_reklamos"))}
+       <td>${s("pajamos") ? proc(s("po_reklamos")/s("pajamos")*100) : BR}</td>
+       <td>${ne(s("siuntimas"))}</td>
+       <td>${ne(s("mokesciai"))}</td><td>${ne(s("fiksuotos"))}</td>
+       ${pl(s("pelnas"))}
+       <td>${(s("pajamos") && s("pelnas") != null)
+              ? proc(s("pelnas")/s("pajamos")*100) : BR}</td>
+     </tr></tfoot>`;
+}
+
+/* ---------- ispejimai ---------- */
+function piestiIspejimus(){
+  const i = ISPEJIMAI, p = [];
+  if(i.paslepta_dienu)
+    p.push(`<b>${i.paslepta_dienu} dienu nerodoma</b> (${i.paslepta_nuo}
+            – ${i.paslepta_iki}, ${eur0(i.paslepta_neto)} pardavimu) —
+            joms nera reklamos duomenu, todel pelnas atrodytu per didelis.
+            Prijunkite Meta API arba imeskite tu dienu kampaniju CSV.`);
+  if(i.reklama_paskirstyta)
+    p.push(`<b>${i.reklama_paskirstyta} dienu</b> reklamos islaidos
+            <b>paskirstytos tolygiai</b> — CSV buvo suminis, ne dienomis.
+            Savaites ir menesio sumos teisingos, dienos — vidurkis.
+            Tikslioms dienoms eksportuokite su Breakdown → Time → Day.`);
+  if(i.be_savikainos_dalis > 1)
+    p.push(`<b>${proc(i.be_savikainos_dalis)}</b> pardavimu neturi ivestos savikainos
+            (${eur0(i.be_savikainos_suma)}). Tiek pelno rodoma per mazai —
+            uzpildykite „Cost per item" Shopify.`);
+  if(i.siuntos_istorija && !(i.nezinomos||[]).some(x => x.laukas === "siuntimas"))
+    p.push(`Siuntimo savikaina ${i.siuntos_istorija} dienu vertinama pagal
+            <b>istorini santyki</b> — 1 siunta kas ${i.siuntu_santykis} €
+            apyvartos, is menesiu, kuriems turim LP Express ataskaita.
+            Tikslumui imeskite to menesio LP Express XLSX.`);
+  else if(i.siuntimas_vertinimas && !(i.nezinomos||[]).some(x => x.laukas === "siuntimas"))
+    p.push(`Siuntimo savikaina ${i.siuntimas_vertinimas} dienu vertinama is
+            <b>pristatymo pajamu</b>, o tai <b>smarkiai per mazai</b> —
+            uzsakymai su nemokamu pristatymu ten nesimato. Imeskite LP Express
+            XLSX i <code>pelnas/importas/</code>.`);
+  if(i.mokesciai_vertinimas && !(i.nezinomos||[]).some(x => x.laukas === "mokesciai"))
+    p.push(`Mokejimu mokesciai ${i.mokesciai_vertinimas} dienu <b>vertinami pagal tarifa</b>.
+            Prijungus Shopify API jie bus tikri.`);
+  if(i.uzsakymu_truksta)
+    p.push(`Uzsakymu skaiciaus nera <b>${i.uzsakymu_truksta} dienoms</b>
+            (${i.uzsakymu_nuo} – ${i.uzsakymu_iki}), todel nerodom nei ju
+            sumos, nei vidutinio uzsakymo. Eksportuokite Shopify uzsakymus
+            (Orders → Export) uz ta pati laikotarpi kaip ir pelno ataskaita.`);
+  if(i.nezinomos && i.nezinomos.length)
+    p.push(`Tuscios eilutes: <b>` + i.nezinomos.map(x => x.vardas).join(", ") +
+           `</b>. Tiksliu duomenu dar nera, todel nieko ir nerodom —
+            vietoj ju bruksniai, o grynas pelnas neskaiciuojamas.
+            Kol kas patikimas skaicius yra <b>bruto pelnas</b> (pajamos minus
+            savikaina). Sukelk duomenis ir jie atsiras patys.`);
+  else if(i.fiksuotu_detales && i.fiksuotu_detales.length)
+    p.push(`Fiksuotos islaidos: ` + i.fiksuotu_detales
+            .map(x => `${x.pavadinimas} ${eur0(x.suma)}`).join(" · ")
+            + ` — is <code>pelnas/islaidos.csv</code>.`);
+  if(i.sena_neapmoketa > 0)
+    p.push(`<b>${eur0(i.sena_neapmoketa)}</b> pardavimu senesniu nei
+            ${i.cod_laukimas} d. vis dar <b>neapmoketi</b>. Jei tai COD siuntos,
+            jos greiciausiai neatsiimtos — tiek pelno cia rodoma
+            <b>be pagrindo</b>. Shopify atsaukite arba grazinkite tokius
+            uzsakymus, kad skaiciai susitvarkytu.`);
+  if(i.cod_uzsakymu)
+    p.push(`${i.cod_uzsakymu} uzsakymu apmoketi <b>atsiimant (COD)</b>
+            (${eur0(i.cod_neto)}). Ju surinkimo mokestis skaiciuojamas pagal
+            <code>COD_MOKESTIS</code>, ne korteliu tarifa — patikrinkite,
+            ar jis atitinka LP Express saskaita.`);
+  if(i.nekategorizuotos_saskaitos)
+    p.push(`<b>${i.nekategorizuotos_saskaitos}</b> saskaitos neatpazintos —
+            i pelna neitrauktos.`);
+  if(i.reklama_iki && i.duomenys_iki && i.reklama_iki < i.duomenys_iki)
+    p.push(`Reklamos duomenys tik iki <b>${i.reklama_iki}</b>, o pardavimu —
+            iki ${i.duomenys_iki}. Naujesniu dienu pelnas rodomas per didelis.`);
+  const el = document.getElementById("ispejimai");
+  el.hidden = !p.length;
+  if(p.length) el.innerHTML = "<h2>Ka verta zinoti apie siuos skaicius</h2><ul>"
+    + p.map(x => `<li>${x}</li>`).join("") + "</ul>";
+}
+
+/* ---------- valdymas ---------- */
+function perpiesti(){
+  const dienos = filtruoti();
+  const gr = agreguoti(dienos);
+  piestiKorteles(gr, dienos);
+  piestiPelna(gr);
+  piestiKriokli(gr);
+  piestiLentele(gr);
+  const vnt = periodas === "diena" ? "diena" : periodas === "savaite" ? "savaite" : "menesi";
+  document.getElementById("pelno-paaiskinimas").textContent =
+    "Grynas pelnas kiekviena " + vnt + ". Uzvedus rodoma, is ko jis susideda.";
+  document.getElementById("krioklio-paaiskinimas").textContent =
+    "Kelias nuo pajamu iki pelno per visa pasirinkta laikotarpi.";
+}
+
+function grupe(id, kint){
+  document.getElementById(id).addEventListener("click", evt => {
+    const b = evt.target.closest("button"); if(!b) return;
+    [...evt.currentTarget.children].forEach(x => x.setAttribute("aria-pressed", x === b));
+    kint(b.dataset.v);
+    perpiesti();
+  });
+}
+grupe("periodas", v => periodas = v);
+grupe("ruozas", v => ruozas = +v);
+
+document.getElementById("tema").addEventListener("click", () => {
+  const dabar = document.documentElement.getAttribute("data-theme");
+  const tamsi = dabar ? dabar === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", tamsi ? "light" : "dark");
+  perpiesti();
+});
+
+let laikmatis;
+addEventListener("resize", () => {
+  clearTimeout(laikmatis);
+  laikmatis = setTimeout(perpiesti, 120);
+});
+
+document.getElementById("info").textContent =
+  DUOMENYS.length
+    ? `${DUOMENYS[0].data} – ${DUOMENYS[DUOMENYS.length-1].data} · atnaujinta ${ATNAUJINTA}`
+    : "duomenu nera";
+piestiIspejimus();
+perpiesti();
+</script>
+</body>
+</html>

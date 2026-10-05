@@ -1,0 +1,56 @@
+{%- comment -%}
+  Sutikimas del skaitmeninio turinio krepselyje.
+
+  CK 6.228-10 str. 2 d. 13 p.: 14 dienu teise atsisakyti sutarties dingsta
+  tik tada, kai pirkejas PRIES pirkima aiskiai sutinka gauti prieiga is karto
+  ir patvirtina supratęs, kad del to tos teises netenka. Be sio sutikimo
+  pirkejas gali atsisakyti mokymu ir atgauti pinigus net perziurejęs visa
+  kursa.
+
+  Rodom TIK tada, kai krepselyje yra skaitmeninis produktas. Dronams, dalims
+  ir servisui 14 dienu teise galioja kaip ir anksciau — ju eigos neliecia.
+
+  Naudojimas:  {%- render 'dm-sutikimas', vieta: 'drawer' -%}
+{%- endcomment -%}
+
+{%- liquid
+  assign dm_skaitmeninis = false
+  for item in cart.items
+    assign zymos = item.product.tags | join: ','
+    if zymos contains 'skaitmeninis' or zymos contains 'Kursai'
+      assign dm_skaitmeninis = true
+      break
+    endif
+  endfor
+-%}
+
+{%- if dm_skaitmeninis -%}
+  <div class="dm-sutik" data-dm-sutikimas data-dm-vieta="{{ vieta | default: 'cart' }}">
+    <label class="dm-sutik-eil" for="dm-sutik-{{ vieta | default: 'cart' }}">
+      <input
+        type="checkbox"
+        class="dm-sutik-dez"
+        id="dm-sutik-{{ vieta | default: 'cart' }}"
+        data-dm-sutikimas-dez
+      >
+      <span>
+        Noriu pradėti mokytis dabar ir gauti prieigą prie viso kurso iš karto.
+        Suprantu, kad pradėjus kursą 14 dienų grąžinimo teisė nebegalioja.
+      </span>
+    </label>
+
+    <p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>
+      Norėdami tęsti, pažymėkite sutikimą.
+    </p>
+
+    <p class="dm-sutik-smulk">
+      Jei per 14 dienų kursą peržiūrėsiu ne daugiau nei 50 %, galiu susigrąžinti
+      pinigus.
+    </p>
+    <p class="dm-sutik-smulk">
+      Pirkdami sutinkate su
+      <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}"
+         target="_blank" rel="noopener">pirkimo taisyklėmis</a>.
+    </p>
+  </div>
+{%- endif -%}

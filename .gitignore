@@ -25,8 +25,9 @@ desktop.ini
 # Vietinis Claude Code paleidimo nustatymas (tik perziurai)
 .claude/
 
-# Shopify temos kopija (tik landingo generavimui)
-tema/
+# Shopify temos kopija (tik landingo generavimui). Bruksnys priekyje butinas:
+# be jo isfiltruotu ir src/tema/, kur guli musu pačiu rasyti temos failai.
+/tema/
 
 # Pelno suvestine: raktai ir verslo duomenys — NIEKADA i repo.
 # Bruksnys priekyje svarbus: be jo isfiltruotu ir src/pelnas/ (pati koda).

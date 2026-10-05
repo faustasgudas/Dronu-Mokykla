@@ -1,0 +1,2250 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5 colių FPV drono rinkinys — kitas lygis po whoop</title>
+<meta name="description" content="Axisflying Manta 5 SE V2 su GPS, baterijos ir įkroviklis. Pultą ir akinius gali pridėti arba naudoti savo. Nuo €414,97.">
+<link rel="canonical" href="{{DOMENAS}}/">
+
+<meta property="og:type" content="product">
+<meta property="og:locale" content="lt_LT">
+<meta property="og:site_name" content="Dronų Mokykla">
+<meta property="og:url" content="{{DOMENAS}}/">
+<meta property="og:title" content="5 colių FPV drono rinkinys — kitas lygis po whoop">
+<meta property="og:description" content="Axisflying Manta 5 SE V2 su GPS, baterijos ir įkroviklis. Nuo €414,97.">
+<meta property="og:image" content="https://dronumokykla.lt/cdn/shop/files/fpv_new_buld_52b5559f-c65d-49ac-b11f-be925e9e60ec.png?v=1783431412&width=1200">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/img/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
+<link rel="icon" href="/img/icon-512.png" sizes="512x512">
+<meta name="theme-color" content="#0B0B12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1919FF;
+  --ink:#0B0B12;
+  --muted:#6B6B7B;
+  --line:#E2E2EC;
+  --sviesus:#EFEFF4;
+  --zalia:#137A3E;
+  --zaliaFonas:#E7F6ED;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+/* Paspaudus „Rinktis komplekta" nuslenkam sklandziai, ne soktelim.
+   Kartu ir hero animacija persisuka pakeliui, o ne persijungia is karto. */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:#fff;color:var(--ink);
+  font-size:16px;line-height:1.5}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;-webkit-appearance:none;appearance:none}
+
+
+/* =================== HERO =================== */
+/* ===== VIRSUTINE JUOSTA — kaip pradziamokslyje ===== */
+.virsus{background:var(--blue)}
+.virsus-in{max-width:1180px;margin:0 auto;padding:16px 20px;display:flex;align-items:center}
+.virsus-logo{display:inline-flex;align-items:center;min-height:44px}
+/* Aiskus aukstis — kitaip narsykle laukia nuotraukos ir turinys pasoka. */
+.virsus-logo img{display:block;width:132px;height:38px;object-fit:contain}
+.virsus-logo:focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:6px}
+@media (max-width:760px){
+  .virsus-in{padding:14px 16px}
+  .virsus-logo img{width:112px;height:32px}
+}
+
+/* =================== HERO: SKRYDIS I ZIUROVA ===================
+   Sekcija aukšta, scena prilipusi. Slenkant dronas artėja (didėja), pakyla
+   nosimi ir praskrenda pro kamerą; fone lekia greičio linijos. Dronas —
+   nuotrauka iš viršaus be propelerių, paversta 3D plokštumoje (rotateX),
+   o propeleriai — besisukantys diskai toje pačioje plokštumoje, todėl
+   perspektyva jiems pritaikoma automatiškai. Transformaciją skaičiuoja JS. */
+.skrydis{--cian:#3FD0FF;--s0:.62;position:relative;height:calc(100vh * 3.2);height:calc(100svh * 3.2);
+  background:var(--ink);color:#fff}
+.skr-scena{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.skr-zvaigzdes{position:absolute;inset:0;width:100%;height:100%;display:block}
+.skr-svytejimas{position:absolute;left:50%;top:38%;width:120vmax;height:120vmax;margin:-60vmax 0 0 -60vmax;
+  background:radial-gradient(closest-side,rgba(63,208,255,.2),rgba(63,208,255,.05) 45%,transparent 70%);
+  pointer-events:none}
+/* Dronas virsuje, tekstas apacioje. */
+.skr-tekstas{position:absolute;left:0;right:0;bottom:clamp(28px,6vh,72px);padding:0 20px;text-align:center;z-index:3;
+  will-change:opacity,transform}
+.skr-tekstas .chip{display:inline-block;padding:8px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);font-size:.8125rem;font-weight:700;backdrop-filter:blur(6px)}
+.skr-tekstas h1{margin-top:18px;font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;
+  line-height:1.02;letter-spacing:-.035em;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+.skrydis .cta{display:inline-flex;align-items:center;gap:10px;margin-top:24px;
+  padding:16px 32px;border-radius:999px;text-decoration:none;font-weight:800;font-size:1.0625rem;
+  background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.skrydis .kaina{margin-top:14px;display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:6px 16px;font-size:.9375rem;font-weight:500;line-height:1.2}
+.skrydis .kaina-nuo{color:rgba(255,255,255,.72)}
+.skrydis .kaina-nuo b{color:#fff;font-weight:800;font-size:1.1875rem;letter-spacing:-.01em;margin-left:2px}
+.skrydis .kaina-siunt{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72)}
+.skrydis .kaina-siunt svg{width:18px;height:18px;flex:0 0 auto}
+
+/* Tikra 3/4 nuotrauka su propeleriais — jokio 3D tempimo, tik mastelis. */
+.skr-dronas{position:absolute;left:50%;top:34%;width:min(92vw,1100px);z-index:2;
+  will-change:transform,filter;transform:translate(-50%,-50%) scale(var(--s0))}
+.skr-dronas > img{width:100%;height:auto;filter:drop-shadow(0 40px 50px rgba(0,0,0,.7))}
+/* Propelerio sukimosi diskas ant nuotraukoje esancio propelerio. Apskritimas
+   paverciamas elipse ta pacia afinine matrica, kuri virsaus vaizda atvaizduoja
+   i si 3/4 kampa (apskaiciuota is keturiu varikliu vietu), todel diskas guli
+   tiksliai propeleriu plokstumoje. Skersmuo — 5,1" propelerio. */
+.prop{position:absolute;left:calc(var(--x) * 100%);top:calc(var(--y) * 100%);
+  width:38.5%;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  transform:translate(-50%,-50%) matrix(.4993,.4029,-.9506,.4525,0,0);
+  background:radial-gradient(closest-side,transparent 0 12%,rgba(170,230,255,.04) 13%,
+    rgba(170,230,255,.08) 75%,rgba(190,240,255,.16) 94%,transparent 100%)}
+.prop::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(200,240,255,.34) 0deg,rgba(120,210,255,.08) 34deg,transparent 90deg,
+    rgba(200,240,255,.34) 120deg,rgba(120,210,255,.08) 154deg,transparent 210deg,
+    rgba(200,240,255,.34) 240deg,rgba(120,210,255,.08) 274deg,transparent 330deg);
+  -webkit-mask:radial-gradient(closest-side,transparent 14%,#000 22%,#000 92%,transparent 100%);
+          mask:radial-gradient(closest-side,transparent 14%,#000 22%,#000 92%,transparent 100%);
+  animation:suktis .11s linear infinite;filter:blur(1.2px)}
+.prop--atv::before{animation-direction:reverse}
+@keyframes suktis{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion:reduce){ .prop::before{animation:none} }
+@media (max-width:760px){
+  .skrydis{--s0:1}
+  .skr-tekstas{bottom:28px}
+  .skr-tekstas h1{font-size:2.3rem;margin-top:14px}
+  .skr-tekstas .chip{padding:6px 13px;font-size:.75rem}
+  .skrydis .cta{margin-top:18px;padding:14px 26px;font-size:.9375rem}
+  .skrydis .kaina{font-size:.8125rem;gap:4px 12px}
+  .skrydis .kaina-nuo b{font-size:1rem}
+  .skr-dronas{top:32%}
+}
+
+/* =================== DRONO APZIURA: SLINKIMO ISTORIJA ===================
+   Sekcija aukšta (kelis ekranus), o scena joje prilipusi prie viršaus.
+   Slenkant keičiasi tik aktyvus žingsnis: dronas „pasisuka" į kitą kampą,
+   o ant jo atsiranda taškai su užrašais. Taškų vietos (--x, --y) — dalys
+   nuo nuotraukos pločio ir aukščio, todėl nepriklauso nuo ekrano dydžio. */
+.istorija{--cian:#3FD0FF;position:relative;height:calc(100vh * 4);height:calc(100svh * 4);
+  background:var(--ink);color:#fff}
+.scena{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scena-fonas{position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(55% 45% at 50% 56%,rgba(63,208,255,.16),transparent 70%),
+    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px) 0 0/56px 56px,
+    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px) 0 0/56px 56px;
+  -webkit-mask:radial-gradient(75% 70% at 50% 50%,#000 40%,transparent 100%);
+          mask:radial-gradient(75% 70% at 50% 50%,#000 40%,transparent 100%)}
+
+.zingsnis{position:absolute;inset:0;opacity:0;visibility:hidden;perspective:1400px;
+  transition:opacity .55s ease,visibility 0s linear .55s}
+.zingsnis.aktyvus{opacity:1;visibility:visible;transition:opacity .55s ease,visibility 0s}
+
+.z-tekstas{position:absolute;left:0;right:0;top:clamp(20px,6vh,64px);padding:0 20px;
+  text-align:center;z-index:3}
+.z-nr{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.14em;
+  color:var(--cian)}
+.z-tekstas h2{margin-top:8px;font-size:clamp(1.7rem,3.4vw,2.8rem);font-weight:800;
+  letter-spacing:-.03em;line-height:1.08}
+.z-tekstas p{margin:10px auto 0;max-width:52ch;color:rgba(255,255,255,.66);
+  font-size:clamp(.9375rem,1.3vw,1.0625rem);line-height:1.55}
+.z-tekstas .chip{display:inline-block;padding:8px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.28);font-size:.8125rem;font-weight:700}
+.z-tekstas h1{margin-top:18px;font-size:clamp(2.3rem,5.6vw,4.2rem);font-weight:800;
+  line-height:1.03;letter-spacing:-.035em}
+.istorija .cta{display:inline-flex;align-items:center;gap:10px;margin-top:24px;
+  padding:16px 32px;border-radius:999px;text-decoration:none;font-weight:800;font-size:1.0625rem;
+  background:#fff;color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.kaina{margin-top:14px;display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:6px 16px;font-size:.9375rem;font-weight:500;line-height:1.2}
+.kaina-nuo{color:rgba(255,255,255,.72)}
+.kaina-nuo b{color:#fff;font-weight:800;font-size:1.1875rem;letter-spacing:-.01em;margin-left:2px}
+.kaina-siunt{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.72)}
+.kaina-siunt svg{width:18px;height:18px;flex:0 0 auto}
+.z-rodikliai{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px;
+  list-style:none}
+.z-rodikliai li{padding:7px 14px;border-radius:999px;background:rgba(63,208,255,.1);
+  border:1px solid rgba(63,208,255,.35);font-size:.8125rem;font-weight:700}
+
+/* --- Dronas. --bw — nuotraukos plotis; ribojamas ir pagal ekrano aukštį,
+   kad žemame ekrane dronas neužliptų ant antraštės. --- */
+.z-dronas{position:absolute;left:50%;top:var(--cy,57%);width:var(--bw);z-index:2;
+  transform:translate(-50%,-50%)}
+.z-dronas > img{width:100%;height:auto;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.6));
+  transform:rotateY(32deg) rotateX(8deg) scale(.86) translateX(8%);opacity:0;
+  transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .5s ease}
+.aktyvus .z-dronas > img{transform:none;opacity:1}
+.buvo .z-dronas > img{transform:rotateY(-32deg) rotateX(-6deg) scale(.86) translateX(-8%)}
+.zd--virsus{--bw:min(46vw,calc((100svh - 300px) * 1.2),700px);--cy:58%}
+.zd--galas {--bw:min(52vw,calc((100svh - 300px) * 1.5),800px);--cy:59%}
+.zd--apacia{--bw:min(40vw,calc((100svh - 340px) * 1.04),600px);--cy:62%}
+
+/* --- Taškai ir užrašai --- */
+.tsk{position:absolute;left:calc(var(--x) * 100%);top:calc(var(--y) * 100%);width:0;height:0}
+.tsk::before{content:"";position:absolute;left:-7px;top:-7px;width:14px;height:14px;
+  border-radius:50%;background:var(--cian);box-shadow:0 0 0 4px rgba(63,208,255,.25),0 0 18px var(--cian);
+  transform:scale(0);transition:transform .35s cubic-bezier(.3,1.6,.5,1) calc(.45s + var(--i) * .14s)}
+.tsk::after{content:"";position:absolute;left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;
+  border:1.5px solid var(--cian);opacity:0}
+.aktyvus .tsk::before{transform:scale(1)}
+.aktyvus .tsk::after{animation:pulsas 2.2s ease-out calc(.9s + var(--i) * .14s) infinite}
+@keyframes pulsas{0%{transform:scale(1);opacity:.8}100%{transform:scale(3.2);opacity:0}}
+.tsk-lin{position:absolute;top:0;height:1.5px;background:linear-gradient(90deg,rgba(63,208,255,.9),rgba(255,255,255,.55));
+  transform:scaleX(0);transition:transform .45s ease calc(.6s + var(--i) * .14s)}
+.tsk--k .tsk-lin{right:0;width:calc(var(--x) * var(--bw) + var(--uz,64px));transform-origin:100% 50%}
+.tsk--d .tsk-lin{left:0;width:calc((1 - var(--x)) * var(--bw) + var(--uz,64px));transform-origin:0 50%;
+  background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(63,208,255,.9))}
+.aktyvus .tsk-lin{transform:scaleX(1)}
+.tsk-lab{position:absolute;top:0;width:230px;transform:translateY(-50%);opacity:0;
+  transition:opacity .4s ease calc(.85s + var(--i) * .14s)}
+.tsk--k .tsk-lab{right:calc(var(--x) * var(--bw) + var(--uz,64px) + 14px);text-align:right}
+.tsk--d .tsk-lab{left:calc((1 - var(--x)) * var(--bw) + var(--uz,64px) + 14px)}
+.aktyvus .tsk-lab{opacity:1}
+.tsk-lab b{display:block;font-size:1.0625rem;font-weight:800;line-height:1.25}
+.tsk-lab span{display:block;margin-top:3px;font-size:.875rem;color:rgba(255,255,255,.62);line-height:1.4}
+.z-sarasas{display:none}
+
+/* --- Rinkinys paskutiniame žingsnyje: daiktai atskrenda iš šonų --- */
+.rink{position:absolute;left:50%;top:64%;width:0;height:0;z-index:2}
+.rink img{position:absolute;left:0;top:0;width:var(--w);max-width:none;
+  filter:drop-shadow(0 18px 28px rgba(0,0,0,.55));opacity:0;
+  transform:translate(-50%,-50%) translate(calc(var(--x) * 2.2px),calc(var(--y) * 1px + 120px)) rotate(var(--r,0deg)) scale(.7);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1) calc(var(--i) * .08s),opacity .5s ease calc(var(--i) * .08s)}
+.aktyvus .rink img{opacity:1;transform:translate(-50%,-50%) translate(calc(var(--x) * 1px),calc(var(--y) * 1px)) rotate(var(--r,0deg))}
+.rink .r-dronas {--w:min(40vw,520px);--x:0;--y:-40;--i:0}
+.rink .r-akiniai{--w:230px;--x:-290;--y:110;--i:1;--r:-6deg}
+.rink .r-pocket {--w:170px;--x:300;--y:120;--i:2;--r:10deg}
+.rink .r-bat    {--w:200px;--x:-430;--y:-60;--i:3;--r:-14deg}
+.rink .r-krov   {--w:150px;--x:440;--y:-50;--i:4;--r:12deg}
+
+/* --- Apatinė juosta: eiga ir mygtukas --- */
+.scena-apacia{position:absolute;left:0;right:0;bottom:0;z-index:4;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;padding:16px clamp(16px,4vw,40px) calc(16px + env(safe-area-inset-bottom));
+  transition:opacity .4s ease,transform .4s ease}
+.eiga{display:flex;gap:8px;list-style:none}
+.eiga button{width:34px;height:24px;border:0;background:transparent;cursor:pointer;position:relative}
+.eiga button::before{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;
+  border-radius:3px;background:rgba(255,255,255,.22);transition:background .3s}
+.eiga button[aria-current="step"]::before{background:var(--cian)}
+.apacia-cta{display:inline-flex;align-items:center;gap:12px;padding:12px 14px 12px 22px;border-radius:999px;
+  background:#fff;color:var(--ink);text-decoration:none;font-weight:800;font-size:.9375rem;
+  transition:opacity .4s ease,transform .4s ease}
+.apacia-cta em{font-style:normal;font-weight:700;color:var(--muted);font-size:.8125rem}
+.slink{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);z-index:3;
+  display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.6);
+  font-size:.8125rem;font-weight:700;text-decoration:none}
+.slink i{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.45);border-radius:12px;position:relative}
+.slink i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;
+  border-radius:2px;background:#fff;animation:ratukas 1.8s ease-in-out infinite}
+@keyframes ratukas{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .z-dronas > img,.buvo .z-dronas > img{transform:none;transition:opacity .3s}
+  .aktyvus .tsk::after{animation:none}
+  .rink img{transition:opacity .3s}
+}
+
+/* --- Tabletė ir telefonas: užrašai ne šonuose, o sąraše po dronu,
+   o taškai sunumeruoti. Šonuose tokiame plotyje vietos nėra. --- */
+@media (max-width:1023px){
+  .zingsnis .tsk-lin,.zingsnis .tsk-lab{display:none}
+  .tsk::before{left:-12px;top:-12px;width:24px;height:24px;content:attr(data-n);
+    color:var(--ink);font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 0 3px rgba(63,208,255,.3),0 0 14px var(--cian)}
+  .tsk::after{left:-12px;top:-12px;width:24px;height:24px}
+  .z-sarasas{display:grid;gap:10px;position:absolute;left:16px;right:16px;bottom:88px;z-index:3;
+    list-style:none;counter-reset:n;max-width:560px;margin:0 auto}
+  .z-sarasas li{position:relative;padding-left:36px;counter-increment:n;opacity:0;transform:translateY(8px);
+    transition:opacity .4s ease calc(.5s + var(--i,0) * .1s),transform .4s ease calc(.5s + var(--i,0) * .1s)}
+  .aktyvus .z-sarasas li{opacity:1;transform:none}
+  .z-sarasas li::before{content:counter(n);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;
+    background:var(--cian);color:var(--ink);font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .z-sarasas b{display:block;font-size:.9375rem;line-height:1.3}
+  .z-sarasas span{display:block;font-size:.8125rem;color:rgba(255,255,255,.6);line-height:1.35}
+  .zd--virsus{--bw:min(82vw,calc((100svh - 400px) * 1.2),560px);--cy:45%}
+  .zd--galas {--bw:min(94vw,calc((100svh - 400px) * 1.5),640px);--cy:44%}
+  .zd--apacia{--bw:min(66vw,calc((100svh - 480px) * 1.04),460px);--cy:52%}
+  .rink .r-dronas {--w:min(74vw,440px);--x:0;--y:-50}
+  .rink .r-akiniai{--w:min(34vw,200px);--x:-95;--y:95}
+  .rink .r-pocket {--w:min(26vw,150px);--x:110;--y:105}
+  .rink .r-bat    {--w:min(28vw,160px);--x:-130;--y:-150}
+  .rink .r-krov   {--w:min(22vw,120px);--x:135;--y:-140}
+  .rink{top:60%}
+}
+@media (max-width:620px){
+  .z-tekstas{top:18px}
+  .z-tekstas h2{font-size:1.5rem}
+  .z-tekstas p{font-size:.875rem;margin-top:6px}
+  .z-tekstas h1{font-size:2.1rem;margin-top:14px}
+  .z-tekstas .chip{padding:6px 13px;font-size:.75rem}
+  .istorija .cta{margin-top:18px;padding:14px 26px;font-size:.9375rem}
+  .kaina{font-size:.8125rem;gap:4px 12px}
+  .kaina-nuo b{font-size:1rem}
+  .z-rodikliai{margin-top:10px;gap:6px}
+  .z-rodikliai li{padding:5px 11px;font-size:.75rem}
+  .scena-apacia{padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+  .eiga{gap:4px}
+  .eiga button{width:22px}
+  .apacia-cta{padding:11px 12px 11px 18px;font-size:.875rem}
+  .apacia-cta em{display:none}
+  .slink{bottom:84px}
+}
+/* ===== PAGALBOS NUORODOS IR PULTU PALYGINIMAS =====
+   Perkelta is pradziamokslio puslapio. Kainos eilutes cia nera —
+   rinkinio kainos priklauso ir nuo drono su akiniais, todel kaina
+   rodoma tik viena karta, prie mygtuko. */
+.dm-help-link{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-weight:700;font-size:0.9375rem;color:var(--blue);text-decoration:none;
+  min-height:44px;}
+.dm-help-label{text-decoration:underline;text-underline-offset:3px;}
+.dm-help-icon{display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+  font-size:0.625rem;text-decoration:none;flex:0 0 auto;}
+.dm-pagalba{margin-top:18px;}
+/* ===== PULTŲ PALYGINIMO LENTELĖ =====
+   Vizualas pagal Fausto maketą, spalvos — tik firminės. Telefone lentelė
+   slenka į šoną, nes trijų stulpelių suspausti iki 375 px neįmanoma
+   neprarandant įskaitomumo. */
+.dm-help-link--cmp{margin-left:26px;}
+@media (max-width:620px){
+  .dm-help-link--cmp{margin-left:0;margin-top:12px;}
+  .dm-help-link{display:flex;}
+}
+.dm-cmp-blokas{margin-top:clamp(36px,5vw,52px);border:1px solid var(--line);
+  border-radius:20px;overflow:hidden;background:#fff;
+}
+.dm-cmp-intro{padding:clamp(22px,3vw,34px);}
+@media (min-width:900px){
+  /* Plačiame ekrane iztraukiam tekstą į kairę, kaip makete. */
+  .dm-cmp-intro{max-width:62ch;}
+}
+.dm-cmp-h{font-size:clamp(1.4rem,2.6vw,1.875rem);}
+.dm-cmp-lead{margin-top:10px;color:var(--muted);font-size:1rem;line-height:1.55;
+  max-width:46ch;}
+/* Ikonos varnelė turi likti balta — bendra span taisyklė ją nudažydavo pilkai. */
+
+.dm-cmp{overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border-top:1px solid var(--line);}
+.dm-cmp table{width:100%;border-collapse:collapse;min-width:640px;}
+.dm-cmp th,.dm-cmp td{padding:14px 16px;text-align:left;
+  border-bottom:1px solid var(--line);font-size:0.9375rem;line-height:1.45;
+  vertical-align:middle;}
+/* Reikšmės centruojamos, eilučių pavadinimai lieka kairėje. */
+.dm-cmp td{text-align:center;}
+.dm-cmp td .dm-cmp-su-zenklu{justify-content:center;}
+.dm-cmp td.dm-cmp-c .dm-cmp-z{margin:0 auto;}
+.dm-cmp thead th{background:#fff;border-bottom:2px solid var(--ink);
+  text-align:center;vertical-align:top;padding:20px 16px 18px;}
+/* Pavadinimui rezervuojam dvi eilutes — kitaip vienos eilutės pavadinimas
+   („Pocket") pakiltų aukščiau nei dviejų eilučių („LiteRadio 2 SE"). */
+.dm-cmp-pav{min-height:2.6em;}
+.dm-cmp thead th:first-child{border-bottom-color:var(--line);}
+.dm-cmp tbody th{font-weight:600;color:var(--ink);white-space:nowrap;
+  background:var(--sviesus);}
+.dm-cmp tbody tr:last-child td,.dm-cmp tbody tr:last-child th{border-bottom:0;}
+
+.dm-cmp-ikona{display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;margin-right:10px;color:var(--blue);
+  vertical-align:-5px;}
+.dm-cmp-ikona svg{width:19px;height:19px;}
+
+.dm-cmp-role{display:inline-block;font-size:0.75rem;font-weight:700;
+  padding:4px 11px;border-radius:999px;background:var(--sviesus);
+  color:var(--muted);margin-bottom:12px;}
+.dm-cmp-zenklas{display:inline-block;margin:0 0 12px 6px;font-size:0.6875rem;
+  font-weight:800;padding:4px 11px;border-radius:999px;
+  background:var(--blue);color:#fff;}
+.dm-cmp-zenklas--rek{background:var(--ink);}
+.dm-cmp-zenklas--tuscia{visibility:hidden;}
+.dm-tag--rek{background:var(--ink);}
+/* Aiskus px matmenys, o ne aspect-ratio: lenteles langelyje aspect-ratio
+   kai kuriose narsyklese (Safari) sukelia netiketa isdestyma - nuotraukos
+   issikisdavo virs kitu eiluciu. */
+.dm-cmp-foto{display:block;width:112px;height:112px;margin:0 auto 10px;}
+.dm-cmp-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+.dm-cmp-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;}
+.dm-cmp-chip{display:inline-block;margin-top:8px;font-size:0.6875rem;
+  font-weight:800;letter-spacing:0.04em;padding:3px 10px;border-radius:999px;
+  background:#E9E9FF;color:var(--blue);}
+
+.dm-cmp-c{text-align:center;}
+/* Būsenų spalvos — semantinės: žalia „yra", gintaro „iš dalies",
+   raudona (jau firminė #CB321E) „nėra". */
+.dm-cmp-z{display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:50%;flex:0 0 auto;}
+.dm-cmp-z svg{width:20px;height:20px;}
+.dm-cmp-z--gerai{background:#E6F6EC;color:#16A34A;}
+.dm-cmp-z--vidut{background:#FDF1DD;color:#C77700;}
+.dm-cmp-z--nera{background:#FBE9E6;color:#CB321E;}
+.dm-cmp-su-zenklu{display:inline-flex;align-items:center;gap:10px;
+  text-align:center;vertical-align:middle;}
+.dm-cmp-su-zenklu--dd{justify-content:flex-end;}
+.dm-cmp-pastaba{display:block;font-size:0.8125rem;color:var(--muted);
+  margin-top:5px;}
+.dm-cmp-kaina{font-weight:800;}
+
+.dm-cmp-juosta{display:flex;flex-wrap:wrap;gap:18px 28px;
+  align-items:center;justify-content:space-between;
+  background:var(--sviesus);padding:18px clamp(20px,3vw,32px);}
+.dm-cmp-juosta-txt b{display:block;font-weight:800;font-size:0.9375rem;}
+.dm-cmp-juosta-txt span{display:block;font-size:0.875rem;
+  color:var(--muted);margin-top:3px;}
+.dm-cmp-juosta-zymos{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;}
+.dm-cmp-juosta-zymos li{font-size:0.8125rem;font-weight:700;
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:6px 13px;}
+
+/* --- Ilgas / trumpas tekstas --- */
+.dm-cmp-trumpas{display:none;}
+.dm-cmpk{border-top:1px solid var(--line);padding:20px clamp(18px,4vw,24px);}
+.dm-cmpk-virsus{display:flex;align-items:center;gap:14px;}
+.dm-cmpk-foto{flex:0 0 84px;width:84px;height:84px;}
+.dm-cmpk-foto img{width:100%;height:100%;object-fit:contain;display:block;}
+.dm-cmpk-pav{display:block;font-weight:800;font-size:1rem;line-height:1.3;
+  margin-top:2px;}
+.dm-cmpk .dm-cmp-role{margin-bottom:6px;}
+.dm-cmpk .dm-cmp-zenklas{margin:0 0 6px 6px;}
+.dm-cmpk-sarasas{display:grid;grid-template-columns:1fr auto;gap:0;
+  margin-top:16px;}
+.dm-cmpk-sarasas dt{display:flex;align-items:center;padding:10px 0;
+  font-size:0.875rem;color:var(--muted);border-top:1px solid var(--line);}
+.dm-cmpk-sarasas dd{margin:0;padding:10px 0;text-align:right;
+  font-size:0.875rem;font-weight:600;border-top:1px solid var(--line);
+  padding-left:14px;}
+.dm-cmpk-sarasas dt:first-of-type,
+.dm-cmpk-sarasas dd:first-of-type{border-top:0;}
+.dm-cmp-pastaba--eil{display:inline;margin:0 0 0 8px;}
+
+@media (max-width:760px){
+  /* Telefone rodom trumpas reikšmes — taip visi trys stulpeliai telpa
+     be slinkimo į šoną, o vietoj 30 kortelių eilučių lieka 10. */
+  .dm-cmp-ilgas{display:none;}
+  .dm-cmp-trumpas{display:inline;}
+  .dm-cmp table{min-width:0;width:100%;table-layout:fixed;}
+  .dm-cmp th,.dm-cmp td{padding:9px 6px;font-size:0.75rem;
+    line-height:1.35;}
+  .dm-cmp tbody th{white-space:normal;width:68px;}
+  .dm-cmp thead th{padding:12px 6px 10px;}
+  .dm-cmp-foto{width:64px;height:64px;margin:0 auto 8px;}
+  .dm-cmp-pav{font-size:0.75rem;}
+  .dm-cmp-ikona{display:none;}
+  /* Siaurame stulpelyje telpa tik viena žyma. Vaidmens skiltį slepiam
+     (ji matoma kortelėse viršuje), o „Populiariausias"/„Rekomenduojame"
+     rodom vienoje eilutėje — žodžių per vidurį nelaužom, nes tai atrodo
+     blogai. */
+  .dm-cmp thead .dm-cmp-role{display:none;}
+  /* Žyma per visą stulpelio plotį — taip ji fiziškai negali kyšoti,
+     nesvarbu, koks ilgas žodis. */
+  .dm-cmp-zenklas{display:block;width:100%;box-sizing:border-box;
+    font-size:0.625rem;padding:3px 2px;margin:0 0 6px;text-align:center;
+    white-space:nowrap;overflow-wrap:normal;word-break:normal;
+    letter-spacing:0;}
+  .dm-cmp-chip{display:none;}
+  .dm-cmp-z{width:20px;height:20px;}
+  .dm-cmp-z svg{width:16px;height:16px;}
+  /* Siaurame stulpelyje ženklas ir tekstas gali persikelti į kitą eilutę —
+     kitaip „Spalvotas" su ženklu (82 px) kyšotų iš 71 px langelio. */
+  .dm-cmp-su-zenklu{gap:4px;max-width:100%;flex-wrap:wrap;}
+  .dm-cmp-su-zenklu > span{min-width:0;}
+  /* Sena kaina lentelėje telefone neberodoma — ji matoma kortelėse viršuje. */
+  .dm-cmp .dm-was{display:none;}
+  .dm-cmp-juosta{flex-direction:column;align-items:flex-start;}
+}
+
+/* ===== PALYGINIMO LENTELE TELEFONE: suskleidziama =====
+   Telefone lentele uzima kelis ekranus, todel pradzioje ji suskleista,
+   o "Palyginti visus tris" ja isskleidzia. Mygtuka kuria JS, tad be JS
+   lentele lieka matoma, kaip ir anksciau. Kompiuteryje niekas nesikeicia. */
+.dm-cmp-jungiklis{display:none;}
+@media (max-width:620px){
+  .dm-cmp-jungiklis{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;margin-top:18px;padding:13px 18px;min-height:48px;
+    border:1.5px solid var(--blue);border-radius:14px;background:#fff;
+    font-family:inherit;font-size:1rem;font-weight:700;color:var(--blue);
+    cursor:pointer;-webkit-appearance:none;appearance:none;
+  }
+  .dm-cmp-jungiklis-rodykle{font-size:0.75rem;line-height:1;transition:transform .18s ease;}
+  .dm-cmp-jungiklis[aria-expanded="true"] .dm-cmp-jungiklis-rodykle{transform:rotate(180deg);}
+  .dm-cmp-uzdaryta .dm-cmp,
+  .dm-cmp-uzdaryta .dm-cmp-juosta{display:none;}
+}
+/* =================== PASIRINKIMAS =================== */
+.rinkimas{background:var(--sviesus);padding:10px 20px 84px}
+.wrap{max-width:1180px;margin:0 auto}
+.klausimas{background:var(--ink);color:#fff;border-radius:22px;
+  padding:clamp(22px,3vw,34px);margin-bottom:22px}
+.klausimas h2{font-size:clamp(1.2rem,2.3vw,1.6rem);font-weight:800;letter-spacing:-.02em}
+.klausimas p{margin-top:7px;opacity:.72;font-size:.9375rem;max-width:58ch}
+.atsakymai{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;max-width:620px}
+.ats{border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);
+  border-radius:14px;padding:15px 18px;text-align:left;cursor:pointer;font-weight:700;line-height:1.3;
+  transition:border-color .15s,background .15s}
+.ats span{display:block;font-weight:500;font-size:.8125rem;opacity:.66;margin-top:4px}
+.ats:hover{border-color:rgba(255,255,255,.6)}
+.ats[aria-pressed="true"]{background:#fff;color:var(--ink);border-color:#fff}
+.ats[aria-pressed="true"] span{opacity:.62}
+
+
+.stulpeliai{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);
+  gap:clamp(18px,3vw,36px);align-items:start}
+.blokoAntraste{font-size:1.125rem;font-weight:800;letter-spacing:-.01em;margin-bottom:12px}
+.blokoAntraste em{font-style:normal;color:var(--muted);font-weight:500;font-size:.875rem;margin-left:8px}
+
+.korteles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.korteles--2{grid-template-columns:repeat(2,1fr)}
+.kort{position:relative;border:1.5px solid var(--line);border-radius:18px;background:#fff;
+  padding:16px;text-align:left;cursor:pointer;display:flex;flex-direction:column;
+  transition:border-color .15s,box-shadow .15s}
+.kort:hover{border-color:#C9C9D4}
+.kort[aria-pressed="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.kort-zyma{position:absolute;top:-9px;left:16px;background:var(--blue);color:#fff;
+  font-size:.6875rem;font-weight:800;padding:4px 10px;border-radius:999px}
+.kort-img{height:76px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.kort-img img{max-height:76px;width:auto}
+.kort-varnele{width:52px;height:52px;border-radius:50%;background:var(--sviesus);
+  display:block;position:relative}
+.kort-varnele::after{content:"";position:absolute;left:19px;top:14px;width:11px;height:21px;
+  border:solid #9A9AAB;border-width:0 3px 3px 0;transform:rotate(45deg)}
+.kort[aria-pressed="true"] .kort-varnele{background:var(--blue)}
+.kort[aria-pressed="true"] .kort-varnele::after{border-color:#fff}
+.kort-role{font-weight:800;font-size:1rem;line-height:1.25}
+.kort-pav{display:block;font-size:.8125rem;color:var(--muted);margin-top:3px;line-height:1.4}
+
+.smulkios{margin-top:22px;display:grid;gap:10px}
+.smulki{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px 16px}
+.smulki-txt{flex:1 1 220px;font-weight:700;font-size:.9375rem;min-width:0}
+.smulki-txt span{display:block;font-weight:500;font-size:.8125rem;color:var(--muted);margin-top:2px}
+.segmentai{display:flex;gap:6px;background:var(--sviesus);border-radius:11px;padding:4px;flex:0 0 auto}
+.seg{border:0;background:transparent;border-radius:8px;padding:8px 14px;cursor:pointer;
+  font-weight:700;font-size:.875rem;color:var(--muted)}
+.seg[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.dezute{flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:1.5px solid #C9C9D4;
+  background:#fff;position:relative}
+.smulki[aria-pressed="true"],
+.priedas[aria-pressed="true"]{border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.smulki[aria-pressed="true"] .dezute,
+.priedas[aria-pressed="true"] .dezute{background:var(--blue);border-color:var(--blue)}
+.smulki[aria-pressed="true"] .dezute::after,
+.priedas[aria-pressed="true"] .dezute::after{content:"";position:absolute;left:7px;top:3px;
+  width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+button.smulki{width:100%;text-align:left}
+.smulki-kaina{font-weight:800;font-size:.9375rem;white-space:nowrap}
+
+.deze{position:sticky;top:20px;border:1.5px solid var(--line);border-radius:20px;
+  background:#fff;padding:22px}
+.deze h3{font-size:1.0625rem;font-weight:800;letter-spacing:-.01em}
+.deze-po{font-size:.8125rem;color:var(--muted);margin-top:3px}
+.deze-sarasas{list-style:none;margin-top:16px;display:grid;gap:9px}
+.deze-sarasas li{display:flex;align-items:center;gap:12px;background:var(--sviesus);
+  border-radius:13px;padding:9px 12px;font-size:.875rem;font-weight:700;line-height:1.3}
+.deze-sarasas img{width:42px;height:34px;object-fit:contain;flex:0 0 auto}
+.deze-sarasas span{display:block;font-weight:500;font-size:.75rem;color:var(--muted);margin-top:1px}
+.suma{margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}
+.suma-kaina{font-size:1.75rem;font-weight:800;letter-spacing:-.02em}
+.pirkti{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:13px;
+  background:var(--blue);color:#fff;border-radius:999px;padding:16px 22px;
+  font-weight:800;font-size:1rem;text-decoration:none}
+.pirkti:hover{background:#1414D6}
+.smulkiai{margin-top:10px;font-size:.75rem;color:var(--muted);text-align:center;line-height:1.5}
+
+.skiriasi{background:#fff;padding:80px 20px}
+.skiriasi h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin-bottom:30px}
+.skiriasi-tinklas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skiriasi-tinklas--2{grid-template-columns:repeat(2,1fr)}
+.skiriasi-tinklas > div{background:var(--sviesus);border-radius:18px;padding:22px}
+.skiriasi-tinklas > div > img{height:96px;width:auto;margin:0 auto 16px;object-fit:contain}
+.skiriasi-tinklas b{display:block;font-size:1.0625rem;margin-bottom:8px}
+.skiriasi-tinklas span{display:block;color:var(--muted);font-size:.9375rem;line-height:1.55}
+.skiriasi-tinklas em{display:block;font-style:normal;font-weight:700;color:var(--ink);
+  font-size:.875rem;margin-bottom:4px}
+.skiriasi-intro{max-width:60ch;margin:-14px auto 30px;text-align:center;
+  color:var(--muted);font-size:1rem;line-height:1.6}
+.skiriasi-intro b{display:inline;font-size:inherit;color:var(--ink)}
+.skiriasi-kada{list-style:none;margin:14px 0 0;display:grid;gap:8px}
+.skiriasi-kada li{position:relative;padding-left:26px;color:var(--muted);
+  font-size:.9375rem;line-height:1.5}
+.skiriasi-kada li::before{content:"";position:absolute;left:4px;top:.45em;
+  width:11px;height:6px;border-left:2px solid var(--blue);
+  border-bottom:2px solid var(--blue);transform:rotate(-45deg)}
+.skiriasi-kada b{display:inline;font-size:inherit;margin:0;color:var(--ink)}
+.skiriasi-minus{margin-top:14px;font-size:.875rem !important;color:var(--muted)}
+.skiriasi-isvada{margin-top:26px;text-align:center;font-size:1.0625rem;
+  color:var(--muted)}
+.skiriasi-isvada b{color:var(--ink)}
+.skiriasi-bat{display:flex;align-items:center;gap:12px;margin-top:14px;padding-top:14px;
+  border-top:1px solid var(--line);font-size:.875rem !important}
+.skiriasi-bat img{width:52px;height:40px;object-fit:contain;flex:0 0 auto}
+.skiriasi-bat b{display:inline;margin:0;font-size:.875rem;color:var(--ink)}
+
+/* ===== PRIEDAI PRIE KREPSELIO =====
+   Kainos ir prieinamumas imami is Shopify realiu laiku (/products/x.js),
+   kad puslapyje niekada nesiulytume to, ko nebera sandelyje. */
+.priedai{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.priedai-antraste{font-size:.8125rem;font-weight:800;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.priedas{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;
+  padding:10px;border:1.5px solid var(--line);border-radius:14px;background:#fff;
+  cursor:pointer;font:inherit;margin-bottom:8px;-webkit-appearance:none;appearance:none}
+.priedas:hover{border-color:#C9C9D4}
+.priedas[aria-pressed="true"]{border-color:var(--blue);background:#F5F5FF}
+.priedas .dezute{margin-top:2px}
+.priedas img{width:38px;height:34px;object-fit:contain;flex:0 0 auto;border-radius:6px}
+.priedas-tekstas{flex:1 1 auto;min-width:0}
+.priedas-pav{display:block;font-weight:700;font-size:.8125rem;line-height:1.3}
+.priedas-apr{display:block;font-size:.75rem;color:var(--muted);margin-top:2px;line-height:1.4}
+.priedas-kaina{flex:0 0 auto;font-weight:800;font-size:.8125rem;white-space:nowrap}
+.priedas[aria-pressed="true"] .priedas-kaina{color:var(--blue)}
+/* Pasirinktas priedas atsiranda ir „Kas dezeje" sarase — tai vienintelis
+   vienareiksmis patvirtinimas, kad jis tikrai bus dezeje. */
+.deze-sarasas li.deze-priedas{background:#F0F0FF;
+  box-shadow:inset 0 0 0 1.5px rgba(25,25,255,.18)}
+.deze-sarasas li.deze-priedas span{color:var(--blue);font-weight:700}
+
+/* ===== PASITIKEJIMO JUOSTA PRIE MYGTUKO ===== */
+.smulkiai a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.smulkiai a:hover{color:var(--ink)}
+.saugu{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+  text-align:center;font-size:.75rem;color:var(--muted);line-height:1.5}
+.saugu b{display:block;font-size:.8125rem;color:var(--ink);margin-bottom:8px}
+.saugu-ikonos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:8px}
+.saugu-ikonos .mk{height:22px;width:auto;display:block;border-radius:3px}
+.klausk{margin-top:10px;font-size:.75rem;text-align:center;color:var(--muted)}
+.klausk a{color:var(--blue);font-weight:700;text-decoration:none}
+.klausk a:hover{text-decoration:underline}
+
+/* ===== WHOOP VS 5 COLIU ===== */
+.vs{background:var(--sviesus);padding:80px 20px}
+.vs h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin-bottom:30px}
+.vs-intro{max-width:60ch;margin:12px auto 28px;text-align:center;color:var(--muted);
+  line-height:1.6}
+.vs-lentele{background:#fff;border:1px solid var(--line);border-radius:20px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch}
+.vs table{width:100%;border-collapse:collapse;min-width:640px}
+.vs th,.vs td{padding:14px 16px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line);font-size:.9375rem;line-height:1.5}
+.vs tr:last-child th,.vs tr:last-child td{border-bottom:0}
+.vs thead th{font-size:.8125rem;font-weight:800;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.vs tbody th{font-weight:700;width:22%;color:var(--ink)}
+.vs thead th,.vs td{text-align:center}
+.vs .vs-mes{background:#F5F5FF;width:39%}
+.vs-foto{display:flex;align-items:flex-end;justify-content:center;height:140px;margin:4px 0 14px}
+/* 5 coliu nuotrauka — su baltu fonu; multiply ji sulieja su langelio spalva */
+.vs-foto img{display:block;width:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply}
+.vs-foto--whoop img{height:96px}
+.vs-foto--5 img{height:132px}
+
+/* Telefone lentele nebeslenka i sona: kiekviena eilute — antraste per visa
+   ploti, po ja du stulpeliai greta su mazomis zymomis „Whoop" / „5 colių". */
+@media (max-width:760px){
+  .vs{padding:56px 14px}
+  .vs table{min-width:0}
+  /* lentelės algoritmas kitaip pats dalina stulpelius — telefone tai blokai */
+  .vs table,.vs thead,.vs tbody{display:block;width:100%}
+  .vs-lentele{overflow:hidden}
+  .vs thead tr,.vs tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .vs thead th:first-child{display:none}
+  .vs thead th{white-space:normal;padding:14px 12px 12px;font-size:.6875rem;line-height:1.35}
+  .vs th,.vs td{border-bottom:0}
+  .vs tbody tr{border-top:1px solid var(--line)}
+  .vs tbody th{grid-column:1 / -1;width:auto;padding:14px 14px 2px;font-size:.9375rem;background:#fff;text-align:center}
+  .vs td{width:auto;padding:8px 12px 14px;font-size:.8125rem;line-height:1.45}
+  .vs th.vs-mes,.vs th.vs-kitas,.vs td.vs-mes,.vs td.vs-kitas{width:auto}
+  .vs td.vs-mes::before,.vs td.vs-kitas::before{display:block;margin-bottom:3px;
+    font-size:.625rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+  .vs td.vs-mes::before{content:"Whoop";color:var(--blue)}
+  .vs td.vs-kitas::before{content:"5 colių";color:var(--muted)}
+  .vs-foto{height:84px;margin:0 0 10px;justify-content:center}
+  .vs-foto--whoop img{height:62px}
+  .vs-foto--5 img{height:84px}
+  .vs thead th{text-align:center}
+}
+.vs .vs-kitas{color:var(--muted);width:39%}
+.vs-isvada{margin-top:22px;max-width:70ch;margin-left:auto;margin-right:auto;
+  text-align:center;color:var(--muted);line-height:1.65}
+.vs-isvada b{color:var(--ink)}
+
+/* ===== ATSILIEPIMAI ===== */
+.atsil{background:#fff;padding:80px 20px}
+.atsil-virsus{text-align:center;margin-bottom:30px}
+.atsil h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em}
+.atsil-balas{display:inline-flex;align-items:center;gap:8px;font-size:1rem;
+  margin-bottom:10px}
+.atsil-zv{position:relative;display:inline-block;line-height:1;white-space:nowrap;
+  font-size:1.125rem;letter-spacing:2px}
+.atsil-zv-tusti{color:#C9C9DB}
+.atsil-zv-pilni{position:absolute;left:0;top:0;overflow:hidden;white-space:nowrap;
+  color:#F5A623}
+.atsil-po{color:var(--muted);font-size:.875rem;margin-top:8px;line-height:1.55}
+.atsil-tinklas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.atsil-k{background:var(--sviesus);border-radius:18px;padding:20px;margin:0}
+.atsil-k p{margin:0;font-size:.9375rem;line-height:1.6}
+.atsil-k-zv{color:#F5A623;letter-spacing:2px;font-size:.9375rem;margin-bottom:10px}
+.atsil-k img{width:100%;height:150px;object-fit:cover;border-radius:12px;margin-top:14px}
+.atsil-k-apacia{display:flex;align-items:center;gap:8px;margin-top:12px;
+  font-size:.8125rem}
+.atsil-k cite{font-style:normal;font-weight:700}
+.atsil-ok{display:inline-flex;align-items:center;gap:4px;color:var(--zalia);
+  font-weight:600}
+.atsil-ok svg{width:14px;height:14px;flex:0 0 auto}
+@media (max-width:900px){ .atsil-tinklas{grid-template-columns:1fr} }
+
+/* ===== DUK =====
+   details/summary — veikia ir be JS, ir su klaviatura. */
+.duk{background:var(--sviesus);padding:80px 20px}
+.duk h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin-bottom:28px}
+.duk-sarasas{max-width:820px;margin:0 auto;display:grid;gap:10px}
+.duk details{background:#fff;border:1px solid var(--line);border-radius:16px;
+  overflow:hidden}
+.duk summary{list-style:none;cursor:pointer;padding:18px 52px 18px 20px;
+  font-weight:700;font-size:1rem;position:relative}
+.duk summary::-webkit-details-marker{display:none}
+.duk summary::after{content:"";position:absolute;right:22px;top:24px;width:9px;
+  height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);transition:transform .18s}
+.duk details[open] summary::after{transform:rotate(-135deg);top:27px}
+.duk-a{padding:0 20px 18px;color:var(--muted);font-size:.9375rem;line-height:1.65}
+.duk-a a{color:var(--blue);font-weight:600}
+.duk-po{max-width:820px;margin:22px auto 0;text-align:center;color:var(--muted);
+  font-size:.9375rem}
+.duk-po a{color:var(--blue);font-weight:700}
+
+/* ===== GARANTIJU JUOSTA — ta pati kaip parduotuveje ===== */
+.garantijos{background:var(--blue);color:#fff;padding:44px 20px}
+.garantijos-in{max-width:1180px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(4,1fr);gap:28px}
+.garantijos-in > div{display:flex;gap:12px;align-items:flex-start}
+.garantijos svg{width:26px;height:26px;flex:0 0 auto;margin-top:1px;opacity:.9}
+.garantijos b{display:block;font-size:.9375rem;font-weight:800;margin-bottom:5px}
+.garantijos span{display:block;font-size:.8125rem;line-height:1.5;opacity:.85}
+@media (max-width:980px){ .garantijos-in{grid-template-columns:repeat(2,1fr);gap:22px} }
+@media (max-width:560px){ .garantijos-in{grid-template-columns:1fr} }
+
+/* ===== PORASTE ===== */
+.poraste{background:var(--ink);color:#fff;padding:44px 20px 52px;font-size:.8125rem}
+
+/* ===== LIPNUS MYGTUKAS (tik telefone) ===== */
+.lipnus{display:none}
+@media (max-width:760px){
+  .lipnus{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;align-items:center;
+    gap:14px;background:#fff;border-top:1px solid var(--line);
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    box-shadow:0 -6px 24px rgba(11,11,18,.08);transform:translateY(110%);
+    transition:transform .22s ease}
+  .lipnus.rodom{transform:translateY(0)}
+  .lipnus-kaina{flex:0 0 auto;font-weight:800;font-size:1.125rem;color:var(--ink)}
+  .lipnus-mygt{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:8px;
+    min-height:48px;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;
+    font-size:1rem;text-decoration:none}
+  /* kad lipnus mygtukas neuzdengtu porastes apacios */
+  .poraste{padding-bottom:110px}
+}
+@media (prefers-reduced-motion:reduce){ .lipnus{transition:none} }
+.poraste-in{max-width:1180px;margin:0 auto;display:grid;gap:28px 24px;
+  grid-template-columns:1.6fr 1fr 1.2fr 1.2fr;align-items:start}
+.poraste-apie p{opacity:.55;line-height:1.6;max-width:38ch;margin-top:10px}
+.poraste h3{font-size:.8125rem;font-weight:800;margin-bottom:12px;letter-spacing:.02em}
+.poraste ul{list-style:none;margin:0;padding:0}
+.poraste li{margin-bottom:7px;line-height:1.5;opacity:.75}
+.poraste li a{opacity:1}
+.poraste-apacia{max-width:1180px;margin:30px auto 0;padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;opacity:.65}
+@media (max-width:760px){
+  .poraste-in{grid-template-columns:1fr 1fr}
+  .poraste-apie{grid-column:1 / -1}
+}
+@media (max-width:460px){ .poraste-in{grid-template-columns:1fr} }
+.poraste a{color:#fff;text-decoration:none;opacity:.75}
+.poraste a:hover{opacity:1;text-decoration:underline}
+
+.kelias{background:#fff;padding:48px 20px 64px}
+.kelias h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin:0 0 34px}
+/* ===== LAIKO JUOSTA: Level 1 -> 2 -> 3 =====
+   Kompiuteryje taskai vienoje eileje, linija eina per ju centrus: pilka
+   brukšniuota visa, melyna — iki dabartinio lygio. Stulpeliu centrai su
+   22 px tarpais: 1-as ties (100%-44px)/6, 2-as ties 50%, 3-ias simetriskai. */
+.kelias-juosta{list-style:none;margin:0 auto;padding:0;max-width:1040px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
+.kelias-juosta::before,.kelias-juosta::after{content:"";position:absolute;top:22px;
+  height:3px;left:calc((100% - 44px) / 6);border-radius:3px}
+.kelias-juosta::before{right:calc((100% - 44px) / 6);
+  background:repeating-linear-gradient(90deg,#C9C9D4 0 10px,transparent 10px 18px)}
+.kelias-juosta--2::after{width:calc(100% / 3 + 44px / 6);background:var(--blue)}
+.kelias-z{position:relative;display:flex;flex-direction:column;align-items:stretch;
+  text-align:center;margin:0}
+.kelias-taskas{position:relative;z-index:1;display:flex;align-items:center;
+  justify-content:center;width:46px;height:46px;margin:0 auto 16px;border-radius:50%;
+  background:#fff;border:2px solid #C9C9D4;color:var(--muted);font-weight:800;font-size:1.0625rem;
+  line-height:1;flex:0 0 auto}
+.kelias-z--atlikta .kelias-taskas{border-color:var(--blue);color:var(--blue)}
+.kelias-z--cia .kelias-taskas{background:var(--blue);border-color:var(--blue);color:#fff;
+  box-shadow:0 0 0 6px rgba(25,25,255,.14)}
+.kelias-k{flex:1 1 auto;border:1.5px solid var(--line);border-radius:18px;
+  padding:20px 20px 22px;background:#fff}
+.kelias-z--cia .kelias-k{border-color:var(--blue);background:#F5F5FF;
+  box-shadow:inset 0 0 0 1px var(--blue)}
+.kelias-lygis{display:flex;align-items:center;justify-content:center;gap:8px;
+  font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);line-height:1.4}
+.kelias-z--cia .kelias-lygis{color:var(--blue)}
+.kelias-lygis em{font-style:normal;letter-spacing:0;text-transform:none;
+  background:var(--blue);color:#fff;padding:3px 9px;border-radius:999px;font-size:.6875rem;
+  font-weight:700}
+.kelias-k b{display:block;font-size:1.125rem;font-weight:800;margin-top:8px;color:var(--ink);
+  line-height:1.3}
+.kelias-k p{margin:8px 0 0;color:var(--muted);font-size:.9375rem;line-height:1.55}
+.kelias-nuor{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-weight:700;font-size:.875rem;
+  color:var(--blue);text-decoration:none}
+.kelias-nuor:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:760px){
+  .kelias-juosta{grid-template-columns:1fr;gap:14px}
+  .kelias-juosta::before,.kelias-juosta::after{display:none}
+  .kelias-z{flex-direction:row;gap:14px;text-align:left}
+  .kelias-taskas{margin:0}
+  .kelias-lygis{justify-content:flex-start}
+  /* telefone linija vertikali: nuo kiekvieno tasko iki kito */
+  .kelias-z:not(:last-child)::before{content:"";position:absolute;left:21.5px;top:46px;
+    bottom:-14px;width:3px;
+    background:repeating-linear-gradient(180deg,#C9C9D4 0 10px,transparent 10px 18px)}
+  .kelias-z--atlikta::before{background:var(--blue) !important}
+}
+
+.kodel{background:#fff;padding:88px 20px;text-align:center}
+.kodel h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.03em}
+.kodel-tinklas{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;margin:32px auto 0;text-align:left;max-width:1180px}
+.kodel-tinklas div{background:#F4F4F8;border-radius:18px;padding:24px}
+.kodel-tinklas b{display:block;font-size:1.0625rem;margin-bottom:8px}
+.kodel-tinklas span{color:var(--muted);font-size:.9375rem;line-height:1.55}
+.pabaiga{background:var(--ink);color:#fff;padding:96px 20px;text-align:center}
+.pabaiga h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;letter-spacing:-.03em}
+.pabaiga p{margin-top:14px;opacity:.72}
+.pabaiga .cta{display:inline-flex;align-items:center;gap:10px;margin-top:26px;
+  padding:17px 34px;border-radius:999px;text-decoration:none;font-weight:800;
+  background:#fff;color:var(--ink)}
+
+@media (max-width:900px){
+  .stulpeliai{grid-template-columns:1fr}
+  .deze{position:static}
+  .korteles,.korteles--2{grid-template-columns:1fr}
+  .kort{flex-direction:row;align-items:center;gap:14px;padding:12px}
+  .kort-img{height:56px;width:70px;flex:0 0 auto;margin-bottom:0}
+  .kort-img img{max-height:56px}
+  .kort-zyma{top:-8px;left:12px}
+  .kort-vidus{flex:1 1 auto;min-width:0}
+}
+@media (max-width:760px){
+  .rinkimas{padding:6px 16px 60px}
+  .skiriasi{padding:52px 16px}
+  .skiriasi-tinklas,.skiriasi-tinklas--2{grid-template-columns:1fr;gap:12px}
+  .skiriasi-tinklas > div{padding:18px}
+  .skiriasi-tinklas > div > img{height:76px}
+  .kodel{padding:56px 16px}
+  .kodel-tinklas{grid-template-columns:1fr;gap:12px;margin-top:24px}
+  .kodel-tinklas div{padding:18px}
+  .pabaiga{padding:64px 16px}
+}
+@media (max-width:520px){
+  .atsakymai{grid-template-columns:1fr}
+  .segmentai{width:100%}
+  .seg{flex:1 1 0}
+}
+@media (max-width:380px){
+  h1{font-size:1.85rem}
+}
+
+/* ===================== 5 COLIU PAPILDINIAI ===================== */
+/* Laiko juosta: siame puslapyje dabartinis — 3 lygis, linija melyna visa. */
+.kelias-juosta--3::after{right:calc((100% - 44px) / 6)}
+
+/* Pasirinkime dronas vienas — rodomas kaip fiksuota, jau pazymeta kortele. */
+.korteles--1{grid-template-columns:1fr}
+.kort--fiks{flex-direction:row;align-items:center;gap:18px}
+.kort--fiks .kort-img{width:130px;flex:0 0 auto;margin-bottom:0}
+.kort--fiks{cursor:default;border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.kort--fiks:hover{border-color:var(--blue)}
+.kort--fiks .kort-img{height:96px}
+.kort--fiks .kort-img img{max-height:96px}
+@media (max-width:900px){
+  .kort--fiks .kort-img{height:60px}
+  .kort--fiks .kort-img img{max-height:60px}
+}
+
+/* Kol Shopify praneša likutį arba kai kurios prekes nėra — mygtukas neaktyvus. */
+.pirkti[aria-disabled="true"]{background:#B9B9C6;cursor:not-allowed;pointer-events:none}
+.laukiam{margin-top:10px;padding:11px 13px;border-radius:12px;background:#FFF6E5;
+  color:#7A4B00;font-size:.8125rem;line-height:1.45;text-align:left}
+.laukiam a{color:inherit;font-weight:700}
+
+/* ===== DRONAS IS ARTI ===== */
+.dronas{background:#fff;padding:84px 20px}
+.dronas h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em;
+  text-align:center;margin-bottom:10px}
+.dronas-intro{max-width:62ch;margin:0 auto 34px;text-align:center;color:var(--muted);line-height:1.6}
+.dronas-tinklas{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  gap:clamp(24px,4vw,56px);align-items:center}
+.dronas-foto{background:var(--ink);border-radius:24px;padding:clamp(24px,4vw,48px)}
+.dronas-foto img{width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.55))}
+.dronas-savybes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dronas-savybes div{background:var(--sviesus);border-radius:16px;padding:18px}
+.dronas-savybes b{display:block;font-size:1rem;margin-bottom:6px}
+.dronas-savybes span{display:block;color:var(--muted);font-size:.875rem;line-height:1.55}
+.specifikacija{margin-top:34px;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.specifikacija summary{list-style:none;cursor:pointer;padding:16px 52px 16px 20px;
+  font-weight:800;position:relative}
+.specifikacija summary::-webkit-details-marker{display:none}
+.specifikacija summary::after{content:"";position:absolute;right:22px;top:22px;width:9px;
+  height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);transition:transform .18s}
+.specifikacija[open] summary::after{transform:rotate(-135deg);top:25px}
+.specifikacija dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid var(--line)}
+.specifikacija dl div{display:flex;justify-content:space-between;gap:16px;padding:11px 20px;
+  border-bottom:1px solid var(--line);font-size:.875rem}
+.specifikacija dt{color:var(--muted)}
+.specifikacija dd{margin:0;font-weight:700;text-align:right}
+@media (max-width:900px){
+  .dronas-tinklas{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .dronas{padding:56px 16px}
+  .dronas-savybes{grid-template-columns:1fr;gap:10px}
+  .specifikacija dl{grid-template-columns:1fr}
+}
+
+/* Po pilkos „Ar jau metas" sekcijos palyginimas baltame fone. */
+#kuo-skiriasi{background:#fff}
+#kuo-skiriasi .vs-lentele{border-color:#D6D6E2}
+/* Siame puslapyje paryskintas stulpelis — 5 coliu, todel telefono zymos atvirkscios. */
+@media (max-width:760px){
+  #kuo-skiriasi td.vs-mes::before{content:"5 colių"}
+  #kuo-skiriasi td.vs-kitas::before{content:"Whoop"}
+}
+
+/* ===== AR JAU METAS ===== */
+.metas{background:var(--sviesus);padding:84px 20px}
+.metas-korta{max-width:880px;margin:0 auto;background:#fff;border:1px solid var(--line);
+  border-radius:24px;padding:clamp(24px,4vw,44px)}
+.metas h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:-.03em}
+.metas-po{margin-top:8px;color:var(--muted);line-height:1.6}
+.metas-sarasas{list-style:none;margin:24px 0 0;display:grid;gap:12px}
+.metas-sarasas li{position:relative;padding:14px 16px 14px 52px;background:var(--sviesus);
+  border-radius:14px;line-height:1.5}
+.metas-sarasas li::before{content:"";position:absolute;left:16px;top:50%;width:22px;height:22px;
+  margin-top:-11px;border-radius:50%;background:var(--blue)}
+.metas-sarasas li::after{content:"";position:absolute;left:24px;top:50%;width:6px;height:11px;
+  margin-top:-7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.metas-dar{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);
+  line-height:1.6}
+.metas-dar a{color:var(--blue);font-weight:700}
+@media (max-width:620px){ .metas{padding:56px 16px} }
+
+</style>
+</head>
+<body>
+
+<header class="virsus">
+  <div class="virsus-in">
+    <a class="virsus-logo" href="https://dronumokykla.lt" aria-label="Dronų Mokykla">
+      <img src="/img/logo.webp" alt="Dronų Mokykla" width="132" height="38">
+    </a>
+  </div>
+</header>
+
+<!-- ===== HERO: skrydis i ziurova ===== -->
+<section class="skrydis" id="hero">
+  <div class="skr-scena" id="skr-scena">
+    <canvas class="skr-zvaigzdes" id="skr-zvaigzdes" aria-hidden="true"></canvas>
+    <div class="skr-svytejimas" aria-hidden="true"></div>
+    <div class="skr-tekstas" id="skr-tekstas">
+      <span class="chip">5 colių FPV drono rinkinys</span>
+      <h1>Kitas lygis:<br>greitis ir nuotolis</h1>
+      <a class="cta" href="#rinktis">Rinktis komplektą <span aria-hidden="true">→</span></a>
+      <div class="kaina">
+        <!-- Kaina atnaujinama is Shopify (dronas + baterijos + ikroviklis). -->
+        <span class="kaina-nuo">Nuo <b id="hero-nuo">€414,97</b></span>
+        <span class="kaina-siunt">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 6.5h11v10h-11zM13.5 10h4l3.5 3.5v3h-7.5"/>
+            <circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>
+          </svg>
+          Nemokamas siuntimas
+        </span>
+      </div>
+    </div>
+    <!-- Varikliu centrai (--x/--y) — dalys nuo nuotraukos plocio ir aukscio.
+         Istrizai priesingi propeleriai sukasi i ta pacia puse. -->
+    <div class="skr-dronas" id="skr-dronas">
+      <img src="/img/5col/manta-34.webp" alt="Axisflying Manta 5 SE V2" width="1190" height="852" fetchpriority="high">
+      <span class="prop" style="--x:.172;--y:.381"></span>
+      <span class="prop prop--atv" style="--x:.487;--y:.196"></span>
+      <span class="prop" style="--x:.815;--y:.517"></span>
+      <span class="prop prop--atv" style="--x:.487;--y:.736"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DRONO APZIURA: slinkimo istorija =====
+     Kiekvienas .zingsnis — vienas ekranas. Taskai: --x/--y — vieta nuotraukoje
+     (0..1), tsk--k / tsk--d — i kuria puse eina uzrasas. -->
+<section class="istorija" id="apziura" aria-label="Axisflying Manta 5 SE V2 iš arti">
+  <div class="scena" id="scena" data-z="0">
+    <div class="scena-fonas" aria-hidden="true"></div>
+
+    <div class="zingsnis aktyvus">
+      <div class="z-tekstas">
+        <span class="z-nr">01 / 03</span>
+        <h2>Sukurtas skraidyti drąsiai</h2>
+        <p>Pirmi kritimai neišvengiami — Manta jiems pasiruošusi.</p>
+      </div>
+      <div class="z-dronas zd--virsus">
+        <img src="/img/5col/manta-virsus.webp" alt="Manta 5 SE V2 iš viršaus" width="1100" height="914" loading="lazy">
+        <span class="tsk tsk--k" style="--x:.49;--y:.745;--i:0"><i class="tsk-lin"></i><span class="tsk-lab"><b>Vieta action kamerai</b><span>Filmuok skrydžius GoPro ar kita kamera</span></span></span>
+        <span class="tsk tsk--d" style="--x:.655;--y:.545;--i:1"><i class="tsk-lin"></i><span class="tsk-lab"><b>5,5 mm anglies pluošto rankos</b><span>Storos rankos atlaiko smūgius</span></span></span>
+        <span class="tsk tsk--d" style="--x:.495;--y:.885;--i:2"><i class="tsk-lin"></i><span class="tsk-lab"><b>Apsaugota FPV kamera</b><span>Rėmas saugo ją nuo smūgių</span></span></span>
+      </div>
+    </div>
+
+    <div class="zingsnis">
+      <div class="z-tekstas">
+        <span class="z-nr">02 / 03</span>
+        <h2>Toli ir aiškiai</h2>
+        <p>Galingas vaizdo siųstuvas — vaizdas pro akinius išlieka ir nuskridus toliau.</p>
+      </div>
+      <div class="z-dronas zd--galas">
+        <img src="/img/5col/manta-galas.webp" alt="Manta 5 SE V2 iš šono" width="1100" height="734" loading="lazy">
+        <span class="tsk tsk--k" style="--x:.42;--y:.46;--i:0"><i class="tsk-lin"></i><span class="tsk-lab"><b>Squashed X rėmas</b><span>Klasikinio X skrydžio pojūtis</span></span></span>
+        <span class="tsk tsk--d" style="--x:.785;--y:.455;--i:1"><i class="tsk-lin"></i><span class="tsk-lab"><b>1,6 W vaizdo siųstuvas</b><span>Axis Smurfs V2 · 5,8 GHz</span></span></span>
+        <span class="tsk tsk--k" style="--x:.135;--y:.85;--i:2"><i class="tsk-lin"></i><span class="tsk-lab"><b>AE2207 varikliai</b><span>1960 KV · 6S galia</span></span></span>
+      </div>
+    </div>
+
+    <div class="zingsnis">
+      <div class="z-tekstas">
+        <span class="z-nr">03 / 03</span>
+        <h2>GPS parveda namo</h2>
+        <p>Praradus signalą dronas pats grįžta į pakilimo tašką, o vaizde matai greitį, atstumą ir kryptį.</p>
+        <ul class="z-rodikliai">
+          <li>GPS</li><li>6S</li><li>~410 g</li><li>5–8 min. skrydis</li>
+        </ul>
+      </div>
+      <div class="z-dronas zd--apacia">
+        <img src="/img/5col/manta-apacia.webp" alt="Manta 5 SE V2 iš apačios" width="1000" height="963" loading="lazy">
+        <span class="tsk tsk--d" style="--x:.55;--y:.42;--i:0"><i class="tsk-lin"></i><span class="tsk-lab"><b>3 mm anglies pluošto dugnas</b><span>Tvirtas pagrindas elektronikai</span></span></span>
+      </div>
+    </div>
+
+    <div class="zingsnis">
+      <div class="z-tekstas">
+        <h2>Viskas pirmam 5 colių skrydžiui</h2>
+        <p>Dronas, 2 baterijos ir įkroviklis. Pultą ir akinius pridėk arba naudok savo.</p>
+        <a class="cta" href="#rinktis">Rinktis komplektą <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="rink" aria-hidden="true">
+        <img class="r-bat" src="/img/5col/baterijos-ovonic.webp" alt="" loading="lazy">
+        <img class="r-krov" src="/img/5col/kroviklis-hota.webp" alt="" loading="lazy">
+        <img class="r-akiniai" src="/img/whoop/akiniai.webp" alt="" loading="lazy">
+        <img class="r-pocket" src="/img/whoop/pultas-pocket.webp" alt="" loading="lazy">
+        <img class="r-dronas" src="/img/5col/dronas-manta.webp" alt="" loading="lazy">
+      </div>
+    </div>
+
+    <div class="scena-apacia">
+      <ol class="eiga" id="eiga" aria-label="Apžiūros žingsniai"></ol>
+      <a class="apacia-cta" href="#rinktis">Rinktis komplektą <em id="apacia-nuo">nuo €414,97</em> <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="kelias" aria-labelledby="kelias-h">
+  <div class="wrap">
+    <h2 id="kelias-h">Nuo simuliatoriaus iki didelių FPV dronų</h2>
+    <ol class="kelias-juosta kelias-juosta--3">
+      <li class="kelias-z kelias-z--atlikta">
+        <span class="kelias-taskas" aria-hidden="true">1</span>
+        <div class="kelias-k">
+          <span class="kelias-lygis">Level 1</span>
+          <b>Simuliatorius</b>
+          <p>Išmok skraidyti kompiuteryje. Kiekvienas smūgis nieko nekainuoja.</p>
+          <a class="kelias-nuor" href="https://shop.dronumokykla.lt/pradziamokslis/">FPV valdymo pradžiamokslis <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      <li class="kelias-z kelias-z--atlikta">
+        <span class="kelias-taskas" aria-hidden="true">2</span>
+        <div class="kelias-k">
+          <span class="kelias-lygis">Level 2</span>
+          <b>Whoop dronas</b>
+          <p>Skraidyk net namuose! Dronas atlaiko smūgius, nepadaro žalos aplinkiniams ar aplinkai ir sveria vos 20 g.</p>
+          <a class="kelias-nuor" href="https://shop.dronumokykla.lt/rinkinys/">FPV Whoop drono rinkinys <span aria-hidden="true">→</span></a>
+        </div>
+      </li>
+      <li class="kelias-z kelias-z--cia" aria-current="step">
+        <span class="kelias-taskas" aria-hidden="true">3</span>
+        <div class="kelias-k">
+          <span class="kelias-lygis">Level 3 <em>Tu esi čia</em></span>
+          <b>Dideli FPV dronai</b>
+          <p>5–10 colių dronai — kai nori didelio greičio ir skrydžio nuotolio.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="rinkimas" id="rinktis">
+  <div class="wrap">
+    <div class="klausimas">
+      <h2>Ar jau turi valdymo pultą?</h2>
+      <div class="atsakymai">
+        <button class="ats" id="ats-ne" type="button" aria-pressed="false">
+          Reikia pulto <span>Pridėsime jį į komplektą</span>
+        </button>
+        <button class="ats" id="ats-taip" type="button" aria-pressed="true">
+          Pultą jau turiu <span>Tinka ELRS 2,4 GHz pultai</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="stulpeliai">
+      <div>
+        <div class="blokoAntraste">Dronas</div>
+        <div class="korteles korteles--1">
+          <div class="kort kort--fiks">
+            <span class="kort-img"><img src="/img/5col/dronas-manta.webp" alt=""></span>
+            <span class="kort-vidus">
+              <span class="kort-role">Axisflying Manta 5 SE V2</span>
+              <span class="kort-pav">5 colių freestyle dronas su GPS · 6S · ELRS 2,4 GHz</span>
+            </span>
+          </div>
+        </div>
+        <p class="dm-pagalba">
+          <a class="dm-help-link" href="#dronas">
+            <span class="dm-help-icon" aria-hidden="true">↓</span>
+            <span class="dm-help-label">Ką moka šis dronas?</span>
+          </a>
+        </p>
+
+        <div id="pulto-blokas" hidden>
+          <div class="blokoAntraste" style="margin-top:26px">Pasirink pultą</div>
+          <div class="korteles korteles--2" id="pultai"></div>
+          <p class="dm-pagalba">
+            <a class="dm-help-link dm-help-link--cmp" href="#dm-palyginimas" style="margin-left:0">
+              <span class="dm-help-icon" aria-hidden="true">↓</span>
+              <span class="dm-help-label">Palyginti abu pultus</span>
+            </a>
+          </p>
+        </div>
+
+        <div class="blokoAntraste" style="margin-top:26px">Ar jau turi FPV akinius?</div>
+        <div class="korteles korteles--2" id="akiniai"></div>
+      </div>
+
+      <aside class="deze">
+        <h3>Kas dėžėje</h3>
+        <ul class="deze-sarasas" id="deze-sarasas"></ul>
+        <div class="suma"><span class="suma-kaina" id="kaina">€414,97</span></div>
+        <div class="priedai" id="priedai" hidden>
+          <div class="priedai-antraste">Dažniausiai pridedama</div>
+          <div id="priedu-sarasas"></div>
+        </div>
+        <a class="pirkti" id="pirkti" href="#" aria-disabled="true">Pereiti prie apmokėjimo <span aria-hidden="true">→</span></a>
+        <div class="laukiam" id="laukiam" hidden></div>
+        <div class="smulkiai">
+          Nemokamas pristatymas ·
+          <a href="https://dronumokykla.lt/policies/shipping-policy" target="_blank" rel="noopener">1–3 d. d.</a> ·
+          <a href="https://dronumokykla.lt/policies/refund-policy" target="_blank" rel="noopener">14 dienų grąžinimas</a> ·
+          <a href="https://dronumokykla.lt/policies/legal-notice" target="_blank" rel="noopener">24 mėn. garantija</a>
+        </div>
+        <div class="saugu">
+          <b>Saugūs 256-bit atsiskaitymai</b>
+          <div class="saugu-ikonos">
+            <svg class="mk" version="1.1" xmlns="http://www.w3.org/2000/svg" role="img" x="0" y="0" width="38" height="24" viewBox="0 0 165.521 105.965" xml:space="preserve" aria-labelledby="pi-apple_pay"><title id="pi-apple_pay">Apple Pay</title><path fill="#000" d="M150.698 0H14.823c-.566 0-1.133 0-1.698.003-.477.004-.953.009-1.43.022-1.039.028-2.087.09-3.113.274a10.51 10.51 0 0 0-2.958.975 9.932 9.932 0 0 0-4.35 4.35 10.463 10.463 0 0 0-.975 2.96C.113 9.611.052 10.658.024 11.696a70.22 70.22 0 0 0-.022 1.43C0 13.69 0 14.256 0 14.823v76.318c0 .567 0 1.132.002 1.699.003.476.009.953.022 1.43.028 1.036.09 2.084.275 3.11a10.46 10.46 0 0 0 .974 2.96 9.897 9.897 0 0 0 1.83 2.52 9.874 9.874 0 0 0 2.52 1.83c.947.483 1.917.79 2.96.977 1.025.183 2.073.245 3.112.273.477.011.953.017 1.43.02.565.004 1.132.004 1.698.004h135.875c.565 0 1.132 0 1.697-.004.476-.002.952-.009 1.431-.02 1.037-.028 2.085-.09 3.113-.273a10.478 10.478 0 0 0 2.958-.977 9.955 9.955 0 0 0 4.35-4.35c.483-.947.789-1.917.974-2.96.186-1.026.246-2.074.274-3.11.013-.477.02-.954.022-1.43.004-.567.004-1.132.004-1.699V14.824c0-.567 0-1.133-.004-1.699a63.067 63.067 0 0 0-.022-1.429c-.028-1.038-.088-2.085-.274-3.112a10.4 10.4 0 0 0-.974-2.96 9.94 9.94 0 0 0-4.35-4.35A10.52 10.52 0 0 0 156.939.3c-1.028-.185-2.076-.246-3.113-.274a71.417 71.417 0 0 0-1.431-.022C151.83 0 151.263 0 150.698 0z" /><path fill="#FFF" d="M150.698 3.532l1.672.003c.452.003.905.008 1.36.02.793.022 1.719.065 2.583.22.75.135 1.38.34 1.984.648a6.392 6.392 0 0 1 2.804 2.807c.306.6.51 1.226.645 1.983.154.854.197 1.783.218 2.58.013.45.019.9.02 1.36.005.557.005 1.113.005 1.671v76.318c0 .558 0 1.114-.004 1.682-.002.45-.008.9-.02 1.35-.022.796-.065 1.725-.221 2.589a6.855 6.855 0 0 1-.645 1.975 6.397 6.397 0 0 1-2.808 2.807c-.6.306-1.228.511-1.971.645-.881.157-1.847.2-2.574.22-.457.01-.912.017-1.379.019-.555.004-1.113.004-1.669.004H14.801c-.55 0-1.1 0-1.66-.004a74.993 74.993 0 0 1-1.35-.018c-.744-.02-1.71-.064-2.584-.22a6.938 6.938 0 0 1-1.986-.65 6.337 6.337 0 0 1-1.622-1.18 6.355 6.355 0 0 1-1.178-1.623 6.935 6.935 0 0 1-.646-1.985c-.156-.863-.2-1.788-.22-2.578a66.088 66.088 0 0 1-.02-1.355l-.003-1.327V14.474l.002-1.325a66.7 66.7 0 0 1 .02-1.357c.022-.792.065-1.717.222-2.587a6.924 6.924 0 0 1 .646-1.981c.304-.598.7-1.144 1.18-1.623a6.386 6.386 0 0 1 1.624-1.18 6.96 6.96 0 0 1 1.98-.646c.865-.155 1.792-.198 2.586-.22.452-.012.905-.017 1.354-.02l1.677-.003h135.875" /><g><g><path fill="#000" d="M43.508 35.77c1.404-1.755 2.356-4.112 2.105-6.52-2.054.102-4.56 1.355-6.012 3.112-1.303 1.504-2.456 3.959-2.156 6.266 2.306.2 4.61-1.152 6.063-2.858" /><path fill="#000" d="M45.587 39.079c-3.35-.2-6.196 1.9-7.795 1.9-1.6 0-4.049-1.8-6.698-1.751-3.447.05-6.645 2-8.395 5.1-3.598 6.2-.95 15.4 2.55 20.45 1.699 2.5 3.747 5.25 6.445 5.151 2.55-.1 3.549-1.65 6.647-1.65 3.097 0 3.997 1.65 6.696 1.6 2.798-.05 4.548-2.5 6.247-5 1.95-2.85 2.747-5.6 2.797-5.75-.05-.05-5.396-2.101-5.446-8.251-.05-5.15 4.198-7.6 4.398-7.751-2.399-3.548-6.147-3.948-7.447-4.048" /></g><g><path fill="#000" d="M78.973 32.11c7.278 0 12.347 5.017 12.347 12.321 0 7.33-5.173 12.373-12.529 12.373h-8.058V69.62h-5.822V32.11h14.062zm-8.24 19.807h6.68c5.07 0 7.954-2.729 7.954-7.46 0-4.73-2.885-7.434-7.928-7.434h-6.706v14.894z" /><path fill="#000" d="M92.764 61.847c0-4.809 3.665-7.564 10.423-7.98l7.252-.442v-2.08c0-3.04-2.001-4.704-5.562-4.704-2.938 0-5.07 1.507-5.51 3.82h-5.252c.157-4.86 4.731-8.395 10.918-8.395 6.654 0 10.995 3.483 10.995 8.89v18.663h-5.38v-4.497h-.13c-1.534 2.937-4.914 4.782-8.579 4.782-5.406 0-9.175-3.222-9.175-8.057zm17.675-2.417v-2.106l-6.472.416c-3.64.234-5.536 1.585-5.536 3.95 0 2.288 1.975 3.77 5.068 3.77 3.95 0 6.94-2.522 6.94-6.03z" /><path fill="#000" d="M120.975 79.652v-4.496c.364.051 1.247.103 1.715.103 2.573 0 4.029-1.09 4.913-3.899l.52-1.663-9.852-27.293h6.082l6.863 22.146h.13l6.862-22.146h5.927l-10.216 28.67c-2.34 6.577-5.017 8.735-10.683 8.735-.442 0-1.872-.052-2.261-.157z" /></g></g></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" aria-labelledby="pi-google_pay"><title id="pi-google_pay">Google Pay</title><path d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z" fill="#000" opacity=".07"/><path d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32" fill="#FFF"/><path d="M18.093 11.976v3.2h-1.018v-7.9h2.691a2.447 2.447 0 0 1 1.747.692 2.28 2.28 0 0 1 .11 3.224l-.11.116c-.47.447-1.098.69-1.747.674l-1.673-.006zm0-3.732v2.788h1.698c.377.012.741-.135 1.005-.404a1.391 1.391 0 0 0-1.005-2.354l-1.698-.03zm6.484 1.348c.65-.03 1.286.188 1.778.613.445.43.682 1.03.65 1.649v3.334h-.969v-.766h-.049a1.93 1.93 0 0 1-1.673.931 2.17 2.17 0 0 1-1.496-.533 1.667 1.667 0 0 1-.613-1.324 1.606 1.606 0 0 1 .613-1.336 2.746 2.746 0 0 1 1.698-.515c.517-.02 1.03.093 1.49.331v-.208a1.134 1.134 0 0 0-.417-.901 1.416 1.416 0 0 0-.98-.368 1.545 1.545 0 0 0-1.319.717l-.895-.564a2.488 2.488 0 0 1 2.182-1.06zM23.29 13.52a.79.79 0 0 0 .337.662c.223.176.5.269.785.263.429-.001.84-.17 1.146-.472.305-.286.478-.685.478-1.103a2.047 2.047 0 0 0-1.324-.374 1.716 1.716 0 0 0-1.03.294.883.883 0 0 0-.392.73zm9.286-3.75l-3.39 7.79h-1.048l1.281-2.728-2.224-5.062h1.103l1.612 3.885 1.569-3.885h1.097z" fill="#5F6368"/><path d="M13.986 11.284c0-.308-.024-.616-.073-.92h-4.29v1.747h2.451a2.096 2.096 0 0 1-.9 1.373v1.134h1.464a4.433 4.433 0 0 0 1.348-3.334z" fill="#4285F4"/><path d="M9.629 15.721a4.352 4.352 0 0 0 3.01-1.097l-1.466-1.14a2.752 2.752 0 0 1-4.094-1.44H5.577v1.17a4.53 4.53 0 0 0 4.052 2.507z" fill="#34A853"/><path d="M7.079 12.05a2.709 2.709 0 0 1 0-1.735v-1.17H5.577a4.505 4.505 0 0 0 0 4.075l1.502-1.17z" fill="#FBBC04"/><path d="M9.629 8.44a2.452 2.452 0 0 1 1.74.68l1.3-1.293a4.37 4.37 0 0 0-3.065-1.183 4.53 4.53 0 0 0-4.027 2.5l1.502 1.171a2.715 2.715 0 0 1 2.55-1.875z" fill="#EA4335"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-american_express"><title id="pi-american_express">American Express</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#0071CE" style="fill:#0071CE;fill:color(display-p3 0.0000 0.4431 0.8078);fill-opacity:1;"/><path d="M3 0.5H35C36.3348 0.5 37.5 1.58692 37.5 3V21C37.5 22.4239 36.4239 23.5 35 23.5H3C1.66524 23.5 0.5 22.4131 0.5 21V3C0.5 1.57614 1.57614 0.5 3 0.5Z" stroke="black" stroke-opacity="0.07" style="stroke:black;stroke-opacity:0.07;"/><path d="M25.8662 6.33203V3H31L31.8662 5.5332L32.7334 3H37V14.2002H36.7998L34.8672 16.2656L36.7998 18.3594H37V21.2666H33.5996L31.9336 19.3994L30.2002 21.2666H19.4668V12.666H16L20.2666 3H24.4004L25.8662 6.33203ZM20.5996 20.2656H27V18.5322H22.666V17.3994H26.8662V15.666H22.666V14.5322H27V12.7988H20.5996V20.2656ZM30.5332 16.5322L27 20.2656H29.5996L31.8662 17.8662L34.0664 20.2656H36.7324L33.1992 16.4658L36.7324 12.7988H34.1328L31.8662 15.1992L29.7324 12.7988H27L30.5332 16.5322ZM17.666 11.7324H19.9326L20.5332 10.1992H23.999L24.666 11.7324H26.999L23.666 4.19922H20.999L17.666 11.7324ZM33.5996 4.19922L31.9326 8.86621L30.1992 4.19922H27V11.666H29.0664V6.39941L31 11.666H32.7998L34.7324 6.39941V11.666H36.7324V4.13281L33.5996 4.19922ZM23.2656 8.46582H21.2656L22.2656 5.99902L23.2656 8.46582Z" fill="white" style="fill:white;fill-opacity:1;"/></svg>
+            <svg class="mk" viewBox="0 0 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-maestro"><title id="pi-maestro">Maestro</title><path opacity=".07" d="M35 0H3C1.3 0 0 1.3 0 3v18c0 1.7 1.4 3 3 3h32c1.7 0 3-1.3 3-3V3c0-1.7-1.4-3-3-3z"/><path fill="#fff" d="M35 1c1.1 0 2 .9 2 2v18c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V3c0-1.1.9-2 2-2h32"/><circle fill="#EB001B" cx="15" cy="12" r="7"/><circle fill="#00A2E5" cx="23" cy="12" r="7"/><path fill="#7375CF" d="M22 12c0-2.4-1.2-4.5-3-5.7-1.8 1.3-3 3.4-3 5.7s1.2 4.5 3 5.7c1.8-1.2 3-3.3 3-5.7z"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-master"><title id="pi-master">Mastercard</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#1C1C1C" style="fill:#1C1C1C;fill:color(display-p3 0.1098 0.1098 0.1098);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#232323" style="fill:#232323;fill:color(display-p3 0.1373 0.1373 0.1373);fill-opacity:1;"/><path d="M14.6364 19.2727C18.8538 19.2727 22.2727 15.8538 22.2727 11.6364C22.2727 7.41892 18.8538 4 14.6364 4C10.4189 4 7 7.41892 7 11.6364C7 15.8538 10.4189 19.2727 14.6364 19.2727Z" fill="#EB001B" style="fill:#EB001B;fill:color(display-p3 0.9216 0.0000 0.1059);fill-opacity:1;"/><path d="M23.3637 19.2727C27.5811 19.2727 31 15.8538 31 11.6364C31 7.41892 27.5811 4 23.3637 4C19.1462 4 15.7273 7.41892 15.7273 11.6364C15.7273 15.8538 19.1462 19.2727 23.3637 19.2727Z" fill="#F79E1B" style="fill:#F79E1B;fill:color(display-p3 0.9686 0.6196 0.1059);fill-opacity:1;"/><path d="M22.2727 11.6362C22.2727 9.01797 20.9637 6.72706 19 5.41797C17.0364 6.83615 15.7273 9.12706 15.7273 11.6362C15.7273 14.1452 17.0364 16.5452 19 17.8543C20.9637 16.5452 22.2727 14.2543 22.2727 11.6362Z" fill="#FF5F00" style="fill:#FF5F00;fill:color(display-p3 1.0000 0.3725 0.0000);fill-opacity:1;"/></svg>
+            <svg class="mk" viewBox="-36 25 38 24" xmlns="http://www.w3.org/2000/svg" width="38" height="24" role="img" aria-labelledby="pi-unionpay"><title id="pi-unionpay">Union Pay</title><path fill="#005B9A" d="M-36 46.8v.7-.7zM-18.3 25v24h-7.2c-1.3 0-2.1-1-1.8-2.3l4.4-19.4c.3-1.3 1.9-2.3 3.2-2.3h1.4zm12.6 0c-1.3 0-2.9 1-3.2 2.3l-4.5 19.4c-.3 1.3.5 2.3 1.8 2.3h-4.9V25h10.8z"/><path fill="#E9292D" d="M-19.7 25c-1.3 0-2.9 1.1-3.2 2.3l-4.4 19.4c-.3 1.3.5 2.3 1.8 2.3h-8.9c-.8 0-1.5-.6-1.5-1.4v-21c0-.8.7-1.6 1.5-1.6h14.7z"/><path fill="#0E73B9" d="M-5.7 25c-1.3 0-2.9 1.1-3.2 2.3l-4.4 19.4c-.3 1.3.5 2.3 1.8 2.3H-26h.5c-1.3 0-2.1-1-1.8-2.3l4.4-19.4c.3-1.3 1.9-2.3 3.2-2.3h14z"/><path fill="#059DA4" d="M2 26.6v21c0 .8-.6 1.4-1.5 1.4h-12.1c-1.3 0-2.1-1.1-1.8-2.3l4.5-19.4C-8.6 26-7 25-5.7 25H.5c.9 0 1.5.7 1.5 1.6z"/><path fill="#fff" d="M-21.122 38.645h.14c.14 0 .28-.07.28-.14l.42-.63h1.19l-.21.35h1.4l-.21.63h-1.68c-.21.28-.42.42-.7.42h-.84l.21-.63m-.21.91h3.01l-.21.7h-1.19l-.21.7h1.19l-.21.7h-1.19l-.28 1.05c-.07.14 0 .28.28.21h.98l-.21.7h-1.89c-.35 0-.49-.21-.35-.63l.35-1.33h-.77l.21-.7h.77l.21-.7h-.7l.21-.7zm4.83-1.75v.42s.56-.42 1.12-.42h1.96l-.77 2.66c-.07.28-.35.49-.77.49h-2.24l-.49 1.89c0 .07 0 .14.14.14h.42l-.14.56h-1.12c-.42 0-.56-.14-.49-.35l1.47-5.39h.91zm1.68.77h-1.75l-.21.7s.28-.21.77-.21h1.05l.14-.49zm-.63 1.68c.14 0 .21 0 .21-.14l.14-.35h-1.75l-.14.56 1.54-.07zm-1.19.84h.98v.42h.28c.14 0 .21-.07.21-.14l.07-.28h.84l-.14.49c-.07.35-.35.49-.77.56h-.56v.77c0 .14.07.21.35.21h.49l-.14.56h-1.19c-.35 0-.49-.14-.49-.49l.07-2.1zm4.2-2.45l.21-.84h1.19l-.07.28s.56-.28 1.05-.28h1.47l-.21.84h-.21l-1.12 3.85h.21l-.21.77h-.21l-.07.35h-1.19l.07-.35h-2.17l.21-.77h.21l1.12-3.85h-.28m1.26 0l-.28 1.05s.49-.21.91-.28c.07-.35.21-.77.21-.77h-.84zm-.49 1.54l-.28 1.12s.56-.28.98-.28c.14-.42.21-.77.21-.77l-.91-.07zm.21 2.31l.21-.77h-.84l-.21.77h.84zm2.87-4.69h1.12l.07.42c0 .07.07.14.21.14h.21l-.21.7h-.77c-.28 0-.49-.07-.49-.35l-.14-.91zm-.35 1.47h3.57l-.21.77h-1.19l-.21.7h1.12l-.21.77h-1.26l-.28.42h.63l.14.84c0 .07.07.14.21.14h.21l-.21.7h-.7c-.35 0-.56-.07-.56-.35l-.14-.77-.56.84c-.14.21-.35.35-.63.35h-1.05l.21-.7h.35c.14 0 .21-.07.35-.21l.84-1.26h-1.05l.21-.77h1.19l.21-.7h-1.19l.21-.77zm-19.74-5.04c-.14.7-.42 1.19-.91 1.54-.49.35-1.12.56-1.89.56-.7 0-1.26-.21-1.54-.56-.21-.28-.35-.56-.35-.98 0-.14 0-.35.07-.56l.84-3.92h1.19l-.77 3.92v.28c0 .21.07.35.14.49.14.21.35.28.7.28s.7-.07.91-.28c.21-.21.42-.42.49-.77l.77-3.92h1.19l-.84 3.92m1.12-1.54h.84l-.07.49.14-.14c.28-.28.63-.42 1.05-.42.35 0 .63.14.77.35.14.21.21.49.14.91l-.49 2.38h-.91l.42-2.17c.07-.28.07-.49 0-.56-.07-.14-.21-.14-.35-.14-.21 0-.42.07-.56.21-.14.14-.28.35-.28.63l-.42 2.03h-.91l.63-3.57m9.8 0h.84l-.07.49.14-.14c.28-.28.63-.42 1.05-.42.35 0 .63.14.77.35s.21.49.14.91l-.49 2.38h-.91l.42-2.24c.07-.21 0-.42-.07-.49-.07-.14-.21-.14-.35-.14-.21 0-.42.07-.56.21-.14.14-.28.35-.28.63l-.42 2.03h-.91l.7-3.57m-5.81 0h.98l-.77 3.5h-.98l.77-3.5m.35-1.33h.98l-.21.84h-.98l.21-.84zm1.4 4.55c-.21-.21-.35-.56-.35-.98v-.21c0-.07 0-.21.07-.28.14-.56.35-1.05.7-1.33.35-.35.84-.49 1.33-.49.42 0 .77.14 1.05.35.21.21.35.56.35.98v.21c0 .07 0 .21-.07.28-.14.56-.35.98-.7 1.33-.35.35-.84.49-1.33.49-.35 0-.7-.14-1.05-.35m1.89-.7c.14-.21.28-.49.35-.84v-.35c0-.21-.07-.35-.14-.49a.635.635 0 0 0-.49-.21c-.28 0-.49.07-.63.28-.14.21-.28.49-.35.84v.28c0 .21.07.35.14.49.14.14.28.21.49.21.28.07.42 0 .63-.21m6.51-4.69h2.52c.49 0 .84.14 1.12.35.28.21.35.56.35.91v.28c0 .07 0 .21-.07.28-.07.49-.35.98-.7 1.26-.42.35-.84.49-1.4.49h-1.4l-.42 2.03h-1.19l1.19-5.6m.56 2.59h1.12c.28 0 .49-.07.7-.21.14-.14.28-.35.35-.63v-.28c0-.21-.07-.35-.21-.42-.14-.07-.35-.14-.7-.14h-.91l-.35 1.68zm8.68 3.71c-.35.77-.7 1.26-.91 1.47-.21.21-.63.7-1.61.7l.07-.63c.84-.28 1.26-1.4 1.54-1.96l-.28-3.78h1.19l.07 2.38.91-2.31h1.05l-2.03 4.13m-2.94-3.85l-.42.28c-.42-.35-.84-.56-1.54-.21-.98.49-1.89 4.13.91 2.94l.14.21h1.12l.7-3.29-.91.07m-.56 1.82c-.21.56-.56.84-.91.77-.28-.14-.35-.63-.21-1.19.21-.56.56-.84.91-.77.28.14.35.63.21 1.19"/></svg>
+            <svg class="mk" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 38 24" width="38" height="24" fill="none" aria-labelledby="pi-visa"><title id="pi-visa">Visa</title><rect x=".5" y=".5" width="37" height="23" rx="2.5" stroke="#000" stroke-opacity=".07" fill="none"/><path d="M35 0H3C1.3 0 0 1.3 0 3V21C0 22.7 1.4 24 3 24H35C36.7 24 38 22.7 38 21V3C38 1.3 36.6 0 35 0Z" fill="#142FBD" style="fill:#142FBD;fill:color(display-p3 0.0784 0.1843 0.7412);fill-opacity:1;"/><path d="M35 1C36.1 1 37 1.9 37 3V21C37 22.1 36.1 23 35 23H3C1.9 23 1 22.1 1 21V3C1 1.9 1.9 1 3 1H35Z" fill="#1532CB" style="fill:#1532CB;fill:color(display-p3 0.0824 0.1961 0.7961);fill-opacity:1;"/><path d="M29.5944 10.2167H29.2778C28.8556 11.2722 28.5389 11.8 28.2222 13.3833H30.2278C29.9111 11.8 29.9111 11.0611 29.5944 10.2167V10.2167ZM32.6556 16.4444H30.8611C30.7556 16.4444 30.7556 16.4444 30.65 16.3389L30.4389 15.3889L30.3333 15.1778H27.8C27.6944 15.1778 27.5889 15.1778 27.5889 15.3889L27.2722 16.3389C27.2722 16.4444 27.1667 16.4444 27.1667 16.4444H24.95L25.1611 15.9167L28.2222 8.73889C28.2222 8.21111 28.5389 8 29.0667 8H30.65C30.7556 8 30.8611 8 30.8611 8.21111L32.3389 15.0722C32.4444 15.4944 32.55 15.8111 32.55 16.2333C32.6556 16.3389 32.6556 16.3389 32.6556 16.4444V16.4444ZM18.5111 16.1278L18.9333 14.2278C19.0389 14.2278 19.1444 14.3333 19.1444 14.3333C19.8833 14.65 20.6222 14.8611 21.3611 14.7556C21.5722 14.7556 21.8889 14.65 22.1 14.5444C22.6278 14.3333 22.6278 13.8056 22.2056 13.3833C21.9944 13.1722 21.6778 13.0667 21.3611 12.8556C20.9389 12.6444 20.5167 12.4333 20.2 12.1167C18.9333 11.0611 19.3556 9.58333 20.0944 8.84444C20.7278 8.42222 21.0444 8 21.8889 8C23.1556 8 24.5278 8 25.1611 8.21111H25.2667C25.1611 8.84444 25.0556 9.37222 24.8444 10.0056C24.3167 9.79444 23.7889 9.58333 23.2611 9.58333C22.9444 9.58333 22.6278 9.58333 22.3111 9.68889C22.1 9.68889 21.9944 9.79444 21.8889 9.9C21.6778 10.1111 21.6778 10.4278 21.8889 10.6389L22.4167 11.0611C22.8389 11.2722 23.2611 11.4833 23.5778 11.6944C24.1056 12.0111 24.6333 12.5389 24.7389 13.1722C24.95 14.1222 24.6333 14.9667 23.7889 15.6C23.2611 16.0222 23.05 16.2333 22.3111 16.2333C20.8333 16.2333 19.6722 16.3389 18.7222 16.0222C18.6167 16.2333 18.6167 16.2333 18.5111 16.1278V16.1278ZM14.8167 16.4444C14.9222 15.7056 14.9222 15.7056 15.0278 15.3889C15.5556 13.0667 16.0833 10.6389 16.5056 8.31667C16.6111 8.10556 16.6111 8 16.8222 8H18.7222C18.5111 9.26667 18.3 10.2167 17.9833 11.3778C17.6667 12.9611 17.35 14.5444 16.9278 16.1278C16.9278 16.3389 16.8222 16.3389 16.6111 16.3389L14.8167 16.4444ZM5 8.21111C5 8.10556 5.21111 8 5.31667 8H8.90556C9.43333 8 9.85556 8.31667 9.96111 8.84444L10.9111 13.4889C10.9111 13.5944 10.9111 13.5944 11.0167 13.7C11.0167 13.5944 11.1222 13.5944 11.1222 13.5944L13.3389 8.21111C13.2333 8.10556 13.3389 8 13.4444 8H15.6611C15.6611 8.10556 15.6611 8.10556 15.5556 8.21111L12.2833 15.9167C12.1778 16.1278 12.1778 16.2333 12.0722 16.3389C11.9667 16.4444 11.7556 16.3389 11.5444 16.3389H9.96111C9.85556 16.3389 9.75 16.3389 9.75 16.1278L8.06111 9.58333C7.85 9.37222 7.53333 9.05556 7.11111 8.95C6.47778 8.63333 5.31667 8.42222 5.10556 8.42222L5 8.21111Z" fill="white" style="fill:white;fill-opacity:1;"/></svg>
+          </div>
+          <span>Apmokėti gali atsiėmimo metu, elektronine bankininkyste arba kortele.</span>
+        </div>
+        <div class="klausk">Kyla klausimų? <a href="https://dronumokykla.lt/pages/contact">Parašyk mums — atsakysime</a></div>
+      </aside>
+    </div>
+
+    <div class="dm-cmp-blokas" id="dm-palyginimas" hidden>
+      <div class="dm-cmp-intro">
+        <div>
+          <h2 class="dm-cmp-h">Valdymo pultų palyginimas</h2>
+          <p class="dm-cmp-lead">
+            Abu veikia su ELRS 2,4 GHz — valdo šį droną, whoop dronus
+            ir simuliatorių.
+          </p>
+        </div>
+      </div>
+
+      <div class="dm-cmp" id="dm-cmp"><!-- lentelė iš PULTAI --></div>
+
+      <div class="dm-cmp-juosta">
+        <div class="dm-cmp-juosta-txt">
+          <b>Abu tinka 5 colių dronui</b>
+          <span>Pocket — kompaktiškas ir lengvas, TX15 — pilno dydžio su jutikliniu ekranu.</span>
+        </div>
+        <ul class="dm-cmp-juosta-zymos">
+          <li>Tinka simuliatoriui</li>
+          <li>Tinka tikriems dronams</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dronas" id="dronas">
+  <div class="wrap">
+    <h2>Axisflying Manta 5 SE V2</h2>
+    <p class="dronas-intro">Patvarus 5 colių freestyle dronas su GPS. Atvažiuoja surinktas
+      ir sureguliuotas — lieka susieti su pultu ir įkrauti baterijas.</p>
+    <div class="dronas-tinklas">
+      <div class="dronas-foto">
+        <img src="/img/5col/dronas-manta.webp" alt="Axisflying Manta 5 SE V2" width="900" height="644" loading="lazy">
+      </div>
+      <div class="dronas-savybes">
+        <div><b>GPS grįžimas</b><span>Praradus signalą dronas grįžta į pakilimo tašką, o vaizde matai greitį, atstumą ir kryptį.</span></div>
+        <div><b>Tvirtas rėmas</b><span>5,5 mm storio anglies pluošto rankos ir apsaugota kamera — sukurtas atlaikyti kritimus.</span></div>
+        <div><b>Stiprus vaizdo signalas</b><span>1,6 W vaizdo siųstuvas — vaizdas išlieka ir nuskridus toliau.</span></div>
+        <div><b>Vieta kamerai</b><span>Ant viršaus pritvirtinsi action kamerą ir nufilmuosi savo skrydžius.</span></div>
+      </div>
+    </div>
+
+    <details class="specifikacija">
+      <summary>Visa specifikacija</summary>
+      <dl>
+        <div><dt>Vaizdas</dt><dd>Analoginis 5,8 GHz</dd></div>
+        <div><dt>Valdymas</dt><dd>ExpressLRS 2,4 GHz</dd></div>
+        <div><dt>Įtampa</dt><dd>6S</dd></div>
+        <div><dt>Svoris</dt><dd>~410 g</dd></div>
+        <div><dt>Propeleriai</dt><dd>5,1" Blackbird 39</dd></div>
+        <div><dt>Ašių bazė</dt><dd>223 mm, Squashed X</dd></div>
+        <div><dt>Skrydžio valdiklis</dt><dd>H743 PRO</dd></div>
+        <div><dt>ESC</dt><dd>Argus ECO 60A 6S</dd></div>
+        <div><dt>Varikliai</dt><dd>AE2207 V2, 1960 KV</dd></div>
+        <div><dt>Vaizdo siųstuvas</dt><dd>Axis Smurfs V2, 1,6 W</dd></div>
+        <div><dt>GPS</dt><dd>Yra</dd></div>
+        <div><dt>Skrydžio laikas</dt><dd>5–8 min.</dd></div>
+      </dl>
+    </details>
+  </div>
+</section>
+
+<section class="metas" id="metas">
+  <div class="metas-korta">
+    <h2>Ar jau metas 5 colių dronui?</h2>
+    <p class="metas-po">5 colių dronas greitas ir sunkus — jam reikia įgūdžių ir vietos.
+      Tau laikas, jei:</p>
+    <ul class="metas-sarasas">
+      <li>Užtikrintai valdai whoop droną arba skraidai simuliatoriuje be nuolatinių kritimų</li>
+      <li>Skraidai <b>acro režimu</b> — be automatinio išsilyginimo</li>
+      <li>Turi <b>atvirą ir saugią vietą</b> toliau nuo žmonių ir pastatų</li>
+      <li>Esi pasiruošęs <a href="#duk" style="color:inherit">registracijai</a> — dronas sveria daugiau nei 250 g</li>
+    </ul>
+    <p class="metas-dar">Dar ne? Pradėk nuo <a href="https://shop.dronumokykla.lt/pradziamokslis/">simuliatoriaus</a>
+      arba <a href="https://shop.dronumokykla.lt/rinkinys/">whoop drono</a>. ELRS pultas ir analoginiai
+      akiniai iš whoop rinkinio vėliau tiks ir šiam dronui.</p>
+  </div>
+</section>
+
+<section class="vs" id="kuo-skiriasi">
+  <div class="wrap">
+    <h2>Kuo 5 colių dronas skiriasi nuo whoop</h2>
+
+    <div class="vs-lentele">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="vs-mes"><span class="vs-foto vs-foto--5"><img src="/img/5col/dronas-manta.webp" alt="Manta 5 SE V2" width="900" height="644" loading="lazy"></span>5 colių (Manta 5 SE V2)</th>
+            <th class="vs-kitas"><span class="vs-foto vs-foto--whoop"><img src="/img/whoop/dronas-air65.webp" alt="Air65 II whoop dronas" width="700" height="546" loading="lazy"></span>Whoop (Air65 II / Air75 II)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Greitis</th>
+            <td class="vs-mes">Kelis kartus greitesnis — tikras freestyle ir lenktynių pojūtis.</td>
+            <td class="vs-kitas">Skirtas skraidyti ramiai ir tiksliai, ypač patalpose.</td>
+          </tr>
+          <tr>
+            <th scope="row">Vėjas</th>
+            <td class="vs-mes">Skrenda ir vėjuotą dieną — 6S galia ir ~410 g masė.</td>
+            <td class="vs-kitas">Lauke geriausiai per ramų orą — vėjas neša.</td>
+          </tr>
+          <tr>
+            <th scope="row">Nuotolis</th>
+            <td class="vs-mes">Toli — 1,6 W vaizdo siųstuvas, o praradus signalą padeda GPS.</td>
+            <td class="vs-kitas">Arti — kiemas, salė, parkas.</td>
+          </tr>
+          <tr>
+            <th scope="row">Kamera</th>
+            <td class="vs-mes">Pritvirtinsi action kamerą ir filmuosi skrydžius.</td>
+            <td class="vs-kitas">Kameros neprikabinsi — per lengvas.</td>
+          </tr>
+          <tr>
+            <th scope="row">Kur skraidyti</th>
+            <td class="vs-mes">Atviroje, saugioje vietoje, toliau nuo žmonių.</td>
+            <td class="vs-kitas">Net namuose.</td>
+          </tr>
+          <tr>
+            <th scope="row">Kai sudaužai</th>
+            <td class="vs-mes">Propeleriai — keli eurai, rimtesni gedimai — dešimtys eurų. Taisome patys.</td>
+            <td class="vs-kitas">Dažniausiai nieko — atsikeli ir skrendi toliau.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="vs-isvada">Whoop išmoko valdyti, <b>5 colių dronas leidžia tai išnaudoti</b>:
+      greitis, nuotolis ir vaizdai, kurių mažu dronu nenufilmuosi.</p>
+  </div>
+</section>
+
+<section class="duk" id="duk">
+  <div class="wrap">
+    <h2>Klausimai, atsakymai</h2>
+    <div class="duk-sarasas">
+      <details open>
+        <summary>Ar tiks mano pultas ir akiniai?</summary>
+        <div class="duk-a">Pultas tiks, jei jis veikia su ExpressLRS (ELRS) 2,4 GHz — tokie yra visi mūsų whoop rinkinio pultai. Akiniai tiks analoginiai 5,8 GHz, pavyzdžiui, EMAX Transporter iš whoop rinkinio. Skaitmeniniai akiniai (DJI, Walksnail, HDZero) su šiuo dronu neveiks. Nesi tikras — <a href="https://dronumokykla.lt/pages/contact">parašyk</a>, patikrinsime.</div>
+      </details>
+      <details>
+        <summary>Ar droną reikia registruoti?</summary>
+        <div class="duk-a">Taip. Manta 5 SE V2 sveria apie 410 g — daugiau nei 250 g, todėl reikia užsiregistruoti Transporto kompetencijų agentūroje kaip drono naudotojui ir išlaikyti nuotolinį pilotų testą. Skraidyti galima atokiai nuo žmonių ir gyvenamųjų vietovių, o skrendant su FPV akiniais šalia turi būti stebėtojas, matantis droną. Aktualius reikalavimus visada rasi <a href="https://tka.lt" target="_blank" rel="noopener">tka.lt</a>.</div>
+      </details>
+      <details>
+        <summary>Ar dronas atvažiuoja paruoštas skristi?</summary>
+        <div class="duk-a">Taip — surinktas ir sureguliuotas. Lieka susieti jį su savo pultu (ELRS „bind“) ir įkrauti baterijas. Jei pultą perki kartu, padėsime susieti.</div>
+      </details>
+      <details>
+        <summary>Kiek trunka vienas skrydis?</summary>
+        <div class="duk-a">Su viena baterija — 5–8 minutės, priklausomai nuo to, kaip agresyviai skrendi. Komplekte yra 2 baterijos, o daugiau gali pridėti prie užsakymo.</div>
+      </details>
+      <details>
+        <summary>Kuo maitinamas įkroviklis?</summary>
+        <div class="duk-a">HOTA T6 maitinamas per USB-C PD (iki 90 W) arba iš 10–30 V nuolatinės srovės šaltinio. Maitinimo adapteris į įkroviklio pakuotę neįeina — tiks galingas USB-C PD įkroviklis, pavyzdžiui, nešiojamojo kompiuterio.</div>
+      </details>
+      <details>
+        <summary>Ką daryti, jei sudaužau?</summary>
+        <div class="duk-a">Dažniausiai lūžta propeleriai — jie kainuoja kelis eurus. Jei nulūžtų kas rimtesnio — parašyk: esame ir dronų remonto dirbtuvės, padedame išsiaiškinti ir suremontuoti.</div>
+      </details>
+      <details>
+        <summary>Ar tai tinka pradedančiajam?</summary>
+        <div class="duk-a">Pirmam dronui — ne. 5 colių dronas greitas ir sunkus, todėl rekomenduojame pirma išmokti valdyti <a href="https://shop.dronumokykla.lt/pradziamokslis/">simuliatoriuje</a> arba su <a href="https://shop.dronumokykla.lt/rinkinys/">whoop dronu</a>. Tada šis dronas bus ne rizika, o kitas žingsnis.</div>
+      </details>
+    </div>
+    <p class="duk-po">Neradai atsakymo? <a href="https://dronumokykla.lt/pages/contact">Parašyk mums</a> —
+      atsakome ir prieš pirkimą.</p>
+  </div>
+</section>
+
+<section class="pabaiga">
+  <h2>Pakilk greičiau ir toliau</h2>
+  <p>Komplektas su viskuo, ko reikia pirmam 5 colių skrydžiui.</p>
+  <a class="cta" href="#rinktis">Rinktis komplektą <span aria-hidden="true">→</span></a>
+</section>
+
+<script>
+/* ============ HERO: skrydis i ziurova ============
+   p = kiek nuslinkta per sekcija (0..1). Dronas: mastelis auga eksponentiskai
+   (taip atrodo artejimas), nosis kyla, sonu supasi; gale — judesio suliejimas
+   ir isnyksta. Papildomai kelias sekundes po ikrovimo dronas „atskrenda" is
+   toli, o ramiai stovint lengvai kybo. Greicio linijos piesiamos drobeje ir
+   greiteja kartu su p ir slinkimo greiciu. */
+(function () {
+  var sek = document.getElementById("hero");
+  var scena = document.getElementById("skr-scena");
+  var dronas = document.getElementById("skr-dronas");
+  var tekstas = document.getElementById("skr-tekstas");
+  var drobe = document.getElementById("skr-zvaigzdes");
+  var ctx = drobe.getContext("2d");
+  var ramiau = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var s0 = 0.4, centrasY = 0, pradzia = performance.now(), matomas = true;
+  var paskY = window.scrollY, greitis = 0;
+
+  /* Dronas statomas i laisva vieta virs teksto: centras — tos vietos viduryje,
+     o mastelis toks, kad jis tilptu ir aukstyje, ir plotyje. CSS --s0 — tik
+     virsutine riba. Nuotraukos aukstis — 0,72 plocio. */
+  function skaitytiS0() {
+    var maks = parseFloat(getComputedStyle(sek).getPropertyValue("--s0")) || 0.4;
+    var laisva = Math.max(120, tekstas.offsetTop - 12);
+    var plotis = dronas.offsetWidth || 1;
+    s0 = Math.min(maks, laisva * 0.9 / (plotis * 0.72), scena.clientWidth * 0.94 / plotis);
+    centrasY = laisva / 2 + 6;
+    dronas.style.top = centrasY + "px";
+  }
+
+  function eiga() {
+    var r = sek.getBoundingClientRect();
+    var ilgis = Math.max(1, sek.offsetHeight - window.innerHeight);
+    return Math.max(0, Math.min(1, -r.top / ilgis));
+  }
+  function svelniai(x) { return 1 - Math.pow(1 - x, 3); }
+
+  /* --- zvaigzdes / greicio linijos --- */
+  var Z = [], dpr = 1, W = 0, H = 0;
+  function dydis() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = scena.clientWidth; H = scena.clientHeight;
+    drobe.width = W * dpr; drobe.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var kiek = W < 700 ? 110 : 220;
+    Z = [];
+    for (var i = 0; i < kiek; i++) Z.push(nauja(true));
+    skaitytiS0();
+  }
+  function nauja(bet) {
+    return { x: (Math.random() * 2 - 1), y: (Math.random() * 2 - 1),
+             z: bet ? Math.random() : 1, pz: 0 };
+  }
+  function piestiZvaigzdes(dt, p) {
+    ctx.clearRect(0, 0, W, H);
+    var cx = W / 2, cy = centrasY || H * 0.36, mast = Math.max(W, H) * 0.5;
+    var v = (0.08 + p * 1.1 + Math.min(greitis, 3) * 0.35) * dt;
+    ctx.lineCap = "round";
+    for (var i = 0; i < Z.length; i++) {
+      var s = Z[i];
+      s.pz = s.z;
+      s.z -= v;
+      if (s.z <= 0.02) { Z[i] = nauja(false); continue; }
+      var x1 = cx + s.x / s.pz * mast * 0.35, y1 = cy + s.y / s.pz * mast * 0.35;
+      var x2 = cx + s.x / s.z * mast * 0.35,  y2 = cy + s.y / s.z * mast * 0.35;
+      if (x2 < -50 || x2 > W + 50 || y2 < -50 || y2 > H + 50) { Z[i] = nauja(false); continue; }
+      var a = Math.min(1, (1 - s.z) * 1.4);
+      ctx.strokeStyle = "rgba(150,220,255," + (a * 0.75).toFixed(3) + ")";
+      ctx.lineWidth = (1 - s.z) * 2.2 + 0.3;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    }
+  }
+
+  function kadras(laikas) {
+    if (!matomas) { requestAnimationFrame(kadras); return; }
+    var dt = Math.min(0.05, (laikas - (kadras.pask || laikas)) / 1000) || 0.016;
+    kadras.pask = laikas;
+    var y = window.scrollY;
+    greitis = greitis * 0.9 + Math.abs(y - paskY) / Math.max(1, window.innerHeight) * 60 * 0.1;
+    paskY = y;
+
+    var p = eiga();
+    var sek0 = (laikas - pradzia) / 1000;
+    /* atskridimas po ikrovimo: 0 -> 1 per 1,6 s */
+    var atv = ramiau ? 1 : svelniai(Math.min(1, sek0 / 1.6));
+    var kyb = ramiau ? 0 : Math.sin(sek0 * 2.1) * 7;
+    var sup = ramiau ? 0 : Math.sin(sek0 * 1.3) * 1.6;
+
+    var mastelis = s0 * (0.15 + 0.85 * atv) * Math.pow(12, p * p * 0.7 + p * 0.3);
+    var yPoslinkis = (1 - atv) * -120 + p * p * window.innerHeight * 0.55 + kyb;
+    var posvyris = Math.sin(p * Math.PI * 1.5) * 5 + sup;
+    var sulieti = p > 0.62 ? (p - 0.62) * 22 : 0;
+    var matom = p > 0.8 ? Math.max(0, 1 - (p - 0.8) / 0.2) : atv;
+
+    dronas.style.transform = "translate(-50%,-50%) translateY(" + yPoslinkis.toFixed(1) + "px) scale(" +
+      mastelis.toFixed(4) + ") rotate(" + posvyris.toFixed(2) + "deg)";
+    dronas.style.filter = sulieti ? "blur(" + sulieti.toFixed(1) + "px)" : "";
+    dronas.style.opacity = matom.toFixed(3);
+
+    var tp = Math.min(1, p / 0.28);
+    tekstas.style.opacity = (1 - tp).toFixed(3);
+    tekstas.style.transform = "translateY(" + (-tp * 60).toFixed(1) + "px) scale(" + (1 - tp * 0.06).toFixed(3) + ")";
+    tekstas.style.pointerEvents = tp > 0.6 ? "none" : "";
+
+    if (!ramiau || !kadras.nupiesta) { piestiZvaigzdes(dt, p); kadras.nupiesta = true; }
+    requestAnimationFrame(kadras);
+  }
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { matomas = e[0].isIntersecting; }).observe(sek);
+  }
+  window.addEventListener("resize", dydis);
+  dydis();
+  requestAnimationFrame(kadras);
+})();
+
+/* ============ DRONO APZIURA: slinkimo istorija ============
+   Aktyvus zingsnis = kuri sekcijos dali jau nuslinkai. Animacijas daro CSS
+   (klases .aktyvus / .buvo), JS tik perjungia klases, kai zingsnis pasikeicia. */
+(function () {
+  var sek = document.getElementById("apziura");
+  var scena = document.getElementById("scena");
+  var zs = [].slice.call(scena.querySelectorAll(".zingsnis"));
+  var N = zs.length;
+  var eiga = document.getElementById("eiga");
+  var dabar = -1;
+
+  /* Telefone uzrasai rodomi sarase po dronu — sukuriam ji is tu paciu tasku. */
+  zs.forEach(function (z) {
+    var taskai = z.querySelectorAll(".tsk");
+    if (!taskai.length) return;
+    var ol = document.createElement("ol");
+    ol.className = "z-sarasas";
+    ol.setAttribute("aria-hidden", "true");
+    [].forEach.call(taskai, function (t, i) {
+      t.setAttribute("data-n", i + 1);
+      var li = document.createElement("li");
+      li.style.setProperty("--i", i);
+      li.innerHTML = t.querySelector(".tsk-lab").innerHTML;
+      ol.appendChild(li);
+    });
+    z.appendChild(ol);
+  });
+
+  function ilgis() { return Math.max(1, sek.offsetHeight - window.innerHeight); }
+  function eitiI(i) {
+    var y = sek.offsetTop + ilgis() * (i + 0.5) / N;
+    if (i === 0) y = sek.offsetTop;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+
+  zs.forEach(function (z, i) {
+    var li = document.createElement("li");
+    var m = document.createElement("button");
+    m.type = "button";
+    m.setAttribute("aria-label", "Žingsnis " + (i + 1) + " iš " + N);
+    m.addEventListener("click", function () { eitiI(i); });
+    li.appendChild(m);
+    eiga.appendChild(li);
+  });
+  var mygtukai = eiga.querySelectorAll("button");
+
+  function atnaujinti() {
+    var p = -sek.getBoundingClientRect().top / ilgis();
+    var i = Math.max(0, Math.min(N - 1, Math.floor(p * N)));
+    if (i === dabar) return;
+    dabar = i;
+    zs.forEach(function (z, k) {
+      z.classList.toggle("aktyvus", k === i);
+      z.classList.toggle("buvo", k < i);
+      z.setAttribute("aria-hidden", k === i ? "false" : "true");
+    });
+    [].forEach.call(mygtukai, function (m, k) {
+      if (k === i) m.setAttribute("aria-current", "step"); else m.removeAttribute("aria-current");
+    });
+    scena.setAttribute("data-z", i);
+  }
+
+  var laukia = false;
+  function planuoti() {
+    if (laukia) return;
+    laukia = true;
+    requestAnimationFrame(function () { laukia = false; atnaujinti(); });
+  }
+  window.addEventListener("scroll", planuoti, { passive: true });
+  window.addEventListener("resize", planuoti);
+  atnaujinti();
+
+  /* Kaina apatineje juostoje — ta pati kaip hero „nuo". */
+  var nuo = document.getElementById("hero-nuo");
+  var apacia = document.getElementById("apacia-nuo");
+  new MutationObserver(function () { apacia.textContent = "nuo " + nuo.textContent; })
+    .observe(nuo, { childList: true, characterData: true, subtree: true });
+})();
+
+/* ============ Sklandus slinkimas iki pasirinkimo ============
+   CSS scroll-behavior veikia ne visur vienodai, todel nuorodas
+   tvarkom aiskiai. Gerbiam ir „reduced motion" nuostata. */
+(function () {
+  var ramiau = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Shopify temoje landingas gyvena giliau DOM medyje, o virsuje kabo lipni
+     parduotuves juosta. offsetTop tokiu atveju rodo ne ta vieta, todel
+     skaiciuojam nuo lango ir atimam juostos auksti. */
+  function juostosAukstis() {
+    var kandidatai = document.querySelectorAll(
+      "header, .header-wrapper, .shopify-section-group-header-group, [id*='shopify-section'][class*='header']");
+    var h = 0;
+    for (var i = 0; i < kandidatai.length; i++) {
+      var el = kandidatai[i], cs = getComputedStyle(el);
+      if ((cs.position === "sticky" || cs.position === "fixed") && el.offsetHeight) {
+        h = Math.max(h, el.offsetHeight);
+      }
+    }
+    return h;
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute("href").slice(1);
+    var tikslas = id && document.getElementById(id);
+    if (!tikslas) return;
+    e.preventDefault();
+    var y = tikslas.getBoundingClientRect().top + window.pageYOffset - juostosAukstis() - 8;
+    window.scrollTo({ top: Math.max(0, y), behavior: ramiau ? "auto" : "smooth" });
+  });
+})();
+
+/* ============ Komplekto pasirinkimas ============
+   Skirtingai nei whoop landinge, cia nera vieno Shopify produkto su visais
+   deriniais: komplektas sudedamas is atskiru prekiu tiesiai i krepseli
+   (/cart/dronas:1,baterijos:1,...). Kainos ir likuciai imami is Shopify
+   realiu laiku, todel:
+     - kaina visada tokia pati kaip parduotuveje,
+     - jei kurios nors butinos prekes nera sandelyje, mygtukas neaktyvus ir
+       parasoma, ko laukiame — zmogus nenueina i apmokejima, kurio negali uzbaigti. */
+(function () {
+  "use strict";
+  var PARDUOTUVE = "https://dronumokykla.lt";
+
+  /* id ir kaina — atsargines reiksmes, jei Shopify uzklausa nepavyktu. */
+  var PREKES = {
+    dronas:    { handle:"axisflying-manta-5-se-v2-5-coliu-squashed-x-analog-6s-elrs-2-4g-fpv-dronas-su-gps",
+                 id:58528130957657, kaina:299.99,
+                 pav:"Axisflying Manta 5 SE V2", p:"5 colių FPV dronas su GPS",
+                 nuotr:"/img/5col/dronas-manta.webp" },
+    baterijos: { handle:"2x-ovonic-6s-22-2v-1400mah-130c-lipo-akumuliatoriai",
+                 id:56561140072793, kaina:74.99,
+                 pav:"Ovonic 6S baterijos", p:"2 vnt. · 1400 mAh · 130C",
+                 nuotr:"/img/5col/baterijos-ovonic.webp" },
+    kroviklis: { handle:"hota-t6-300w-pd-1-6s-ikroviklis",
+                 id:56561142038873, kaina:39.99,
+                 pav:"HOTA T6 įkroviklis", p:"1–6S · iki 300 W",
+                 nuotr:"/img/5col/kroviklis-hota.webp" },
+    akiniai:   { handle:"emax-transporter-fpv-akiniai",
+                 id:58712496603481, kaina:99.99,
+                 pav:"EMAX Transporter", p:"FPV akiniai · 5,8 GHz",
+                 nuotr:"/img/whoop/akiniai.webp" },
+    pocket:    { handle:"pultas-radiomaster-pocket-crush-elrs",
+                 id:57981653385561, kaina:84.99,
+                 pav:"RadioMaster Pocket", p:"Valdymo pultas · ELRS",
+                 nuotr:"/img/whoop/pultas-pocket.webp" },
+    tx15:      { handle:"elrs-radiomaster-tx15-pultas-2-4g-900m-span-span-blue",
+                 id:56583282131289, kaina:179.99,
+                 pav:"RadioMaster TX15", p:"Valdymo pultas · ELRS",
+                 nuotr:"/img/whoop/pultas-tx15.webp" }
+  };
+
+  var PULTAI = [
+    { raktas:"pocket", role:"Kompaktiškas", pav:"RadioMaster Pocket",
+      zyma:"Populiariausias", trum:"Pocket", nuotr:"/img/whoop/pultas-pocket.webp",
+      sp:{ ekranas:["128 × 64 monochrominis","gerai"], kanalai:["iki 16","gerai"],
+           baterija:["2 × 18650 — pridedame","gerai"],
+           svoris:"288 g", dydis:"Kišeninis",
+           programine:"EdgeTX", modulis:["Nano dydžio","gerai"] } },
+    { raktas:"tx15", role:"Pro", pav:"RadioMaster TX15",
+      trum:"TX15", nuotr:"/img/whoop/pultas-tx15.webp",
+      sp:{ ekranas:["3,5\" spalvotas jutiklinis","gerai"], kanalai:["iki 16","gerai"],
+           baterija:["2 × 18650 — pridedame","gerai"],
+           svoris:"605 g (be baterijos)", dydis:"Pilno dydžio",
+           programine:"EdgeTX", modulis:["JR suderinamas","gerai"] } }
+  ];
+
+  /* Numatyta — pigiausia: pultas ir akiniai jau turimi. Siam puslapiui
+     tai tikslinis pirkejas (Level 3), be to kaina sutampa su hero „nuo". */
+  var b = { turiPulta:true, pultas:"pocket", turiAkinius:true };
+  var likuciaiGauti = false;
+
+  function eur(x){ return "€" + x.toFixed(2).replace(".", ","); }
+
+  /* Sudetis pagal pasirinkima. Tvarka — tokia pati kaip „Kas dėžėje". */
+  function sudetis() {
+    var r = ["dronas"];
+    if (!b.turiPulta) r.push(b.pultas);
+    if (!b.turiAkinius) r.push("akiniai");
+    r.push("baterijos", "kroviklis");
+    return r;
+  }
+
+  /* ---------- Shopify: kainos ir likuciai ---------- */
+  function gautiPreke(handle) {
+    /* Shopify temoje duomenys jau iterpti i puslapi (Liquid), tad uzklausos
+       nereikia — kaina ir likutis matomi is karto. */
+    var is_anksto = window.DM_PREKES && window.DM_PREKES[handle];
+    if (is_anksto) return Promise.resolve(is_anksto);
+    return fetch(PARDUOTUVE + "/products/" + handle + ".js", { credentials:"omit" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
+  /* Pirmas turimas variantas (pultai turi spalvu variantus — imam bet kuri
+     turima). Jei neturimas nei vienas, prekė pazymima „nėra". */
+  function pritaikyti(raktas, prek) {
+    var p = PREKES[raktas];
+    if (!prek || !prek.variants || !prek.variants.length) { p.yra = true; return; }
+    var turimi = prek.variants.filter(function (v) { return v.available; });
+    var v = turimi[0] || prek.variants[0];
+    p.id = v.id;
+    p.kaina = v.price / 100;
+    p.yra = turimi.length > 0;
+  }
+
+  function ikeltiLikucius() {
+    var raktai = Object.keys(PREKES);
+    return Promise.all(raktai.map(function (k) { return gautiPreke(PREKES[k].handle); }))
+      .then(function (prekes) {
+        raktai.forEach(function (k, i) { pritaikyti(k, prekes[i]); });
+        likuciaiGauti = true;
+        var nuo = PREKES.dronas.kaina + PREKES.baterijos.kaina + PREKES.kroviklis.kaina;
+        document.getElementById("hero-nuo").textContent = eur(nuo);
+        piesti();
+      });
+  }
+
+  /* ---------- Korteles ---------- */
+  function kortele(p, pasirinkta, veiksmas) {
+    var m = document.createElement("button");
+    m.type = "button"; m.className = "kort";
+    m.setAttribute("aria-pressed", pasirinkta ? "true" : "false");
+    m.innerHTML = (p.zyma ? '<span class="kort-zyma">'+p.zyma+"</span>" : "") +
+      '<span class="kort-img">' + (p.nuotr ? '<img src="'+p.nuotr+'" alt="">'
+        : '<span class="kort-varnele" aria-hidden="true"></span>') + "</span>" +
+      '<span class="kort-vidus"><span class="kort-role">'+p.role+"</span>" +
+      '<span class="kort-pav">'+p.pav+"</span></span>";
+    m.addEventListener("click", veiksmas);
+    return m;
+  }
+
+  function piestiPultus() {
+    var el = document.getElementById("pultai"); el.innerHTML = "";
+    PULTAI.forEach(function (p) {
+      el.appendChild(kortele({ role:p.role, pav:p.pav, zyma:p.zyma, nuotr:p.nuotr },
+        b.pultas === p.raktas,
+        function(){ b.pultas = p.raktas; piesti(); }));
+    });
+  }
+
+  function piestiAkinius() {
+    var el = document.getElementById("akiniai"); el.innerHTML = "";
+    el.appendChild(kortele(
+      { role:"Neturiu, noriu įsigyti", pav:"EMAX Transporter", nuotr:"/img/whoop/akiniai.webp" },
+      !b.turiAkinius,
+      function(){ b.turiAkinius = false; piesti(); }));
+    el.appendChild(kortele(
+      { role:"Taip, jau turiu", pav:"Tinka analoginiai 5,8 GHz", nuotr:null },
+      b.turiAkinius,
+      function(){ b.turiAkinius = true; piesti(); }));
+  }
+
+  function piestiDeze() {
+    var eil = sudetis().map(function (k) {
+      var p = PREKES[k];
+      return { n:p.nuotr, t:p.pav, p:p.p };
+    });
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (priedaiPazymeti[p.raktas] && d) {
+        eil.push({ n:d.nuotr, t:p.pav, p:"Pridėta prie užsakymo", priedas:true });
+      }
+    });
+    var ul = document.getElementById("deze-sarasas"); ul.innerHTML = "";
+    eil.forEach(function (e) {
+      var li = document.createElement("li");
+      if (e.priedas) li.className = "deze-priedas";
+      li.innerHTML = '<img src="'+e.n+'" alt="">' +
+        "<div>" + e.t + (e.p ? "<span>"+e.p+"</span>" : "") + "</div>";
+      ul.appendChild(li);
+    });
+  }
+
+  /* ============ PRIEDAI PRIE KREPSELIO ============
+     Is Shopify realiu laiku. Jei prekes nera sandelyje — priedas nerodomas. */
+  var PRIEDAI = [
+    { raktas:"baterijos", handle:"2x-ovonic-6s-22-2v-1400mah-130c-lipo-akumuliatoriai",
+      pav:"Papildomos baterijos (2 vnt.)",
+      apr:"Dvigubai ilgesnė skraidymo sesija." },
+    { raktas:"propeleriai", handle:"propeleriai-hurricane-max-51377-by-gemfan",
+      pav:"Atsarginiai propeleriai",
+      apr:"Pirmieji kritimai dažniausiai kainuoja tik propelerius." },
+    { raktas:"shortsaver", handle:"vifly-shortsaver-2-xt30-xt60-smoke-stopper",
+      pav:"VIFLY ShortSaver 2",
+      apr:"Saugo elektroniką nuo trumpojo jungimo įjungiant po remonto." }
+  ];
+  var priedaiDuomenys = {};
+  var priedaiPazymeti = {};
+
+  function pilnasAdresas(u) {
+    if (!u) return "";
+    if (u.indexOf("//") === 0) u = "https:" + u;
+    u = u.replace("https://cdn.shopify.com/s/files/1/0983/9879/8169/files/",
+                  "https://dronumokykla.lt/cdn/shop/files/");
+    return u + (u.indexOf("?") >= 0 ? "&" : "?") + "width=120";
+  }
+
+  function ikeltiPriedus() {
+    return Promise.all(PRIEDAI.map(function (p) { return gautiPreke(p.handle); }))
+      .then(function (prekes) {
+        PRIEDAI.forEach(function (p, i) {
+          var prek = prekes[i];
+          var v = prek && prek.variants && prek.variants.filter(function (x) { return x.available; })[0];
+          priedaiDuomenys[p.raktas] = v ? {
+            id: v.id,
+            kaina: v.price / 100,
+            nuotr: pilnasAdresas((v.featured_image && (v.featured_image.url || v.featured_image.src))
+                                 || prek.featured_image || "")
+          } : null;
+        });
+        piestiPriedus();
+        piesti();
+      });
+  }
+
+  function piestiPriedus() {
+    var dez = document.getElementById("priedai");
+    var sar = document.getElementById("priedu-sarasas");
+    sar.innerHTML = "";
+    var kiek = 0;
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (!d) { delete priedaiPazymeti[p.raktas]; return; }
+      kiek++;
+      var m = document.createElement("button");
+      m.type = "button";
+      m.className = "priedas";
+      m.setAttribute("aria-pressed", priedaiPazymeti[p.raktas] ? "true" : "false");
+      var dez2 = document.createElement("span");
+      dez2.className = "dezute";
+      m.appendChild(dez2);
+      if (d.nuotr) {
+        var img = document.createElement("img");
+        img.src = d.nuotr; img.alt = ""; img.loading = "lazy";
+        m.appendChild(img);
+      }
+      var tx = document.createElement("span");
+      tx.className = "priedas-tekstas";
+      var pav = document.createElement("b");
+      pav.className = "priedas-pav"; pav.textContent = p.pav;
+      var apr = document.createElement("span");
+      apr.className = "priedas-apr"; apr.textContent = p.apr;
+      tx.appendChild(pav); tx.appendChild(apr);
+      m.appendChild(tx);
+      var kn = document.createElement("span");
+      kn.className = "priedas-kaina"; kn.textContent = "+" + eur(d.kaina);
+      m.appendChild(kn);
+      m.addEventListener("click", function () {
+        var imam = !priedaiPazymeti[p.raktas];
+        if (imam) priedaiPazymeti[p.raktas] = true;
+        else delete priedaiPazymeti[p.raktas];
+        m.setAttribute("aria-pressed", imam ? "true" : "false");
+        piesti();
+      });
+      sar.appendChild(m);
+    });
+    dez.hidden = kiek === 0;
+  }
+
+  /* Reklamos zymos (UTM, fbclid, gclid) keliauja i Shopify apmokejima. */
+  var REKLAMOS_ZYMOS = ["utm_source", "utm_medium", "utm_campaign", "utm_content",
+                        "utm_term", "fbclid", "gclid"];
+  function reklamosZymos() {
+    var rasta = [];
+    try {
+      var p = new URLSearchParams(window.location.search);
+      REKLAMOS_ZYMOS.forEach(function (k) {
+        var v = p.get(k);
+        if (v) rasta.push(k + "=" + encodeURIComponent(v));
+      });
+      if (rasta.length) {
+        sessionStorage.setItem("dm-reklamos-zymos", rasta.join("&"));
+      } else {
+        var s = sessionStorage.getItem("dm-reklamos-zymos");
+        if (s) return "?" + s;
+      }
+    } catch (e) { /* uzdrausta saugykla — tiesiog be zymu */ }
+    return rasta.length ? "?" + rasta.join("&") : "";
+  }
+
+  /* Krepselio adresas: ta pati preke du kartus (pvz., baterijos komplekte ir
+     papildomos) sujungiama i viena eilute su kiekiu 2. */
+  function krepselis() {
+    var kiekiai = {}, tvarka = [];
+    function pridek(id) {
+      if (!kiekiai[id]) { kiekiai[id] = 0; tvarka.push(id); }
+      kiekiai[id]++;
+    }
+    sudetis().forEach(function (k) { pridek(PREKES[k].id); });
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (priedaiPazymeti[p.raktas] && d) pridek(d.id);
+    });
+    return PARDUOTUVE + "/cart/" +
+      tvarka.map(function (id) { return id + ":" + kiekiai[id]; }).join(",") + reklamosZymos();
+  }
+
+  function suma() {
+    var s = sudetis().reduce(function (s, k) { return s + PREKES[k].kaina; }, 0);
+    PRIEDAI.forEach(function (p) {
+      var d = priedaiDuomenys[p.raktas];
+      if (priedaiPazymeti[p.raktas] && d) s += d.kaina;
+    });
+    return s;
+  }
+
+  function piestiMygtuka() {
+    var a = document.getElementById("pirkti");
+    var zinute = document.getElementById("laukiam");
+    var truksta = sudetis().filter(function (k) { return PREKES[k].yra === false; })
+      .map(function (k) { return PREKES[k].pav; });
+
+    if (!likuciaiGauti) {
+      a.setAttribute("aria-disabled", "true");
+      a.removeAttribute("href");
+      zinute.hidden = true;
+      return;
+    }
+    if (truksta.length) {
+      a.setAttribute("aria-disabled", "true");
+      a.removeAttribute("href");
+      a.innerHTML = "Laukiame siuntos";
+      zinute.innerHTML = "Šiuo metu sandėlyje nėra: <b>" + truksta.join(", ") +
+        "</b>. Jau važiuoja pas mus — <a href=\"https://dronumokykla.lt/pages/contact\">parašyk</a>, " +
+        "ir pranešime, kai galėsi užsakyti.";
+      zinute.hidden = false;
+      return;
+    }
+    a.removeAttribute("aria-disabled");
+    a.href = krepselis();
+    a.innerHTML = 'Pereiti prie apmokėjimo <span aria-hidden="true">→</span>';
+    zinute.hidden = true;
+  }
+
+  function piesti() {
+    document.getElementById("ats-ne").setAttribute("aria-pressed", b.turiPulta?"false":"true");
+    document.getElementById("ats-taip").setAttribute("aria-pressed", b.turiPulta?"true":"false");
+    document.getElementById("pulto-blokas").hidden = b.turiPulta;
+    document.getElementById("dm-palyginimas").hidden = b.turiPulta;
+    if (!b.turiPulta) piestiPultus();
+    piestiAkinius();
+    piestiDeze();
+    document.getElementById("kaina").textContent = eur(suma());
+    piestiMygtuka();
+  }
+  document.getElementById("ats-ne").addEventListener("click", function(){ b.turiPulta=false; piesti(); });
+  document.getElementById("ats-taip").addEventListener("click", function(){ b.turiPulta=true; piesti(); });
+
+  /* ===== PULTU PALYGINIMO LENTELE (is whoop landingo) ===== */
+  var CMP_IKONOS = {
+    signalas: "M2 8.8a12 12 0 0 1 16 0M5 12a8 8 0 0 1 10 0M8 15.2a4 4 0 0 1 4 0",
+    zaidimas: "M6 12h4M8 10v4M15 11h.01M17.5 13h.01M4 8h14a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3z",
+    ekranas:  "M3 5h18v11H3zM9 20h6M12 16v4",
+    kanalai:  "M4 7h16M4 12h16M4 17h16M8 5v4M15 10v4M10 15v4",
+    baterija: "M4 8h13v8H4zM19 11v2M8 11v2M11 11v2",
+    svoris:   "M12 4v3M7 7h10l3 12H4zM12 11v4",
+    dydis:    "M4 9V4h5M20 15v5h-5M20 9V4h-5M4 15v5h5",
+    programa: "M9 8l-4 4 4 4M15 8l4 4-4 4",
+    modulis:  "M9 3v4M15 3v4M6 7h12v7a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4zM12 18v3"
+  };
+  var CMP_ZENKLAI = {
+    gerai: { kelias: "M5 10.5l3.2 3.2L15 7", etikete: "taip" },
+    vidut: { kelias: "M6 10h8", etikete: "iš dalies" },
+    nera:  { kelias: "M6.5 6.5l7 7M13.5 6.5l-7 7", etikete: "ne" }
+  };
+  var CMP_EILUTES = [
+    { pav: "Suderinamas su ELRS",      trum: "ELRS",          ikona: "signalas", taip: true },
+    { pav: "Veikia su simuliatoriumi", trum: "Simuliatorius", ikona: "zaidimas", taip: true },
+    { pav: "Ekranas",                  trum: "Ekranas",  ikona: "ekranas",  laukas: "ekranas",  zenklas: true },
+    { pav: "Kanalai",                  trum: "Kanalai",  ikona: "kanalai",  laukas: "kanalai",  zenklas: true },
+    { pav: "Baterija",                 trum: "Baterija", ikona: "baterija", laukas: "baterija", zenklas: true },
+    { pav: "Svoris",                   trum: "Svoris",   ikona: "svoris",   laukas: "svoris" },
+    { pav: "Dydis",                    trum: "Dydis",    ikona: "dydis",    laukas: "dydis" },
+    { pav: "Programinė įranga",        trum: "Programa", ikona: "programa", laukas: "programine" },
+    { pav: "Išorinio modulio lizdas",  trum: "Modulis",  ikona: "modulis",  laukas: "modulis",  zenklas: true }
+  ];
+
+  function svgKelias(viewBox, d, storis) {
+    var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    s.setAttribute("viewBox", viewBox);
+    s.setAttribute("fill", "none");
+    s.setAttribute("aria-hidden", "true");
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("d", d);
+    p.setAttribute("stroke", "currentColor");
+    p.setAttribute("stroke-width", storis);
+    p.setAttribute("stroke-linecap", "round");
+    p.setAttribute("stroke-linejoin", "round");
+    s.appendChild(p);
+    return s;
+  }
+  function cmpIkona(v) { return svgKelias("0 0 24 24", CMP_IKONOS[v] || "", "1.7"); }
+  function cmpZenklas(busena) {
+    var cfg = CMP_ZENKLAI[busena] || CMP_ZENKLAI.vidut;
+    var sp = document.createElement("span");
+    sp.className = "dm-cmp-z dm-cmp-z--" + busena;
+    sp.setAttribute("role", "img");
+    sp.setAttribute("aria-label", cfg.etikete);
+    sp.appendChild(svgKelias("0 0 20 20", cfg.kelias, "2.4"));
+    return sp;
+  }
+  /* Du tekstai viename langelyje: ilgas kompiuteryje, trumpas telefone.
+     Perjungia CSS — be JS ir be resize klausymosi. */
+  function cmpTekstas(ilgas, trumpas) {
+    var f = document.createDocumentFragment();
+    var a = document.createElement("span");
+    a.className = "dm-cmp-ilgas"; a.textContent = ilgas; f.appendChild(a);
+    var b = document.createElement("span");
+    b.className = "dm-cmp-trumpas";
+    b.textContent = (trumpas == null) ? ilgas : trumpas;
+    f.appendChild(b);
+    return f;
+  }
+
+  function piestiLentele() {
+    var dez = document.getElementById("dm-cmp");
+    if (!dez) return;
+    dez.innerHTML = "";
+    var lent = document.createElement("table");
+
+    var thead = document.createElement("thead");
+    var trh = document.createElement("tr");
+    trh.appendChild(document.createElement("th"));
+    PULTAI.forEach(function (p) {
+      var th = document.createElement("th");
+
+      var role = document.createElement("span");
+      role.className = "dm-cmp-role";
+      role.textContent = p.role;
+      th.appendChild(role);
+
+      /* Zymos vieta rezervuojama visada — kitaip stulpelis be zymos
+         issilygiuotu kitaip nei stulpelis su zyma. */
+      var z = document.createElement("span");
+      z.className = "dm-cmp-zenklas" + (p.zyma ? "" : " dm-cmp-zenklas--tuscia");
+      z.textContent = p.zyma || " ";
+      if (!p.zyma) z.setAttribute("aria-hidden", "true");
+      th.appendChild(z);
+
+      var box = document.createElement("span");
+      box.className = "dm-cmp-foto";
+      var img = document.createElement("img");
+      img.src = p.nuotr; img.alt = p.pav; img.loading = "lazy";
+      img.width = 112; img.height = 112;
+      box.appendChild(img);
+      th.appendChild(box);
+
+      var pav = document.createElement("span");
+      pav.className = "dm-cmp-pav";
+      pav.appendChild(cmpTekstas(p.pav, p.trum));
+      th.appendChild(pav);
+
+      var chip = document.createElement("span");
+      chip.className = "dm-cmp-chip";
+      chip.textContent = "ELRS";
+      th.appendChild(chip);
+
+      trh.appendChild(th);
+    });
+    thead.appendChild(trh);
+    lent.appendChild(thead);
+
+    var tbody = document.createElement("tbody");
+    CMP_EILUTES.forEach(function (eil) {
+      var tr = document.createElement("tr");
+      var th = document.createElement("th");
+      th.scope = "row";
+      var ik = document.createElement("span");
+      ik.className = "dm-cmp-ikona";
+      ik.appendChild(cmpIkona(eil.ikona));
+      th.appendChild(ik);
+      th.appendChild(cmpTekstas(eil.pav, eil.trum));
+      tr.appendChild(th);
+
+      PULTAI.forEach(function (p) {
+        var td = document.createElement("td");
+        if (eil.taip) {
+          td.className = "dm-cmp-c";
+          td.appendChild(cmpZenklas("gerai"));
+        } else if (eil.zenklas) {
+          var apv = document.createElement("span");
+          apv.className = "dm-cmp-su-zenklu";
+          var r = p.sp[eil.laukas];
+          apv.appendChild(cmpZenklas(r[1]));
+          var txt = document.createElement("span");
+          txt.textContent = r[0];
+          apv.appendChild(txt);
+          td.appendChild(apv);
+        } else {
+          td.textContent = p.sp[eil.laukas] || "–";
+        }
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    lent.appendChild(tbody);
+    dez.appendChild(lent);
+  }
+  piestiLentele();
+
+  /* Telefone lentele uzima kelis ekranus, tad pradzioje ji suskleista.
+     Mygtuka kuria JS — be JS lentele lieka matoma, kaip ir anksciau. */
+  (function () {
+    var blokas = document.getElementById("dm-palyginimas");
+    var intro = blokas && blokas.querySelector(".dm-cmp-intro");
+    if (!blokas || !intro) return;
+
+    var m = document.createElement("button");
+    m.type = "button";
+    m.className = "dm-cmp-jungiklis";
+    m.setAttribute("aria-controls", "dm-cmp");
+    var et = document.createElement("span");
+    var rod = document.createElement("span");
+    rod.className = "dm-cmp-jungiklis-rodykle";
+    rod.setAttribute("aria-hidden", "true");
+    rod.textContent = "▼";
+    m.appendChild(et);
+    m.appendChild(rod);
+    intro.appendChild(m);
+
+    var siauras = window.matchMedia("(max-width:620px)");
+    var svelniai = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function nustatyti(atidaryta) {
+      blokas.classList.toggle("dm-cmp-uzdaryta", !atidaryta);
+      m.setAttribute("aria-expanded", atidaryta ? "true" : "false");
+      et.textContent = atidaryta ? "Suskleisti palyginimą" : "Palyginti abu";
+    }
+    nustatyti(!siauras.matches);
+
+    m.addEventListener("click", function () {
+      var buvo = m.getAttribute("aria-expanded") === "true";
+      nustatyti(!buvo);
+      if (buvo) {
+        blokas.scrollIntoView({ behavior: svelniai ? "smooth" : "auto", block: "start" });
+      }
+    });
+
+    var perjungti = function () { if (!siauras.matches) nustatyti(true); };
+    if (siauras.addEventListener) siauras.addEventListener("change", perjungti);
+    else if (siauras.addListener) siauras.addListener(perjungti);
+
+    /* Nuoroda „Palyginti visus tris" isskleidzia lentele. */
+    document.addEventListener("click", function (e) {
+      var a = e.target && e.target.closest
+        ? e.target.closest('a[href="#dm-palyginimas"]') : null;
+      if (a) nustatyti(true);
+    });
+  })();
+
+  piesti();
+  ikeltiLikucius();
+  ikeltiPriedus();
+})();
+</script>
+
+<section class="garantijos">
+  <div class="garantijos-in">
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v10"/></svg>
+      <div><b>Nemokamas pristatymas</b><span>Perkant prekių virš €99 suteikiame nemokamą pristatymą</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h13a5 5 0 010 10h-6"/><path d="M7 5L3 9l4 4"/></svg>
+      <div><b>Nemokamas atsiėmimas Vilniuje</b><span>Atsiimkite Vilniuje nemokamai, iš anksto susitarus</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5 5 0 00-7.1 0L12 7.3l-1.7-1.7a5 5 0 10-7.1 7.1L12 21.4l8.8-8.7a5 5 0 000-7.1z"/></svg>
+      <div><b>Servisas Vilniuje</b><span>Patys taisome FPV dronus ir įrangą</span></div>
+    </div>
+    <div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9a4 4 0 100 6M8 11h5M8 13h5"/></svg>
+      <div><b>Saugūs atsiskaitymai</b><span>Mokėkite kortele, el. bankininkyste arba prekių atsiėmimo metu</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lipnus mygtukas telefone — veda i pasirinkima. -->
+<div class="lipnus" id="lipnus" aria-hidden="true">
+  <b class="lipnus-kaina" id="lipnus-kaina">€414,97</b>
+  <a class="lipnus-mygt" href="#rinktis" tabindex="-1">Rinktis komplektą <span aria-hidden="true">→</span></a>
+</div>
+
+<footer class="poraste">
+  <div class="poraste-in">
+    <div class="poraste-apie">
+      <b>Dronų Mokykla</b> · DroneFix.lt
+      <p>Esame pirmasis FPV servisas Lietuvoje, užsiimantis FPV dronų prekyba,
+         dalių prekyba, mokymais ir serviso paslaugomis.</p>
+    </div>
+    <div>
+      <h3>Meniu</h3>
+      <ul>
+        <li><a href="https://dronumokykla.lt/">Pagrindinis</a></li>
+        <li><a href="https://dronumokykla.lt/collections">Parduotuvė</a></li>
+        <li><a href="https://dronumokykla.lt/pages/contact">Kontaktai</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Informacija</h3>
+      <ul>
+        <li><a href="https://dronumokykla.lt/policies/terms-of-service">Pirkimo taisyklės</a></li>
+        <li><a href="https://dronumokykla.lt/policies/shipping-policy">Pristatymo sąlygos</a></li>
+        <li><a href="https://dronumokykla.lt/policies/refund-policy">Prekių grąžinimas</a></li>
+        <li><a href="https://dronumokykla.lt/policies/legal-notice">Garantinis aptarnavimas</a></li>
+        <li><a href="https://dronumokykla.lt/policies/privacy-policy">Privatumo politika</a></li>
+        <!-- Privaloma sutarties atsisakymo funkcija (CK 6.228-10 str. 11-15 d.,
+             galioja nuo 2026-06-19). Formuluote turi buti butent tokia. -->
+        <li><a href="https://dronumokykla.lt/pages/atsisakymo-forma">Atsisakyti sutarties čia</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pagalba</h3>
+      <ul>
+        <li>Dronefix, UAB, įmonės kodas 306171324</li>
+        <li>J. Jasinskio g. 16, Vilnius, 03163 Vilniaus m. sav.</li>
+        <li><a href="mailto:info@dronefix.lt">info@dronefix.lt</a></li>
+        <li><a href="tel:+37061930080">+370 619 30080</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="poraste-apacia">
+    <span>© 2026 Dronų Mokykla</span>
+    <span>
+      <a href="https://www.facebook.com/people/DroneFixlt/100089861933596/" target="_blank" rel="noopener">Facebook</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.instagram.com/dronefix.lt/" target="_blank" rel="noopener">Instagram</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+/* Lipnus mygtukas telefone. Laukiam, kol visas puslapis sudetas: slapuku
+   juosta iterpiama tik build metu po sio skripto. */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.getElementById("lipnus");
+  var hero = document.getElementById("hero");
+  var apziura = document.getElementById("apziura");
+  var rinkimas = document.querySelector(".stulpeliai");
+  var kaina = document.getElementById("kaina");
+  var lk = document.getElementById("lipnus-kaina");
+  var nuoroda = el && el.querySelector("a");
+  if (!el || !hero || !rinkimas || !kaina || !("IntersectionObserver" in window)) return;
+
+  var heroMatomas = true, apziuraMatoma = false, rinkimasMatomas = false;
+  function atnaujinti() {
+    var juosta = document.getElementById("dm-sutikimas");
+    var rodyti = !heroMatomas && !apziuraMatoma && !rinkimasMatomas &&
+                 !(juosta && juosta.classList.contains("dm-rodom"));
+    el.classList.toggle("rodom", rodyti);
+    el.setAttribute("aria-hidden", rodyti ? "false" : "true");
+    nuoroda.tabIndex = rodyti ? 0 : -1;
+  }
+  function kainaIs() { lk.textContent = kaina.textContent; }
+
+  new IntersectionObserver(function (e) { heroMatomas = e[0].isIntersecting; atnaujinti(); }).observe(hero);
+  new IntersectionObserver(function (e) { rinkimasMatomas = e[0].isIntersecting; atnaujinti(); }).observe(rinkimas);
+  if (apziura) new IntersectionObserver(function (e) { apziuraMatoma = e[0].isIntersecting; atnaujinti(); }).observe(apziura);
+  var juosta = document.getElementById("dm-sutikimas");
+  if (juosta) new MutationObserver(atnaujinti).observe(juosta, { attributes: true, attributeFilter: ["class"] });
+  new MutationObserver(kainaIs).observe(kaina, { childList: true, characterData: true, subtree: true });
+  kainaIs();
+  atnaujinti();
+});
+</script>
+</body>
+</html>
