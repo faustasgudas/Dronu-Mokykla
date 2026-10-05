@@ -1,0 +1,38 @@
+{%- comment -%}
+  Grazina „taip", jei krepselyje (arba nurodytoje prekeje) yra skaitmeninis
+  produktas — mokymai. Pagal tai slepiami greito apmokejimo mygtukai, kurie
+  apeitu sutikimo varnele.
+
+  Naudojimas:
+    {%- capture dm_skaitm -%}{%- render 'dm-ar-skaitmeninis' -%}{%- endcapture -%}
+    {%- capture dm_skaitm -%}{%- render 'dm-ar-skaitmeninis', preke: product -%}{%- endcapture -%}
+    {%- unless dm_skaitm contains 'taip' -%} ... {%- endunless -%}
+
+  Zymos: „skaitmeninis" yra pagrindine, „Kursai" palikta todel, kad veiktu ir
+  nespejus pridėti naujosios. Pridejus „skaitmeninis", „Kursai" galima isimti.
+{%- endcomment -%}
+
+{%- liquid
+  assign dm_rado = false
+
+  if preke
+    assign zymos = preke.tags | join: ','
+    if zymos contains 'skaitmeninis' or zymos contains 'Kursai'
+      assign dm_rado = true
+    endif
+  else
+    for item in cart.items
+      assign zymos = item.product.tags | join: ','
+      if zymos contains 'skaitmeninis' or zymos contains 'Kursai'
+        assign dm_rado = true
+        break
+      endif
+    endfor
+  endif
+
+  if dm_rado
+    echo 'taip'
+  else
+    echo 'ne'
+  endif
+-%}
