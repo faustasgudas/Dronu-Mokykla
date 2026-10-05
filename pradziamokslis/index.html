@@ -76,9 +76,21 @@ html,body{margin:0;padding:0;background:#fff;}
 /* Nepazymejus mygtukas atrodo neaktyvus, bet lieka spaudziamas — paspaudus
    parodom, kodel nepraleidzia. Disabled mygtukas to paaiskinti negaletu. */
 #dm .dm-sutik-laukia{opacity:.55;}
+/* Telefone blokas suspaustas: su ankstesniais tarpais „Pasirink valdymo
+   pultą" ir pirkimo mygtukas nebetilpdavo i viena ekrana (truko 35 px). */
 @media (max-width:620px){
-  #dm .dm-sutik{margin-top:18px;padding:14px;}
-  #dm .dm-sutik-klaida,#dm .dm-sutik-smulk{margin-left:0;}
+  #dm .dm-sutik{margin-top:12px;padding:11px 12px;}
+  #dm .dm-sutik-eil{gap:10px;}
+  #dm .dm-sutik-eil span{font-size:0.84375rem;line-height:1.4;}
+  #dm .dm-sutik-klaida{margin:7px 0 0;font-size:0.875rem;line-height:1.35;}
+  #dm .dm-sutik-smulk{margin:6px 0 0;font-size:0.75rem;line-height:1.4;}
+  #dm .dm-sutik-smulk+.dm-sutik-smulk{margin-top:3px;}
+}
+@media (max-width:380px){
+  #dm .dm-sutik{margin-top:10px;padding:10px 11px;}
+  #dm .dm-sutik-eil{gap:9px;}
+  #dm .dm-sutik-eil span{font-size:0.8125rem;line-height:1.36;}
+  #dm .dm-sutik-smulk{font-size:0.71875rem;line-height:1.35;}
 }
 
 /* Kodėl verta — kortelės su antrašte po nuotrauka */
@@ -691,7 +703,7 @@ html,body{margin:0;padding:0;background:#fff;}
   #dm .dm-opt-body{padding:11px 12px;}
   #dm .dm-own{margin-top:10px;}
   #dm .dm-own-body{padding:13px 16px;}
-  #dm .dm-buybar{margin-top:18px;padding-top:16px;gap:12px;}
+  #dm .dm-buybar{margin-top:12px;padding-top:11px;gap:12px;}
   #dm .dm-ship{margin-top:14px;}
 }
 /* ===== HERO NUOTRAUKOS REMAS =====
