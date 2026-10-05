@@ -15,12 +15,51 @@
   cursor: pointer;
   margin: 0;
 }
-.dm-sutik-dez {
+/* Deziute piesiam patys. Temos theme.css visoms varnelems uzdeda
+   appearance:none ir piesia savo varnele per ::after, bet remiasi spalvu
+   kintamaisiais (--color-foreground, --active), kuriu musu bloke nera —
+   todel pazymeta ir nepazymeta deziute atrodydavo vienodai ir paspaudus
+   vizualiai niekas nevykdavo. Todel: fiksuotos spalvos, jokiu kintamuju. */
+.dm-sutik input.dm-sutik-dez {
+  -webkit-appearance: none;
+  appearance: none;
   flex: 0 0 auto;
+  display: inline-block;
+  position: relative;
   width: 22px;
   height: 22px;
   margin: 1px 0 0;
+  padding: 0;
+  border: 1.5px solid #8a8a94;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: none;
   cursor: pointer;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+.dm-sutik input.dm-sutik-dez::before { content: none; }
+.dm-sutik input.dm-sutik-dez::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  border-radius: 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+.dm-sutik input.dm-sutik-dez:checked {
+  background: #1919ff;
+  border-color: #1919ff;
+}
+.dm-sutik input.dm-sutik-dez:checked::after { opacity: 1; }
+.dm-sutik input.dm-sutik-dez:focus-visible {
+  outline: 3px solid #1919ff;
+  outline-offset: 2px;
 }
 .dm-sutik-eil span {
   font-size: 1.4rem;

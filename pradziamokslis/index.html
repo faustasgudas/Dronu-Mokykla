@@ -64,8 +64,24 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-sutik{margin-top:28px;padding:16px 18px;border:1.5px solid var(--dm-line);
   border-radius:14px;background:#fff;}
 #dm .dm-sutik-eil{display:flex;gap:12px;align-items:flex-start;cursor:pointer;}
-#dm .dm-sutik-dez{flex:0 0 auto;width:22px;height:22px;margin:1px 0 0;
-  accent-color:var(--dm-blue);cursor:pointer;}
+/* Deziute piesiam patys, o ne paliekam naršykles natūralia. Sita sekcija
+   gyvena ir Shopify temoje (/products/fpv), o temos theme.css visoms
+   varnelems uzdeda appearance:none ir piesia savo per ::after, remdamasi
+   kintamaisiais (--active, --color-foreground), kuriu musu bloke nera.
+   Rezultatas buvo: deziute atrode vienodai ir pazymeta, ir nepazymeta.
+   Todel fiksuotos spalvos ir sava varnele — vienodai veikia abiejose vietose. */
+#dm .dm-sutik-dez{-webkit-appearance:none;appearance:none;flex:0 0 auto;
+  display:inline-block;position:relative;width:22px;height:22px;margin:1px 0 0;
+  padding:0;border:1.5px solid #8A8A94;border-radius:5px;background:#fff;
+  box-shadow:none;cursor:pointer;
+  transition:background-color .12s ease,border-color .12s ease;}
+#dm .dm-sutik-dez::before{content:none;}
+#dm .dm-sutik-dez::after{content:"";display:block;position:absolute;
+  left:7px;top:3px;width:5px;height:10px;border:solid #fff;
+  border-width:0 2.5px 2.5px 0;border-radius:0;transform:rotate(45deg);opacity:0;}
+#dm .dm-sutik-dez:checked{background:var(--dm-blue);border-color:var(--dm-blue);}
+#dm .dm-sutik-dez:checked::after{opacity:1;}
+#dm .dm-sutik-dez:focus-visible{outline:3px solid var(--dm-blue);outline-offset:2px;}
 #dm .dm-sutik-eil span{font-size:0.9375rem;line-height:1.5;color:var(--dm-ink);}
 #dm .dm-sutik-eil a{text-decoration:underline;text-underline-offset:2px;}
 #dm .dm-sutik-klaida{margin:10px 0 0 34px;font-size:0.9375rem;font-weight:700;
