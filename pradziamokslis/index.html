@@ -154,7 +154,10 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-sign{margin-top:22px;font-weight:800;}
 
 /* Pasitikėjimo juosta */
-#dm .dm-trustbar--3{grid-template-columns:repeat(3,1fr);}
+/* Dviguba klase butina: bazine .dm-trustbar taisykle aprasyta ZEMIAU ir
+   turi toki pati svori, tad su viena klase ji laimedavo ir trys plyteles
+   buvo dedamos i keturis stulpelius. */
+#dm .dm-trustbar.dm-trustbar--3{grid-template-columns:repeat(3,1fr);}
 #dm .dm-trustbar{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
 #dm .dm-trustbar h3{font-weight:800;font-size:1rem;margin-bottom:6px;}
 #dm .dm-trustbar p{font-size:0.9375rem;line-height:1.5;color:var(--dm-muted);}
@@ -169,7 +172,7 @@ html,body{margin:0;padding:0;background:#fff;}
   font-size:0.8125rem;font-weight:700;color:var(--dm-muted);}
 
 @media (max-width:900px){
-  #dm .dm-trustbar--3{grid-template-columns:1fr;}
+  #dm .dm-trustbar.dm-trustbar--3{grid-template-columns:1fr;}
   #dm .dm-why{grid-template-columns:1fr;}
   #dm .dm-wide{grid-template-columns:1fr;}
   #dm .dm-trustbar{grid-template-columns:1fr 1fr;gap:24px;}
@@ -1531,15 +1534,14 @@ html,body{margin:0;padding:0;background:#fff;}
 
 <!-- ============ PASITIKĖJIMO JUOSTA ============ -->
 <section class="dm-sec dm-grey dm-sec--tight" style="padding-bottom:clamp(40px,5vw,56px);">
-  <div class="dm-wrap dm-trustbar">
+  <!-- Treju plyteliu: „14 dienu grazinimas" isimta. Grazinimo teise yra
+       istatymine pareiga, ne musu privalumas — rodyti ja salia nemokamo
+       pristatymo draudzia NKV direktyvos I priedo 10 p. Nuoroda i
+       grazinimo salygas lieka porasteje. -->
+  <div class="dm-wrap dm-trustbar dm-trustbar--3">
     <div>
       <h3>Nemokamas pristatymas</h3>
       <p>Perkant prekių virš €99 suteikiame nemokamą pristatymą.</p>
-    </div>
-    <div>
-      <h3>14 dienų grąžinimas</h3>
-      <p>Prekes galima grąžinti per 14 dienų. Mokymų medžiagai taikomos
-         atskiros sąlygos.</p>
     </div>
     <div>
       <!-- Ne „mes teikiame", o „taikoma pagal istatyma": 2 metu garantija yra

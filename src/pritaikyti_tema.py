@@ -143,6 +143,32 @@ PAKEITIMAI = [
         """{%- comment -%} LT/EN jungiklis isimtas {%- endcomment -%}""",
         "LT/EN jungiklis isimtas",
     ),
+    (
+        # Sutarties atsisakymo nuoroda i visada matoma porastes apacia.
+        "sections/footer.liquid",
+        """      <div class="footer__bottom-row flex justify-between items-start">
+        <div class="footer__copyright">
+          <p class="footer__copyright-content">""",
+        """      {%- comment -%}
+        Sutarties atsisakymo nuoroda (CK 6.228-10 str. 11-15 d.) privalo buti
+        lengvai pasiekiama. Porastes blokai telefone ir plansetėje yra
+        <details> ir numatytai suskleisti, tad „Informacija" bloke esanti
+        nuoroda ten nesimatydavo. Cia ji visada matoma - sis blokas i joki
+        <details> nepatenka.
+      {%- endcomment -%}
+      <div class="footer__bottom-row dm-atsisakymas">
+        <a href="/pages/atsisakymo-forma">Atsisakyti sutarties čia</a>
+      </div>
+      <style>
+        .dm-atsisakymas{margin:0 0 14px}
+        .dm-atsisakymas a{text-decoration:underline;text-underline-offset:3px;
+          font-weight:600;font-size:1.4rem}
+      </style>
+      <div class="footer__bottom-row flex justify-between items-start">
+        <div class="footer__copyright">
+          <p class="footer__copyright-content">""",
+        "dm-atsisakymas",
+    ),
 ]
 
 
