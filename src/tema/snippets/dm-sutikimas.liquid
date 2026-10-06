@@ -33,13 +33,8 @@
         id="dm-sutik-{{ vieta | default: 'cart' }}"
         data-dm-sutikimas-dez
       >
-      {%- comment -%}
-        Krepselyje gali buti bet kokiu prekiu, ne tik pultelis, todel cia
-        „Kitoms prekems", o ne „Pulteliui" kaip landinge.
-      {%- endcomment -%}
       <span>
-        Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš karto, ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti sutarties.
-        Kitoms prekėms ji galioja įprastai.
+        Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš karto, ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti sutarties. Kitoms prekėms ji galioja įprastai.
       </span>
     </label>
 
@@ -47,21 +42,9 @@
       Norėdami tęsti, pažymėkite sutikimą.
     </p>
 
-    {%- comment -%}
-      Visa, ko reikalauja istatymas, matosi pacioje varneleje. Cia tik
-      papildoma informacija ir musu geranoriska 50 % taisykle, todel ja
-      galima suskleisti. <details> veikia ir palietus pirstu.
-    {%- endcomment -%}
-    <details class="dm-sutik-daugiau">
-      <summary>Plačiau</summary>
-      <p class="dm-sutik-smulk">
-        Nepaisant to, savo iniciatyva per 14 dienų grąžiname pinigus už kursą, jei peržiūrėjai ne daugiau kaip 50 %. Negrąžiname tik už aktyvuotą simuliatoriaus licencijos raktą (19,99 €).
-      </p>
-      <p class="dm-sutik-smulk">
-        Pirkdami sutinkate su
-        <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}"
-           target="_blank" rel="noopener">pirkimo taisyklėmis</a>.
-      </p>
-    </details>
+    <p class="dm-sutik-smulk">
+      <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}"
+         target="_blank" rel="noopener">Pirkimo taisyklės</a>
+    </p>
   </div>
 {%- endif -%}

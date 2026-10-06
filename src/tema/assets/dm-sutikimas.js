@@ -184,14 +184,8 @@
       '</label>' +
       '<p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>' +
         'Norėdami tęsti, pažymėkite sutikimą.</p>' +
-      '<details class="dm-sutik-daugiau"><summary>Plačiau</summary>' +
-        '<p class="dm-sutik-smulk">Nepaisant to, savo iniciatyva per 14 ' +
-        'dienų grąžiname pinigus už kursą, jei peržiūrėjai ne daugiau kaip ' +
-        '50 %. Negrąžiname tik už aktyvuotą simuliatoriaus licencijos ' +
-        'raktą (19,99 €).</p>' +
-        '<p class="dm-sutik-smulk"><a href="/policies/terms-of-service" ' +
-        'target="_blank" rel="noopener">Pirkimo taisyklės</a></p>' +
-      '</details>';
+      '<p class="dm-sutik-smulk"><a href="/policies/terms-of-service" ' +
+      'target="_blank" rel="noopener">Pirkimo taisyklės</a></p>';
     return d;
   }
 

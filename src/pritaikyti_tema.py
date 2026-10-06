@@ -124,6 +124,25 @@ PAKEITIMAI = [
             {%- endif -%}""",
         "show_dynamic_checkout_buttons and dm_skaitm",
     ),
+    (
+        # LT/EN jungiklis antrasteje. Tai ne Shopify kalbos parinkiklis
+        # (enable_language_selector jau false), o ranka idetas blokas,
+        # vedantis i dronefix.eu. Isimam.
+        "sections/header.liquid",
+        """<div class="header__lang flex items-center justify-center">
+  {%- if request.host contains 'dronefix' -%}
+    <a href="https://dronumokykla.lt" class="header__lang-btn" hreflang="lt">LT</a>
+    <span class="header__lang-sep" aria-hidden="true">/</span>
+    <span class="header__lang-btn is-active">EN</span>
+  {%- else -%}
+    <span class="header__lang-btn is-active">LT</span>
+    <span class="header__lang-sep" aria-hidden="true">/</span>
+    <a href="https://dronefix.eu" class="header__lang-btn" hreflang="en">EN</a>
+  {%- endif -%}
+</div>""",
+        """{%- comment -%} LT/EN jungiklis isimtas {%- endcomment -%}""",
+        "LT/EN jungiklis isimtas",
+    ),
 ]
 
 
