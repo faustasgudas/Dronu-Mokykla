@@ -179,9 +179,10 @@
       '<label class="dm-sutik-eil" for="dm-sutik-slidecart">' +
         '<input type="checkbox" class="dm-sutik-dez" id="dm-sutik-slidecart" data-dm-sutikimas-dez>' +
         '<span>Sutinku, kad skaitmeniniai produktai (kursas ir ' +
-        'simuliatoriaus licencija) būtų suteikti iš karto ir suprantu, ' +
+        'simuliatoriaus licencija) būtų suteikti iš karto, ir suprantu, ' +
         'kad dėl to netenku 14 dienų teisės atsisakyti sutarties ir ' +
-        'susigrąžinti sumokėtus pinigus.</span>' +
+        'susigrąžinti sumokėtus pinigus. Fizinėms prekėms (pvz., ' +
+        'pulteliui) ši teisė galioja įprastai.</span>' +
       '</label>' +
       '<p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>' +
         'Norėdami tęsti, pažymėkite sutikimą.</p>' +
