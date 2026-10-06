@@ -1853,7 +1853,10 @@ html,body{margin:0;padding:0;background:#fff;}
     shopDomain: "inmmjj-kg.myshopify.com",
     productId: "15967682527577",
     kiekRodyti: 0,        // 0 = rodyti visus; įrašyk skaičių, jei nori apriboti
-    minZvaigzdes: 4,      // rodyti tik nuo tiek žvaigždučių (1 = visus, ir neigiamus)
+    minZvaigzdes: 1,      // rodom VISUS — nieko neslepiam. Neigiamų atsiliepimų
+                          // slėpimas, kai šalia rašomas bendras jų skaičius, yra
+                          // klaidinantis informacijos neatskleidimas.
+                          // Vidurkis ir taip skaičiuojamas iš visų.
     minIlgis: 0,          // 0 = nefiltruoti pagal ilgį
     maxPuslapiu: 6        // po 30 atsiliepimų puslapyje; 6 = iki 180
   };
