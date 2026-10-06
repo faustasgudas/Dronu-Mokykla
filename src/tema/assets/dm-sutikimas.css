@@ -88,7 +88,10 @@
 /* „Plačiau ▾" — suskleista papildoma informacija. Naudojam <details>, o ne
    hover: telefone uzvedimo pele nera, o paliesti <summary> galima visur.
    Rodykle butina — kitaip niekas nezino, kad yra ka atverti. */
-.dm-sutik-daugiau { margin: 6px 0 0 34px; }
+/* display butinas: AMP Slide Cart programeles CSS nustato
+   details{display:inline}, ir tada jungiklis nuplaukia i teksto eilutes
+   gala, o jo paspaudimo plotas atsiduria ne ten, kur matosi. */
+.dm-sutik-daugiau { display: block; margin: 6px 0 0 34px; }
 .dm-sutik-daugiau summary {
   display: inline-flex;
   align-items: center;
