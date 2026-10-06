@@ -9,11 +9,13 @@
 # ir guli landingas/img/.
 nuotraukos/
 
-# Laikini darbo failai
-_*.py
-_*.html
-_whoop_*.txt
-check.js
+# Laikini darbo failai. Bruksnys priekyje butinas: be jo taisykle galioja
+# visuose aplankuose ir isfiltruoja src/_keliai.py — moduli, kuri importuoja
+# visi build skriptai. Tada is svaraus klono niekas nepasistato.
+/_*.py
+/_*.html
+/_whoop_*.txt
+/check.js
 
 # Windows / redaktoriai
 Thumbs.db
