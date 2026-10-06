@@ -427,6 +427,41 @@ button.smulki{width:100%;text-align:left}
   background:var(--blue);color:#fff;border-radius:999px;padding:16px 22px;
   font-weight:800;font-size:1rem;text-decoration:none}
 .pirkti:hover{background:#1414D6}
+/* Sutikimas del skaitmeninio turinio (rodomas tik pazymejus kurso prieda) */
+.sutik{margin:14px 0 0;padding:14px 16px;border:1.5px solid var(--line);
+  border-radius:12px;background:#fff;text-align:left}
+.sutik[hidden]{display:none}
+.sutik-eil{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.sutik-dez{-webkit-appearance:none;appearance:none;flex:0 0 auto;display:inline-block;
+  position:relative;width:22px;height:22px;margin:1px 0 0;padding:0;
+  border:1.5px solid #8A8A94;border-radius:5px;background:#fff;cursor:pointer;
+  transition:background-color .12s ease,border-color .12s ease}
+.sutik-dez::after{content:"";display:block;position:absolute;left:7px;top:3px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;
+  transform:rotate(45deg);opacity:0}
+.sutik-dez:checked{background:var(--blue);border-color:var(--blue)}
+.sutik-dez:checked::after{opacity:1}
+.sutik-eil span{font-size:.9375rem;line-height:1.45;color:var(--ink)}
+.sutik-klaida{margin:10px 0 0 34px;font-size:.9375rem;font-weight:700;
+  color:#CB321E;line-height:1.4}
+.sutik-klaida[hidden]{display:none}
+.sutik-daugiau{margin:6px 0 0 34px}
+.sutik-daugiau summary{display:inline-flex;align-items:center;gap:6px;list-style:none;
+  cursor:pointer;font-size:.8125rem;font-weight:700;color:var(--blue);
+  padding:6px 2px;min-height:32px;text-decoration:underline;text-underline-offset:3px}
+.sutik-daugiau summary::-webkit-details-marker{display:none}
+.sutik-daugiau summary::after{content:"BE";font-size:.6875rem;line-height:1;
+  text-decoration:none;transition:transform .18s ease}
+.sutik-daugiau[open] summary::after{transform:rotate(180deg)}
+.sutik-smulk{margin:6px 0 0;font-size:.8125rem;line-height:1.5;color:var(--muted)}
+/* Nepazymejus mygtukas atrodo neaktyvus, bet lieka spaudziamas — paspaudus
+   paaiskinam, kodel nepraleidzia. */
+.pirkti.sutik-laukia{opacity:.55}
+@media (max-width:760px){
+  .sutik{padding:12px 13px}
+  .sutik-eil span{font-size:.84375rem;line-height:1.4}
+  .sutik-klaida,.sutik-daugiau{margin-left:0}
+}
 .smulkiai{margin-top:10px;font-size:.75rem;color:var(--muted);text-align:center;line-height:1.5}
 
 .skiriasi{background:#fff;padding:80px 20px}
@@ -977,6 +1012,27 @@ button.smulki{width:100%;text-align:left}
         <div class="priedai" id="priedai" hidden>
           <div class="priedai-antraste">Dažniausiai pridedama</div>
           <div id="priedu-sarasas"></div>
+        </div>
+        <!-- Sutikimas del skaitmeninio turinio (CK 6.228-10 str. 2 d. 13 p.).
+             Rodom tik tada, kai pazymetas kurso priedas — be jo krepselyje
+             skaitmeninio turinio nera ir sutikimo nereikia. -->
+        <div class="sutik" id="sutik" hidden>
+          <label class="sutik-eil" for="sutik-dez">
+            <input type="checkbox" id="sutik-dez" class="sutik-dez">
+            <span>Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš karto,
+              ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti sutarties.
+              Kitoms prekėms ji galioja įprastai.</span>
+          </label>
+          <p class="sutik-klaida" id="sutik-klaida" role="alert" hidden>
+            Norėdami tęsti, pažymėkite sutikimą.</p>
+          <details class="sutik-daugiau">
+            <summary>Plačiau</summary>
+            <p class="sutik-smulk">Nepaisant to, savo iniciatyva per 14 dienų
+              grąžiname pinigus už kursą, jei peržiūrėjai ne daugiau kaip 50 %.
+              Negrąžiname tik už aktyvuotą simuliatoriaus licencijos raktą (19,99 €).</p>
+            <p class="sutik-smulk"><a href="https://dronumokykla.lt/policies/terms-of-service"
+               target="_blank" rel="noopener">Pirkimo taisyklės</a></p>
+          </details>
         </div>
         <a class="pirkti" id="pirkti" href="#">Pereiti prie apmokėjimo <span aria-hidden="true">→</span></a>
         <div class="smulkiai">
@@ -1671,6 +1727,61 @@ button.smulki{width:100%;text-align:left}
     return rasta.length ? "?" + rasta.join("&") : "";
   }
 
+  /* ===== SUTIKIMAS DEL SKAITMENINIO TURINIO =====
+     Kursa cia galima pridėti kaip prieda, todel ta pati varnele reikalinga
+     ir siame puslapyje — kitaip skaitmeninis turinys butu nuperkamas be
+     sutikimo. Rodom tik tada, kai priedas pazymetas. */
+  var SUTIK_ATR = "Sutikimas dėl skaitmeninio turinio";
+  var sutikBlokas = document.getElementById("sutik");
+  var sutikDez = document.getElementById("sutik-dez");
+  var sutikKlaida = document.getElementById("sutik-klaida");
+  var mygtukasPirkti = document.getElementById("pirkti");
+
+  function arReikiaSutikimo() {
+    return !!priedaiPazymeti["kursas"];
+  }
+
+  function sutikLaikas() {
+    var d = new Date();
+    function du(n) { return (n < 10 ? "0" : "") + n; }
+    return d.getFullYear() + "-" + du(d.getMonth() + 1) + "-" + du(d.getDate()) +
+           " " + du(d.getHours()) + ":" + du(d.getMinutes());
+  }
+
+  function atnaujintiSutikima() {
+    var reikia = arReikiaSutikimo();
+    sutikBlokas.hidden = !reikia;
+    if (!reikia) {
+      sutikDez.checked = false;
+      sutikKlaida.hidden = true;
+    }
+    mygtukasPirkti.classList.toggle("sutik-laukia", reikia && !sutikDez.checked);
+  }
+
+  sutikDez.addEventListener("change", function () {
+    if (sutikDez.checked) sutikKlaida.hidden = true;
+    atnaujintiSutikima();
+  });
+
+  mygtukasPirkti.addEventListener("click", function (e) {
+    if (!arReikiaSutikimo()) return;          /* kurso krepselyje nera */
+    if (!sutikDez.checked) {
+      e.preventDefault();
+      sutikKlaida.hidden = false;
+      sutikDez.focus({ preventScroll: true });
+      sutikKlaida.scrollIntoView({ block: "nearest" });
+      return;
+    }
+    /* href'o nekeiciam — jis visada lieka svarus. Sutikima pridedam tik
+       prie sios navigacijos, kad nuemus varnele ar atidarius nuoroda nauju
+       skirtuku i uzsakyma nepatektu sutikimas, kurio zmogus nedave. */
+    e.preventDefault();
+    var h = mygtukasPirkti.getAttribute("href") || "";
+    var p = "attributes[" + encodeURIComponent(SUTIK_ATR) + "]=" +
+            encodeURIComponent("Taip, " + sutikLaikas());
+    window.location.href = h + (h.indexOf("?") === -1 ? "?" : "&") + p;
+  });
+
   function piesti() {
     document.getElementById("ats-ne").setAttribute("aria-pressed", b.turiPulta?"false":"true");
     document.getElementById("ats-taip").setAttribute("aria-pressed", b.turiPulta?"true":"false");
@@ -1683,6 +1794,7 @@ button.smulki{width:100%;text-align:left}
     document.getElementById("kaina").textContent = eur(v.kaina + priedaiSuma());
     document.getElementById("pirkti").href =
       PARDUOTUVE + "/cart/" + v.id + ":1" + priedaiNuorodai() + reklamosZymos();
+    atnaujintiSutikima();
   }
   document.getElementById("ats-ne").addEventListener("click", function(){ b.turiPulta=false; piesti(); });
   document.getElementById("ats-taip").addEventListener("click", function(){ b.turiPulta=true; piesti(); });

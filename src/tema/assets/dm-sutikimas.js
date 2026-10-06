@@ -178,16 +178,17 @@
     d.innerHTML =
       '<label class="dm-sutik-eil" for="dm-sutik-slidecart">' +
         '<input type="checkbox" class="dm-sutik-dez" id="dm-sutik-slidecart" data-dm-sutikimas-dez>' +
-        '<span>Sutinku gauti skaitmeninius produktus (kursą ir simuliatoriaus ' +
-        'licenciją) iš karto ir suprantu, kad dėl to jų grąžinti negalėsiu. ' +
-        'Kitoms prekėms taikoma įprasta 14 d. grąžinimo tvarka.</span>' +
+        '<span>Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš ' +
+        'karto, ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti ' +
+        'sutarties. Kitoms prekėms ji galioja įprastai.</span>' +
       '</label>' +
       '<p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>' +
         'Norėdami tęsti, pažymėkite sutikimą.</p>' +
       '<details class="dm-sutik-daugiau"><summary>Plačiau</summary>' +
-        '<p class="dm-sutik-smulk">O jei kursas nepatiks? Per 14 dienų, ' +
-        'peržiūrėjus iki 50 % kurso, savo iniciatyva grąžinsime pinigus už ' +
-        'kursą, išskyrus simuliatoriaus licenciją (19,99 €).</p>' +
+        '<p class="dm-sutik-smulk">Nepaisant to, savo iniciatyva per 14 ' +
+        'dienų grąžiname pinigus už kursą, jei peržiūrėjai ne daugiau kaip ' +
+        '50 %. Negrąžiname tik už aktyvuotą simuliatoriaus licencijos ' +
+        'raktą (19,99 €).</p>' +
         '<p class="dm-sutik-smulk"><a href="/policies/terms-of-service" ' +
         'target="_blank" rel="noopener">Pirkimo taisyklės</a></p>' +
       '</details>';

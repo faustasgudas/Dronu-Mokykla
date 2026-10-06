@@ -999,9 +999,8 @@
     <div class="dm-sutik">
       <label class="dm-sutik-eil" for="dm-sutik-dez">
         <input type="checkbox" id="dm-sutik-dez" class="dm-sutik-dez">
-        <span>Sutinku gauti skaitmeninius produktus (kursą ir simuliatoriaus
-          licenciją) iš karto ir suprantu, kad dėl to jų grąžinti negalėsiu.
-          Pulteliui taikoma įprasta 14 d. grąžinimo tvarka.</span>
+        <span>Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš karto, ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti sutarties.
+          Kitoms prekėms ji galioja įprastai.</span>
       </label>
       <p class="dm-sutik-klaida" id="dm-sutik-klaida" role="alert" hidden>
         Norėdami tęsti, pažymėkite sutikimą.</p>
@@ -1011,9 +1010,7 @@
            telefone neveiktu. -->
       <details class="dm-sutik-daugiau">
         <summary>Plačiau</summary>
-        <p class="dm-sutik-smulk">O jei kursas nepatiks? Per 14 dienų,
-          peržiūrėjus iki 50 % kurso, savo iniciatyva grąžinsime pinigus už
-          kursą, išskyrus simuliatoriaus licenciją (19,99 €).</p>
+        <p class="dm-sutik-smulk">Nepaisant to, savo iniciatyva per 14 dienų grąžiname pinigus už kursą, jei peržiūrėjai ne daugiau kaip 50 %. Negrąžiname tik už aktyvuotą simuliatoriaus licencijos raktą (19,99 €).</p>
         <p class="dm-sutik-smulk">
           <a href="/policies/terms-of-service" target="_blank" rel="noopener">Pirkimo taisyklės</a></p>
       </details>
@@ -2007,14 +2004,18 @@
         klaida.scrollIntoView({ block: "nearest" });
         return;
       }
-      /* Atributa prikabinam tik paspaudus: varianto pakeitimas perrašo
-         href, tad anksciau idetas parametras butu dinges. */
+      /* href'o NEKEICIAM. Anksciau sutikimas buvo iprasomas i patį href, ir
+         jis ten likdavo net nuemus varnele — atsidarius nuoroda nauju
+         skirtuku i uzsakyma patektu sutikimas, kurio zmogus nebuvo dave.
+         Dabar href visada lieka svarus krepselio adresas, o sutikima
+         pridedam tik prie sios vienos navigacijos. Atsidarius nuoroda
+         nauju skirtuku sutikimo nebus — tada ji dar karta paklaus
+         krepselyje, pries apmokejima. */
+      e.preventDefault();
       var h = elCta.getAttribute("href") || "";
-      if (h.indexOf("attributes%5B") === -1 && h.indexOf("attributes[") === -1) {
-        var p = "attributes[" + encodeURIComponent(SUTIK_ATR) + "]=" +
-                encodeURIComponent("Taip, " + dmLaikas());
-        elCta.setAttribute("href", h + (h.indexOf("?") === -1 ? "?" : "&") + p);
-      }
+      var p = "attributes[" + encodeURIComponent(SUTIK_ATR) + "]=" +
+              encodeURIComponent("Taip, " + dmLaikas());
+      window.location.href = h + (h.indexOf("?") === -1 ? "?" : "&") + p;
     });
   })();
 
