@@ -1391,7 +1391,7 @@ html,body{margin:0;padding:0;background:#fff;}
   <div class="dm-wrap">
     <div class="dm-revhead">
       <div class="dm-revstars dm-zv" id="dm-rev-stars" role="img" aria-label="4,83 iš 5"><span class="dm-zv-tusti" aria-hidden="true">★★★★★</span><span class="dm-zv-pilni" aria-hidden="true" style="width:96.6%">★★★★★</span></div>
-      <div class="dm-revscore"><span id="dm-rev-suma">4,83</span> iš 5 — <span id="dm-rev-kiekis">48</span> atsiliepimai</div>
+      <div class="dm-revscore"><span id="dm-rev-suma">4,83</span> iš 5 — <span id="dm-rev-kiekis">48</span> <span id="dm-rev-zodis">atsiliepimai</span></div>
       <h2 class="dm-h2">Ką sako mūsų mokiniai</h2>
     </div>
 
@@ -1554,8 +1554,12 @@ html,body{margin:0;padding:0;background:#fff;}
          atskiros sąlygos.</p>
     </div>
     <div>
+      <!-- Ne „mes teikiame", o „taikoma pagal istatyma": 2 metu garantija yra
+           kiekvieno pardavejo pareiga, ne musu privalumas. Pateikti ja kaip
+           savo pasiulymo ypatybe draudzia Nesaziningos komercines veiklos
+           direktyvos I priedo 10 punktas. -->
       <h3>2 metų kokybės garantija</h3>
-      <p>Visoms prekėms teikiame dvejų metų garantiją.</p>
+      <p>Visoms prekėms taikoma 2 metų garantija pagal įstatymą.</p>
     </div>
     <div>
       <h3>Saugūs atsiskaitymai</h3>
@@ -2754,6 +2758,17 @@ html,body{margin:0;padding:0;background:#fff;}
     if (elS && vidurkis) elS.textContent = vidurkis.toFixed(2).replace(".", ",");
     if (elK && kiekis) elK.textContent = String(kiekis);
 
+    /* Lietuviska linksniuote: 1 atsiliepimas, 2-9 atsiliepimai,
+       0 ir 10-20 atsiliepimu. Be sito prie 50 likdavo „50 atsiliepimai". */
+    var elZ = document.getElementById("dm-rev-zodis");
+    if (elZ && kiekis) {
+      var d = kiekis % 10, s = kiekis % 100;
+      elZ.textContent = (s >= 11 && s <= 19) ? "atsiliepimų"
+                      : d === 1 ? "atsiliepimas"
+                      : d === 0 ? "atsiliepimų"
+                      : "atsiliepimai";
+    }
+
     var hR = document.getElementById("dm-hero-rating");
     var hK = document.getElementById("dm-hero-count");
     if (hR && vidurkis) hR.textContent = vidurkis.toFixed(2).replace(".", ",");
@@ -2778,8 +2793,11 @@ html,body{margin:0;padding:0;background:#fff;}
       return;
     }
     mygt.parentNode.hidden = false;
-    var kiek = dez.querySelectorAll(".dm-rev").length;
-    mygt.textContent = atverta ? "Suskleisti" : "Rodyti visus atsiliepimus (" + kiek + ")";
+    /* Be skaiciaus: antrasteje rodom bendra Judge.me kieki (visi atsiliepimai),
+       o sienelėje — tik tuos, kurie praeina DM_ATSILIEPIMAI filtra. Du skirtingi
+       skaiciai salia vienas kito atrode kaip klaida („50 atsiliepimu" ir
+       „Rodyti visus (49)"). */
+    mygt.textContent = atverta ? "Suskleisti" : "Rodyti visus atsiliepimus";
     mygt.setAttribute("aria-expanded", atverta ? "true" : "false");
   }
 
