@@ -179,8 +179,8 @@
       '<label class="dm-sutik-eil" for="dm-sutik-slidecart">' +
         '<input type="checkbox" class="dm-sutik-dez" id="dm-sutik-slidecart" data-dm-sutikimas-dez>' +
         '<span>Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš ' +
-        'karto, ir suprantu, kad dėl to netenku 14 dienų teisės atsisakyti ' +
-        'sutarties. Kitoms prekėms ji galioja įprastai.</span>' +
+        'karto, ir suprantu, kad dėl to netenku 14 dienų teisės grąžinti ' +
+        'šias prekes. Kitoms prekėms ji galioja įprastai.</span>' +
       '</label>' +
       '<p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>' +
         'Norėdami tęsti, pažymėkite sutikimą.</p>' +
