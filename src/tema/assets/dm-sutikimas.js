@@ -178,9 +178,10 @@
     d.innerHTML =
       '<label class="dm-sutik-eil" for="dm-sutik-slidecart">' +
         '<input type="checkbox" class="dm-sutik-dez" id="dm-sutik-slidecart" data-dm-sutikimas-dez>' +
-        '<span>Sutinku, kad kursą ir simuliatoriaus licenciją gaučiau iš ' +
-        'karto, ir suprantu, kad dėl to netenku 14 dienų teisės grąžinti ' +
-        'šias prekes. Kitoms prekėms ji galioja įprastai.</span>' +
+        '<span>Sutinku, kad skaitmeniniai produktai (kursas ir ' +
+        'simuliatoriaus licencija) būtų suteikti iš karto ir suprantu, ' +
+        'kad dėl to netenku 14 dienų teisės atsisakyti sutarties ir ' +
+        'susigrąžinti sumokėtus pinigus.</span>' +
       '</label>' +
       '<p class="dm-sutik-klaida" data-dm-sutikimas-klaida role="alert" hidden>' +
         'Norėdami tęsti, pažymėkite sutikimą.</p>' +
