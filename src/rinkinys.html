@@ -737,23 +737,61 @@ button.smulki{width:100%;text-align:left}
      Todėl čia visai kita sudėtis: du kraštiniai nerodomi (jie vis tiek
      surašyti „Kas dėžėje"), o likę penki sudėlioti dviem eilėmis.
      --krastas mažesnis, kad siauresnėje krūvoje pasukimai liktų ryškūs. */
-  /* Telefone hero zemesnis, o skritulys sustoja vos uzdenges produktus
-     (.62 vietoj .40) — kitaip virs ju lieka ~100 px tuscio balto ploto. */
-  :root{--kruvos-mastelis:.68;--krastas:230;--briauna-aukstai:.62;--nusileidimas:0px}
+  /* Skritulys ir telefone NEJUDA — kaip kompiuteryje: --briauna-aukstai
+     paliekam lygu --briauna-zemai, o produktus pasleptus uzdengia pati
+     kruva, nusileisdama uz skritulio per --nusileidimas. Anksciau cia
+     buvo atvirksciai (skritulys kilo .84 -> .62, kruva nejudejo) — tas
+     kilimas telefone krito i akis.
+     --nusileidimas mazesnis nei kompiuteryje (380 px), nes telefone hero
+     zemesnis (520 px) ir kruva prasideda ties 384 px. */
+  /* --kruvos-mastelis sumazintas nuo .68 iki .62: taip akumuliatorius
+     galima isbarstyti placiau (--x iki ~280) jiems neislendant uz ekrano.
+     --briauna .84 -> .90 nuleidzia skritulio krasta nuo 437 px iki 468 px,
+     kad nuleidus krūva apatiniai daiktai nedingtu uz jo visiskai.
+     --nusileidimas 150 -> 260 px: produktai leidziasi greiciau. */
+  :root{--kruvos-mastelis:.62;--krastas:230;--nusileidimas:260px;
+        --briauna-zemai:.90;--briauna-aukstai:.90}
   /* Telefone rodomi tik keturi daiktai: vienas dronas, pultas, akiniai
      ir baterijos. Dronas virsuje ir nesukamas, akiniai tiesiai po juo —
      kad ju nebeuzstotu. Akiniams didesnis z-index del tikrumo. */
-  #kruva .p-tx15,#kruva .p-krov,#kruva .p-air75,#kruva .p-pocket,
-  #kruva .p-ak1,#kruva .p-ak2,#kruva .p-ak3,#kruva .p-ak4,
-  #kruva .p-ak5,#kruva .p-ak6,#kruva .p-ak7,#kruva .p-ak8,
+  #kruva .p-tx15,#kruva .p-air75,#kruva .p-pocket{display:none}
+  /* Bendra akumuliatoriu nuotrauka nebereikalinga — rodom juos po viena,
+     isbarstytus kaip kompiuteryje. Leidziantis taip matosi daug daugiau
+     judanciu daiktu. */
+  #kruva .p-batm{display:none}
+  /* Tas pats isbarstymo rastas kaip kompiuteryje, tik suspaustas: --x
+     padaugintas is ~0,33, --y is ~0,26. Daugiau suspausti --y negalima,
+     nes virsutiniai akumuliatoriai uzliptu ant ivertinimo eilutes, o
+     maziau — issiristu uz ekrano krasto (kruva dar mazinama iki .68).
+     Pasukimai (--sukti) palikti tokie patys kaip kompiuteryje. */
+  /* Visi 14 akumuliatoriu — kaip kompiuteryje. Auksciau 760 px ju buvo tik
+     astuoni (zr. @media (max-width:1599px) virsuje), todel sesis kraštinius
+     cia vel irodom. */
   #kruva .p-ak9,#kruva .p-ak10,#kruva .p-ak11,
-  #kruva .p-ak12,#kruva .p-ak13,#kruva .p-ak14{display:none}
-  #kruva .p-batm{display:block}
+  #kruva .p-ak12,#kruva .p-ak13,#kruva .p-ak14{display:block}
+  /* --y nė vienam nebūna mažesnis nei -116: ties ta riba daikto virsus
+     sustoja ties 314 px, o tekstas (ivertinimo eilutė) baigiasi ties
+     304 px. Zemiau -116 nuotraukos uzliptu ant teksto. */
+  #kruva .p-krov{--w:128px;--x:150;--y:96;--sukti:.8}
+  #kruva .p-ak1 {--w:86px;--x:-280;--y:-18;--sukti:.85}
+  #kruva .p-ak2 {--w:80px;--x:-258;--y:-104;--sukti:-.8}
+  #kruva .p-ak3 {--w:86px;--x:-198;--y:-58;--sukti:1.25}
+  #kruva .p-ak4 {--w:82px;--x:256;--y:-96;--sukti:-.75}
+  #kruva .p-ak5 {--w:84px;--x:192;--y:-54;--sukti:-1.2}
+  #kruva .p-ak6 {--w:79px;--x:280;--y:-12;--sukti:.9}
+  #kruva .p-ak7 {--w:83px;--x:-130;--y:-114;--sukti:1.1}
+  #kruva .p-ak8 {--w:79px;--x:122;--y:-116;--sukti:.8}
+  #kruva .p-ak9 {--w:76px;--x:-276;--y:74;--sukti:-.9}
+  #kruva .p-ak10{--w:72px;--x:-232;--y:-112;--sukti:-.65}
+  #kruva .p-ak11{--w:79px;--x:234;--y:-110;--sukti:1.15}
+  #kruva .p-ak12{--w:76px;--x:276;--y:76;--sukti:.95}
+  #kruva .p-ak13{--w:72px;--x:-104;--y:104;--sukti:.7}
+  #kruva .p-ak14{--w:79px;--x:98;--y:108;--sukti:-1.1}
   /* Dronas ir akiniai — greta, ne vienas ant kito. Vertikaliai sudejus
      akinius pakelti reiskia stipriau uzlipti ant drono; greta abu telpa
      ir abu matomi pilnai. */
   #kruva .p-air65  {--w:190px;--x:-98;--y:-58;--sukti:0}
-  #kruva .p-akiniai{--w:212px;--x:92;--y:-30}
+  #kruva .p-akiniai{--w:212px;--x:92;--y:-36}
   #kruva .p-lite   {--x:-168;--y:66}
   #kruva .p-batm   {--w:158px;--x:212;--y:-16}
   .hero{height:520px;padding:0 16px}
@@ -766,7 +804,9 @@ button.smulki{width:100%;text-align:left}
   .hero-balas-zv{font-size:.875rem}
   .kaina-nuo b{font-size:1rem}
   .kaina-siunt svg{width:16px;height:16px}
-  .kruva{top:384px}
+  /* Krūva nuleista nuo 384 iki 404 px — kartu su sumazintu masteliu
+     tai nuveda auksciausias nuotraukas zemiau teksto. */
+  .kruva{top:412px}
   .rinkimas{padding:6px 16px 60px}
   .skiriasi{padding:52px 16px}
   .skiriasi-tinklas,.skiriasi-tinklas--2{grid-template-columns:1fr;gap:12px}
