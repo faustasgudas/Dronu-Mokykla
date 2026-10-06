@@ -89,6 +89,20 @@ html,body{margin:0;padding:0;background:#fff;}
 #dm .dm-sutik-klaida[hidden]{display:none;}
 #dm .dm-sutik-smulk{margin:10px 0 0 34px;font-size:0.8125rem;line-height:1.5;
   color:var(--dm-muted);}
+/* „Plačiau ▾" — suskleista papildoma informacija. Naudojam <details>, o ne
+   hover: telefone uzvedimo pele nera, o paliesti <summary> galima visur.
+   Rodykle butina — kitaip niekas nezino, kad yra ka atverti. */
+#dm .dm-sutik-daugiau{margin:6px 0 0 34px;}
+#dm .dm-sutik-daugiau summary{display:inline-flex;align-items:center;gap:6px;
+  list-style:none;cursor:pointer;font-size:0.8125rem;font-weight:700;
+  color:var(--dm-blue);padding:6px 2px;min-height:32px;
+  text-decoration:underline;text-underline-offset:3px;}
+#dm .dm-sutik-daugiau summary::-webkit-details-marker{display:none;}
+#dm .dm-sutik-daugiau summary::after{content:"▾";font-size:0.6875rem;line-height:1;
+  text-decoration:none;transition:transform .18s ease;}
+#dm .dm-sutik-daugiau[open] summary::after{transform:rotate(180deg);}
+#dm .dm-sutik-daugiau .dm-sutik-smulk{margin-left:0;margin-top:6px;}
+#dm .dm-sutik-daugiau .dm-sutik-smulk:first-of-type{margin-top:2px;}
 /* Nepazymejus mygtukas atrodo neaktyvus, bet lieka spaudziamas — paspaudus
    parodom, kodel nepraleidzia. Disabled mygtukas to paaiskinti negaletu. */
 #dm .dm-sutik-laukia{opacity:.55;}
@@ -101,6 +115,8 @@ html,body{margin:0;padding:0;background:#fff;}
   #dm .dm-sutik-klaida{margin:7px 0 0;font-size:0.875rem;line-height:1.35;}
   #dm .dm-sutik-smulk{margin:6px 0 0;font-size:0.75rem;line-height:1.4;}
   #dm .dm-sutik-smulk+.dm-sutik-smulk{margin-top:3px;}
+  #dm .dm-sutik-daugiau{margin:2px 0 0;}
+  #dm .dm-sutik-daugiau summary{font-size:0.78125rem;padding:5px 2px;min-height:30px;}
 }
 @media (max-width:380px){
   #dm .dm-sutik{margin-top:10px;padding:10px 11px;}
@@ -1034,15 +1050,24 @@ html,body{margin:0;padding:0;background:#fff;}
     <div class="dm-sutik">
       <label class="dm-sutik-eil" for="dm-sutik-dez">
         <input type="checkbox" id="dm-sutik-dez" class="dm-sutik-dez">
-        <span>Noriu gauti kursą iš karto ir suprantu, kad tada netenku
-          14 dienų grąžinimo teisės.</span>
+        <span>Sutinku gauti skaitmeninius produktus (kursą ir simuliatoriaus
+          licenciją) iš karto ir suprantu, kad dėl to jų grąžinti negalėsiu.
+          Pulteliui taikoma įprasta 14 d. grąžinimo tvarka.</span>
       </label>
       <p class="dm-sutik-klaida" id="dm-sutik-klaida" role="alert" hidden>
         Norėdami tęsti, pažymėkite sutikimą.</p>
-      <p class="dm-sutik-smulk">O jei nepatiks? Peržiūrėjus iki 50 % kurso —
-        pinigus grąžiname.</p>
-      <p class="dm-sutik-smulk">
-        <a href="https://dronumokykla.lt/policies/terms-of-service" target="_blank" rel="noopener">Pirkimo taisyklės</a></p>
+      <!-- Visa, ko reikalauja istatymas, matosi pacioje varnelėje. Cia tik
+           papildoma informacija ir musu geranoriska 50 % taisykle, todel ja
+           galima suskleisti. <details> veikia ir palietus pirstu — hover
+           telefone neveiktu. -->
+      <details class="dm-sutik-daugiau">
+        <summary>Plačiau</summary>
+        <p class="dm-sutik-smulk">O jei kursas nepatiks? Per 14 dienų,
+          peržiūrėjus iki 50 % kurso, savo iniciatyva grąžinsime pinigus už
+          kursą, išskyrus simuliatoriaus licenciją (19,99 €).</p>
+        <p class="dm-sutik-smulk">
+          <a href="https://dronumokykla.lt/policies/terms-of-service" target="_blank" rel="noopener">Pirkimo taisyklės</a></p>
+      </details>
     </div>
 
     <div class="dm-buybar">

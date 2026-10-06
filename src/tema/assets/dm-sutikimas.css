@@ -85,10 +85,40 @@
   text-underline-offset: 2px;
 }
 
+/* „Plačiau ▾" — suskleista papildoma informacija. Naudojam <details>, o ne
+   hover: telefone uzvedimo pele nera, o paliesti <summary> galima visur.
+   Rodykle butina — kitaip niekas nezino, kad yra ka atverti. */
+.dm-sutik-daugiau { margin: 6px 0 0 34px; }
+.dm-sutik-daugiau summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1919ff;
+  padding: 6px 2px;
+  min-height: 32px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.dm-sutik-daugiau summary::-webkit-details-marker { display: none; }
+.dm-sutik-daugiau summary::after {
+  content: "▾";
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform .18s ease;
+}
+.dm-sutik-daugiau[open] summary::after { transform: rotate(180deg); }
+.dm-sutik-daugiau .dm-sutik-smulk { margin: 6px 0 0; }
+
 @media (max-width: 600px) {
   .dm-sutik { padding: 12px 14px; }
   .dm-sutik-klaida,
   .dm-sutik-smulk { margin-left: 0; }
+  .dm-sutik-daugiau { margin-left: 0; }
 }
 
 /* Greito apmokejimo mygtukai (Shop Pay, Apple Pay, Google Pay, PayPal)

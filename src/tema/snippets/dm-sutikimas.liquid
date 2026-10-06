@@ -33,9 +33,14 @@
         id="dm-sutik-{{ vieta | default: 'cart' }}"
         data-dm-sutikimas-dez
       >
+      {%- comment -%}
+        Krepselyje gali buti bet kokiu prekiu, ne tik pultelis, todel cia
+        „Kitoms prekems", o ne „Pulteliui" kaip landinge.
+      {%- endcomment -%}
       <span>
-        Noriu pradėti mokytis dabar ir gauti prieigą prie viso kurso iš karto.
-        Suprantu, kad pradėjus kursą 14 dienų grąžinimo teisė nebegalioja.
+        Sutinku gauti skaitmeninius produktus (kursą ir simuliatoriaus
+        licenciją) iš karto ir suprantu, kad dėl to jų grąžinti negalėsiu.
+        Kitoms prekėms taikoma įprasta 14 d. grąžinimo tvarka.
       </span>
     </label>
 
@@ -43,14 +48,23 @@
       Norėdami tęsti, pažymėkite sutikimą.
     </p>
 
-    <p class="dm-sutik-smulk">
-      Jei per 14 dienų kursą peržiūrėsiu ne daugiau nei 50 %, galiu susigrąžinti
-      pinigus.
-    </p>
-    <p class="dm-sutik-smulk">
-      Pirkdami sutinkate su
-      <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}"
-         target="_blank" rel="noopener">pirkimo taisyklėmis</a>.
-    </p>
+    {%- comment -%}
+      Visa, ko reikalauja istatymas, matosi pacioje varneleje. Cia tik
+      papildoma informacija ir musu geranoriska 50 % taisykle, todel ja
+      galima suskleisti. <details> veikia ir palietus pirstu.
+    {%- endcomment -%}
+    <details class="dm-sutik-daugiau">
+      <summary>Plačiau</summary>
+      <p class="dm-sutik-smulk">
+        O jei kursas nepatiks? Per 14 dienų, peržiūrėjus iki 50 % kurso, savo
+        iniciatyva grąžinsime pinigus už kursą, išskyrus simuliatoriaus
+        licenciją (19,99 €).
+      </p>
+      <p class="dm-sutik-smulk">
+        Pirkdami sutinkate su
+        <a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}"
+           target="_blank" rel="noopener">pirkimo taisyklėmis</a>.
+      </p>
+    </details>
   </div>
 {%- endif -%}
